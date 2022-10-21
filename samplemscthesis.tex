@@ -1,0 +1,68 @@
+%
+% TU/e Style Master Thesis template for LaTeX
+%
+% 2021 Crated by Marko Boon to new corporate identity,
+% Based on a template by Thijs Nugteren and Joos Buijs.
+%
+% THIS IS THE MAIN FILE (i.e. compile this file, compiling the others directly won't work)
+%
+\documentclass[a4paper,10pt,twoside]{book}
+\usepackage{tuethesis2021}
+
+%
+% These commands need to be defined in order to produce a correct and personalized document.
+% You will get error messages if not all these commands are defined. 
+% If you don't need a specific command, just leave the argument empty. 
+% For example: \docsubtitle{}
+%
+\newcommand{\doctitle}{Secure Dynamic Setup for MPyC Sessions to Support (Ad Hoc) Multiparty Computation}
+\newcommand{\docsubtitle}{Preparation phase report}
+\newcommand{\me}{Emil Nikolov}
+\newcommand{\version}{Draft version}
+\newcommand{\placeMonthYear}{Eindhoven, November 2022}
+\newcommand{\department}{Department of Mathematics and Computer Science}
+\newcommand{\group}{Architecture of Information Systems Research Group}
+\newcommand{\firstCommitteeMember}{Dr.ir. L.A.M. (Berry) Schoenmakers} % use all the titles for your committee members!
+\newcommand{\secondCommitteeMember}{} % usually the daily supervisor
+\newcommand{\thirdCommitteeMember}{} % usually the external member
+
+
+\begin{document}
+% The title page will be inserted automatically, here.
+
+\clearpage
+
+%Sometimes line numbers are nice, uncomment the next line to enable:
+%\linenumbers
+
+\input{chapters/00-abstract}
+
+\input{chapters/00-preface}
+
+\tableofcontents
+
+\listoffigures
+
+\listoftables
+
+\lstlistoflistings
+
+\mainmatter
+
+\input{chapters/01-introduction}
+
+\input{chapters/02-first_real_chapter}
+
+\input{chapters/03-second_real_chapter}
+
+\input{chapters/zz-conclusions}
+
+\bibliographystyle{plain}
+\bibliography{references}
+
+\appendix
+\addcontentsline{toc}{chapter}{Appendix}
+
+\input{appendices/main}
+
+\end{document}
