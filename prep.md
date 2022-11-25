@@ -1,0 +1,7 @@
+# Preparation Phase
+
+[Introduction](Preparation%20Phase%20c6b3669f68a345378373672f23291275/Introduction%200b4232f7ee5143748f6fa54c5cf94daa.md)
+
+[Evaluation Setup Design](Preparation%20Phase%20c6b3669f68a345378373672f23291275/Evaluation%20Setup%20Design%20c4dcba251ecc47069a9d56e7d08ecaa1.md)
+
+[Presentation Planning](Preparation%20Phase%20c6b3669f68a345378373672f23291275/Presentation%20Planning%20c8e8f25ebedf4a9991bd144c1cb08a16.md)
