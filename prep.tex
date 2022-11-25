@@ -8,6 +8,7 @@
 %
 \documentclass[a4paper,10pt,twoside]{book}
 \usepackage{tuethesis2021}
+\usepackage{markdown}
 
 %
 % These commands need to be defined in order to produce a correct and personalized document.
@@ -36,7 +37,6 @@
 %\linenumbers
 
 \input{chapters/00-abstract}
-\input{notion/Evaluation-Setup-Design.md}
 
 \input{chapters/00-preface}
 
@@ -52,6 +52,8 @@
 
 \input{chapters/01-introduction}
 
+\markdownInput{notion/Evaluation-Setup-Design.md}
+
 \input{chapters/02-first_real_chapter}
 
 \input{chapters/03-second_real_chapter}
@@ -61,8 +63,8 @@
 \bibliographystyle{plain}
 \bibliography{references}
 
-\appendix
-\addcontentsline{toc}{chapter}{Appendix}
+%\appendix
+%\addcontentsline{toc}{chapter}{Appendix}
 
 \input{appendices/main}
 
