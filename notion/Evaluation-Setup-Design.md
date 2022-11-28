@@ -1,6 +1,6 @@
 # Evaluation Setup Design
 
-# Motivation
+## Motivation
 
 In order to evaluate various communication strategies for dynamic MPyC sessions, we need a test environment that can demonstrate real world networking scenarios in a way that is easy to automate and reproduce.
 
@@ -8,15 +8,15 @@ We have broadly categorized the potential users of the MPyC framework as enterpr
 
 For our purposes we have defined **enterprises** as companies with departments that manage their IT infrastructure and optimize for scale. They usually have large numbers of Linux based servers which are a combination of physical, virtual and container based. Those can be deployed either in the cloud or on premise in an automated way using Infrastructure as Code (IaC) tools. Those include tools for:
 
-- provisioning - Terraform,  Cloud Formation, etc.
-- deployment automation - Ansible, Puppet, Chef, etc.
+- provisioning - Terraform[@TerraformHashiCorpDeveloper], Cloud Formation[@AWSCloudFormationDocumentation], etc.
+- deployment automation - Ansible[@AnsibleDocumentation], Puppet, Chef, etc.
 - container orchestration - Docker Swarm, Kubernetes, etc.
 
 We define **power users** as users who manage a number of personal physical machines and may have some familiarity with Linux, terminals and shell scripting. They are assumed to be able to execute the necessary steps to setup a machine given a guide.
 
 **Casual users** are defined as people who are used to Windows or Mac, prefer software installers to package managers, Graphical User Interface (GUI) programs rather than Command Line Interface (CLI) based ones and do not feel comfortable with manually modifying their systems or using scripts.
 
-# Requirements
+## Requirements
 
 In this section we will describe the requirements for the evaluation setup in terms of complexity, source code, deployment and connectivity.
 
@@ -37,11 +37,11 @@ In this section we will describe the requirements for the evaluation setup in te
     3. Authentication - a party must be able to determine which party a message was sent by
     4. Privacy - no more information than strictly necessary should be revealed about a party. Depending on the method of communication, it may be necessary to choose a tradeoff or introduce a tuning parameter between performance and privacy.
 
-# Analysis
+## Analysis
 
 Since we are designing for a heterogeneous runtime environment, we need to choose building blocks that are compatible with as many scenarios as possible while also keeping the complexity low. 
 
-## Deployment
+### Deployment
 
 Our primary users are enterprises and power users. According to our definitions, power users typically use physical machines and enterprises can use both virtual machines and container orchestration tools (e.g. Kubernetes). Based on our requirements for the evaluation setup we need a cross region deployment. VMs can be automatically provisioned across different regions in the cloud using IaC tools. Once provisioned, a VM’s management usually involves a tool such as Ansible which executes a set of deployment steps over SSH. Those deployment steps can be adapted to physical machines so that power users can make use of them.
 
@@ -66,11 +66,15 @@ The declarative tools that were considered for provisioning were Terraform, Pulu
 
 In terms of a Cloud Provider, we decided to use DigitalOcean because they are supported by Terraform and offered free credits for educational use.
 
-## Connectivity
+### Connectivity
 
-There are a number of approaches for communication between our host machines. During the preparation phase of the project we will perform a high level exploration of our options and summarize them. For the evaluation setup we will initially use the simplest to implement one. During the implementation phase of the project we will go more in depth and implement more approaches and analyze how they compare to each other.
+There are a number of approaches for communication between our host machines. During the preparation phase of the project we will perform a high level exploration of our options and summarize them. For the evaluation setup we will initially use the simplest to implement one. During the implementation phase of the project we will go more in depth and implement more approaches and analyze how they compare to each other in practice.
 
-# Summary
+Virtual private networks are 
+
+Virtual Private Networks (VPN)
+
+## Summary
 
 We have developed an extensible setup for running experiments with various MPyC networking scenarios including combinations of cloud and physical machines.
 

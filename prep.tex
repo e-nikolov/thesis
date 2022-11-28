@@ -7,15 +7,17 @@
 % THIS IS THE MAIN FILE (i.e. compile this file, compiling the others directly won't work)
 %
 \documentclass[a4paper,10pt,twoside]{book}
+\usepackage[sorting=none, backref=true]{biblatex} 
+\addbibresource{references.bib}
 \usepackage{tuethesis2021}
-\usepackage{markdown}
+\usepackage[citations]{markdown}
 
 %
 % These commands need to be defined in order to produce a correct and personalized document.
 % You will get error messages if not all these commands are defined. 
 % If you don't need a specific command, just leave the argument empty. 
 % For example: \docsubtitle{}
-%
+%   
 \newcommand{\doctitle}{Secure Dynamic Setup for MPyC Sessions to Support (Ad Hoc) Multiparty Computation}
 \newcommand{\docsubtitle}{Preparation phase report}
 \newcommand{\me}{Emil Nikolov}
@@ -26,9 +28,12 @@
 \newcommand{\firstCommitteeMember}{Dr.ir. L.A.M. (Berry) Schoenmakers} % use all the titles for your committee members!
 \newcommand{\secondCommitteeMember}{} % usually the daily supervisor
 \newcommand{\thirdCommitteeMember}{} % usually the external member
-
+\def\markdownOptionOutputDir{build}
 
 \begin{document}
+\include{tuetitlepage2021}
+
+
 % The title page will be inserted automatically, here.
 
 \clearpage
@@ -60,11 +65,14 @@
 
 \input{chapters/zz-conclusions}
 
-\bibliographystyle{plain}
-\bibliography{references}
+% \bibliographystyle{plain}
+\printbibliography
+% \bibliographystyle{plainurl}
+% \bibliography{references}
 
 %\appendix
 %\addcontentsline{toc}{chapter}{Appendix}
+
 
 \input{appendices/main}
 
