@@ -1,4 +1,4 @@
-# Evaluation Setup Design
+# Evaluation Setup
 
 ## Motivation
 
@@ -9,8 +9,8 @@ We have broadly categorized the potential users of the MPyC framework as enterpr
 For our purposes we have defined **enterprises** as companies with departments that manage their IT infrastructure and optimize for scale. They usually have large numbers of Linux based servers which are a combination of physical, virtual and container based. Those can be deployed either in the cloud or on premise in an automated way using Infrastructure as Code (IaC) tools. Those include tools for:
 
 - provisioning - Terraform[@TerraformHashiCorpDeveloper], Cloud Formation[@AWSCloudFormationDocumentation], etc.
-- deployment automation - Ansible[@AnsibleDocumentation], Puppet, Chef, etc.
-- container orchestration - Docker Swarm, Kubernetes, etc.
+- deployment automation - Ansible[@AnsibleDocumentation], Puppet[@DocsPuppet], Chef[@ChefDocumentation], etc.
+- container orchestration - Docker Swarm[@SwarmModeOverview2022], Kubernetes[@KubernetesDocumentation], etc.
 
 We define **power users** as users who manage a number of personal physical machines and may have some familiarity with Linux, terminals and shell scripting. They are assumed to be able to execute the necessary steps to setup a machine given a guide.
 
@@ -72,7 +72,7 @@ There are a number of approaches for communication between our host machines. Du
 
 Virtual private networks are 
 
-Virtual Private Networks (VPN)
+#### Virtual Private Networks (VPN)
 
 ## Summary
 

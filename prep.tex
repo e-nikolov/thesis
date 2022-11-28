@@ -11,6 +11,8 @@
 \addbibresource{references.bib}
 \usepackage{tuethesis2021}
 \usepackage[citations]{markdown}
+% \usepackage[english]{babel}
+% \usepackage{nomencl}
 
 %
 % These commands need to be defined in order to produce a correct and personalized document.
@@ -21,17 +23,24 @@
 \newcommand{\doctitle}{Secure Dynamic Setup for MPyC Sessions to Support (Ad Hoc) Multiparty Computation}
 \newcommand{\docsubtitle}{Preparation phase report}
 \newcommand{\me}{Emil Nikolov}
+\newcommand{\studentNumber}{0972305}
+\newcommand{\email}{emil.e.nikolov@gmail.com}
 \newcommand{\version}{Draft version}
 \newcommand{\placeMonthYear}{Eindhoven, November 2022}
 \newcommand{\department}{Department of Mathematics and Computer Science}
-\newcommand{\group}{Architecture of Information Systems Research Group}
+\newcommand{\group}{Coding Theory and Cryptology Group}
 \newcommand{\firstCommitteeMember}{Dr.ir. L.A.M. (Berry) Schoenmakers} % use all the titles for your committee members!
-\newcommand{\secondCommitteeMember}{} % usually the daily supervisor
-\newcommand{\thirdCommitteeMember}{} % usually the external member
-%\def\markdownOptionOutputDir{build}
+\newcommand{\secondCommitteeMember}{Dr. ir. Mike Holenderski} % usually the daily supervisor
+\newcommand{\thirdCommitteeMember}{Dr. ir. Savio Sciancalepore} % usually the external member
+\newcommand{\builddate}{\today} 
+\def\markdownOptionOutputDir{build}
+
+% \makenomenclature
+% \renewcommand{\nomname}{List of Abbreviations}
 
 \begin{document}
-\include{tuetitlepage2021}
+% \include{tuetitlepage2021}
+\include{titlepage-v2}
 
 
 % The title page will be inserted automatically, here.
@@ -41,23 +50,27 @@
 %Sometimes line numbers are nice, uncomment the next line to enable:
 %\linenumbers
 
-\input{chapters/00-abstract}
 
-\input{chapters/00-preface}
+% \input{chapters/00-preface}
 
 \tableofcontents
 
-\listoffigures
+% \printnomenclature[5em]
 
-\listoftables
 
-\lstlistoflistings
+% \listoffigures
+
+% \listoftables
+
+% \lstlistoflistings
 
 \mainmatter
 
-\input{chapters/01-introduction}
+\markdownInput{notion/00-abstract.md}
 
-\markdownInput{notion/Evaluation-Setup-Design.md}
+\markdownInput{notion/01-introduction.md}
+
+\markdownInput{notion/02-evaluation-setup.md}
 
 \input{chapters/02-first_real_chapter}
 
