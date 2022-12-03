@@ -6,20 +6,63 @@
 %
 % THIS IS THE MAIN FILE (i.e. compile this file, compiling the others directly won't work)
 %
-\documentclass[a4paper,10pt,twoside]{book}
-\usepackage[sorting=none, backref=true]{biblatex} 
+\documentclass[a4paper,11pt,twoside]{book}
+% \documentclass[a4paper]{article}
+ 
+
+\usepackage[backref=true,style=alphabetic]{biblatex} 
 \addbibresource{references.bib}
 \usepackage{tuethesis2021}
-\usepackage[citations]{markdown}
-% \usepackage[english]{babel}
-% \usepackage{nomencl}
+
+
+
+
+\usepackage[
+    contentBlocks,
+    debugExtensions,
+    definitionLists,
+    fancy_lists,
+    fencedCode,
+    hashEnumerators,
+    inlineNotes,
+    jekyllData,
+    notes,
+    pipeTables,
+    rawAttribute,
+    headerAttributes,
+    smartEllipses,
+    strikeThrough,
+    subscripts,
+    superscripts,
+    tableCaptions,
+    taskLists,
+    citations,
+    hybrid,
+    relativeReferences,
+    texComments,
+]{markdown} 
+
+
+
+% \usepackage{titling}
+\usepackage[english]{babel} 
+\usepackage{nomencl} 
+% \usepackage{kpathsea}
+
+% \begin{filecontents}[overwrite,noheader]{markdown-languages.json}
+%     {
+%       "nix": "JavaScript Object Notation"
+%     }
+% \end{filecontents}
+    
+
 
 %
 % These commands need to be defined in order to produce a correct and personalized document.
 % You will get error messages if not all these commands are defined. 
 % If you don't need a specific command, just leave the argument empty. 
 % For example: \docsubtitle{}
-%   
+%     
 \newcommand{\doctitle}{Secure Dynamic Setup for MPyC Sessions to Support (Ad Hoc) Multiparty Computation}
 \newcommand{\docsubtitle}{Preparation phase report}
 \newcommand{\me}{Emil Nikolov}
@@ -29,18 +72,49 @@
 \newcommand{\placeMonthYear}{Eindhoven, November 2022}
 \newcommand{\department}{Department of Mathematics and Computer Science}
 \newcommand{\group}{Coding Theory and Cryptology Group}
-\newcommand{\firstCommitteeMember}{Dr.ir. L.A.M. (Berry) Schoenmakers} % use all the titles for your committee members!
-\newcommand{\secondCommitteeMember}{Dr. ir. Mike Holenderski} % usually the daily supervisor
-\newcommand{\thirdCommitteeMember}{Dr. ir. Savio Sciancalepore} % usually the external member
+\newcommand{\firstCommitteeMember}{Dr. ir. L.A.M. (Berry) Schoenmakers} % use all the titles for your committee members!
+\newcommand{\secondCommitteeMember}{Dr. Mike Holenderski} % usually the daily supervisor
+\newcommand{\thirdCommitteeMember}{Dr. Savio Sciancalepore} % usually the external member
 \newcommand{\builddate}{\today} 
 \def\markdownOptionOutputDir{build}
+ 
+\makenomenclature 
+\renewcommand{\nomname}{List of Abbreviations}
 
-% \makenomenclature
-% \renewcommand{\nomname}{List of Abbreviations}
+\usepackage{mdframed}
+% \usepackage{pygmentize}
+\usepackage{minted}
+% \usemintedstyle{xcode}
+% \usemintedstyle{paraiso-light}
+\usemintedstyle{arduino}
 
 \begin{document}
+
+
+
+
+\definecolor{LightGray}{gray}{0.9}
+
+% % \surroundwithmdframed[bgcolor=DarkGray]{minted}
+% \BeforeBeginEnvironment{minted}{\begin{mdframed} bgcolor=DarkGray}
+%         \AfterEndEnvironment{minted}{\end{mdframed}}
+
+% \begin{minted}[bgcolor=darkgray]{python}
+% def test :
+%     print 123
+
+% \end{minted}
+
+
 % \include{tuetitlepage2021}
 \include{titlepage-v2}
+
+% The Flexible Spin-Lock Model (FSLM) is a real-time multiprocessor resource sharing protocol.
+% Earlier work has been carried out in  defining the protocol, preliminary schedulability analysis and an initial implementation of the FSLM
+% \nomenclature{FSLM}{Flexible Spin-Lock Model}.
+% The aim of this assignment is to develop schedulability analysis for FSLM taking into consideration the implementation overheads in the Erika  enterprise RTOS
+% \nomenclature{RTOS}{Real Time Operating System}
+% instantiated on an Altera Nios II platform with 4 soft cores. The assignment also aims at exploring the effects of improvements on the existing implementation. The purpose of this report is to detail the preparatory steps carried out to perform the assignment.
 
 
 % The title page will be inserted automatically, here.
@@ -53,7 +127,6 @@
 
 % \input{chapters/00-preface}
 
-\tableofcontents
 
 % \printnomenclature[5em]
 
@@ -66,17 +139,41 @@
 
 \mainmatter
 
+% \chapter*{Abstract}\label{chapter:abstract}
+
+
+
+
+% \begin{abstract}
+% \end{abstract}
+
+\chapter*{Abstract}
 \markdownInput{notion/00-abstract.md}
+% \markdownInput[slice=^ ^section2]{notion/00-abstract.md}
+
+
+% \begin{markdown}
+% \in
+% \end{markdown}
+% {notion/00-abstract.md}
+
+\tableofcontents
+
 
 \markdownInput{notion/01-introduction.md}
 
 \markdownInput{notion/02-evaluation-setup.md}
+\markdownInput{notion/03-evaluation-setup-implementation.md}
+\markdownInput{notion/04-planning.md}
+\markdownInput{notion/05-conclusions.md}
 
-\input{chapters/02-first_real_chapter}
+% \input{chapters/02-first_real_chapter}
 
-\input{chapters/03-second_real_chapter}
+% \input{chapters/03-second_real_chapter}
 
-\input{chapters/zz-conclusions}
+% \input{chapters/zz-conclusions}
+
+
 
 % \bibliographystyle{plain}
 \printbibliography
@@ -87,6 +184,6 @@
 %\addcontentsline{toc}{chapter}{Appendix}
 
 
-\input{appendices/main}
+% \input{appendices/main}
 
 \end{document}
