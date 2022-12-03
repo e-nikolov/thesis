@@ -16,6 +16,7 @@ $$
 x^2 + y^2 = 1
 $$
 
+
 ```nix
 packages.colmena = {
     meta = {
@@ -33,7 +34,12 @@ output "node" {
     value = local.nodes_expanded
     }
     output "node-hostnames" {
-    value = { for i, node in local.nodes_expanded : node.name => merge(node, { hostname = "${node.name}-${random_id.mpyc-node-hostname[node.name].hex}" }) }
+    value = { 
+        for i, node in local.nodes_expanded : 
+            node.name => merge(node, { 
+                hostname = "${node.name}-${random_id.mpyc-node-hostname[node.name].hex}"
+            })
+        }
     }
 
     resource "digitalocean_droplet" "mpyc-node" {

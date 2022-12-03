@@ -25,7 +25,7 @@
 \RequirePackage{graphicx,ifthen,color,pgf,multicol,calc}
 \RequirePackage{amsmath,amssymb,amsthm,caption,ifthen}
 % \RequirePackage[charter,mdbch]{mathdesign}
-\RequirePackage[charter]{mathdesign}
+% \RequirePackage[charter]{mathdesign}
 % \RequirePackage[sfdefault]{noto} %font
 
 % \usepackage[colorlinks]{hyperref} %
@@ -143,6 +143,8 @@ stringstyle=\color[rgb]{0.627,0.126,0.941},  %
 % header!
 
 %Common header attributes - see also http://en.wikibooks.org/wiki/LaTeX/Page_Layout
+\setlength{\headheight}{14pt}
+% \setlength{\hbox}{1pt}
 \fancyhead[LE,RO]{\slshape \leftmark} % \rightmark = represent section heading
 \fancyhead[LO,RE]{\slshape } % \leftmark = represent chapter heading
 \fancyfoot[RE,LO]{\doctitle}
