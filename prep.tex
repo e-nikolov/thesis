@@ -8,7 +8,7 @@
 %
 \documentclass[a4paper,11pt,twoside]{book}
 % \documentclass[a4paper]{article}
- 
+
 
 \usepackage[backref=true,style=alphabetic]{biblatex} 
 \addbibresource{references.bib}
@@ -41,37 +41,33 @@
     hybrid,
     relativeReferences,
     texComments,
-    theme=witiko/graphicx/http,
+    % theme=witiko/graphicx/http,
 ]{markdown} 
 
 
 
 
-% \begingroup
-% \catcode`\@=11
-% \catcode`\%=12
-% \catcode`\^^A=14
-% \global\def\markdownRendererImagePrototype#1#2#3#4{^^A
-% {^^A
-% \everyeof={\noexpand}^^A
-% \begin{figure}^^A
-%     \includegraphics[width=\textwidth]{#3}^^A
-%     \caption{#1}^^A
-% \end{figure}^^A
-% }^^A
-% }
-% \endgroup
+\begingroup
+\catcode`\@=11
+\catcode`\%=12
+\catcode`\^^A=14
+\global\def\markdownRendererImagePrototype#1#2#3#4{^^A
+{^^A
+\everyeof={\noexpand}^^A
+\begin{figure}^^A
+    \begin{center}
+        \includegraphics[width=0.5\textwidth]{#3}^^A
+        \caption{#4}^^A
+        \label{#1}^^A
+    \end{center}
+\end{figure}^^A
+}^^A
+}
+\endgroup
 
 
-% \markdownSetup{
-%     % jekyllDataRenderers={},
-%     % theme=witiko/graphicx/http
 
-%     % renderers = {
-%     %     jekyllDataStart = {},
-%     %     jekyllDataEnd = {},
-%     % }
-% }
+\markdownSetup{theme=witiko/graphicx/http}
 
 
 \def\markdownRendererJekyllDataStart{ }
@@ -153,6 +149,8 @@
 \markdownInput{notion/00-abstract.md}
 % \markdownInput[slice=^ ^section2]{notion/00-abstract.md}
 
+
+
 %---------------------------------------TABLE OF CONTENTS-----------------------------------%
 
 \tableofcontents
@@ -162,12 +160,13 @@
 
 %---------------------------------------CHAPTERS-----------------------------------%
 
-\setkeys{Gin}{ width=.9\linewidth }
 
 \markdownInput{notion/01-introduction.md}
 % \markdownInput{notion/02-goals.md}
+
+\setkeys{Gin}{scale=0.25}
 \markdownInput{notion/03-technical-survey.md}
-\markdownInput{notion/04-design.md}
+% \markdownInput{notion/04-design.md}
 \markdownInput{notion/05-implementation.md}
 \markdownInput{notion/06-conclusions.md}
 

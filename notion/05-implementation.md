@@ -2,25 +2,12 @@
 link: https://www.notion.so/05-implementation-a5ed19f41d1a4e8ba57af3b9daa29bcd
 notionID: a5ed19f4-1d1a-4e8b-a57a-f3b9daa29bcd
 ---
-# Implementation
+# Implementation details
 
-\todo{Talk about the specifics of the implementation}
+In this chapter we will cover the implementation of \gls{e3}. The source code is a fork of [MPyC](https://github.com/lschoe/mpyc) with the addition of and can be found at https://github.com/e-nikolov/mpyc. We will now discuss the more critical parts in as snippets.
 
-\todo{Show snippets from the terraform spec}
-
-\todo{Show snippets from the Nix spec}
-
-body
-
-body
-
-body
-$$
-x + 123
-$$
-$$
-x^2 + y^2 = 1
-$$
+## Reproducible development of MPyC
+As previously discussed, we will use the Linux distribution NixOS which is based on the declarative Nix package manager. One of the main features of Nix are nix dev shells. They allow 
 
 ```nix
 packages.colmena = {
@@ -88,3 +75,12 @@ output "node" {
 asd
 
 asd
+## Summary
+
+We have designed an extensible setup for running experiments with various MPyC networking scenarios including combinations of cloud and physical machines.
+
+The test setup is currently using DigitalOcean as a cloud provider because they offer free credits to students but the setup can be adapted to other cloud providers.
+
+The cloud provisioning is defined declaratively using Terraform. The setup allows to define a set of machines across the regions supported by DigitalOcean, e.g. Amsterdam, New York City, San Francisco, Singapore and others.
+
+The machines run NixOS - a declarative and highly reproducible Linux distribution.
