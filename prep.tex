@@ -26,6 +26,7 @@
     hashEnumerators,
     inlineNotes,
     jekyllData,
+    expectJekyllData=false,
     notes,
     pipeTables,
     rawAttribute,
@@ -40,17 +41,43 @@
     hybrid,
     relativeReferences,
     texComments,
+    theme=witiko/graphicx/http,
 ]{markdown} 
 
-\usepackage{nomencl} 
-% \usepackage{kpathsea}
 
-% \begin{filecontents}[overwrite,noheader]{markdown-languages.json}
-%     {
-%       "nix": "JavaScript Object Notation"
-%     }
-% \end{filecontents}
-    
+
+
+% \begingroup
+% \catcode`\@=11
+% \catcode`\%=12
+% \catcode`\^^A=14
+% \global\def\markdownRendererImagePrototype#1#2#3#4{^^A
+% {^^A
+% \everyeof={\noexpand}^^A
+% \begin{figure}^^A
+%     \includegraphics[width=\textwidth]{#3}^^A
+%     \caption{#1}^^A
+% \end{figure}^^A
+% }^^A
+% }
+% \endgroup
+
+
+% \markdownSetup{
+%     % jekyllDataRenderers={},
+%     % theme=witiko/graphicx/http
+
+%     % renderers = {
+%     %     jekyllDataStart = {},
+%     %     jekyllDataEnd = {},
+%     % }
+% }
+
+
+\def\markdownRendererJekyllDataStart{ }
+\def\markdownRendererJekyllDataEnd{ }
+
+
 
 %
 % These commands need to be defined in order to produce a correct and personalized document.
@@ -72,25 +99,23 @@
 \newcommand{\thirdCommitteeMember}{Dr. Savio Sciancalepore} % usually the external member
 \newcommand{\builddate}{\today} 
 \def\markdownOptionOutputDir{build}
-\makenomenclature 
-\renewcommand{\nomname}{List of Abbreviations}
 
-\usepackage{mdframed}
-% \usepackage{pygmentize}
-\usepackage{minted}
+\usepackage{mdframed} % surround environments with tags
+\usepackage{minted} % code snippet colors
 % \usemintedstyle{xcode}
 % \usemintedstyle{paraiso-light}
-\usemintedstyle{arduino}
+\usemintedstyle{arduino} % code snippet color scheme
 
 \usepackage{csquotes}
-\usepackage[english]{babel} 
+\usepackage[english]{babel} % english rules
+
+\usepackage{myglossary} % internal package wrapping glosseries
 
 \begin{document}
 
-
-
-
 \definecolor{LightGray}{gray}{0.9}
+
+\frontmatter
 
 % % \surroundwithmdframed[bgcolor=DarkGray]{minted}
 % \BeforeBeginEnvironment{minted}{\begin{mdframed} bgcolor=DarkGray}
@@ -103,84 +128,60 @@
 % \end{minted}
 
 
-% \include{tuetitlepage2021}
+%---------------------------------------TITLE PAGE-----------------------------------%
+
 \include{titlepage-v2}
 
-% The Flexible Spin-Lock Model (FSLM) is a real-time multiprocessor resource sharing protocol.
-% Earlier work has been carried out in  defining the protocol, preliminary schedulability analysis and an initial implementation of the FSLM
-% \nomenclature{FSLM}{Flexible Spin-Lock Model}.
-% The aim of this assignment is to develop schedulability analysis for FSLM taking into consideration the implementation overheads in the Erika  enterprise RTOS
-% \nomenclature{RTOS}{Real Time Operating System}
-% instantiated on an Altera Nios II platform with 4 soft cores. The assignment also aims at exploring the effects of improvements on the existing implementation. The purpose of this report is to detail the preparatory steps carried out to perform the assignment.
 
 
-% The title page will be inserted automatically, here.
-
-\clearpage
+% \clearpage
 
 %Sometimes line numbers are nice, uncomment the next line to enable:
 %\linenumbers
 
-
-% \input{chapters/00-preface}
-
-
-% \printnomenclature[5em]
-
-
-% \listoffigures
+\listoffigures
 
 % \listoftables
 
 % \lstlistoflistings
 
-\mainmatter
+%---------------------------------------ABBREVIATIONS-----------------------------------%
 
-% \chapter*{Abstract}\label{chapter:abstract}
-
-
-
-
-% \begin{abstract}
-% \end{abstract}
+\printnoidxglossary[type=\acronymtype,title=List of Abbreviations]
 
 \chapter*{Abstract}
 \markdownInput{notion/00-abstract.md}
 % \markdownInput[slice=^ ^section2]{notion/00-abstract.md}
 
-
-% \begin{markdown}
-% \in
-% \end{markdown}
-% {notion/00-abstract.md}
+%---------------------------------------TABLE OF CONTENTS-----------------------------------%
 
 \tableofcontents
 
+\mainmatter
+
+
+%---------------------------------------CHAPTERS-----------------------------------%
+
+\setkeys{Gin}{ width=.9\linewidth }
 
 \markdownInput{notion/01-introduction.md}
-
-\markdownInput{notion/02-evaluation-setup.md}
-\markdownInput{notion/03-evaluation-setup-implementation.md}
-\markdownInput{notion/04-planning.md}
-\markdownInput{notion/05-conclusions.md}
-
-% \input{chapters/02-first_real_chapter}
-
-% \input{chapters/03-second_real_chapter}
-
-% \input{chapters/zz-conclusions}
+% \markdownInput{notion/02-goals.md}
+\markdownInput{notion/03-technical-survey.md}
+\markdownInput{notion/04-design.md}
+\markdownInput{notion/05-implementation.md}
+\markdownInput{notion/06-conclusions.md}
 
 
+%---------------------------------------BIBLIOGRAPHY-----------------------------------%
 
-% \bibliographystyle{plain}
 \printbibliography
+% \bibliographystyle{plain}
 % \bibliographystyle{plainurl}
 % \bibliography{references}
 
+
+
 %\appendix
 %\addcontentsline{toc}{chapter}{Appendix}
-
-
-% \input{appendices/main}
 
 \end{document}

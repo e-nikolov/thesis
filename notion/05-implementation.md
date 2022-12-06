@@ -1,4 +1,8 @@
-# Evaluation Setup - Implementation
+---
+link: https://www.notion.so/05-implementation-a5ed19f41d1a4e8ba57af3b9daa29bcd
+notionID: a5ed19f4-1d1a-4e8b-a57a-f3b9daa29bcd
+---
+# Implementation
 
 \todo{Talk about the specifics of the implementation}
 
@@ -11,11 +15,12 @@ body
 body
 
 body
-
+$$
+x + 123
+$$
 $$
 x^2 + y^2 = 1
 $$
-
 
 ```nix
 packages.colmena = {
@@ -34,12 +39,7 @@ output "node" {
     value = local.nodes_expanded
     }
     output "node-hostnames" {
-    value = { 
-        for i, node in local.nodes_expanded : 
-            node.name => merge(node, { 
-                hostname = "${node.name}-${random_id.mpyc-node-hostname[node.name].hex}"
-            })
-        }
+    value = { for i, node in local.nodes_expanded : node.name => merge(node, { hostname = "${node.name}-${random_id.mpyc-node-hostname[node.name].hex}" }) }
     }
 
     resource "digitalocean_droplet" "mpyc-node" {
