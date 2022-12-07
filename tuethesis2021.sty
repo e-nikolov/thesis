@@ -79,10 +79,10 @@
 \lstset{
 % From http://en.wikibooks.org/wiki/LaTeX/Packages/Listings
 % Added settings using http://ftp.snt.utwente.nl/pub/software/tex/macros/latex/contrib/listings/listings.pdf
-language=Python,                    % choose the language of the code
+language=c,                    % choose the language of the code
 basicstyle=\footnotesize,        % the size of the fonts that are used for the code
-%numbers=left,                    % where to put the line-numbers
-%numberstyle=\footnotesize,       % the size of the fonts that are used for the line-numbers
+numbers=left,                    % where to put the line-numbers
+numberstyle=\footnotesize,       % the size of the fonts that are used for the line-numbers
 %stepnumber=5,                    % the step between two line-numbers. If it's 1 each line will be numbered
 %numbersep=5pt,                   % how far the line-numbers are from the code
 %backgroundcolor=\color{white},   % choose the background color. You must add \usepackage{color}
@@ -146,8 +146,9 @@ stringstyle=\color[rgb]{0.627,0.126,0.941},  %
 % \setlength{\hbox}{1pt}
 \fancyhead[LE,RO]{\slshape \leftmark} % \rightmark = represent section heading
 \fancyhead[LO,RE]{\slshape } % \leftmark = represent chapter heading
-\fancyfoot[RE,LO]{\doctitle}
+\fancyfoot[RE,LO]{\fontsize{10}{10}\selectfont\doctitle}
 \fancyfoot[C]{}
+% \fancyfoot[L]{}
 %\fancyfoot[RE,LO]{\me}
 \fancyfoot[LE,RO]{\thepage}
 \renewcommand{\footrulewidth}{0.4pt} %thickness of the decorative lines on the footer

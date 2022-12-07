@@ -46,7 +46,6 @@
 
 
 
-
 \begingroup
 \catcode`\@=11
 \catcode`\%=12
@@ -97,15 +96,17 @@
 \def\markdownOptionOutputDir{build}
 
 \usepackage{mdframed} % surround environments with tags
-\usepackage{minted} % code snippet colors
-% \usemintedstyle{xcode}
+% \usepackage[linenos=true]{minted} % code snippet colors
+\usepackage[outputdir=build]{minted} % code snippet colors
+\usemintedstyle{xcode}
 % \usemintedstyle{paraiso-light}
-\usemintedstyle{arduino} % code snippet color scheme
+% \usemintedstyle{arduino} % code snippet color scheme
 
 \usepackage{csquotes}
 \usepackage[english]{babel} % english rules
 
 \usepackage{myglossary} % internal package wrapping glosseries
+
 
 \begin{document}
 
@@ -113,47 +114,45 @@
 
 \frontmatter
 
-% % \surroundwithmdframed[bgcolor=DarkGray]{minted}
-% \BeforeBeginEnvironment{minted}{\begin{mdframed} bgcolor=DarkGray}
-%         \AfterEndEnvironment{minted}{\end{mdframed}}
-
-% \begin{minted}[bgcolor=darkgray]{python}
-% def test :
-%     print 123
-
-% \end{minted}
-
+\let\inputmintedorg\inputminted
+\renewcommand{\inputminted}[2]{%
+    \begin{mdframed}
+        \inputmintedorg[linenos=true,fontsize=\footnotesize,breaklines=true,breakanywhere=true]{#1}{#2}
+    \end{mdframed}
+}
 
 %---------------------------------------TITLE PAGE-----------------------------------%
 
 \include{titlepage-v2}
 
 
-
 % \clearpage
 
 %Sometimes line numbers are nice, uncomment the next line to enable:
 %\linenumbers
+%---------------------------------------ABSTRACT-----------------------------------%
 
-\listoffigures
-
-% \listoftables
-
-% \lstlistoflistings
-
-%---------------------------------------ABBREVIATIONS-----------------------------------%
-
-\printnoidxglossary[type=\acronymtype,title=List of Abbreviations]
-
-\chapter*{Abstract}
+% \begin{abstract}
 \markdownInput{notion/00-abstract.md}
+% \end{abstract}
 % \markdownInput[slice=^ ^section2]{notion/00-abstract.md}
 
 
 
-%---------------------------------------TABLE OF CONTENTS-----------------------------------%
+
+%---------------------------------------CONTENTS-----------------------------------%
 
 \tableofcontents
+
+%---------------------------------------ABBREVIATIONS-----------------------------------%
+
+\printnoidxglossary[type=\acronymtype,title=List of Abbreviations]
+\listoffigures
+
+% \lstlistoflistings
+% \listoftables
+%---------------------------------------TABLE OF CONTENTS-----------------------------------%
+
 
 \mainmatter
 

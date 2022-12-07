@@ -67,18 +67,6 @@ gls{ssi} is a way of managing a digital identity that emphasises an individual's
 Two machines need to know each other's IP addresses in order to be able to interact via the internet. An IP address can reveal details about a person's location or be used to launch a \gls{ddos} attack against them. Additionally, nearby attackers could be listening to their traffic and tracking their internet behaviour, which may be undesirable depending on a person's privacy requirements. TOR uses a network of relays to obfuscate the communication route between two parties. The original sender prepares a multi-layered message, where each layer is encrypted for a specific relayer. When one of them receives a message, they only know who was the previous link and after decrypting their part of the message, they know the next link. They don't know who was the original sender and who is the final destination. The privacy comes at the cost of performance. Additionally, TOR has the concept of Onion Services, which receive an address under the .onion pseudo top level domain and correspond to a public key (e.g. vww6ybal4bd7szmgncyruucpgfkqahzddi37ktceo3ah7ngmcopnpyyd.onion). It allows two way privacy preserving communications.
 A concept similar to TOR can be optionally incorporated in MPyC for the cases when privacy is essential. It is interesting to measure the performance impact on MPyC computations when routed via a TOR-like relay network.
 
-## Runtime execution
-We have identified the tools we will use to deploy \gls{e3} and how the host machines will communicate. What remains is to determine how to run a joint computation on the hosts.
-When running such an experiment, It would be desirable to be able to iterate quickly. Colmena can be used to deploy a new version of the whole operating system that includes the changes in MPyC and the run script, but it would be unnecessary to rebuild all dependencies. 
-Therefore we decided to use *prsync* - a variant of the popular Linux utility *rsync* that adds parallel syncing to it. 
-
-prsync
-pssh
-
-## Secrets
-environment variables
-one password
-
 ## Summary
 
 In this chapter we compared a number of potential building blocks for \gls{e3} and made some choices informed by our requirements. Specifically, we will use Terraform for provisioning Virtual Machines running NixOS on DigitalOcean and Colmena for deploying to them. Our initial implementation will use Tailscale as the connectivity layer due to its ease of use. In the next phase of the project, we plan to explore solutions based on Nebula, DIDComm, TOR and combinations of the above.
