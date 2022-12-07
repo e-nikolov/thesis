@@ -64,8 +64,8 @@ Below, we formulate our requirements for \gls{e3} and group them in terms of sev
     - simple - given the limited time of the preparation phase, \gls{e3} must focus on simplicity, e.g. the easiest to implement connectivity approach should be chosen
     - extensible - \gls{e3} must allow for switching the building blocks during the next phase of the project, e.g. it should be easy to experiment with different connectivity approaches in order to measure and compare their characteristics
 - Source code
-    - open-source - the source code of the resulting implementation of Phase I must be available in a public repository, e.g. on Github.com
-    - no plaintext secrets such as \gls{api} keys and passwords should be present in the public repository, but others should be able to easily provide their own secrets in order to use Phase I in their own environment.
+    - open-source - the source code of the resulting implementation of \gls{e3} must be available in a public repository, e.g. on Github.com
+    - no plaintext secrets such as \gls{api} keys and passwords should be present in the public repository, but others should be able to easily provide their own secrets in order to use \gls{e3} in their own environment.
 - Deployment
     - cross region - the machines should be provisioned in multiple geographical regions in order to be able to observe the effects of varying latency on the system
     - cross platform - in a real world scenario the machines will be controlled by different parties that run various operating systems, hardware architectures and deployed using different tools, e.g. Party A might be an enterprise that uses containers, while Party B is a power user running a few \glspl{vm} and Party C ****could be using an ARM-based raspberry pi
