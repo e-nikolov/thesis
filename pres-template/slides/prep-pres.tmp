@@ -1,0 +1,43 @@
+
+\begin{frame}
+\section{Introduction}
+\frametitle{Introduction}
+
+
+- joint computation
+- secret inputs
+- only final result is revealed
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Deployment}
+
+
+\end{frame}
+
+\begin{frame}
+\section{Survey}
+\frametitle{Survey}
+
+
+\end{frame}
+
+\begin{frame}
+\section{Implementation}
+\frametitle{Implementation}
+
+- Terraform
+
+\end{frame}
+
+\begin{frame}
+\section{Demo}
+\frametitle{Demo}
+
+- provisioning with Terraform
+- deployment with Colmena
+- running a distributed MPyC program
+- destruction of the infra
+
+\end{frame}

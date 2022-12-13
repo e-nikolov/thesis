@@ -4,17 +4,17 @@ notionID: 145d822b-8f9c-4d1a-b08a-056c16f4ea48
 ---
 # Introduction
 
-This report will present the results of the preparation phase of the master thesis project titled “Secure Dynamic Setup for MPyC Sessions to Support (Ad Hoc) Multiparty Computation”. The goal of this phase is to gain sufficient insight into the topic, perform some preliminary tasks and propose a plan with well defined goals for the implementation phase of the project.
+This report will present the results of the preparation phase of the master thesis project titled "Secure Sessions for Ad Hoc Multiparty Computation in MPyC". The goal of this phase is to gain sufficient insight into the topic, perform some preliminary tasks and propose a plan with well defined goals for the implementation phase of the project.
 
 ## Background
 
-\gls{mpc}[@devreedeAssortedAlgorithmsProtocols2020] is a set of techniques and protocols for computing a function over the secret inputs of multiple parties without revealing their values, but only the final result. Yao’s Millionaires’ Problem[@yaoProtocolsSecureComputations1982] is one famous example in which a number of millionaires want to know who is richer without revealing their net worths. Other practical applications include electronic voting, auctions or even machine learning[@knottCrypTenSecureMultiParty2022] where one party’s private data can be used as an input for another party’s private machine learning model.
+\gls{mpc} is a set of techniques and protocols for computing a function over the secret inputs of multiple parties without revealing their values, but only the final result. A good overview can be found on Wikipedia[@wikiMPC]. Yao's Millionaires' Problem[@yaoProtocolsSecureComputations1982] is one famous example in which a number of millionaires want to know who is richer without revealing their net worths. Other practical applications[@laudApplicationsSecureMultiparty2015] include electronic voting, auctions or even machine learning[@knottCrypTenSecureMultiParty2022] where one party's private data can be used as an input for another party's private machine learning model.
 
-The basic operating procedure is that each party splits its secret input into shares using a scheme such as \gls{sss} [@shamirHowShareSecret1979] and sends one to each of the rest. A protocol involving multiple communication rounds and further re-shares of intermediate secret results is used by the parties so that each of them can compute the final result from the shares it has received.
+The general process is that each party uses a scheme like \gls{sss} [@shamirHowShareSecret1979] to split its secret input into shares and sends one to each of the other parties. A protocol involving multiple communication rounds and further re-shares of intermediate secret results is used by the parties so that each of them can compute the final result from the shares it has received.
 
-A number of \gls{mpc} frameworks have been developed for various programming languages and security models. As part of this project we will focus our efforts on **MPyC**[@mpycSource; @mpycHome] - an opensource \gls{mpc} Python framework developed primarily at TU Eindhoven,  but our results should be applicable to others as well.
+A number of \gls{mpc} frameworks have been developed for various programming languages and security models. As part of this project we will focus our efforts on **MPyC**[ @mpycHome; @mpycSource] - an opensource \gls{mpc} Python framework developed primarily at TU Eindhoven,  but our results should be applicable to others as well.
 
-We broadly categorize the potential users of the MPyC framework as casual users, power users and enterprises.
+To help us determine the types of solutions we need to consider, we can group the potential users of the MPyC framework into three broad categories: casual users, power users and enterprises.
 
 We define **casual users** as people who are used to Windows or Mac, prefer software installers to package managers, \gls{gui} programs rather than \gls{cli} based ones and do not feel comfortable with manually modifying their systems or using scripts.
 
@@ -24,7 +24,7 @@ For our purposes we define **enterprises** as companies with operations departme
 
 ## Problem description
 
-MPyC supports \gls{tcp}[@cerfProtocolPacketNetwork1974] connections from the \gls{ip} suite between the \gls{mpc} participants but it does not currently provide a service discovery mechanism. Before performing a joint computation, all parties must know and be able to reach each other’s \gls{tcp} endpoints - either via a local \gls{ip} address on a \gls{lan}, or via a public \gls{ip} address or the \gls{dns} on the internet. This is not likely to pose a problem for most enterprise users, who are usually already exposing some public services, e.g. their website. However, most casual users who are not \gls{it} experts typically do not own a domain name nor know how to configure a publicly accessible server. Due to the limited supply of addresses supported by \gls{ip}v4 and the slow adoption of \gls{ip}v6, most \glspl{isp} do not allocate a public address for each machine in the home networks of their residential customers. Usually only their router has a temporary public address and it utilizes techniques such as \gls{nat} in order to enable the other local machines to initiate remote internet connections. However, connections to them cannot be initiated from outside the \gls{lan} without manually configuring port forwarding in the router to send the appropriate traffic to the intended machine. This poses some challenges and limits the usability of MPyC in every day scenarios due to the inherently \gls{p2p} nature of the involved communications.
+MPyC supports \gls{tcp} connections from the \gls{ip} suite between the \gls{mpc} participants but it does not currently provide a service discovery mechanism. Before performing a joint computation, all parties must know and be able to reach each other's \gls{tcp} endpoints - either via a local \gls{ip} address on a \gls{lan}, or via a public \gls{ip} address or the \gls{dns} on the internet. This is not likely to pose a problem for most enterprise users, who are usually already exposing some public services, e.g. their website. However, most casual users who are not \gls{it} experts typically do not own a domain name nor know how to configure a publicly accessible server. Due to the limited supply of addresses supported by \gls{ip}v4 and the slow adoption of \gls{ip}v6, most \glspl{isp} do not allocate a public address for each machine in the home networks of their residential customers. Usually only their router has a temporary public address and it utilizes techniques such as \gls{nat} in order to enable the other local machines to initiate remote internet connections. However, connections to them cannot be initiated from outside the \gls{lan} without manually configuring port forwarding in the router to send the appropriate traffic to the intended machine. This poses some challenges and limits the usability of MPyC in every day scenarios due to the inherently \gls{p2p} nature of the involved communications.
 
 ## Research questions
 
@@ -40,19 +40,19 @@ Depending on the technical background of a user and their typical computing usag
 
 - *What are the most suitable approaches for a party to obtain an identity and prove it to other parties for the purposes of MPC?*
 
-A party’s digital identity is a persistent mechanism that allows others to provably track it across digital interactions with the party. An identity can either be issued by a digital authority, e.g. an organization like google, or a country’s government or it can be self-issued. Depending on the method, a identity verification can involve demonstrating a cryptographic proof of ownership of a public key, or separate communication with the digital authority.
+A party's digital identity is a persistent mechanism that allows others to provably track it across digital interactions with the party. An identity can either be issued by a digital authority, e.g. an organization like google, or a country's government or it can be self-issued. Depending on the method, an identity verification can involve demonstrating a cryptographic proof of ownership of a public key, or separate communication with the digital authority.
 
-- *What mechanisms can be used by the parties to initially get in contact and discover each other’s identities?*
+- *What mechanisms can be used by the parties to initially get in contact and discover each other's identities?*
 
-Different approaches should be considered based on the types of users and their prior relationships. Some examples could be for companies to publicly post their identities on their websites, end-users who know each other could use social media or group chats and if they don’t know each other, they could use an (anonymous) matchmaking service.
+Different approaches should be considered based on the types of users and their prior relationships. Some examples could be for companies to publicly post their identities on their websites, end-users who know each other could use social media or group chats and if they do not know each other, they could use an (anonymous) matchmaking service.
 
 - *How can the parties establish communication channels with each other based on the chosen identity solutions under diverse networking conditions?*
 
 As previously mentioned, some parties could be on a home network and not have a public \gls{ip}, which may require considering approaches that use a mediator.
 
-- *How can the parties communicate securely as part of the MPC execution? To what extent can the parties’ privacy be preserved? How efficiently can this be achieved?*
+- *How can the parties communicate securely as part of the MPC execution? To what extent can the parties' privacy be preserved? How efficiently can this be achieved?*
 
-In order for the execution of an \gls{mpc} protocol to be secure, it is important for the parties to be able to cryptographically verify the identity of a message’s original sender and be certain that nobody other than themselves can read it. Solutions that don’t reveal physically identifying information such as \gls{ip} addresses are also interesting to consider. The performance overhead of the security mechanisms should be evaluated.
+In order for the execution of an \gls{mpc} protocol to be secure, it is important for the parties to be able to cryptographically verify the identity of a message's original sender and be certain that nobody other than themselves can read it. Solutions that do not reveal physically identifying information such as \gls{ip} addresses are also interesting to consider. The performance overhead of the security mechanisms should be evaluated.
 
 ## Preparation phase scope
 

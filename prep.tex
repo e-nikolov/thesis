@@ -73,14 +73,13 @@
 \def\markdownRendererJekyllDataEnd{ }
 
 
-
 %
 % These commands need to be defined in order to produce a correct and personalized document.
 % You will get error messages if not all these commands are defined. 
 % If you don't need a specific command, just leave the argument empty. 
 % For example: \docsubtitle{}
 %     
-\newcommand{\doctitle}{Secure Dynamic Setup for MPyC Sessions to Support (Ad Hoc) Multiparty Computation}
+\newcommand{\doctitle}{Secure Sessions for Ad Hoc Multiparty Computation in MPyC}
 \newcommand{\docsubtitle}{Preparation phase report}
 \newcommand{\me}{Emil Nikolov}
 \newcommand{\studentNumber}{0972305}
@@ -107,10 +106,10 @@
 
 \usepackage{myglossary} % internal package wrapping glosseries
 
-
 \begin{document}
 
 \definecolor{LightGray}{gray}{0.9}
+
 
 \frontmatter
 
@@ -121,10 +120,10 @@
     \end{mdframed}
 }
 
+
 %---------------------------------------TITLE PAGE-----------------------------------%
 
 \include{titlepage-v2}
-
 
 % \clearpage
 
@@ -133,6 +132,7 @@
 %---------------------------------------ABSTRACT-----------------------------------%
 
 % \begin{abstract}
+\chapter*{Abstract}
 \markdownInput{notion/00-abstract.md}
 % \end{abstract}
 % \markdownInput[slice=^ ^section2]{notion/00-abstract.md}

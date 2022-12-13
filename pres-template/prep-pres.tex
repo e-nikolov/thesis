@@ -1,0 +1,255 @@
+\documentclass[t,aspectratio=169]{beamer}
+\usetheme{tue2018}
+
+\usepackage[english]{babel}
+
+
+\usepackage[
+    contentBlocks,
+    debugExtensions,
+    definitionLists,
+    fancy_lists,
+    fencedCode,
+    hashEnumerators,
+    inlineNotes,
+    jekyllData,
+    expectJekyllData=false,
+    notes,
+    pipeTables,
+    rawAttribute,
+    headerAttributes,
+    smartEllipses,
+    strikeThrough,
+    subscripts,
+    superscripts,
+    tableCaptions,
+    taskLists,
+    citations,
+    hybrid,
+    relativeReferences,
+    texComments,
+    stripIndent,
+    % theme=witiko/graphicx/http,
+    % theme=witiko/beamer/MU,
+]{markdown} 
+\def\markdownOptionOutputDir{build}
+
+
+\mode<presentation>
+
+
+\title{Secure Sessions for Ad Hoc Multiparty Computation in MPyC}
+\subtitle{Master thesis preparation phase}
+\author{Emil Nikolov}
+\department{Department of Mathematics and Computer Science}
+
+% \documentclass{article}
+
+
+\def\exec{\immediate\write18}
+\def\inputAllFiles#1{%
+  \def\filename{#1/\jobname.md}
+  % \exec{ls #1/*.md | xargs cat >> #1/\jobname.md}%
+  \exec{for i in #1/*.md; do echo >> \filename && echo "\\begin{frame}" >> \filename && cat $i >> \filename && echo >> \filename && echo "\\end{frame}" >> \filename;done}%
+  \markdownInput{#1/\jobname.md}
+  \AtEndDocument{\exec{cp -f #1/\jobname.md #1/\jobname.tmp; rm -f #1/\jobname.md}}
+}
+
+
+% \makeatother
+
+% % \makeatletter
+% \def\app@exe{\immediate\write18}
+% \def\inputAllFiles#1{%
+%   \app@exe{ls #1/*.md | xargs cat >> #1/\jobname.tmp}%
+  
+%   \markdownInput{#1/\jobname.tmp}
+  
+%   % \AtEndDocument{\app@exe{rm -f #1/\jobname.tmp}}}
+% % \makeatother
+
+\begin{document}
+
+\begin{titleframe}[variant=1,bgimage=titlebgimg.jpg]
+\end{titleframe}
+
+\title{}
+
+\begin{frame}
+  \frametitle{Outline}
+  \tableofcontents
+\end{frame}
+
+\inputAllFiles{slides}
+
+% \markdownInput{slides/prep-pres.md}
+% \markdownInput{slides/01-intro.md}
+% \markdownInput{slides/*.md}
+
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Loading the package}
+
+%   Load the package by using the \verb|tue2018| theme that has been created for beamer. You can specify the colour of the theme (which used in the title slides and chapter slides):
+
+%   \begin{verbatim}
+% \documentclass[t,aspectratio=169]{beamer}
+% \usetheme[theme=scarlet]{tue2018}
+% \end{verbatim}
+
+%   Possible theme colours are: scarlet, pink, red, blue, cyan, purple, green, orange. You can have multiple title slides, but only one common theme colour.
+
+%   Note that you can specify three aspect ratios: \verb|43| $(4:3)$, \verb|169| $(16:9)$, \verb|1610| $(16:10)$.
+% \end{frame}
+
+
+% \begin{frame}[fragile]
+%   \frametitle{Loading the package: Calibri font}
+
+%   Officially, the TU/e style uses the Calibri font, which is also the default font in Powerpoint (in Windows). Unfortunately, \LaTeX\ does not support this font and we have replaced it with Noto Sans. Still, there is a way to use Calibri, but you need to use the Xe\LaTeX\ compiler instead of the default PDF\LaTeX\ compiler. In WinEdt you can simply change this in the menu
+
+%   \bigskip
+%   TeX $\rightarrow$ XeLaTeX
+
+%   \bigskip
+%   and in Linux you can just type 'xelatex' in the console. 
+
+%   \bigskip
+%   In order to use the Calibri font with Xe\LaTeX, you need to add this option:
+
+%   \begin{verbatim}
+% \usetheme[calibri=true]{tue2018}
+% \end{verbatim}
+% \end{frame}
+
+
+% \begin{frame}
+%   \frametitle{Slide title}
+%   \framesubtitle{A frame subtitle}
+%   Headline of a text slide with enumeration
+%   \begin{itemize}
+%     \item Example of an enumeration. This is fake text for illustration. Sitei labores appetere corrumpit, animal urbanitas sit ea.
+%     \item Example of a second enumeration. This is fake text for illustration. Sitei labores appetere. Qui intellegat mnesarchum.
+%   \end{itemize}
+% \end{frame}
+
+
+% \setbeamercolor{structure}{fg=tuescarlet}
+
+% \begin{frame}
+%   \frametitle{Mathematics in your presentation}
+
+%   Of course you can use mathematical formulas ($a^2+b^2=c^2$) and equations:
+%   \begin{equation}
+%     \int_0^\infty \frac{\sin x}{x} \text{d}x=\frac{\pi}{2}.
+%   \end{equation}
+%   You can use standard \LaTeX\ beamer commands to change the colours and appearance:
+
+%   \setbeamercolor{normal text}{fg=black}
+%   \setbeamercolor{math text}{fg=tuescarlet}
+%   \setbeamertemplate{itemize items}[default]         % itemize item symbols
+%   \setbeamercolor{structure}{fg=tuescarlet}          % itemize bullets
+%   \setbeamercolor{itemize/enumerate body}{fg=black}  % itemize text colour
+
+%   \begin{itemize}
+%     \item Black text,
+%     \item Scarlet formulas: $a^2+b^2=c^2$.
+%   \end{itemize}
+% \end{frame}
+
+% \setbeamercolor{structure}{fg=tuedarkblue}  % reset the color for itemize bullets
+
+% \title{} % to remove the title from the footer
+% \begin{frame}
+%   \frametitle{Example of a text slide in two columns}
+
+%   \begin{multicols}{2}
+%     \begin{itemize}
+%       \item Example of an enumeration. This is fake text for illustration. Sitei labores appetere corrumpit, animal urbanitas sit ea.
+%       \item Example of a second enumeration. This is fake text for illustration. Sitei labores appetere. Qui intellegat mnesarchum.
+%       \item Example of an enumeration. This is fake text for illustration. Sitei labores appetere corrumpit, animal urbanitas sit ea.
+%       \item Example of a second enumeration. This is fake text for illustration. Sitei labores appetere. Qui intellegat mnesarchum.
+%     \end{itemize}
+%   \end{multicols}
+% \end{frame}
+
+% \begin{imageframe}[bgimage=rightpic.jpg]
+%   \twocolumn  % this command makes sure that the title is placed inside the first column, which is useful here
+%   \frametitle{Another example of a text slide in two columns}
+
+%   \begin{itemize}
+%     \item Example of an enumeration. This is fake text for illustration. Sitei labores appetere corrumpit, animal urbanitas sit ea.
+%     \item Example of a second enumeration. This is fake text for illustration. Sitei labores appetere.
+%           \newpage  % go to the next column (which is empty in this example)
+%   \end{itemize}
+
+% \end{imageframe}
+% \onecolumn % cancel the \twocolumn command and go back to two-column mode
+
+% \begin{chapterframe}
+%   \frametitle{A chapter title}
+
+%   This is a chapter slide. It can also contain:
+%   \begin{itemize}
+%     \item Regular text
+%     \item enumerations and itemize environments
+%     \item math
+%   \end{itemize}
+%   \[
+%     \int_0^\infty \frac{\sin x}{x} \text{d}x=\frac{\pi}{2}.
+%   \]
+% \end{chapterframe}
+
+% \begin{frame}[fragile]  % the fragile option is required if you want to use the \verb command (see below)
+%   \frametitle{Sample slide with table and text}
+
+%   \vspace*{-2ex}
+%   \begin{center}
+%     \fontsize{9}{10}\selectfont
+%     % Table generated by Excel2LaTeX from sheet 'Sheet1'
+%     \begin{tabular}{lrrrrr}
+%       \rowcolor{tuescarlet}
+%       \color{white}\textbf{Description} & \color{white}\textbf{2013} & \color{white}\textbf{2014} & \color{white}\textbf{2015} & \color{white}\textbf{2016} & \color{white}\textbf{2017} \bigstrut \\
+%       Item 1                            & 920.000                    & 1.120.000                  & 1.055.000                  & 1.200.000                  & 1.330.000 \bigstrut                  \\
+%       \hline
+%       Item 2                            & 905.000                    & 1.105.000                  & 1.045.000                  & 1.050.000                  & 1.230.000 \bigstrut                  \\
+%       \hline
+%       Item 3                            & 916.000                    & 1.116.000                  & 1.046.000                  & 1.120.000                  & 1.300.000 \bigstrut[t]               \\
+%     \end{tabular}%
+%   \end{center}
+
+%   This table was exported from Excel to \LaTeX\ using the \verb|Excel2LaTeX| add-in for Excel (but the colours were added manually). This add-in is part of the TU/e MiK\TeX\ installation and is probably already installed on your computer. You only need to activate it from your add-ins dialog in Excel. Its default installation location is
+
+%   \begin{verbatim}
+% C:\ProgramData\MiKTeX\2.9\utils\Excel2LaTeX.xla
+% \end{verbatim}
+
+% \end{frame}
+
+
+
+
+% \begin{frame}
+%   \frametitle{TU/e and Company logos}
+
+%   The new TU/e logo is available in different three variants (standard, descriptor line, descriptor stack) and different colours (scarlet, black, white). Here are a few examples:
+
+%   \newlength{\lh}
+%   \setlength{\lh}{0.85cm}
+%   \begin{center}
+%     \begin{tabular}{|c|c|c|c|c|}
+%       \hline
+%       % \includegraphics[height=\lh]{TUe-logo-black}                        & 
+%       \includegraphics[height=\lh]{TUe-logo-descriptor-line-scarlet-rgb}  & 
+%       \includegraphics[height=\lh]{TUe-logo-descriptor-stack-scarlet-rgb} & 
+%       \includegraphics[height=\lh]{TUe-logo-scarlet-rgb}                  & 
+%       \cellcolor{tuedarkblue}\includegraphics[height=\lh]{TUe-logo-white}    \\
+%       \hline
+%     \end{tabular}
+%   \end{center}
+
+%   In \LaTeX\ it is very convenient to create a TU/e beamer theme based on a combination of a company logo with the TU/e logo according to the new TU/e guide lines. Please check the CEC manual for these guide lines. The most important rule is to use the \emph{main colour} of the company. The next six slides depict some examples.
+% \end{frame}
+
+\end{document}

@@ -1,0 +1,10 @@
+- Intro
+	- what is this project?
+	- what is mpc
+	- what is mpyc
+	- 
+	- research questions
+- Demo
+	- provisioning with terraform
+	- run an mpc demo
+	- destruction of the infra

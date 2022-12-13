@@ -4,13 +4,14 @@ notionID: a5ed19f4-1d1a-4e8b-a57a-f3b9daa29bcd
 ---
 # Implementation details
 
-In this chapter we will cover the implementation of \gls{e3}, which can be found at https://github.com/e-nikolov/mpyc. It is a fork of [MPyC](https://github.com/lschoe/mpyc) that adds deployment capabilities. We will now discuss the more critical parts of the implementation.
+In this chapter we will cover the implementation of \gls{e3}, which can be found on [Github](https://github.com/e-nikolov/mpyc). It is a fork of [MPyC](https://github.com/lschoe/mpyc) that adds deployment capabilities. We will now discuss the more critical parts of the implementation.
 
 ## Reproducible development of MPyC
 As previously discussed, the \glspl{vm} of \gls{e3} run the NixOS distribution of Linux, which is based on the declarative package manager Nix. One of its benefits is that it can also be used to declaratively manage the dependencies of a software project via its development shells feature. Normally such a project would have to explain in its readme how to install and configure all of the extra tools that are needed for working with it. On the other hand, with Nix, we can run the command `nix develop` in a directory containing a declarative specification in a flake.nix file. This will open a temporary shell environment and install the specified versions of the dependencies. Exiting the shell will uninstall them. This process makes it easy to work on projects that require conflicting versions of packages. To achieve this, nix does the following:
 
-- it places each build result under `/nix/store/`, in a sub-directory prefixed by its hash, e.g. `/nix/store/2ispfz80kmwrsvwndxkxs56irn86h43p-bash-5.1-p16/`
-- nix opens a new shell with a modified `PATH` environment variable that includes the nix store path that contains the new package
+- it places each build result under `/nix/store/`, in a sub-directory prefixed by the hash of its inputs, e.g. `/nix/store/2ispfz80kmwrsvwndxkxs56irn86h43p-bash-5.1-p16/`
+- nix opens a new shell with a modified `PATH` environment variable that includes the nix store path that contains the new package.
+
 There are tools like nix-direnv that take dev shells a step further by automatically loading/unloading the specified dependencies when entering/leaving a directory that   contains a dev shell specification.
 
 
@@ -61,7 +62,7 @@ The entrypoint for Nix in our MPyC fork is the [flake.nix](https://github.com/e-
 }
 ```
 
-The flake is functionally pure in the sense that all external inputs are explicitly declared in the inputs section and their hashes are kept in a flake.lock file. In our example, the only input is nixpkgs - a community managed repository containing the nix build expressions for more than 80 000 packages. When a nix command uses the file for the first time,  the latest revision of the nixos-unstable branch of the git repository will be fetched and its contents will be hashed and placed in the flake.lock. Further executions will reuse the revision from the lock file and verify that the resulting hash matches the original one. The lock file can be updated via the `nix flake update`  command.
+The flake is functionally pure in the sense that all external inputs are explicitly declared in the inputs section and their hashes are kept in a `flake.lock` file. In our example, the only input is `nixpkgs` - a community managed repository containing the nix build expressions for more than 80 000 packages. When a nix command uses the file for the first time,  the latest revision of the nixos-unstable branch of the git repository will be fetched and its contents will be hashed and placed in the flake.lock. Further executions will reuse the revision from the lock file and verify that the resulting hash matches the original one. The lock file can be updated via the `nix flake update`  command.
 The output section contains the `devShell.x86_64-linux` attribute which declares the packages required to work with the project. Specifically, it needs the nix packages for curl, jq, colmena, pssh and terraform with a number of plugins. 
 Finally it also builds the `mpyc-demo` package which contains python and all python dependencies needed by MPyC. Its specification is imported from the `mpyc-demo.nix` file:
 
@@ -386,8 +387,9 @@ It uses the same `digitalOceanConfig` attribute we created for the NixOS image:
 This allows us to quickly make changes to the NixOS configuration, deploy it via Colmena and once we are satisfied with it, we can choose to rebuild the image so that new machines get provisioned with all of our changes baked in.
 
 ## Runtime execution
-We have identified the tools we will use to deploy \gls{e3} and how the host machines will communicate. What remains is to determine how to run a joint computation on the hosts. When running such an experiment, It would be desirable to be able to iterate quickly. Colmena can be used to deploy a new version of the whole operating system, but it would be unnecessary to rebuild all dependencies every time we want to run a command. 
-Therefore we decided to use two additional tools
+We have identified the tools we will use to deploy \gls{e3} and how the host machines will communicate. What remains is to determine how to run a joint computation on the hosts. When running such an experiment, it would be desirable to be able to iterate quickly. Colmena can be used to deploy a new version of the whole operating system, but it would be unnecessary to rebuild all dependencies every time we want to run a command. 
+Therefore we decided to use two additional tools:
+
 - *prsync* - a variant of the popular *rsync* utility that can additively sync the contents of a directory to multiple remote hosts
 - *pssh* - a tool for executing an ssh command on many hosts in parallel 
 
@@ -397,7 +399,7 @@ prsync -h hosts.pssh -zarv -p 4 ./ /root/mpyc
 pssh -h hosts.pssh -iv -o ./logs/$t "cd /root/mpyc && ./prun.sh"
 ```
 It loads the hostnames from the `hosts.pssh` file that was previously generated by terraform and syncs the current state of the mpyc directory.
-The second line will execute the prun.sh script on each host.
+The second line will execute the `prun.sh` script on each host.
 
 An example of a possible `prun.sh` script:
 ```bash
@@ -447,16 +449,8 @@ $cmd
 
 fi
 ```
-Each host runs the same script that builds the arguments for the `secretsanta.py` demo of MPyC. Each party determines its own Party ID based on the index at which its hostname appears in the hosts.pssh file.
+Each host runs the same script that builds the arguments for the `secretsanta.py` demo of MPyC. Each party determines its own Party ID based on the index at which its hostname appears in the `hosts.pssh` file.
 
 ## Secrets
 The implementation expects that secrets are supplied as environment variables with the specific mechanism being left up to the user. We are currently keeping the secret values in the 1Password manager and use its \gls{cli} to populate the environment variables at runtime, e.g. via `op run -- make deploy`.
 
-## Summary
-
-We have designed an extensible setup for running experiments with various MPyC networking scenarios including combinations of cloud and physical machines (RaspberryPi).
-
-The test setup is currently using DigitalOcean as a cloud provider because they offer free credits to students but the setup can be adapted to other cloud providers.
-
-The cloud provisioning is defined declaratively using Terraform. The setup allows to define a set of machines across the regions supported by DigitalOcean (e.g. Amsterdam, New York City, etc) and add them to a shared Tailscale network.
-The machines run NixOS - a declarative and highly reproducible Linux distribution. Colmena can be used to declaratively update the software on the machines. The tools prsync  and pssh are used to run the MPyC demos in parallel on the deployed hosts.

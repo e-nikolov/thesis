@@ -1,0 +1,12 @@
+- references
+	-  [x] don't cite tcp/ip
+	- [ ] Don't cite assorted mpc algorithms
+		- Write something like "A good itroduction to MPC can be found on WIkipedia [cite], while an assortment of MPC techniques is presented indepth by [assorted]"
+	- Blue links
+- requirements -> goals/objectives
+- Title -> Secure Sessions for Ad Hoc Multiparty Computation in MPyC
+- e^3? evaluation?
+- remove the footers
+- something with the abreviations
+- proof read
+	- check for things like we've
