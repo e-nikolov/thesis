@@ -1,8 +1,8 @@
 \documentclass[t,aspectratio=169]{beamer}
-\usetheme{tue2018}
+\usepackage{beamerthemetue2018}
+
 
 \usepackage[english]{babel}
-
 
 \usepackage[
     contentBlocks,
@@ -29,32 +29,33 @@
     relativeReferences,
     texComments,
     stripIndent,
+    underscores=false,
     % theme=witiko/graphicx/http,
     % theme=witiko/beamer/MU,
 ]{markdown} 
 \def\markdownOptionOutputDir{build}
 
+\graphicspath{
+  {./figures/}
+}
+
 
 \mode<presentation>
 
-
 \title{Secure Sessions for Ad Hoc Multiparty Computation in MPyC}
 \subtitle{Master thesis preparation phase}
-\author{Emil Nikolov}
+% \author{Emil Nikolov \\ Id nr: 0972305 \\ emil.e.nikolov@gmail.com}
+\author{Emil Nikolov \\ Id nr: 0972305 \\ emil.e.nikolov@gmail.com \\ Supervisor: Dr. ir. L.A.M. (Berry) Schoenmakers}
+% \supervisor{Dr. ir. L.A.M. (Berry) Schoenmakers}
 \department{Department of Mathematics and Computer Science}
-
 % \documentclass{article}
-
-
 \def\exec{\immediate\write18}
 \def\inputAllFiles#1{%
   \def\filename{#1/\jobname.md}
-  % \exec{ls #1/*.md | xargs cat >> #1/\jobname.md}%
-  \exec{for i in #1/*.md; do echo >> \filename && echo "\\begin{frame}" >> \filename && cat $i >> \filename && echo >> \filename && echo "\\end{frame}" >> \filename;done}%
-  \markdownInput{#1/\jobname.md}
+  \exec{for i in #1/*.md; do echo >> \filename && echo "\\begin{frame}" >> \filename && cat $i >> \filename && echo >> \filename && echo >> \filename && echo "\\end{frame}" >> \filename;done}%
+  \markdownInput{\filename}
   \AtEndDocument{\exec{cp -f #1/\jobname.md #1/\jobname.tmp; rm -f #1/\jobname.md}}
 }
-
 
 % \makeatother
 
@@ -80,12 +81,12 @@
   \tableofcontents
 \end{frame}
 
-\inputAllFiles{slides}
+\inputAllFiles{slides/}
+
 
 % \markdownInput{slides/prep-pres.md}
 % \markdownInput{slides/01-intro.md}
 % \markdownInput{slides/*.md}
-
 
 
 % \begin{frame}[fragile]

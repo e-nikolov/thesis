@@ -1,0 +1,110 @@
+
+\begin{frame}
+\frametitle{Secure Multi-Party Computation}
+
+What is MPC?
+
+- Joint computation of a function
+- Secret inputs
+- Only final result is revealed
+
+Examples:
+
+- Millionaire's problem
+- Secret santa
+- Electronic voting
+- Auctions
+- Machine learning
+
+\end{frame}
+
+\begin{frame}
+\frametitle{MPC Basics}
+
+- Lagrange Interpolation
+	- Set of  $t+1$ points uniquely identify a polynomial of degree $\leq t$
+- Shamir's Secret Sharing
+	- $(t, m)$-threshold secret sharing scheme based on Lagrange Interpolation
+	- $\geq$ $t+1$ shares to reconstruct the secret $S$
+	- Choose random polynomial $f(x)$ of degree $t$ where $f(0) = S$
+	- Share $s_i = f(i)$, for $i \in [1,m]$ 
+- Secure Multi-Party Computation
+	- $m$ parties jointly compute a function $f(S_{1},S_{2},\dots,S_{m})$, from their secret inputs
+	- Party $i$ secret shares its private input $S_{i}$ with the others
+	- Interactive protocol to reconstruct a polynomial $g(x)$, where $g(0)=f(S_1, S_2, \dots, S_m)$
+
+\end{frame}
+
+\begin{frame}
+\frametitle{MPyC}
+
+- Python framework for MPC developed at TU/e
+- 
+
+\end{frame}
+
+\begin{frame}
+\section{Introduction}
+\frametitle{Introduction}
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{Infrastructure as Code}
+
+Tools: 
+
+- declarative
+- imperative
+
+Purpose:
+
+- provisioning
+- deployment
+- execution
+
+
+\end{frame}
+
+\begin{frame}
+\section{Survey}
+\frametitle{Survey}
+
+
+
+\end{frame}
+
+\begin{frame}
+\frametitle{NixOS}
+
+
+
+- asd
+- asd
+- asd
+- 
+
+\end{frame}
+
+\begin{frame}
+\section{Implementation}
+\frametitle{Implementation}
+
+- Terraform
+
+
+\end{frame}
+
+\begin{frame}
+\section{Demo}
+\frametitle{Demo}
+
+- provisioning with Terraform
+- deployment with Colmena
+- running a distributed MPyC program
+- destruction of the infra
+
+
+\end{frame}
