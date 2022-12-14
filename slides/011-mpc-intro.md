@@ -1,6 +1,9 @@
-\frametitle{Secure Multi-Party Computation}
+\begin{frame}
 
-What is MPC?
+\section{Introduction}
+\frametitle{Introduction}
+
+What is Secure Multi-Party Computation?
 
 - Joint computation of a function
 - Secret inputs
@@ -9,7 +12,10 @@ What is MPC?
 Examples:
 
 - Millionaire's problem
-- Secret santa
+- Secret Santa
 - Electronic voting
 - Auctions
 - Machine learning
+
+\end{frame}
+

@@ -1,3 +1,5 @@
+\begin{frame}
+
 \frametitle{MPC Basics}
 
 - Lagrange Interpolation
@@ -11,3 +13,6 @@
 	- $m$ parties jointly compute a function $f(S_{1},S_{2},\dots,S_{m})$, from their secret inputs
 	- Party $i$ secret shares its private input $S_{i}$ with the others
 	- Interactive protocol to reconstruct a polynomial $g(x)$, where $g(0)=f(S_1, S_2, \dots, S_m)$
+
+\end{frame}
+

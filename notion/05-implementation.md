@@ -287,7 +287,6 @@ locals {
 The snippet below provisions the droplets in the specified regions and then using Tailscale's terraform provider creates auth keys for the machines, copies them to the machines and configures them to join the tailscale network. When the droplets are being destroyed, the provisioner will remove the nodes from the network.
 
 ```terraform
-
 resource "digitalocean_droplet" "mpyc-node" {
   for_each = local.nodes
 
