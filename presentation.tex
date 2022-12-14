@@ -1,6 +1,8 @@
 \documentclass[t,aspectratio=169]{beamer}
 \usepackage{beamerthemetue2018}
-
+\usepackage{listings}
+\usepackage[outputdir=build]{minted} % code snippet colors
+\usemintedstyle{xcode}
 
 \usepackage[english]{babel}
 
@@ -35,6 +37,9 @@
 ]{markdown} 
 \def\markdownOptionOutputDir{build}
 
+% \usepackage[outputdir=build]{minted} % code snippet colors
+% \usemintedstyle{xcode}
+
 \graphicspath{
   {./figures/}
 }
@@ -51,11 +56,15 @@
 % \documentclass{article}
 \def\exec{\immediate\write18}
 \def\inputAllFiles#1{%
-  \def\filename{#1/\jobname.md}
+  \def\filename{build/\jobname.md}
   \exec{for i in #1/*.md; do echo >> \filename && echo "\\begin{frame}" >> \filename && cat $i >> \filename && echo >> \filename && echo >> \filename && echo "\\end{frame}" >> \filename;done}%
+  % \exec{for i in #1/*.md; do cat $i >> \filename; done}%
   \markdownInput{\filename}
-  \AtEndDocument{\exec{cp -f #1/\jobname.md #1/\jobname.tmp; rm -f #1/\jobname.md}}
+  \AtEndDocument{\exec{cp -f build/\jobname.md #1/\jobname.tmp; rm -f build/\jobname.md}}
 }
+
+
+
 
 % \makeatother
 
@@ -80,8 +89,34 @@
   \frametitle{Outline}
   \tableofcontents
 \end{frame}
-
+\setkeys{Gin}{scale=0.25}
 \inputAllFiles{slides/}
+
+\begin{frame}[fragile]
+  \frametitle{Nix Shell}
+  \rule{\textwidth}{0.2pt}
+  \tiny
+  \begin{minted}{nix}
+    devShell.x86_64-linux = pkgs.mkShell {
+      shellHook = ''
+        export PYTHONPATH=./
+      '';
+      
+      nativeBuildInputs = [
+        pkgs.curl pkgs.jq
+        pkgs.colmena pkgs.pssh
+        (pkgs.terraform.withPlugins
+          (tp: [
+            tp.digitalocean tp.null
+            tp.external tp.tailscale
+            tp.random
+          ]))
+        mpyc-demo
+      ];
+    };
+  \end{minted}
+  \rule{\textwidth}{0.2pt}
+\end{frame}
 
 
 % \markdownInput{slides/prep-pres.md}
@@ -104,11 +139,11 @@
 %   Note that you can specify three aspect ratios: \verb|43| $(4:3)$, \verb|169| $(16:9)$, \verb|1610| $(16:10)$.
 % \end{frame}
 
-
 % \begin{frame}[fragile]
 %   \frametitle{Loading the package: Calibri font}
 
 %   Officially, the TU/e style uses the Calibri font, which is also the default font in Powerpoint (in Windows). Unfortunately, \LaTeX\ does not support this font and we have replaced it with Noto Sans. Still, there is a way to use Calibri, but you need to use the Xe\LaTeX\ compiler instead of the default PDF\LaTeX\ compiler. In WinEdt you can simply change this in the menu
+
 
 %   \bigskip
 %   TeX $\rightarrow$ XeLaTeX
@@ -119,10 +154,11 @@
 %   \bigskip
 %   In order to use the Calibri font with Xe\LaTeX, you need to add this option:
 
+
 %   \begin{verbatim}
 % \usetheme[calibri=true]{tue2018}
 % \end{verbatim}
-% \end{frame}
+% \end{frame} 
 
 
 % \begin{frame}

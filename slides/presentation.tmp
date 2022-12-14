@@ -1,5 +1,13 @@
 
-\begin{frame}
+\protect \@normalcr begin{frame}
+\section{Introduction}
+\frametitle{Introduction}
+
+
+
+\protect \@normalcr end{frame}
+
+\protect \@normalcr begin{frame}
 \frametitle{Secure Multi-Party Computation}
 
 What is MPC?
@@ -16,9 +24,9 @@ Examples:
 - Auctions
 - Machine learning
 
-\end{frame}
+\protect \@normalcr end{frame}
 
-\begin{frame}
+\protect \@normalcr begin{frame}
 \frametitle{MPC Basics}
 
 - Lagrange Interpolation
@@ -33,25 +41,56 @@ Examples:
 	- Party $i$ secret shares its private input $S_{i}$ with the others
 	- Interactive protocol to reconstruct a polynomial $g(x)$, where $g(0)=f(S_1, S_2, \dots, S_m)$
 
-\end{frame}
+\protect \@normalcr end{frame}
 
-\begin{frame}
-\frametitle{MPyC}
+\protect \@normalcr begin{frame}
+\frametitle{Problem description}
+
+MPyC:
 
 - Python framework for MPC developed at TU/e
-- 
-
-\end{frame}
-
-\begin{frame}
-\section{Introduction}
-\frametitle{Introduction}
+- No service discovery yet
+- Home networks are tricky due to NATs
 
 
 
-\end{frame}
+\protect \@normalcr end{frame}
 
-\begin{frame}
+\protect \@normalcr begin{frame}
+\frametitle{Research questions}
+
+*How can MPyC be extended to enable casual users, power users and enterprises with limited prior knowledge of each other to discover each other and perform a secure multiparty
+computation under diverse networking conditions?*
+
+- deployment strategies?
+- identity?
+- first contact?
+- connectivity?
+	- security?
+	- privacy?
+	- performance?
+
+
+
+
+\protect \@normalcr end{frame}
+
+\protect \@normalcr begin{frame}
+\frametitle{Preparation phase scope}
+
+
+
+\protect \@normalcr end{frame}
+
+\protect \@normalcr begin{frame}
+\section{Survey}
+\frametitle{Survey}
+
+
+
+\protect \@normalcr end{frame}
+
+\protect \@normalcr begin{frame}
 \frametitle{Infrastructure as Code}
 
 Tools: 
@@ -66,38 +105,36 @@ Purpose:
 - execution
 
 
-\end{frame}
+\protect \@normalcr end{frame}
 
-\begin{frame}
-\section{Survey}
-\frametitle{Survey}
-
-
-
-\end{frame}
-
-\begin{frame}
-\frametitle{NixOS}
-
-
-
-- asd
-- asd
-- asd
-- 
-
-\end{frame}
-
-\begin{frame}
+\protect \@normalcr begin{frame}
 \section{Implementation}
 \frametitle{Implementation}
 
 - Terraform
 
 
-\end{frame}
+\protect \@normalcr end{frame}
 
-\begin{frame}
+\protect \@normalcr begin{frame}
+\frametitle{Nix Development Shells2}
+
+
+\protect \@normalcr end{frame}
+
+\protect \@normalcr begin{frame}
+\frametitle{Nix Development Shells}
+
+![nix-shell](figures/nix-shell.png)
+
+- asd
+- asd
+- asd
+- 
+
+\protect \@normalcr end{frame}
+
+\protect \@normalcr begin{frame}
 \section{Demo}
 \frametitle{Demo}
 
@@ -107,4 +144,16 @@ Purpose:
 - destruction of the infra
 
 
-\end{frame}
+\protect \@normalcr end{frame}
+
+\protect \@normalcr begin{frame}
+\section{Demo}
+\frametitle{Demo}
+
+- provisioning with Terraform
+- deployment with Colmena
+- running a distributed MPyC program
+- destruction of the infra
+
+
+\protect \@normalcr end{frame}

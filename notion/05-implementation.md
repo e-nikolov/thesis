@@ -39,20 +39,16 @@ The entrypoint for Nix in our MPyC fork is the [flake.nix](https://github.com/e-
     {
       devShell.x86_64-linux = pkgs.mkShell {
         shellHook = ''
-          export PYTHONPATH=./ # enable editable mode for mpyc
+          export PYTHONPATH=./
         '';
         
         nativeBuildInputs = [
-          pkgs.curl
-          pkgs.jq
-          pkgs.colmena
-          pkgs.pssh
+          pkgs.curl pkgs.jq
+          pkgs.colmena pkgs.pssh
           (pkgs.terraform.withPlugins
             (tp: [
-              tp.digitalocean
-              tp.null
-              tp.external
-              tp.tailscale
+              tp.digitalocean tp.null
+              tp.external tp.tailscale
               tp.random
             ]))
           mpyc-demo
