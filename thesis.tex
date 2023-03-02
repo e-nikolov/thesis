@@ -63,7 +63,7 @@
 }
 \endgroup
 
- 
+
 
 \markdownSetup{theme=witiko/graphicx/http}
 
@@ -79,7 +79,7 @@
 % For example: \docsubtitle{}
 %     
 \newcommand{\doctitle}{Secure Sessions for Ad Hoc Multiparty Computation in MPyC}
-\newcommand{\docsubtitle}{Preparation phase report}
+\newcommand{\docsubtitle}{Master thesis}
 \newcommand{\me}{Emil Nikolov}
 \newcommand{\studentNumber}{0972305}
 \newcommand{\email}{emil.e.nikolov@gmail.com}
@@ -91,16 +91,17 @@
 \newcommand{\secondCommitteeMember}{Dr. Mike Holenderski} % usually the daily supervisor
 \newcommand{\thirdCommitteeMember}{Dr. Savio Sciancalepore} % usually the external member
 \newcommand{\builddate}{\today} 
+% \def\markdownOptionHelperScriptFileName{thesis2.markdown.lua}
 \def\markdownOptionOutputDir{build}
- 
- 
+\def\markdownOptionCacheDir{build}
+  
 \usepackage{mdframed} % surround environments with tags
 % \usepackage[linenos=true]{minted} % code snippet colors
 \usepackage[outputdir=build]{minted} % code snippet colors
 \usemintedstyle{xcode}
 % \usemintedstyle{paraiso-light}
 % \usemintedstyle{arduino} % code snippet color scheme
-
+  
 \usepackage{csquotes}
 \usepackage[english]{babel} % english rules
 
@@ -160,14 +161,14 @@
 %---------------------------------------CHAPTERS-----------------------------------%
 
 
-\markdownInput{notion/01-introduction.md}
+\markdownInput{thesis/01-testing.md}
 % \markdownInput{notion/02-goals.md}
 
 \setkeys{Gin}{scale=0.25}
-\markdownInput{notion/03-technical-survey.md}
-% \markdownInput{notion/04-design.md}
-\markdownInput{notion/05-implementation.md}
-\markdownInput{notion/06-conclusions.md}
+% \markdownInput{notion/03-technical-survey.md}
+% % \markdownInput{notion/04-design.md}
+% \markdownInput{notion/05-implementation.md}
+% \markdownInput{notion/06-conclusions.md}
 
 
 %---------------------------------------BIBLIOGRAPHY-----------------------------------%

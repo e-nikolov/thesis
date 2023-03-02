@@ -4,7 +4,6 @@ notionID: a5ed19f4-1d1a-4e8b-a57a-f3b9daa29bcd
 ---
 # Implementation details
 
-
 In this chapter we will cover the implementation of \gls{e3}, which can be found on [Github](https://github.com/e-nikolov/mpyc). It is a fork of [MPyC](https://github.com/lschoe/mpyc) that adds deployment capabilities. We will now discuss the more critical parts of the implementation.
 
 ## Reproducible development of MPyC
@@ -20,9 +19,7 @@ There are tools like nix-direnv that take dev shells a step further by automatic
 
 The entrypoint for Nix in our MPyC fork is the [flake.nix](https://github.com/e-nikolov/mpyc/blob/master/flake.nix) file. A simplified version can be seen below:
 
-
-```nix
-
+``` Nix
 {
   description = "MPyC flake";
 
@@ -59,9 +56,7 @@ The entrypoint for Nix in our MPyC fork is the [flake.nix](https://github.com/e-
       };
     };
 }
-
 ```
-
 
 The flake is functionally pure in the sense that all external inputs are explicitly declared in the inputs section and their hashes are kept in a `flake.lock` file. In our example, the only input is `nixpkgs` - a community managed repository containing the nix build expressions for more than 80 000 packages. When a nix command uses the file for the first time,  the latest revision of the nixos-unstable branch of the git repository will be fetched and its contents will be hashed and placed in the flake.lock. Further executions will reuse the revision from the lock file and verify that the resulting hash matches the original one. The lock file can be updated via the `nix flake update`  command.
 The output section contains the `devShell.x86_64-linux` attribute which declares the packages required to work with the project. Specifically, it needs the nix packages for curl, jq, colmena, pssh and terraform with a number of plugins. 

@@ -9,39 +9,40 @@
 \documentclass[a4paper,11pt,twoside]{book}
 % \documentclass[a4paper]{article}
 
-
+ 
+\newcommand{\passthrough}[1]{#1}
 \usepackage[backref=true,style=alphabetic]{biblatex} 
 \addbibresource{references.bib}
 \usepackage{tuethesis2021}
 
 
-\usepackage[
-    contentBlocks,
-    debugExtensions,
-    definitionLists,
-    fancy_lists,
-    fencedCode,
-    hashEnumerators,
-    inlineNotes,
-    jekyllData,
-    expectJekyllData=false,
-    notes,
-    pipeTables,
-    rawAttribute,
-    headerAttributes,
-    smartEllipses,
-    strikeThrough,
-    subscripts,
-    superscripts,
-    tableCaptions,
-    taskLists,
-    citations,
-    hybrid,
-    relativeReferences,
-    texComments,
-    outputDir=build,
-    % theme=witiko/graphicx/http,
-]{markdown} 
+% \usepackage[
+%     contentBlocks,
+%     debugExtensions,
+%     definitionLists,
+%     fancy_lists,
+%     fencedCode,
+%     hashEnumerators,
+%     inlineNotes,
+%     jekyllData,
+%     expectJekyllData=false,
+%     notes,
+%     pipeTables,
+%     rawAttribute,
+%     headerAttributes,
+%     smartEllipses,
+%     strikeThrough,
+%     subscripts,
+%     superscripts,
+%     tableCaptions,
+%     taskLists,
+%     citations,
+%     hybrid,
+%     relativeReferences,
+%     texComments,
+%     outputDir=build,
+%     % theme=witiko/graphicx/http,
+% ]{markdown} 
  
 
 
@@ -65,11 +66,11 @@
 
  
 
-\markdownSetup{theme=witiko/graphicx/http}
+% \markdownSetup{theme=witiko/graphicx/http}
 
 
-\def\markdownRendererJekyllDataStart{ }
-\def\markdownRendererJekyllDataEnd{ }
+% \def\markdownRendererJekyllDataStart{ }
+% \def\markdownRendererJekyllDataEnd{ }
 
 
 %
@@ -91,9 +92,12 @@
 \newcommand{\secondCommitteeMember}{Dr. Mike Holenderski} % usually the daily supervisor
 \newcommand{\thirdCommitteeMember}{Dr. Savio Sciancalepore} % usually the external member
 \newcommand{\builddate}{\today} 
-\def\markdownOptionOutputDir{build}
+% \def\markdownOptionOutputDir{build}
  
- 
+\providecommand{\tightlist}{%
+\setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
+\setcounter{secnumdepth}{0}
+
 \usepackage{mdframed} % surround environments with tags
 % \usepackage[linenos=true]{minted} % code snippet colors
 \usepackage[outputdir=build]{minted} % code snippet colors
@@ -105,8 +109,27 @@
 \usepackage[english]{babel} % english rules
 
 \usepackage{myglossary} % internal package wrapping glosseries
+\usepackage{pandocMarkdown} % internal package wrapping glosseries
+% \usepackage{eisvogel} % internal package wrapping glosseries
+ 
+% \lstdefinestyle{myStyle}{
+%     belowcaptionskip=1\baselineskip,
+%     breaklines=true,
+%     frame            = single,
+%     numbers          = left,
+%     breakatwhitespace=false,
+%     basicstyle=\footnotesize\ttfamily,
+%     keywordstyle=\bfseries\color{green!40!black},
+%     commentstyle=\itshape\color{purple!40!black},
+%     identifierstyle=\color{blue},
+%     backgroundcolor=\color{gray!10!white},
+%     tabsize          = 4,
+% }
+
+% \lstset{style=myStyle}
 
 \begin{document}
+
 
 \definecolor{LightGray}{gray}{0.9}
 
@@ -132,7 +155,7 @@
 
 % \begin{abstract}
 \chapter*{Abstract}
-\markdownInput{notion/00-abstract.md}
+% \markdownInput{notion/00-abstract.md}
 % \end{abstract}
 % \markdownInput[slice=^ ^section2]{notion/00-abstract.md}
 
@@ -158,17 +181,9 @@
 
 
 %---------------------------------------CHAPTERS-----------------------------------%
-
-
-\markdownInput{notion/01-introduction.md}
-% \markdownInput{notion/02-goals.md}
-
 \setkeys{Gin}{scale=0.25}
-\markdownInput{notion/03-technical-survey.md}
-% \markdownInput{notion/04-design.md}
-\markdownInput{notion/05-implementation.md}
-\markdownInput{notion/06-conclusions.md}
 
+\include{output.tex}
 
 %---------------------------------------BIBLIOGRAPHY-----------------------------------%
 

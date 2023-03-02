@@ -1,4 +1,4 @@
-.PHONY: notion
+.PHONY: notion pandoc
 
 notion:
 	rm -rf notion/*
@@ -9,3 +9,15 @@ notion:
 	notion-exporter https://www.notion.so/e-nikolov/Design-d2e115f74a5a49f186d498ff69b1e912 | sed s@ocaml@terraform@g > notion/04-design.md
 	notion-exporter https://www.notion.so/e-nikolov/Implementation-7143d3fa0d5e42578b28ffe362149d59 | sed s@ocaml@terraform@g > notion/05-implementation.md
 	notion-exporter https://www.notion.so/e-nikolov/Conclusions-cafd82912c3642e0a3642e4927cd1175 > notion/06-conclusions.md
+
+pandoc:
+	pandoc notion/*.md \
+		-f markdown+citations+raw_tex+implicit_figures+rebase_relative_paths+link_attributes+fenced_code_blocks+fancy_lists+fenced_code_attributes+backtick_code_blocks \
+		-o output.tex \
+		--biblatex \
+		--highlight-style pygments \
+		--top-level-division chapter \
+		--number-sections
+	
+	# latexmk -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=./build -g -quiet output.tex
+	latexmk -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=./build -g -quiet report2.tex
