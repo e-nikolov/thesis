@@ -4,7 +4,6 @@ notionID: a5ed19f4-1d1a-4e8b-a57a-f3b9daa29bcd
 ---
 # Implementation details
 
-
 In this chapter we will cover the implementation of \gls{e3}, which can be found on [Github](https://github.com/e-nikolov/mpyc). It is a fork of [MPyC](https://github.com/lschoe/mpyc) that adds deployment capabilities. We will now discuss the more critical parts of the implementation.
 
 ## Reproducible development of MPyC

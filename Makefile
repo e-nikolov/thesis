@@ -1,5 +1,6 @@
 .PHONY: notion pandoc
 .PRECIOUS: prep/latex/%.tex
+MAKEFLAGS += --no-print-directory
 
 format=markdown+inline_code_attributes+header_attributes+smart+strikeout+superscript+subscript+task_lists+definition_lists+pipe_tables+yaml_metadata_block+inline_notes+table_captions+citations+raw_tex+implicit_figures+rebase_relative_paths+link_attributes+fenced_code_blocks+fancy_lists+fenced_code_attributes+backtick_code_blocks
 
@@ -52,62 +53,84 @@ prep-html:
 		-o output.html
 
 
-tex/prep/%.tex: prep/%.md
-	mkdir -p $(dir $@)
-	pandoc $< \
-		-f $(format) \
-		--biblatex \
-		--highlight-style my.theme \
-		--top-level-division chapter \
-		--number-sections \
-		--citeproc \
-		--bibliography references.bib \
-		-o $@
 
-
-prep/latex/%.tex: prep/%.md
-	echo $@
-	mkdir -p $(dir $@)
-	pandoc $< \
-		-f $(format) \
-		--biblatex \
-		--highlight-style my.theme \
-		--top-level-division chapter \
-		--number-sections \
-		--citeproc \
-		--bibliography references.bib \
-		-o $@
-
-tex-/latex/%.tex: prep/%.md
-	echo $@
-	mkdir -p $(dir $@)
-	pandoc $< \
-		-f $(format) \
-		--biblatex \
-		--highlight-style my.theme \
-		--top-level-division chapter \
-		--number-sections \
-		--citeproc \
-		--bibliography references.bib \
-		-o $@
-
-asd/%.tex: prep/%.md
-	echo $<
-	echo $*
-	echo $@
-
-prep/%.md:
-	echo $<
-	echo $*
-	echo $@
-
-# patsubst $$*/%.md,$$*/latex/%.tex,$$(shell find $$* -name '*.md')
-
-# tex-%: $$(shell echo $$(shell find $$* -name '*.md') > test.txt)
-# 	echo $*
- 
-# tex-%: $$(shell echo $$(patsubst prep/%,prep/latex/%,$$(shell find $$* -name '*.md')) > test.txt)
 .SECONDEXPANSION:
-# tex-%: $$(shell echo $$(patsubst %/%.md, %/latex/%.tex, $$(shell find $$* -name '*.md')) > test.txt)
-tex-%: $$(patsubst %/%.md, %/latex/%.tex, $$(shell find $$* -name '*.md'))
+
+# ROOT_TEX=$(basename $(wildcard *.tex))
+%.pdf: %.tex
+	echo $@
+	#latexmk -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=./build -g -quiet $<
+
+%.html: %/*.md
+	pandoc $*/*.md \
+		-f $(format) \
+		--biblatex \
+		--highlight-style my.theme \
+		--top-level-division chapter \
+		--number-sections \
+		--citeproc \
+		--bibliography references.bib \
+		-o $@
+
+ROOT_TEX:=$(wildcard *.tex)
+SUB_TEX:=$(wildcard $(ROOT_TEX:.tex=/*.md))
+SUB_TEX:=$(SUB_TEX:.md=.tex)
+SUB_TEX:=$(subst /,/latex/,$(SUB_TEX))
+
+.PHONY: $(ROOT_TEX)
+
+
+# $(wildcard *.tex): %.tex: %/*.md
+# 	@echo root $*
+# $$(patsubst %/%.md, %/latex/%.tex, $$(wildcard %/*.md))
+	# vpath %.md %/
+
+$(ROOT_TEX): %.tex: %/latex
+#	@$(MAKE) $(?:$*/%.md=$*/latex/%.tex)
+	@echo root $*
+	@echo root $@
+	@echo root $^
+	@echo rootdd $(patsubst %.md, %/latex/%.tex, $(wildcard *.md))
+	@echo rootdd $(SUB_TEX)
+	
+# $(SUB_TEX): %.tex : $$(subst /latex/,,$$(dir $$*))/$$(notdir $$*).md
+%.tex : $$(subst /latex/,,$$(dir $$*))/$$(notdir $$*).md
+	@echo --------------------------
+	@echo root2213 $(?:.md=.tex)
+	@echo root2213 $*
+	@echo root2213 $@
+	@echo root2213 $<
+	@echo root2213 $^
+	@echo $(ROOT_TEX)
+	@echo $(SUB_TEX)
+	@echo $(wildcard $(ROOT_TEX:.tex=/*.md))
+	@echo --------------------------
+
+	
+	@mkdir -p $(dir $@)
+
+	pandoc $< \
+		-f $(format) \
+		--biblatex \
+		--highlight-style my.theme \
+		--top-level-division chapter \
+		--number-sections \
+		--citeproc \
+		--bibliography references.bib \
+		-o $@
+
+# (prep/00-abstract.md, prep/01-introduction.md, ): prep/latex : prep/latex/00-abstract.tex
+
+%/latex: %/*.md $$(patsubst %/%.md, %/latex/%.tex, $$(wildcard %/*.md))
+	@echo $@
+
+tex-%: %/*.md $$(patsubst %/%.md, %/latex/%.tex, $$(wildcard %/*.md))
 	echo $*
+	
+
+%/latex-clean:
+	rm -rf $*/latex
+
+ggg-%: 
+	echo $*
+	echo $(shell realpath $(shell find prep/latex/../*.md) --relative-to ./)
