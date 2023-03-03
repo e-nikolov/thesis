@@ -96,7 +96,7 @@
  
 \providecommand{\tightlist}{%
 \setlength{\itemsep}{0pt}\setlength{\parskip}{0pt}}
-\setcounter{secnumdepth}{0}
+% \setcounter{secnumdepth}{0}
 
 \usepackage{mdframed} % surround environments with tags
 % \usepackage[linenos=true]{minted} % code snippet colors
@@ -138,9 +138,9 @@
 
 \let\inputmintedorg\inputminted
 \renewcommand{\inputminted}[2]{%
-    \begin{mdframed}
-        \inputmintedorg[linenos=true,fontsize=\footnotesize,breaklines=true,breakanywhere=true]{#1}{#2}
-    \end{mdframed}
+	\begin{mdframed}
+		\inputmintedorg[linenos=true,fontsize=\footnotesize,breaklines=true,breakanywhere=true]{#1}{#2}
+	\end{mdframed}
 }
 
 %---------------------------------------TITLE PAGE-----------------------------------%
@@ -155,9 +155,9 @@
 
 % \begin{abstract}
 \chapter*{Abstract}
-% \markdownInput{notion/00-abstract.md}
+% \markdownInput{prep/00-abstract.md}
 % \end{abstract}
-% \markdownInput[slice=^ ^section2]{notion/00-abstract.md}
+% \markdownInput[slice=^ ^section2]{prep/00-abstract.md}
 
 
 
@@ -177,7 +177,6 @@
 
 
 \mainmatter
-
 
 
 %---------------------------------------CHAPTERS-----------------------------------%

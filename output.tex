@@ -435,7 +435,7 @@ impact the performance of the multi-party computations due to their
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth,height=0.25\textheight]{notion/../figures/nat-intro.png}
+\includegraphics[width=0.5\textwidth,height=0.25\textheight]{prep/../figures/nat-intro.png}
 \caption{``Two parties behind separate NATs''\label{nat-intro}}
 \end{figure}
 
@@ -474,7 +474,7 @@ guess work or even fail and require falling back to routing the
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth,height=0.25\textheight]{notion/../figures/nat-traversal.png}
+\includegraphics[width=0.5\textwidth,height=0.25\textheight]{prep/../figures/nat-traversal.png}
 \caption{``NAT traversal via STUN''\label{nat-traversal}}
 \end{figure}
 
@@ -684,6 +684,8 @@ plugins. Finally it also builds the \texttt{mpyc-demo} package which
 contains python and all python dependencies needed by MPyC. Its
 specification is imported from the \texttt{mpyc-demo.nix} file:
 
+\newpage
+
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{\{} \VariableTok{pkgs}\OperatorTok{,} \VariableTok{dir} \OperatorTok{\}}\NormalTok{:}
@@ -743,10 +745,17 @@ Using this setup we can now go to the root directory of MPyC and run the
 \texttt{nix\ develop} command, which will automatically download, build
 and install all of our dependencies in a temporary shell. We are then
 ready to make changes to MPyC or locally run the demos, e.g.~via
-\texttt{python\ ./demos/secretsanta.py}. \#\# Building a NixOS image for
-DigitalOcean As previously discussed we will deploy \gls{e3} on
-DigitalOcean droplets - their name for \glspl{vm}. They do not provide
-an official NixOS image, but we can build our own using nix.
+\texttt{python\ ./demos/secretsanta.py}.
+
+\hypertarget{building-a-nixos-image-for-digitalocean}{%
+\section{Building a NixOS image for
+DigitalOcean}\label{building-a-nixos-image-for-digitalocean}}
+
+As previously discussed we will deploy \gls{e3} on DigitalOcean droplets
+- their name for \glspl{vm}. They do not provide an official NixOS
+image, but we can build our own using nix.
+
+\newpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -867,8 +876,12 @@ order to succeed. This can be achieved either via emulation with qemu
 binfmt or via a virtual machine. When already running NixOS as a host,
 all that is required is to add
 \texttt{extra-platforms\ =\ aarch64-linux} to the
-\texttt{/etc/nixos/nix.conf} file. \#\# Provisioning via Terraform We
-will provision DigitalOcean droplets with Terraform from the VM image
+\texttt{/etc/nixos/nix.conf} file.
+
+\hypertarget{provisioning-via-terraform}{%
+\section{Provisioning via Terraform}\label{provisioning-via-terraform}}
+
+We will provision DigitalOcean droplets with Terraform from the VM image
 created earlier. We need to provide it with a DigitalOcean authorization
 key in the \texttt{DIGITALOCEAN\_TOKEN} environment variable so it can
 use their API on our behalf.
@@ -877,6 +890,8 @@ use their API on our behalf.
 \subsubsection{Importing the image}\label{importing-the-image}}
 
 The snippet below handles the upload of our NixOS image.
+
+\newpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -1128,6 +1143,8 @@ mpyc directory. The second line will execute the \texttt{prun.sh} script
 on each host.
 
 An example of a possible \texttt{prun.sh} script:
+
+\newpage
 
 \begin{Shaded}
 \begin{Highlighting}[]

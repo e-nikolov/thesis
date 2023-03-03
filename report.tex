@@ -43,8 +43,9 @@
     % theme=witiko/graphicx/http,
 ]{markdown} 
  
+\def\markdownOptionOutputDir{build}
 
-
+ 
 \begingroup
 \catcode`\@=11
 \catcode`\%=12
@@ -62,7 +63,7 @@
 }^^A
 }
 \endgroup
-
+ 
  
 
 \markdownSetup{theme=witiko/graphicx/http}
@@ -91,7 +92,6 @@
 \newcommand{\secondCommitteeMember}{Dr. Mike Holenderski} % usually the daily supervisor
 \newcommand{\thirdCommitteeMember}{Dr. Savio Sciancalepore} % usually the external member
 \newcommand{\builddate}{\today} 
-\def\markdownOptionOutputDir{build}
  
  
 \usepackage{mdframed} % surround environments with tags
@@ -115,9 +115,9 @@
 
 \let\inputmintedorg\inputminted
 \renewcommand{\inputminted}[2]{%
-    \begin{mdframed}
-        \inputmintedorg[linenos=true,fontsize=\footnotesize,breaklines=true,breakanywhere=true]{#1}{#2}
-    \end{mdframed}
+	\begin{mdframed}
+		\inputmintedorg[linenos=true,fontsize=\footnotesize,breaklines=true,breakanywhere=true]{#1}{#2}
+	\end{mdframed}
 }
 
 %---------------------------------------TITLE PAGE-----------------------------------%
@@ -132,9 +132,9 @@
 
 % \begin{abstract}
 \chapter*{Abstract}
-\markdownInput{notion/00-abstract.md}
+\markdownInput{prep/00-abstract.md}
 % \end{abstract}
-% \markdownInput[slice=^ ^section2]{notion/00-abstract.md}
+% \markdownInput[slice=^ ^section2]{prep/00-abstract.md}
 
 
 
@@ -160,14 +160,14 @@
 %---------------------------------------CHAPTERS-----------------------------------%
 
 
-\markdownInput{notion/01-introduction.md}
-% \markdownInput{notion/02-goals.md}
+\markdownInput{prep/01-introduction.md}
+% \markdownInput{prep/02-goals.md}
 
 \setkeys{Gin}{scale=0.25}
-\markdownInput{notion/03-technical-survey.md}
-% \markdownInput{notion/04-design.md}
-\markdownInput{notion/05-implementation.md}
-\markdownInput{notion/06-conclusions.md}
+\markdownInput{prep/03-technical-survey.md}
+% \markdownInput{prep/04-design.md}
+\markdownInput{prep/05-implementation.md}
+\markdownInput{prep/06-conclusions.md}
 
 
 %---------------------------------------BIBLIOGRAPHY-----------------------------------%

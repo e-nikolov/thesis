@@ -1,4 +1,7 @@
 .PHONY: notion pandoc
+.PRECIOUS: prep/latex/%.tex
+
+format=markdown+inline_code_attributes+header_attributes+smart+strikeout+superscript+subscript+task_lists+definition_lists+pipe_tables+yaml_metadata_block+inline_notes+table_captions+citations+raw_tex+implicit_figures+rebase_relative_paths+link_attributes+fenced_code_blocks+fancy_lists+fenced_code_attributes+backtick_code_blocks
 
 notion:
 	rm -rf notion/*
@@ -10,14 +13,101 @@ notion:
 	notion-exporter https://www.notion.so/e-nikolov/Implementation-7143d3fa0d5e42578b28ffe362149d59 | sed s@ocaml@terraform@g > notion/05-implementation.md
 	notion-exporter https://www.notion.so/e-nikolov/Conclusions-cafd82912c3642e0a3642e4927cd1175 > notion/06-conclusions.md
 
+test:
+	echo test 
+
 pandoc:
-	pandoc notion/*.md \
-		-f markdown+citations+raw_tex+implicit_figures+rebase_relative_paths+link_attributes+fenced_code_blocks+fancy_lists+fenced_code_attributes+backtick_code_blocks \
+	pandoc prep/*.md \
+		-f $(format) \
 		-o output.tex \
 		--biblatex \
-		--highlight-style pygments \
+		--highlight-style my.theme \
 		--top-level-division chapter \
 		--number-sections
 	
 	# latexmk -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=./build -g -quiet output.tex
 	latexmk -synctex=1 -interaction=nonstopmode -file-line-error -pdf -outdir=./build -g -quiet report2.tex
+
+lualatex:
+	lualatex \
+		-shell-escape \
+		--output-directory=build \
+		-synctex=1 \
+		-interaction=nonstopmode \
+		-file-line-error \
+		-recorder \
+		-output-directory="build" \
+		"report.tex"
+
+
+prep-html:
+	pandoc prep/*.md \
+		-f $(format) \
+		--biblatex \
+		--highlight-style my.theme \
+		--top-level-division chapter \
+		--number-sections \
+		--citeproc \
+		--bibliography references.bib \
+		-o output.html
+
+
+tex/prep/%.tex: prep/%.md
+	mkdir -p $(dir $@)
+	pandoc $< \
+		-f $(format) \
+		--biblatex \
+		--highlight-style my.theme \
+		--top-level-division chapter \
+		--number-sections \
+		--citeproc \
+		--bibliography references.bib \
+		-o $@
+
+
+prep/latex/%.tex: prep/%.md
+	echo $@
+	mkdir -p $(dir $@)
+	pandoc $< \
+		-f $(format) \
+		--biblatex \
+		--highlight-style my.theme \
+		--top-level-division chapter \
+		--number-sections \
+		--citeproc \
+		--bibliography references.bib \
+		-o $@
+
+tex-/latex/%.tex: prep/%.md
+	echo $@
+	mkdir -p $(dir $@)
+	pandoc $< \
+		-f $(format) \
+		--biblatex \
+		--highlight-style my.theme \
+		--top-level-division chapter \
+		--number-sections \
+		--citeproc \
+		--bibliography references.bib \
+		-o $@
+
+asd/%.tex: prep/%.md
+	echo $<
+	echo $*
+	echo $@
+
+prep/%.md:
+	echo $<
+	echo $*
+	echo $@
+
+# patsubst $$*/%.md,$$*/latex/%.tex,$$(shell find $$* -name '*.md')
+
+# tex-%: $$(shell echo $$(shell find $$* -name '*.md') > test.txt)
+# 	echo $*
+ 
+# tex-%: $$(shell echo $$(patsubst prep/%,prep/latex/%,$$(shell find $$* -name '*.md')) > test.txt)
+.SECONDEXPANSION:
+# tex-%: $$(shell echo $$(patsubst %/%.md, %/latex/%.tex, $$(shell find $$* -name '*.md')) > test.txt)
+tex-%: $$(patsubst %/%.md, %/latex/%.tex, $$(shell find $$* -name '*.md'))
+	echo $*
