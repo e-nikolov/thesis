@@ -1,0 +1,25 @@
+\hypertarget{nix---digitalocean-image-2}{%
+\chapter{Nix - DigitalOCean Image
+(2)}\label{nix---digitalocean-image-2}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\#\# nix/digitalocean/image.nix}
+\OperatorTok{\{} \VariableTok{pkgs}\OperatorTok{,} \VariableTok{extraPackages} \OperatorTok{?} \OperatorTok{[} \OperatorTok{],} \OperatorTok{...} \OperatorTok{\}}\NormalTok{:}
+\OperatorTok{\{}
+  \VariableTok{imports} \OperatorTok{=} \OperatorTok{[} \StringTok{"}\SpecialCharTok{$\{}\NormalTok{pkgs.path}\SpecialCharTok{\}}\StringTok{/nixos/modules/virtualisation/digital{-}ocean{-}image.nix"} \OperatorTok{];}
+  \VariableTok{system}\NormalTok{.}\VariableTok{stateVersion} \OperatorTok{=} \StringTok{"22.11"}\OperatorTok{;}
+  \VariableTok{environment}\NormalTok{.}\VariableTok{systemPackages} \OperatorTok{=} \KeywordTok{with}\NormalTok{ pkgs}\OperatorTok{;} \OperatorTok{[}
+\NormalTok{    jq}
+  \OperatorTok{]} \OperatorTok{++}\NormalTok{ extraPackages}\OperatorTok{;}
+  
+  \VariableTok{services}\NormalTok{.}\VariableTok{tailscale}\NormalTok{.}\VariableTok{enable} \OperatorTok{=} \ConstantTok{true}\OperatorTok{;}
+
+  \VariableTok{networking}\NormalTok{.}\VariableTok{firewall} \OperatorTok{=} \OperatorTok{\{}
+    \VariableTok{enable} \OperatorTok{=} \ConstantTok{true}\OperatorTok{;}
+    \VariableTok{checkReversePath} \OperatorTok{=} \StringTok{"loose"}\OperatorTok{;}
+    \VariableTok{trustedInterfaces} \OperatorTok{=} \OperatorTok{[} \StringTok{"tailscale0"} \OperatorTok{];}
+  \OperatorTok{\};}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}

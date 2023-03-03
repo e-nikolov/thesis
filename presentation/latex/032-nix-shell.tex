@@ -1,0 +1,25 @@
+\hypertarget{nix---development-shell}{%
+\chapter{Nix - Development Shell}\label{nix---development-shell}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{  devShell.x86\_64}\OperatorTok{{-}}\NormalTok{linux = pkgs.mkShell }\OperatorTok{\{}
+    \VariableTok{shellHook} \OperatorTok{=} \StringTok{\textquotesingle{}\textquotesingle{}}
+\StringTok{      export PYTHONPATH=./}
+\StringTok{    \textquotesingle{}\textquotesingle{}}\OperatorTok{;}
+    
+    \VariableTok{nativeBuildInputs} \OperatorTok{=} \OperatorTok{[}
+\NormalTok{      pkgs.curl pkgs.jq}
+\NormalTok{      pkgs.colmena pkgs.pssh}
+      \OperatorTok{(}\NormalTok{pkgs.terraform.withPlugins}
+        \OperatorTok{(}\VariableTok{tp}\OperatorTok{:} \OperatorTok{[}
+\NormalTok{          tp.digitalocean tp.}\ConstantTok{null}
+\NormalTok{          tp.external tp.tailscale}
+\NormalTok{          tp.random}
+        \OperatorTok{]))}
+\NormalTok{      mpyc{-}demo}
+    \OperatorTok{];}
+  \OperatorTok{\}}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}

@@ -1,0 +1,22 @@
+\hypertarget{nix---basic-flake.nix}{%
+\chapter{Nix - Basic flake.nix}\label{nix---basic-flake.nix}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{\{}
+  \VariableTok{inputs} \OperatorTok{=} \OperatorTok{\{}
+    \VariableTok{nixpkgs}\NormalTok{.}\VariableTok{url} \OperatorTok{=} \StringTok{"github:nixos/nixpkgs/nixos{-}unstable"}\OperatorTok{;}
+  \OperatorTok{\};}
+
+  \VariableTok{outputs} \OperatorTok{=}\NormalTok{ inputs@}\OperatorTok{\{} \VariableTok{self}\OperatorTok{,} \VariableTok{nixpkgs}\OperatorTok{,} \OperatorTok{...} \OperatorTok{\}}\NormalTok{:}
+    \KeywordTok{let}
+      \VariableTok{pkgs} \OperatorTok{=} \BuiltInTok{import}\NormalTok{ nixpkgs }\OperatorTok{\{}
+        \VariableTok{system} \OperatorTok{=} \StringTok{"x86\_64{-}linux"}\OperatorTok{;}
+      \OperatorTok{\};}
+    \KeywordTok{in}
+    \OperatorTok{\{}
+        \VariableTok{myHello} \OperatorTok{=}\NormalTok{ pkgs.hello}\OperatorTok{;}
+    \OperatorTok{\};}
+\OperatorTok{\}}
+\end{Highlighting}
+\end{Shaded}

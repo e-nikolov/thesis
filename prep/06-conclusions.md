@@ -4,6 +4,11 @@ notionID: 1de70c94-3dde-4e81-98c8-b24780d28cee
 ---
 # Conclusions
 
+
+
+
+
+
 In this report we presented the results of the preparation phase for the master thesis assignment "Secure Sessions for Ad Hoc Multiparty Computation in MPyC". We developed an \acrfull{e3} for the purpose of creating ad hoc networks of host machines that perform \acrfullpl{mpc} in hybrid scenarios involving both cloud and physical machines. \gls{e3} makes extensive use of declarative \gls{iac} tools in order to achieve highly reproducible deployments in an automated way. We provided a reference implementation that makes use of the Tailscale mesh VPN that creates a network of RaspberryPis and cloud \glspl{vm} on DigitalOcean. The cloud provisioning is defined declaratively using Terraform and allows to define a set of host machines across the regions supported by DigitalOcean (e.g. Amsterdam, New York City, etc) and automatically add them to a shared Tailscale network. The machines run NixOS - a declarative and highly reproducible Linux distribution while Colmena is used to declaratively manage the software installed on them via \gls{ssh}. The tools `prsync`  and `pssh` are used to run MPyC demos in parallel on the deployed hosts.
 
 #### Implementation phase planning

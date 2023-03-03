@@ -1,0 +1,30 @@
+\hypertarget{terraform---digitalocean-droplets}{%
+\chapter{Terraform - DigitalOcean
+Droplets}\label{terraform---digitalocean-droplets}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{resource "digitalocean\_droplet" "mpyc{-}node" \{}
+\NormalTok{  for\_each = local.nodes}
+
+\NormalTok{  image    = digitalocean\_custom\_image.nixos{-}image.id}
+\NormalTok{  name     = each.value.hostname}
+\NormalTok{  region   = each.value.region}
+\NormalTok{  size     = "s{-}1vcpu{-}1gb"}
+\NormalTok{  ssh\_keys = [for key in digitalocean\_ssh\_key.ssh{-}keys : key.fingerprint]}
+
+\NormalTok{  provisioner "remote{-}exec" \{}
+\NormalTok{    inline = [}
+\NormalTok{      "mkdir {-}p /var/keys/",}
+\NormalTok{      "echo $\{tailscale\_tailnet\_key.keys.key\} \textgreater{} /var/keys/tailscale",}
+\NormalTok{      "tailscale up {-}{-}auth{-}key file:/var/keys/tailscale"}
+\NormalTok{    ]}
+\NormalTok{  \}}
+\NormalTok{\}}
+
+\NormalTok{resource "tailscale\_tailnet\_key" "keys" \{}
+\NormalTok{  ...}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}

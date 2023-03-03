@@ -1,0 +1,28 @@
+\hypertarget{terraform---image-import}{%
+\chapter{Terraform - Image Import}\label{terraform---image-import}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{resource "digitalocean\_spaces\_bucket\_object" "nixos{-}image" \{}
+\NormalTok{  region = digitalocean\_spaces\_bucket.tf{-}state.region}
+\NormalTok{  bucket = digitalocean\_spaces\_bucket.tf{-}state.name}
+\NormalTok{  key    = basename(var.nixos{-}image{-}path)}
+\NormalTok{  source = var.nixos{-}image{-}path}
+\NormalTok{  acl    = "public{-}read"}
+\NormalTok{  etag   = filemd5(var.nixos{-}image{-}path)}
+\NormalTok{\}}
+
+\NormalTok{resource "digitalocean\_custom\_image" "nixos{-}image" \{}
+\NormalTok{  name    = "nixos{-}22.11"}
+\NormalTok{  url     = "https://$\{digitalocean\_spaces\_bucket.tf{-}state.bucket\_domain\_name\}/$\{digitalocean\_spaces\_bucket\_object.nixos{-}image.key\}"}
+\NormalTok{  regions = local.all\_regions}
+\NormalTok{  tags    = ["nixos"]}
+
+\NormalTok{  lifecycle \{}
+\NormalTok{    replace\_triggered\_by = [}
+\NormalTok{      digitalocean\_spaces\_bucket\_object.nixos{-}image}
+\NormalTok{    ]}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}

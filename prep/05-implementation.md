@@ -9,10 +9,15 @@ In this chapter we will cover the implementation of \gls{e3}, which can be found
 ## Reproducible development of MPyC
 As previously discussed, the \glspl{vm} of \gls{e3} run the NixOS distribution of Linux, which is based on the declarative package manager Nix. One of its benefits is that it can also be used to declaratively manage the dependencies of a software project via its development shells feature. Normally such a project would have to explain in its readme how to install and configure all of the extra tools that are needed for working with it. On the other hand, with Nix, we can run the command `nix develop` in a directory containing a declarative specification in a flake.nix file. This will open a temporary shell environment and install the specified versions of the dependencies. Exiting the shell will uninstall them. This process makes it easy to work on projects that require conflicting versions of packages. To achieve this, nix does the following:
 
+
 - it places each build result under `/nix/store/`, in a sub-directory prefixed by the hash of its inputs, e.g. `/nix/store/2ispfz80kmwrsvwndxkxs56irn86h43p-bash-5.1-p16/`
 - nix opens a new shell with a modified `PATH` environment variable that includes the nix store path that contains the new package.
 
 There are tools like nix-direnv that take dev shells a step further by automatically loading/unloading the specified dependencies when entering/leaving a directory that   contains a dev shell specification.
+
+
+
+
 
 
 \newpage

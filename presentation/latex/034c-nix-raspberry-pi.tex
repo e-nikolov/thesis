@@ -1,0 +1,26 @@
+\hypertarget{nix---raspberrypi-image}{%
+\chapter{Nix - RaspberryPi Image}\label{nix---raspberrypi-image}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{let}
+  \VariableTok{mpyc{-}demo} \OperatorTok{=} \OperatorTok{(}\BuiltInTok{import} \SpecialStringTok{./nix/mpyc{-}demo.nix} \OperatorTok{\{} \KeywordTok{inherit}\NormalTok{ pkgs}\OperatorTok{;} \VariableTok{dir} \OperatorTok{=} \SpecialStringTok{./.}\OperatorTok{;} \OperatorTok{\});}
+
+  \VariableTok{pkgs} \OperatorTok{=} \BuiltInTok{import}\NormalTok{ nixpkgs }\OperatorTok{\{}
+    \VariableTok{system} \OperatorTok{=} \StringTok{"aarch64{-}linux"}\OperatorTok{;}
+  \OperatorTok{\};}
+\KeywordTok{in}
+\OperatorTok{\{}
+    \VariableTok{packages}\NormalTok{.}\VariableTok{raspberryPi4Image} \OperatorTok{=} \OperatorTok{(}\NormalTok{pkgs.nixos }\OperatorTok{(\{} \VariableTok{config}\OperatorTok{,} \OperatorTok{...} \OperatorTok{\}}\NormalTok{: }\OperatorTok{\{}
+        \VariableTok{system}\NormalTok{.}\VariableTok{stateVersion} \OperatorTok{=} \StringTok{"22.11"}\OperatorTok{;}
+        \VariableTok{imports} \OperatorTok{=} \OperatorTok{[}
+          \OperatorTok{(}\StringTok{"}\SpecialCharTok{$\{}\NormalTok{pkgs.path}\SpecialCharTok{\}}\StringTok{/nixos/modules/installer/sd{-}card/sd{-}image{-}aarch64{-}installer.nix"}\OperatorTok{)}
+        \OperatorTok{];}
+        
+        \VariableTok{environment}\NormalTok{.}\VariableTok{systemPackages} \OperatorTok{=} \OperatorTok{[}
+\NormalTok{            mpyc{-}demo}
+        \OperatorTok{];}
+    \OperatorTok{\}))}\NormalTok{.sdImage}\OperatorTok{;}
+\OperatorTok{\}}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}

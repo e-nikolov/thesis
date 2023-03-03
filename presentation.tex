@@ -1,70 +1,82 @@
+% Options for packages loaded elsewhere
+\PassOptionsToPackage{unicode}{hyperref}
+\PassOptionsToPackage{hyphens}{url}
+%
 \documentclass[t,aspectratio=169]{beamer}
+% \documentclass[
+    % ignorenonframetext,
+% ]{beamer}
+    
 \usepackage{beamerthemetue2018}
 \usepackage{listings}
 \usepackage{mdframed} % surround environments with tags
 \usepackage[outputdir=build]{minted} % code snippet colors
 \usemintedstyle{xcode}
-
+ 
+\usepackage{csquotes}
 \usepackage[english]{babel}
 
 \usepackage{graphicx}                   % For images
+% \usepackage{pandocMarkdown} % internal package wrapping glosseries
  
 
-\usepackage[
-    contentBlocks,
-    debugExtensions,
-    definitionLists,
-    fancy_lists,
-    fencedCode,
-    hashEnumerators,
-    inlineNotes,
-    jekyllData,
-    expectJekyllData=false,
-    notes,
-    pipeTables,
-    rawAttribute,
-    headerAttributes,
-    smartEllipses,
-    strikeThrough,
-    subscripts,
-    superscripts,
-    tableCaptions,
-    taskLists,
-    citations,
-    hybrid,
-    relativeReferences,
-    texComments,
-    stripIndent,
-    underscores=false,
-    outputDir=build,
-    % theme=witiko/graphicx/http,
-    % theme=witiko/beamer/MU,
-]{markdown} 
-\def\markdownOptionOutputDir{build}
+% \usepackage[
+%     contentBlocks,
+%     debugExtensions,
+%     definitionLists,
+%     fancy_lists,
+%     fencedCode,
+%     hashEnumerators,
+%     inlineNotes,
+%     jekyllData,
+%     expectJekyllData=false,
+%     notes,
+%     pipeTables,
+%     rawAttribute,
+%     headerAttributes,
+%     smartEllipses,
+%     strikeThrough,
+%     subscripts,
+%     superscripts,
+%     tableCaptions,
+%     taskLists,
+%     citations,
+%     hybrid,
+%     relativeReferences,
+%     texComments,
+%     stripIndent,
+%     underscores=false,
+%     outputDir=build,
+%     % theme=witiko/graphicx/http,
+%     % theme=witiko/beamer/MU,
+% ]{markdown} 
+% \def\markdownOptionOutputDir{build}
  
 \graphicspath{
   {./figures/}
 }
 
-
+ 
 \mode<presentation>
 
 \title{Secure Sessions for Ad Hoc Multiparty Computation in MPyC}
 \subtitle{Master thesis preparation phase}
 % \author{Emil Nikolov \\ Id nr: 0972305 \\ emil.e.nikolov@gmail.com}
 \author{Emil Nikolov \\ Id nr: 0972305 \\ emil.e.nikolov@gmail.com \\ Supervisor: Dr. ir. L.A.M. (Berry) Schoenmakers}
+% \author{Emil Nikolov Id nr: 0972305  emil.e.nikolov@gmail.com  Supervisor: Dr. ir. L.A.M. (Berry) Schoenmakers}
 % \supervisor{Dr. ir. L.A.M. (Berry) Schoenmakers}
 \department{Department of Mathematics and Computer Science}
 % \documentclass{article}
-\def\exec{\immediate\write18}
-\def\inputAllFiles#1{%
-  \def\filename{build/\jobname.md}
-  \exec{for i in #1/*.md; do echo >> \filename && cat $i >> \filename && echo >> \filename && echo >> \filename;done}%
-  % \exec{for i in #1/*.md; do cat $i >> \filename; done}%
-  \markdownInput{\filename}
-  \AtEndDocument{\exec{cp -f build/\jobname.md #1/\jobname.tmp; rm -f build/\jobname.md}}
-}
+% \def\exec{\immediate\write18}
+% \def\inputAllFiles#1{%
+%   \def\filename{build/\jobname.md}
+%   \exec{for i in #1/*.md; do echo >> \filename && cat $i >> \filename && echo >> \filename && echo >> \filename;done}%
+%   % \exec{for i in #1/*.md; do cat $i >> \filename; done}%
+%   \markdownInput{\filename}
+%   \AtEndDocument{\exec{cp -f build/\jobname.md #1/\jobname.tmp; rm -f build/\jobname.md}}
+% }
 
+\usepackage{pandocBeamer} % internal package wrapping glosseries
 \begin{document}
 
 
@@ -85,7 +97,9 @@
   \frametitle{Outline}
   \tableofcontents
 \end{frame}
+
 \setkeys{Gin}{scale=0.25}
-\inputAllFiles{slides/}
+
+\include{presentation/latex/full}
 
 \end{document}

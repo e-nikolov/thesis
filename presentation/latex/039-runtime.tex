@@ -1,0 +1,35 @@
+\hypertarget{runtime}{%
+\chapter{Runtime}\label{runtime}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\ExtensionTok{prsync} \AttributeTok{{-}h}\NormalTok{ hosts.pssh }\AttributeTok{{-}zarv} \AttributeTok{{-}p}\NormalTok{ 4 ./ /root/mpyc}
+\ExtensionTok{pssh} \AttributeTok{{-}h}\NormalTok{ hosts.pssh }\AttributeTok{{-}iv} \AttributeTok{{-}o}\NormalTok{ ./logs/}\VariableTok{$t} \StringTok{"cd /root/mpyc \&\& ./prun.sh"}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+
+\CommentTok{\# assemble $args and $MY\_PID from the hosts.pssh file}
+
+\ExtensionTok{...}
+
+
+\ControlFlowTok{if} \BuiltInTok{[} \VariableTok{$MY\_PID} \OtherTok{=}\NormalTok{ {-}1 }\BuiltInTok{]}
+\ControlFlowTok{then}
+    \BuiltInTok{echo}\NormalTok{ Only }\VariableTok{$i}\NormalTok{ parties are allowed. }\VariableTok{$HOSTNAME}\NormalTok{ will not participate in this MPC session}
+\ControlFlowTok{else}
+
+\VariableTok{cmd}\OperatorTok{=}\StringTok{"python ./demos/secretsanta.py 3 {-}{-}log{-}level debug }\DataTypeTok{\textbackslash{}}
+\StringTok{    {-}I }\VariableTok{$\{MY\_PID\}}\StringTok{ }\DataTypeTok{\textbackslash{}}
+\StringTok{    }\VariableTok{$\{args\}}\StringTok{"}
+
+\BuiltInTok{echo} \VariableTok{$cmd}
+\VariableTok{$cmd}
+\ControlFlowTok{fi}
+
+\end{Highlighting}
+\end{Shaded}

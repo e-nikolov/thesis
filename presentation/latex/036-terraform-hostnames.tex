@@ -1,0 +1,31 @@
+\hypertarget{terraform---hostname-generation}{%
+\chapter{Terraform - Hostname
+Generation}\label{terraform---hostname-generation}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\NormalTok{locals \{}
+\NormalTok{  node\_definitions = var.DESTROY\_NODES != "" ? [] : [}
+\NormalTok{    \{ region = "ams3", num = 3 \},}
+\NormalTok{    \{ region = "sfo3", num = 1 \},}
+\NormalTok{    \{ region = "nyc3", num = 1 \},}
+\NormalTok{    \{ region = "sgp1", num = 1 \},}
+\NormalTok{  ]}
+\NormalTok{  nodes\_expanded = flatten([}
+\NormalTok{    for node in local.node\_definitions : [}
+\NormalTok{      for i in range(node.num) :}
+\NormalTok{      merge(node, \{}
+\NormalTok{        name = "mpyc{-}demo{-}{-}$\{node.region\}{-}$\{i\}"}
+\NormalTok{      \})}
+\NormalTok{    ]}
+\NormalTok{  ])}
+\NormalTok{  nodes = \{}
+\NormalTok{    for node in local.nodes\_expanded :}
+\NormalTok{    node.name =\textgreater{} merge(node, \{}
+\NormalTok{      hostname = "$\{node.name\}{-}$\{random\_id.mpyc{-}node{-}hostname[node.name].hex\}"}
+\NormalTok{    \})}
+\NormalTok{  \}}
+\NormalTok{\}}
+\end{Highlighting}
+\end{Shaded}

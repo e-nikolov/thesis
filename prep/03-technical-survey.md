@@ -4,6 +4,7 @@ notionID: 1735f121-2d6f-48c3-b03d-897f610b8164
 ---
 # Technical Survey
 
+
 In this chapter we will perform a high level survey of the available tools and approaches that could be used for \gls{e3} and select ones that fit our requirements. In the next chapter we will go more in depth and cover the implementation details using those tools.
 
 Since we need to design for a heterogeneous runtime environment, we need to choose building blocks that are compatible with as many scenarios as possible while also keeping the complexity low. 

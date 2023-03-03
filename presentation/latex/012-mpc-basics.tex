@@ -1,0 +1,45 @@
+\hypertarget{mpc-basics}{%
+\chapter{MPC Basics}\label{mpc-basics}}
+
+\begin{itemize}
+\tightlist
+\item
+  Lagrange Interpolation
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Set of \(t+1\) points uniquely identify a polynomial of degree
+    \(\leq t\)
+  \end{itemize}
+\item
+  Shamir's Secret Sharing
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \((t, m)\)-threshold secret sharing scheme based on Lagrange
+    Interpolation
+  \item
+    \(\geq\) \(t+1\) shares to reconstruct the secret \(S\)
+  \item
+    Choose random polynomial \(f(x)\) of degree \(t\) where \(f(0) = S\)
+  \item
+    Share \(s_i = f(i)\), for \(i \in [1,m]\)
+  \end{itemize}
+\item
+  Secure Multi-Party Computation
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \(m\) parties jointly compute a function
+    \(f(S_{1},S_{2},\dots,S_{m})\), from their secret inputs
+  \item
+    Party \(i\) secret shares its private input \(S_{i}\) with the
+    others
+  \item
+    Interactive protocol to reconstruct a polynomial \(g(x)\), where
+    \(g(0)=f(S_1, S_2, \dots, S_m)\)
+  \end{itemize}
+\end{itemize}

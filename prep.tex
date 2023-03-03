@@ -15,64 +15,6 @@
 \addbibresource{references.bib}
 \usepackage{tuethesis2021}
 
-
-% \usepackage[
-%     contentBlocks,
-%     debugExtensions,
-%     definitionLists,
-%     fancy_lists,
-%     fencedCode,
-%     hashEnumerators,
-%     inlineNotes,
-%     jekyllData,
-%     expectJekyllData=false,
-%     notes,
-%     pipeTables,
-%     rawAttribute,
-%     headerAttributes,
-%     smartEllipses,
-%     strikeThrough,
-%     subscripts,
-%     superscripts,
-%     tableCaptions,
-%     taskLists,
-%     citations,
-%     hybrid,
-%     relativeReferences,
-%     texComments,
-%     outputDir=build,
-%     % theme=witiko/graphicx/http,
-% ]{markdown} 
- 
-
-
-\begingroup
-\catcode`\@=11
-\catcode`\%=12
-\catcode`\^^A=14
-\global\def\markdownRendererImagePrototype#1#2#3#4{^^A
-{^^A
-\everyeof={\noexpand}^^A
-\begin{figure}^^A
-    \begin{center}
-        \includegraphics[width=0.5\textwidth]{#3}^^A
-        \caption{#4}^^A
-        \label{#1}^^A
-    \end{center}
-\end{figure}^^A
-}^^A
-}
-\endgroup
-
- 
-
-% \markdownSetup{theme=witiko/graphicx/http}
-
-
-% \def\markdownRendererJekyllDataStart{ }
-% \def\markdownRendererJekyllDataEnd{ }
-
-
 %
 % These commands need to be defined in order to produce a correct and personalized document.
 % You will get error messages if not all these commands are defined. 
@@ -138,9 +80,9 @@
 
 \let\inputmintedorg\inputminted
 \renewcommand{\inputminted}[2]{%
-	\begin{mdframed}
-		\inputmintedorg[linenos=true,fontsize=\footnotesize,breaklines=true,breakanywhere=true]{#1}{#2}
-	\end{mdframed}
+    \begin{mdframed}
+        \inputmintedorg[linenos=true,fontsize=\footnotesize,breaklines=true,breakanywhere=true]{#1}{#2}
+    \end{mdframed}
 }
 
 %---------------------------------------TITLE PAGE-----------------------------------%
@@ -182,9 +124,15 @@
 %---------------------------------------CHAPTERS-----------------------------------%
 \setkeys{Gin}{scale=0.25}
 
-\include{prep/latex/00-abstract.tex}
-\include{output.tex}
-\include{output.tex}
+\include{prep/latex/00-abstract}
+
+\include{prep/latex/01-introduction}
+
+\include{prep/latex/03-technical-survey}
+
+\include{prep/latex/05-implementation}
+
+\include{prep/latex/06-conclusions}
 
 %---------------------------------------BIBLIOGRAPHY-----------------------------------%
 

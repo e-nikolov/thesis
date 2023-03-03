@@ -1,0 +1,28 @@
+\hypertarget{colmena}{%
+\chapter{Colmena}\label{colmena}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+
+\KeywordTok{let}
+  \VariableTok{mpyc{-}demo} \OperatorTok{=} \OperatorTok{(}\BuiltInTok{import} \SpecialStringTok{./nix/mpyc{-}demo.nix} \OperatorTok{\{} \KeywordTok{inherit}\NormalTok{ pkgs}\OperatorTok{;} \VariableTok{dir} \OperatorTok{=} \SpecialStringTok{./.}\OperatorTok{;} \OperatorTok{\});}
+
+  \VariableTok{pkgs} \OperatorTok{=} \BuiltInTok{import}\NormalTok{ nixpkgs }\OperatorTok{\{}
+    \VariableTok{system} \OperatorTok{=} \StringTok{"x86\_64{-}linux"}\OperatorTok{;}
+  \OperatorTok{\};}
+
+  \VariableTok{digitalOceanConfig} \OperatorTok{=} \BuiltInTok{import} \SpecialStringTok{./nix/digitalocean/image.nix} \OperatorTok{\{}
+    \KeywordTok{inherit}\NormalTok{ pkgs}\OperatorTok{;}
+    \VariableTok{extraPackages} \OperatorTok{=} \OperatorTok{[}\NormalTok{ mpyc{-}demo }\OperatorTok{];}
+  \OperatorTok{\};}
+\KeywordTok{in}
+\OperatorTok{\{}
+  \VariableTok{packages}\NormalTok{.}\VariableTok{colmena} \OperatorTok{=} \OperatorTok{\{}
+    \VariableTok{meta} \OperatorTok{=} \OperatorTok{\{}
+      \VariableTok{nixpkgs} \OperatorTok{=}\NormalTok{ pkgs}\OperatorTok{;}
+    \OperatorTok{\};}
+    \VariableTok{defaults} \OperatorTok{=}\NormalTok{ digitalOceanConfig}\OperatorTok{;}
+  \OperatorTok{\}} \OperatorTok{//} \BuiltInTok{builtins}\NormalTok{.fromJSON }\OperatorTok{(}\BuiltInTok{builtins}\NormalTok{.readFile }\SpecialStringTok{./hosts.json}\OperatorTok{);}
+\OperatorTok{\}}\NormalTok{;}
+\end{Highlighting}
+\end{Shaded}

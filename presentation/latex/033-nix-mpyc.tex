@@ -1,0 +1,21 @@
+\hypertarget{nix---mpyc-package}{%
+\chapter{Nix - MPyC Package}\label{nix---mpyc-package}}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\OperatorTok{\{} \VariableTok{pkgs}\OperatorTok{,} \VariableTok{dir} \OperatorTok{\}}\NormalTok{:}
+\OperatorTok{(}\NormalTok{pkgs.poetry2nix.mkPoetryEnv }\OperatorTok{\{}
+    \VariableTok{python} \OperatorTok{=}\NormalTok{ pkgs.python3}\OperatorTok{;}
+    \VariableTok{projectDir} \OperatorTok{=}\NormalTok{ dir}\OperatorTok{;}
+    \VariableTok{extraPackages} \OperatorTok{=} \OperatorTok{(}\VariableTok{ps}\OperatorTok{:} \OperatorTok{[(}\NormalTok{pkgs.python3Packages.buildPythonPackage }\OperatorTok{\{}
+          \VariableTok{name} \OperatorTok{=} \StringTok{"mpyc"}\OperatorTok{;}
+          \VariableTok{src} \OperatorTok{=}\NormalTok{ dir}\OperatorTok{;}
+        \OperatorTok{\})]);}
+    \VariableTok{overrides} \OperatorTok{=}\NormalTok{ pkgs.poetry2nix.overrides.withDefaults }\OperatorTok{(}
+      \VariableTok{self}\OperatorTok{:} \VariableTok{super}\OperatorTok{:} \OperatorTok{\{}
+        \VariableTok{gmpy2} \OperatorTok{=}\NormalTok{ pkgs.python3Packages.gmpy2}\OperatorTok{;}
+      \OperatorTok{\}}
+    \OperatorTok{);}
+  \OperatorTok{\})}
+\end{Highlighting}
+\end{Shaded}
