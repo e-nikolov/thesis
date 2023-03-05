@@ -1,0 +1,16 @@
+## Noise Protocol Framework
+- Framework for building protocols
+- Spec - [http://www.noiseprotocol.org/noise.pdf](http://www.noiseprotocol.org/noise.pdf)
+- Suite of channel establishment protocols
+- Similar to TLS
+- Based on Elliptic-curve Diffie–Hellman (ECDH) Handshakes
+- Used in WhatsApp, Signal, Wireguard
+- Resources:
+    - Crypto Layers
+        - Low-level primitives - AES, ChaCha20.
+        - Usefully combined primitives - AES-OCB, NaCl secretbox...
+        - High-level protocols - TLS, Noise.
+        - (sometimes) crypto spoken over the encrypted protocols, often for E2E crypto e.g. GPG over SMTPS, or CloudFlare blinded CAPTCHA tokens over HTTPS
+    - [https://noiseexplorer.com/](https://noiseexplorer.com/)
+    - [https://duo.com/labs/tech-notes/noise-protocol-framework-intro](https://duo.com/labs/tech-notes/noise-protocol-framework-intro)
+    - [https://www.youtube.com/watch?v=ceGTgqypwnQ](https://www.youtube.com/watch?v=ceGTgqypwnQ)

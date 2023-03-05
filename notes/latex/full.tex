@@ -1,0 +1,650 @@
+\hypertarget{intro}{%
+\chapter{Intro}\label{intro}}
+
+\begin{itemize}
+\tightlist
+\item
+  Emphasize on the difference between the Solutions Test Framework (E3)
+  and the actual Solutions
+\item
+  The Test Framework is an engineering problem of its own which deals
+  with the scaffolding necessary to demonstrate the candidate solutions
+  in realistic scenarios
+\item
+\end{itemize}
+
+\hypertarget{landscape-overview}{%
+\chapter{Landscape Overview}\label{landscape-overview}}
+
+\hypertarget{webrtc}{%
+\section{WebRTC}\label{webrtc}}
+
+\begin{itemize}
+\tightlist
+\item
+  Peer to peer communications for browsers
+
+  \begin{itemize}
+  \tightlist
+  \item
+    can also work without a browser
+  \item
+    Mainly used for multimedia communications - Peer-to-peer
+    Audio/Video/VoIP
+  \end{itemize}
+\item
+  Spec -
+  \href{https://www.w3.org/TR/webrtc/\#persistent-information-exposed-by-webrtc}{https://www.w3.org/TR/webrtc/}
+\item
+  Uses STUN/TURN/ICE
+\item
+  Data is encrypted
+\item
+  Identity
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Session Description Protocol (SDP)
+  \item
+    peer certificates are generated and announced over SDP
+  \item
+    ICE Candidates are negotiated for STUN/TURN connections
+  \end{itemize}
+\item
+  Not a VPN
+
+  \begin{itemize}
+  \tightlist
+  \item
+    I think it can't serve as a TCP/IP network overlay that other
+    applications can use
+  \end{itemize}
+\item
+  Does not require additional plugins or native apps
+\item
+  There seem to be many publicly available services that can be used as
+  ICE servers for WebRTC
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{http://stun.l.google.com:19302/}{stun.l.google.com:19302}
+  \item
+    \url{https://gist.github.com/zziuni/3741933}
+  \end{itemize}
+\item
+  Examples
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://github.com/pion/webrtc}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Go
+    \end{itemize}
+  \item
+    \url{https://github.com/pojntfx/weron}
+  \end{itemize}
+\item
+  Resources
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://webrtcforthecurious.com/}
+  \item
+    \url{https://temasys.io/guides/developers/webrtc-ice-sorcery/}
+  \item
+    \href{https://web.dev/webrtc-basics/\#toc-rtcpeerconnection}{https://web.dev/webrtc-basics/}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{network-address-translation-nat-traversal}{%
+\section{Network Address Translation (NAT)
+Traversal}\label{network-address-translation-nat-traversal}}
+
+\url{https://bford.info/pub/net/p2pnat/}
+
+\url{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}
+
+\begin{itemize}
+\tightlist
+\item
+  Session Traversal Utilities for NAT (STUN)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Uses a STUN server for discovery and UDP hole-punching
+  \item
+    Communications are peer-to-peer
+  \item
+    Examples:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \url{https://github.com/shawwwn/Gole}
+    \item
+      \url{https://github.com/malcolmseyd/natpunch-go}
+    \end{itemize}
+  \end{itemize}
+\item
+  Traversal Using Relays around NAT (TURN)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Peers use a relay server as a mediator to route traffic
+  \end{itemize}
+\item
+  Interactive Connectivity Establishment (ICE)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Umbrella term covering STUN/TURN and other related techniques
+  \end{itemize}
+\item
+  Designated Encrypted Relay for Packets (DERP)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    TURN-like protocol by Tailscale
+  \item
+    Relaying encrypted Wireguard traffic over HTTP
+  \item
+    Routing based on the Peer's public key
+  \item
+    Overview - \url{https://tailscale.com/kb/1232/derp-servers/}
+  \item
+    Source code
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \url{https://github.com/tailscale/tailscale/tree/main/cmd/derper}
+    \item
+      \url{https://github.com/tailscale/tailscale/blob/main/derp/derp.go}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{wireguard}{%
+\section{Wireguard}\label{wireguard}}
+
+\begin{itemize}
+\tightlist
+\item
+  VPN Protocol
+\item
+  Used by Tailscale
+\item
+  Whitepaper - \url{https://www.wireguard.com/papers/wireguard.pdf}
+\item
+  Built with the Noise Protocol Framework
+\item
+  Typically used as a building block in more complicated systems
+\item
+  Simple configuration
+
+  \begin{itemize}
+  \item
+    Each peer has a public/private key pair for authentication and
+    traffic encryption
+  \item
+    Each peer has a config file:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{[}\DataTypeTok{Interface}\KeywordTok{]}
+\DataTypeTok{Address} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{1}\ErrorTok{/}\DataTypeTok{32}
+\DataTypeTok{ListenPort} \OperatorTok{=} \DecValTok{53063}
+\DataTypeTok{PrivateKey} \OperatorTok{=} \DataTypeTok{ePTiXXhHjvAHdWUr8Bimk30n0gh3m241RAzsN0JZDW0}\OperatorTok{=}
+
+\KeywordTok{[}\DataTypeTok{Peer}\KeywordTok{]}
+\DataTypeTok{PublicKey} \OperatorTok{=} \DataTypeTok{BSn0ejd1Y3bKuD}\ErrorTok{+}\DataTypeTok{Xpg0ZZeOf}\ErrorTok{+}\DataTypeTok{Ies}\ErrorTok{/}\DataTypeTok{oql0NZxw}\ErrorTok{+}\DataTypeTok{SOmkc}\OperatorTok{=}
+\DataTypeTok{AllowedIPs} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{2}\ErrorTok{/}\DataTypeTok{32}
+\DataTypeTok{Endpoint} \OperatorTok{=} \FloatTok{142.93}\KeywordTok{.}\DataTypeTok{135}\KeywordTok{.}\DataTypeTok{154}\ErrorTok{:}\DataTypeTok{38133}
+\DataTypeTok{PersistentKeepalive} \OperatorTok{=} \DecValTok{25}
+\end{Highlighting}
+\end{Shaded}
+  \end{itemize}
+\item
+  Creates a virtual network interface in the operating system that looks
+  like an additional network card and can be used for TCP/IP
+  communications
+\item
+  Handles the encryption of traffic
+
+  \begin{itemize}
+  \tightlist
+  \item
+    deals with handshakes and generating symmetric session keys
+  \end{itemize}
+\item
+  Cryptokey routing - associates public/private key pairs with IP
+  addresses
+\item
+  Out of scope:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    key distribution - managed manually or via other software that
+    builds on top of wireguard
+  \item
+    peer discovery - for each pair of peers, one needs to have an
+    endpoint that can be reached by the other peer
+  \end{itemize}
+\item
+  Resources
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{noise-protocol-framework}{%
+\section{Noise Protocol Framework}\label{noise-protocol-framework}}
+
+\begin{itemize}
+\tightlist
+\item
+  Framework for building protocols
+\item
+  Spec - \url{http://www.noiseprotocol.org/noise.pdf}
+\item
+  Suite of channel establishment protocols
+\item
+  Similar to TLS
+\item
+  Based on Elliptic-curve Diffie--Hellman (ECDH) Handshakes
+\item
+  Used in WhatsApp, Signal, Wireguard
+\item
+  Resources:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Crypto Layers
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Low-level primitives - AES, ChaCha20.
+    \item
+      Usefully combined primitives - AES-OCB, NaCl secretbox\ldots{}
+    \item
+      High-level protocols - TLS, Noise.
+    \item
+      (sometimes) crypto spoken over the encrypted protocols, often for
+      E2E crypto e.g.~GPG over SMTPS, or CloudFlare blinded CAPTCHA
+      tokens over HTTPS
+    \end{itemize}
+  \item
+    \url{https://noiseexplorer.com/}
+  \item
+    \url{https://duo.com/labs/tech-notes/noise-protocol-framework-intro}
+  \item
+    \url{https://www.youtube.com/watch?v=ceGTgqypwnQ}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{tailscale}{%
+\section{Tailscale}\label{tailscale}}
+
+\begin{itemize}
+\tightlist
+\item
+  Mesh VPN
+\item
+  Built on top of Wireguard
+\item
+  Coordination service
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Closed source
+  \item
+    Facilitates STUN/TURN for peer discovery
+  \item
+    Distributes wireguard public keys
+  \end{itemize}
+\item
+  Client
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Open source
+  \item
+    Interacts with the Coordination service
+  \item
+    Configures Wireguard
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{nebula}{%
+\section{Nebula}\label{nebula}}
+
+\begin{itemize}
+\tightlist
+\item
+  Mesh VPN
+\item
+  Similar to Tailscale
+\item
+  Does not use Wireguard
+\item
+  Built using the Noise Protocol Framework (used in Wireguard)
+\item
+  Uses a Certificate Authority that needs to sign each Peer's
+  certificate
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Certificates contain
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Peer's Virtual IP address
+    \item
+      Peer's public key
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{openziti}{%
+\section{OpenZiti}\label{openziti}}
+
+\begin{itemize}
+\tightlist
+\item
+  Network Overlay
+\item
+  No STUN
+\item
+  Works by relaying traffic through intermediaries
+\item
+  Focused on Services
+\item
+  Allows embedding into apps via an SDK
+\end{itemize}
+
+\hypertarget{didcomm-v2}{%
+\section{DIDComm v2}\label{didcomm-v2}}
+
+\begin{itemize}
+\item
+  Protocol for communicating that uses DID for identity management
+\item
+  Spec: \url{https://identity.foundation/didcomm-messaging/spec/}
+\item
+  No sessions
+
+  \begin{itemize}
+  \tightlist
+  \item
+    messages are always encrypted with the public keys of the peers
+  \end{itemize}
+\item
+  Routing happens via mediators
+\item
+  \begin{longtable}[]{@{}l@{}}
+  \toprule()
+  sources: \\
+  \midrule()
+  \endhead
+  -
+  \url{https://newsletter.impervious.ai/decentralized-identifiers-implications-for-your-data-payments-and-communications-2/} \\
+  \bottomrule()
+  \end{longtable}
+\end{itemize}
+
+\hypertarget{ngrok}{%
+\section{ngrok}\label{ngrok}}
+
+\begin{itemize}
+\tightlist
+\item
+  Paid service for creating public URLs for local services
+\item
+\end{itemize}
+
+\hypertarget{bittorrent}{%
+\section{BitTorrent}\label{bittorrent}}
+
+\begin{itemize}
+\tightlist
+\item
+  No concept of identity based communication or peer discovery
+\end{itemize}
+
+\hypertarget{ethereums-p2p-protocol}{%
+\section{Ethereum's P2P Protocol}\label{ethereums-p2p-protocol}}
+
+\hypertarget{ipfs}{%
+\section{IPFS}\label{ipfs}}
+
+\begin{itemize}
+\tightlist
+\item
+  Content Addressable Storage
+\item
+  Network is for discovering data, not for executing computations
+\item
+\end{itemize}
+
+\hypertarget{tor}{%
+\section{TOR}\label{tor}}
+
+\hypertarget{friend2friend-networks}{%
+\section{Friend2Friend Networks}\label{friend2friend-networks}}
+
+\begin{itemize}
+\tightlist
+\item
+  Peer to Peer Dark Web network
+\item
+  Network that directly connects the machines of people who know each
+  other
+\item
+  Services and files accessible only by other people on the network
+\item
+\end{itemize}
+
+\hypertarget{brainstorm-for-custom-solutions}{%
+\chapter{Brainstorm for custom
+solutions}\label{brainstorm-for-custom-solutions}}
+
+\begin{itemize}
+\tightlist
+\item
+  Initial state
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Here's my identity, here are the identities of the other parties
+  \end{itemize}
+\item
+  Desired result
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Executed MPC
+  \end{itemize}
+\end{itemize}
+
+With tailscale we'd need to
+
+\begin{itemize}
+\tightlist
+\item
+  Each party:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    registers a Tailscale account
+  \item
+    Downloads and installs tailscale on the machine they want to run the
+    MPC on
+  \item
+    Runs tailscale on their machine and logs into their account in order
+    to link it to their own Tailnet
+  \item
+    Shares their Tailscale machine with the Tailnets of each of the
+    other parties
+  \item
+    Downloads the demo they want to run
+  \item
+    Form the flags for running the chosen demo
+
+    \begin{itemize}
+    \tightlist
+    \item
+      add -P \$HOST:\$PORT for each party using their Tailscale
+      hostname/virtual IP
+    \end{itemize}
+  \item
+    Run the demo
+  \end{itemize}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  we don't need to use the same route for the communication Party A →
+  Party B and Party B → Party A
+\item
+  we can have something like an asynchronous STUN
+\item
+  Party A sends a QR code/public URL/json object/DID document containing
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Party A's public key
+  \item
+    Party A's Mediator URL
+  \end{itemize}
+\item
+  The mediator is a STUN/TURN/DERP server
+
+  \begin{itemize}
+  \tightlist
+  \item
+    other parties can either use it as a STUN server to find out how to
+    access the hole in party A's NAT punched by the mediator
+  \item
+    or use it as a relayer so that Party B can send encrypted packets to
+    party A via the mediator
+  \end{itemize}
+\item
+  Instead of a QR code, the information could be stored on a public
+  ledger and could be resolved via DIDs
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  There is a generic MPC wrapper program that deals with supporting
+  tasks like generating identities and pulling MPC demos
+\item
+  One party creates a ``lobby'' for an MPC session in their program and
+  get a session id/public URL/QR code that can be shared with the other
+  parties
+\item
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  Public Website is visited by everyone
+\item
+  They prove their identities using a SSI wallet or OIDC
+\item
+  They get a QR code that serves as an invitation
+
+  \begin{itemize}
+  \tightlist
+  \item
+    contains their STUN based endpoint and identity
+  \end{itemize}
+\item
+  Somehow everyone needs to scan each other's qr codes
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  One party creates a ``lobby'' for an MPC session by visiting a public
+  website
+
+  \begin{itemize}
+  \tightlist
+  \item
+    They provide their identity via OIDC/SSI wallet
+  \end{itemize}
+\item
+  They get a public link/QR code that can be shared with the other
+  parties
+\item
+  The parties visit the URL and also provide their identities
+\item
+  The parties obtain the MPC program they want to run
+
+  \begin{itemize}
+  \tightlist
+  \item
+    MPC program distribution could be done separately via cloning the
+    github repo?
+  \item
+    They could choose a DEMO and download it from the website?
+  \item
+    There could also be a program running on the host machines that
+    deals with the source code distribution. Similar to downloading
+    custom maps for warcraft 3 or dota 2?
+  \item
+    They could specify the source code when creating the MPC session in
+    the website?
+  \item
+    If the demo is not symmetrical where different parties have
+    different roles and need to execute different programs, the roles
+    could be assigned by the host or the people could choose their
+    preferred role themselves?
+  \end{itemize}
+\item
+  The parties download a configuration file that contains information on
+  how to connect to the other parties
+\item
+  They run the demos with the downloaded config file
+\item
+  A temporary Wireguard mesh VPN is created between all parties
+\end{itemize}

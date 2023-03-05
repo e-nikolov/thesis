@@ -1,0 +1,86 @@
+\hypertarget{webrtc}{%
+\section{WebRTC}\label{webrtc}}
+
+\begin{itemize}
+\tightlist
+\item
+  Peer to peer communications for browsers
+
+  \begin{itemize}
+  \tightlist
+  \item
+    can also work without a browser
+  \item
+    Mainly used for multimedia communications - Peer-to-peer
+    Audio/Video/VoIP
+  \end{itemize}
+\item
+  Spec -
+  \href{https://www.w3.org/TR/webrtc/\#persistent-information-exposed-by-webrtc}{https://www.w3.org/TR/webrtc/}
+\item
+  Uses STUN/TURN/ICE
+\item
+  Data is encrypted
+\item
+  Identity
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Session Description Protocol (SDP)
+  \item
+    peer certificates are generated and announced over SDP
+  \item
+    ICE Candidates are negotiated for STUN/TURN connections
+  \end{itemize}
+\item
+  Not a VPN
+
+  \begin{itemize}
+  \tightlist
+  \item
+    I think it can't serve as a TCP/IP network overlay that other
+    applications can use
+  \end{itemize}
+\item
+  Does not require additional plugins or native apps
+\item
+  There seem to be many publicly available services that can be used as
+  ICE servers for WebRTC
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{http://stun.l.google.com:19302/}{stun.l.google.com:19302}
+  \item
+    \url{https://gist.github.com/zziuni/3741933}
+  \end{itemize}
+\item
+  Examples
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://github.com/pion/webrtc}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Go
+    \end{itemize}
+  \item
+    \url{https://github.com/pojntfx/weron}
+  \end{itemize}
+\item
+  Resources
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://webrtcforthecurious.com/}
+  \item
+    \url{https://temasys.io/guides/developers/webrtc-ice-sorcery/}
+  \item
+    \href{https://web.dev/webrtc-basics/\#toc-rtcpeerconnection}{https://web.dev/webrtc-basics/}
+  \end{itemize}
+\end{itemize}

@@ -1,0 +1,46 @@
+\hypertarget{noise-protocol-framework}{%
+\section{Noise Protocol Framework}\label{noise-protocol-framework}}
+
+\begin{itemize}
+\tightlist
+\item
+  Framework for building protocols
+\item
+  Spec - \url{http://www.noiseprotocol.org/noise.pdf}
+\item
+  Suite of channel establishment protocols
+\item
+  Similar to TLS
+\item
+  Based on Elliptic-curve Diffie--Hellman (ECDH) Handshakes
+\item
+  Used in WhatsApp, Signal, Wireguard
+\item
+  Resources:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Crypto Layers
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Low-level primitives - AES, ChaCha20.
+    \item
+      Usefully combined primitives - AES-OCB, NaCl secretbox\ldots{}
+    \item
+      High-level protocols - TLS, Noise.
+    \item
+      (sometimes) crypto spoken over the encrypted protocols, often for
+      E2E crypto e.g.~GPG over SMTPS, or CloudFlare blinded CAPTCHA
+      tokens over HTTPS
+    \end{itemize}
+  \item
+    \url{https://noiseexplorer.com/}
+  \item
+    \url{https://duo.com/labs/tech-notes/noise-protocol-framework-intro}
+  \item
+    \url{https://www.youtube.com/watch?v=ceGTgqypwnQ}
+  \end{itemize}
+\end{itemize}

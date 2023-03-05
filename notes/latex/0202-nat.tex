@@ -1,0 +1,71 @@
+\hypertarget{network-address-translation-nat-traversal}{%
+\section{Network Address Translation (NAT)
+Traversal}\label{network-address-translation-nat-traversal}}
+
+\url{https://bford.info/pub/net/p2pnat/}
+
+\url{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}
+
+\begin{itemize}
+\tightlist
+\item
+  Session Traversal Utilities for NAT (STUN)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Uses a STUN server for discovery and UDP hole-punching
+  \item
+    Communications are peer-to-peer
+  \item
+    Examples:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \url{https://github.com/shawwwn/Gole}
+    \item
+      \url{https://github.com/malcolmseyd/natpunch-go}
+    \end{itemize}
+  \end{itemize}
+\item
+  Traversal Using Relays around NAT (TURN)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Peers use a relay server as a mediator to route traffic
+  \end{itemize}
+\item
+  Interactive Connectivity Establishment (ICE)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Umbrella term covering STUN/TURN and other related techniques
+  \end{itemize}
+\item
+  Designated Encrypted Relay for Packets (DERP)
+
+  \begin{itemize}
+  \tightlist
+  \item
+    TURN-like protocol by Tailscale
+  \item
+    Relaying encrypted Wireguard traffic over HTTP
+  \item
+    Routing based on the Peer's public key
+  \item
+    Overview - \url{https://tailscale.com/kb/1232/derp-servers/}
+  \item
+    Source code
+
+    \begin{itemize}
+    \tightlist
+    \item
+      \url{https://github.com/tailscale/tailscale/tree/main/cmd/derper}
+    \item
+      \url{https://github.com/tailscale/tailscale/blob/main/derp/derp.go}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}

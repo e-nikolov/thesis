@@ -1,0 +1,76 @@
+\hypertarget{wireguard}{%
+\section{Wireguard}\label{wireguard}}
+
+\begin{itemize}
+\tightlist
+\item
+  VPN Protocol
+\item
+  Used by Tailscale
+\item
+  Whitepaper - \url{https://www.wireguard.com/papers/wireguard.pdf}
+\item
+  Built with the Noise Protocol Framework
+\item
+  Typically used as a building block in more complicated systems
+\item
+  Simple configuration
+
+  \begin{itemize}
+  \item
+    Each peer has a public/private key pair for authentication and
+    traffic encryption
+  \item
+    Each peer has a config file:
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{[}\DataTypeTok{Interface}\KeywordTok{]}
+\DataTypeTok{Address} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{1}\ErrorTok{/}\DataTypeTok{32}
+\DataTypeTok{ListenPort} \OperatorTok{=} \DecValTok{53063}
+\DataTypeTok{PrivateKey} \OperatorTok{=} \DataTypeTok{ePTiXXhHjvAHdWUr8Bimk30n0gh3m241RAzsN0JZDW0}\OperatorTok{=}
+
+\KeywordTok{[}\DataTypeTok{Peer}\KeywordTok{]}
+\DataTypeTok{PublicKey} \OperatorTok{=} \DataTypeTok{BSn0ejd1Y3bKuD}\ErrorTok{+}\DataTypeTok{Xpg0ZZeOf}\ErrorTok{+}\DataTypeTok{Ies}\ErrorTok{/}\DataTypeTok{oql0NZxw}\ErrorTok{+}\DataTypeTok{SOmkc}\OperatorTok{=}
+\DataTypeTok{AllowedIPs} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{2}\ErrorTok{/}\DataTypeTok{32}
+\DataTypeTok{Endpoint} \OperatorTok{=} \FloatTok{142.93}\KeywordTok{.}\DataTypeTok{135}\KeywordTok{.}\DataTypeTok{154}\ErrorTok{:}\DataTypeTok{38133}
+\DataTypeTok{PersistentKeepalive} \OperatorTok{=} \DecValTok{25}
+\end{Highlighting}
+\end{Shaded}
+  \end{itemize}
+\item
+  Creates a virtual network interface in the operating system that looks
+  like an additional network card and can be used for TCP/IP
+  communications
+\item
+  Handles the encryption of traffic
+
+  \begin{itemize}
+  \tightlist
+  \item
+    deals with handshakes and generating symmetric session keys
+  \end{itemize}
+\item
+  Cryptokey routing - associates public/private key pairs with IP
+  addresses
+\item
+  Out of scope:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    key distribution - managed manually or via other software that
+    builds on top of wireguard
+  \item
+    peer discovery - for each pair of peers, one needs to have an
+    endpoint that can be reached by the other peer
+  \end{itemize}
+\item
+  Resources
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}
+  \end{itemize}
+\end{itemize}

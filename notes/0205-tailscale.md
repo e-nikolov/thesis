@@ -1,0 +1,11 @@
+## Tailscale
+- Mesh VPN
+- Built on top of Wireguard
+- Coordination service
+    - Closed source
+    - Facilitates STUN/TURN for peer discovery
+    - Distributes wireguard public keys
+- Client
+    - Open source
+    - Interacts with the Coordination service
+    - Configures Wireguard

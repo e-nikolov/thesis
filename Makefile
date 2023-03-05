@@ -22,7 +22,6 @@ PANDOC=pandoc \
 
 %.pdf~:
 	mkdir -p build/$*/latex
-	mkdir -p $*/latex
 
 	latexmk \
 		-outdir=build \
