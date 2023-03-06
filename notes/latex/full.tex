@@ -10,11 +10,14 @@
   The Test Framework is an engineering problem of its own which deals
   with the scaffolding necessary to demonstrate the candidate solutions
   in realistic scenarios
-\item
 \end{itemize}
+
+asdf
 
 \hypertarget{landscape-overview}{%
 \chapter{Landscape Overview}\label{landscape-overview}}
+
+{[}{[}0201-webrtc{]}{]}
 
 \hypertarget{webrtc}{%
 \section{WebRTC}\label{webrtc}}
@@ -36,7 +39,7 @@
   Spec -
   \href{https://www.w3.org/TR/webrtc/\#persistent-information-exposed-by-webrtc}{https://www.w3.org/TR/webrtc/}
 \item
-  Uses STUN/TURN/ICE
+  Uses \href{notes/0202-nat}{nat} STUN/TURN/ICE
 \item
   Data is encrypted
 \item
@@ -111,67 +114,60 @@ Traversal}\label{network-address-translation-nat-traversal}}
 
 \url{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}
 
+\hypertarget{section}{%
+\subsection{123 456}\label{section}}
+
+\hypertarget{session-traversal-utilities-for-nat-stun}{%
+\subsection{Session Traversal Utilities for NAT
+(STUN)}\label{session-traversal-utilities-for-nat-stun}}
+
 \begin{itemize}
 \tightlist
 \item
-  Session Traversal Utilities for NAT (STUN)
+  Uses a STUN server for discovery and UDP hole-punching
+\item
+  Communications are peer-to-peer
+\item
+  Examples:
 
   \begin{itemize}
   \tightlist
   \item
-    Uses a STUN server for discovery and UDP hole-punching
+    \url{https://github.com/shawwwn/Gole}
   \item
-    Communications are peer-to-peer
-  \item
-    Examples:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \url{https://github.com/shawwwn/Gole}
-    \item
-      \url{https://github.com/malcolmseyd/natpunch-go}
-    \end{itemize}
+    \url{https://github.com/malcolmseyd/natpunch-go} \#\#\# Traversal
+    Using Relays around NAT (TURN)
   \end{itemize}
 \item
-  Traversal Using Relays around NAT (TURN)
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Peers use a relay server as a mediator to route traffic
-  \end{itemize}
-\item
+  Peers use a relay server as a mediator to route traffic \#\#\#
   Interactive Connectivity Establishment (ICE)
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Umbrella term covering STUN/TURN and other related techniques
-  \end{itemize}
 \item
-  Designated Encrypted Relay for Packets (DERP)
+  Umbrella term covering STUN/TURN and other related techniques
+\end{itemize}
+
+\hypertarget{designated-encrypted-relay-for-packets-derp}{%
+\subsection{Designated Encrypted Relay for Packets
+(DERP)}\label{designated-encrypted-relay-for-packets-derp}}
+
+\begin{itemize}
+\tightlist
+\item
+  TURN-like protocol by Tailscale
+\item
+  Relaying encrypted Wireguard traffic over HTTP
+\item
+  Routing based on the Peer's public key
+\item
+  Overview - \url{https://tailscale.com/kb/1232/derp-servers/}
+\item
+  Source code
 
   \begin{itemize}
   \tightlist
   \item
-    TURN-like protocol by Tailscale
+    \url{https://github.com/tailscale/tailscale/tree/main/cmd/derper}
   \item
-    Relaying encrypted Wireguard traffic over HTTP
-  \item
-    Routing based on the Peer's public key
-  \item
-    Overview - \url{https://tailscale.com/kb/1232/derp-servers/}
-  \item
-    Source code
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \url{https://github.com/tailscale/tailscale/tree/main/cmd/derper}
-    \item
-      \url{https://github.com/tailscale/tailscale/blob/main/derp/derp.go}
-    \end{itemize}
+    \url{https://github.com/tailscale/tailscale/blob/main/derp/derp.go}
   \end{itemize}
 \end{itemize}
 
@@ -187,7 +183,7 @@ Traversal}\label{network-address-translation-nat-traversal}}
 \item
   Whitepaper - \url{https://www.wireguard.com/papers/wireguard.pdf}
 \item
-  Built with the Noise Protocol Framework
+  Built with the \href{notes/0204-noise}{Noise Protocol Framework}
 \item
   Typically used as a building block in more complicated systems
 \item
@@ -307,7 +303,8 @@ Traversal}\label{network-address-translation-nat-traversal}}
 \item
   Mesh VPN
 \item
-  Built on top of Wireguard
+  Built on top of {[}{[}0203-wireguard\textbar Wireguard{]}{]}
+\item
 \item
   Coordination service
 
@@ -316,7 +313,9 @@ Traversal}\label{network-address-translation-nat-traversal}}
   \item
     Closed source
   \item
-    Facilitates STUN/TURN for peer discovery
+    Facilitates
+    \href{notes/0202-nat\#Session\%20Traversal\%20Utilities\%20for\%20NAT\%20(STUN)}{STUN}/\href{notes/0202-nat}{TURN}
+    for peer discovery
   \item
     Distributes wireguard public keys
   \end{itemize}
@@ -346,7 +345,8 @@ Traversal}\label{network-address-translation-nat-traversal}}
 \item
   Does not use Wireguard
 \item
-  Built using the Noise Protocol Framework (used in Wireguard)
+  Built using the {[}{[}0204-noise\textbar Noise Protocol
+  Framework{]}{]} (used in Wireguard)
 \item
   Uses a Certificate Authority that needs to sign each Peer's
   certificate
@@ -647,4 +647,14 @@ With tailscale we'd need to
   They run the demos with the downloaded config file
 \item
   A temporary Wireguard mesh VPN is created between all parties
+\end{itemize}
+
+\hypertarget{latex}{%
+\chapter{Latex}\label{latex}}
+
+\begin{itemize}
+\tightlist
+\item
+  use \textbackslash input instead of \textbackslash include to avoid
+  issues with missing directories and .aux files
 \end{itemize}

@@ -1,42 +1,60 @@
 
-.PRECIOUS: prep/latex/%.tex
-.PRECIOUS: %.tex %/latex
-MAKEFLAGS += --no-print-directory
 
+MAKEFLAGS += --no-print-directory
+# pandock=docker run --rm -v "$(shell pwd):/data" -u $(shell id -u):$(shell id -g) pandoc/latex:3.1
+pandock=pandoc
 format=markdown+fenced_divs+inline_code_attributes+header_attributes+smart+strikeout+superscript+subscript+task_lists+definition_lists+pipe_tables+yaml_metadata_block+inline_notes+table_captions+citations+raw_tex+implicit_figures+rebase_relative_paths+link_attributes+fenced_code_blocks+fancy_lists+fenced_code_attributes+backtick_code_blocks
-PANDOC=pandoc \
+PANDOC=$(pandock) \
 		-f $(format) \
 		--biblatex \
-		--highlight-style my.theme \
+		--highlight-style shared/my.theme \
 		--top-level-division chapter \
-		--number-sections
+		--number-sections \
+		
+#		\
+		--file-scope
+# .PRECIOUS: prep/latex/%.tex %.tex %/latex %/latex/
 
-%.pdf!: %.pdf-
+test:
+	@echo test
+
+%.pdf!:
+	rm -rf $*.pdf
 	$(MAKE) $*.pdf
 
-%.pdf-:
-	rm -rf $*.pdf build/ $*/latex
+%.pdf-!: %.pdf-
+	$(MAKE) $*.pdf
 
-%.pdf: %/latex
-	$(MAKE) $@~
+%.pdf-~: %.pdf-
+	$(MAKE) $*.pdf~
+
+%.pdf-:
+	rm -rf $*.pdf build/ $*/latex/
+
+%.pdf:
+	$(MAKE) $*/latex/full.tex $*.tex $@~
+
+(wildcard *.tex):
+	@echo root tex file: $@
 
 %.pdf~:
-	mkdir -p build/$*/latex
-
 	latexmk \
-		-outdir=build \
 		-synctex=1 \
 		-interaction=nonstopmode \
 		-file-line-error \
+		--emulate-aux-dir \
 		-pdf \
+		-time \
 		--output-directory="build" \
-		-shell-escape \
-		-f \
-		-recorder \
-		-gg \
-		-silent \
 		$*.tex
-	
+
+# \
+		-use-make \
+		-use-make \
+		-shell-escape \
+		--aux-directory="build/aux" \
+		-f \
+
 	rsync ./build/$*.pdf ./$*.pdf
  
 	@echo ----------------------
@@ -48,29 +66,29 @@ presentation.html: presentation/*.md FORCE
 		--citeproc \
 		-t dzslides \
 		--embed-resources --standalone \
-		--bibliography references.bib \
+		--bibliography shared/references.bib \
 		-o $@ \
 		presentation/*.md
 
 %.html: %/*.md
 	$(PANDOC) \
 		--citeproc \
-		--bibliography references.bib \
+		--bibliography shared/references.bib \
 		-o $@ \
 		$*/*.md
 
-
-%/latex: %/*.md
-# 	map all .md files from the parent directory to .tex files in the latex directory
-	$(MAKE) $(?:$*/%.md=$@/%.tex) $@/full.tex $@/beamer.tex
-	touch $@
+%/latex:
+	mkdir -p $@
 
 %/latex/full.tex: %/*.md
+# 	map all .md files from the parent directory to .tex files in the latex directory
+	$(MAKE) $(?:$*/%.md=$*/latex/%.tex) $*/latex/beamer.tex
+
 	$(PANDOC) \
 		-o $@ \
 		$*/*.md
 
-%/latex/beamer.tex: %/*.md
+%/latex/beamer.tex: %/*.md | %/latex 
 	$(PANDOC) \
 		-w beamer \
 		-o $@ \
@@ -78,8 +96,7 @@ presentation.html: presentation/*.md FORCE
 
 .SECONDEXPANSION:
 # thesis/latex/chapter.tex -> thesis/chapter.md 
-%.tex: $$(shell dirname $$(*D))/$$(*F).md
-	mkdir -p $(*D)
+%.tex: $$(shell dirname $$(*D))/$$(*F).md | $$(*D)
 	$(PANDOC) \
 		-o $@ \
 		$<

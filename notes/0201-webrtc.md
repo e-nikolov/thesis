@@ -3,7 +3,7 @@
     - can also work without a browser
     - Mainly used for multimedia communications - Peer-to-peer Audio/Video/VoIP
 - Spec - [https://www.w3.org/TR/webrtc/](https://www.w3.org/TR/webrtc/#persistent-information-exposed-by-webrtc)
-- Uses STUN/TURN/ICE
+- Uses [nat](0202-nat) STUN/TURN/ICE
 - Data is encrypted
 - Identity
     - Session Description Protocol (SDP)

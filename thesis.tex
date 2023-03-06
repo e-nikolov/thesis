@@ -11,7 +11,7 @@
 
 
 \usepackage[backref=true,style=alphabetic]{biblatex} 
-\addbibresource{references.bib}
+\addbibresource{shared/references.bib}
 \usepackage{tuethesis2021}
 \usepackage{pandocMarkdown}
 
@@ -117,14 +117,14 @@
 
 \let\inputmintedorg\inputminted
 \renewcommand{\inputminted}[2]{%
-    \begin{mdframed}
-        \inputmintedorg[linenos=true,fontsize=\footnotesize,breaklines=true,breakanywhere=true]{#1}{#2}
-    \end{mdframed}
+  \begin{mdframed}
+    \inputmintedorg[linenos=true,fontsize=\footnotesize,breaklines=true,breakanywhere=true]{#1}{#2}
+  \end{mdframed}
 }
 
 %---------------------------------------TITLE PAGE-----------------------------------%
 
-\include{titlepage-v2}
+\input{shared/titlepage-v2}
 
 % \clearpage
 
@@ -162,7 +162,7 @@
 %---------------------------------------CHAPTERS-----------------------------------%
 
 
-\include{thesis/latex/01-testing}
+\input{thesis/latex/01-testing}
 % \markdownInput{prep/02-goals.md}
 
 \setkeys{Gin}{scale=0.25}

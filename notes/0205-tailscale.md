@@ -1,9 +1,10 @@
 ## Tailscale
 - Mesh VPN
-- Built on top of Wireguard
+- Built on top of [[0203-wireguard|Wireguard]]
+- 
 - Coordination service
     - Closed source
-    - Facilitates STUN/TURN for peer discovery
+    - Facilitates [STUN](0202-nat#Session Traversal Utilities for NAT (STUN))/[TURN](0202-nat "123 456") for peer discovery
     - Distributes wireguard public keys
 - Client
     - Open source

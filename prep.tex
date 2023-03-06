@@ -8,11 +8,11 @@
 %
 \documentclass[a4paper,11pt,twoside]{book}
 % \documentclass[a4paper]{article}
-
+ 
  
 \newcommand{\passthrough}[1]{#1}
 \usepackage[backref=true,style=alphabetic]{biblatex} 
-\addbibresource{references.bib}
+\addbibresource{shared/references.bib}
 \usepackage{tuethesis2021}
 
 %
@@ -80,14 +80,14 @@
 
 \let\inputmintedorg\inputminted
 \renewcommand{\inputminted}[2]{%
-    \begin{mdframed}
-        \inputmintedorg[linenos=true,fontsize=\footnotesize,breaklines=true,breakanywhere=true]{#1}{#2}
-    \end{mdframed}
+  \begin{mdframed}
+    \inputmintedorg[linenos=true,fontsize=\footnotesize,breaklines=true,breakanywhere=true]{#1}{#2}
+  \end{mdframed}
 }
 
 %---------------------------------------TITLE PAGE-----------------------------------%
 
-\include{titlepage-v2}
+\input{shared/titlepage-v2}
 
 % \clearpage
 
@@ -97,6 +97,7 @@
 
 % \begin{abstract}
 \chapter*{Abstract}
+\input{prep/latex/00-abstract.tex}
 % \markdownInput{prep/00-abstract.md}
 % \end{abstract}
 % \markdownInput[slice=^ ^section2]{prep/00-abstract.md}
@@ -124,17 +125,18 @@
 %---------------------------------------CHAPTERS-----------------------------------%
 \setkeys{Gin}{scale=0.25}
 
-\include{prep/latex/00-abstract}
+\input{prep/latex/00-abstract}
 
-\include{prep/latex/01-introduction}
+\input{prep/latex/01-introduction}
 
-\include{prep/latex/03-technical-survey}
+\input{prep/latex/03-technical-survey}
 
-\include{prep/latex/05-implementation}
+\input{prep/latex/05-implementation}
 
-\include{prep/latex/06-conclusions}
+\input{prep/latex/06-conclusions}
 
 %---------------------------------------BIBLIOGRAPHY-----------------------------------%
+
 
 \printbibliography
 % \bibliographystyle{plain}

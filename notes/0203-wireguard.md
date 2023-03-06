@@ -2,7 +2,7 @@
 - VPN Protocol
 - Used by Tailscale
 - Whitepaper - [https://www.wireguard.com/papers/wireguard.pdf](https://www.wireguard.com/papers/wireguard.pdf)
-- Built with the Noise Protocol Framework
+- Built with the  [Noise Protocol Framework](0204-noise) 
 - Typically used as a building block in more complicated systems
 - Simple configuration
     - Each peer has a public/private key pair for authentication and traffic encryption

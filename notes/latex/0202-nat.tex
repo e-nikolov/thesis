@@ -6,66 +6,59 @@ Traversal}\label{network-address-translation-nat-traversal}}
 
 \url{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}
 
+\hypertarget{section}{%
+\subsection{123 456}\label{section}}
+
+\hypertarget{session-traversal-utilities-for-nat-stun}{%
+\subsection{Session Traversal Utilities for NAT
+(STUN)}\label{session-traversal-utilities-for-nat-stun}}
+
 \begin{itemize}
 \tightlist
 \item
-  Session Traversal Utilities for NAT (STUN)
+  Uses a STUN server for discovery and UDP hole-punching
+\item
+  Communications are peer-to-peer
+\item
+  Examples:
 
   \begin{itemize}
   \tightlist
   \item
-    Uses a STUN server for discovery and UDP hole-punching
+    \url{https://github.com/shawwwn/Gole}
   \item
-    Communications are peer-to-peer
-  \item
-    Examples:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \url{https://github.com/shawwwn/Gole}
-    \item
-      \url{https://github.com/malcolmseyd/natpunch-go}
-    \end{itemize}
+    \url{https://github.com/malcolmseyd/natpunch-go} \#\#\# Traversal
+    Using Relays around NAT (TURN)
   \end{itemize}
 \item
-  Traversal Using Relays around NAT (TURN)
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Peers use a relay server as a mediator to route traffic
-  \end{itemize}
-\item
+  Peers use a relay server as a mediator to route traffic \#\#\#
   Interactive Connectivity Establishment (ICE)
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Umbrella term covering STUN/TURN and other related techniques
-  \end{itemize}
 \item
-  Designated Encrypted Relay for Packets (DERP)
+  Umbrella term covering STUN/TURN and other related techniques
+\end{itemize}
+
+\hypertarget{designated-encrypted-relay-for-packets-derp}{%
+\subsection{Designated Encrypted Relay for Packets
+(DERP)}\label{designated-encrypted-relay-for-packets-derp}}
+
+\begin{itemize}
+\tightlist
+\item
+  TURN-like protocol by Tailscale
+\item
+  Relaying encrypted Wireguard traffic over HTTP
+\item
+  Routing based on the Peer's public key
+\item
+  Overview - \url{https://tailscale.com/kb/1232/derp-servers/}
+\item
+  Source code
 
   \begin{itemize}
   \tightlist
   \item
-    TURN-like protocol by Tailscale
+    \url{https://github.com/tailscale/tailscale/tree/main/cmd/derper}
   \item
-    Relaying encrypted Wireguard traffic over HTTP
-  \item
-    Routing based on the Peer's public key
-  \item
-    Overview - \url{https://tailscale.com/kb/1232/derp-servers/}
-  \item
-    Source code
-
-    \begin{itemize}
-    \tightlist
-    \item
-      \url{https://github.com/tailscale/tailscale/tree/main/cmd/derper}
-    \item
-      \url{https://github.com/tailscale/tailscale/blob/main/derp/derp.go}
-    \end{itemize}
+    \url{https://github.com/tailscale/tailscale/blob/main/derp/derp.go}
   \end{itemize}
 \end{itemize}
