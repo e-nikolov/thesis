@@ -10,9 +10,9 @@ PANDOC=$(pandock) \
 		--highlight-style shared/my.theme \
 		--top-level-division chapter \
 		--number-sections \
+		--file-scope
 		
 #		\
-		--file-scope
 # .PRECIOUS: prep/latex/%.tex %.tex %/latex %/latex/
 
 test:
@@ -31,11 +31,12 @@ test:
 %.pdf-:
 	rm -rf $*.pdf build/ $*/latex/
 
-%.pdf:
-	$(MAKE) $*/latex/full.tex $*.tex $@~
+%.pdf: %.tex
+	$(MAKE) $@~
 
-(wildcard *.tex):
+$(wildcard *.tex): %.tex: %/latex/full.tex
 	@echo root tex file: $@
+	touch $@
 
 %.pdf~:
 	latexmk \
@@ -46,6 +47,7 @@ test:
 		-pdf \
 		-time \
 		--output-directory="build" \
+		-silent \
 		$*.tex
 
 # \

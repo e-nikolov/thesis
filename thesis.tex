@@ -1,84 +1,10 @@
-%
-% TU/e Style Master Thesis template for LaTeX
-%
-% 2021 Crated by Marko Boon to new corporate identity,
-% Based on a template by Thijs Nugteren and Joos Buijs.
-%
-% THIS IS THE MAIN FILE (i.e. compile this file, compiling the others directly won't work)
-%
 \documentclass[a4paper,11pt,twoside]{book}
-% \documentclass[a4paper]{article}
-
 
 \usepackage[backref=true,style=alphabetic]{biblatex} 
 \addbibresource{shared/references.bib}
 \usepackage{tuethesis2021}
 \usepackage{pandocMarkdown}
 
-
-% \usepackage[
-%     contentBlocks,
-%     debugExtensions,
-%     definitionLists,
-%     fancy_lists,
-%     fencedCode,
-%     hashEnumerators,
-%     inlineNotes,
-%     jekyllData,
-%     expectJekyllData=false,
-%     notes,
-%     pipeTables,
-%     rawAttribute,
-%     headerAttributes,
-%     smartEllipses,
-%     strikeThrough,
-%     subscripts,
-%     superscripts,
-%     tableCaptions,
-%     taskLists,
-%     citations,
-%     hybrid,
-%     relativeReferences,
-%     texComments,
-%     outputDir=build,
-%     % theme=witiko/graphicx/http,
-% ]{markdown} 
- 
-
-
-% \begingroup
-% \catcode`\@=11
-% \catcode`\%=12
-% \catcode`\^^A=14
-% \global\def\markdownRendererImagePrototype#1#2#3#4{^^A
-% {^^A
-% \everyeof={\noexpand}^^A
-% \begin{figure}^^A
-%     \begin{center}
-%         \includegraphics[width=0.5\textwidth]{#3}^^A
-%         \caption{#4}^^A
-%         \label{#1}^^A
-%     \end{center}
-% \end{figure}^^A
-% }^^A
-% }
-% \endgroup
-
-
-
-% \markdownSetup{theme=witiko/graphicx/http}
-
-
-% \def\markdownRendererJekyllDataStart{ }
-% \def\markdownRendererJekyllDataEnd{ }
-
-
-%
-% These commands need to be defined in order to produce a correct and personalized document.
-% You will get error messages if not all these commands are defined. 
-% If you don't need a specific command, just leave the argument empty. 
-% For example: \docsubtitle{}
-%     
 \newcommand{\doctitle}{Secure Sessions for Ad Hoc Multiparty Computation in MPyC}
 \newcommand{\docsubtitle}{Master thesis}
 \newcommand{\me}{Emil Nikolov}
@@ -92,12 +18,8 @@
 \newcommand{\secondCommitteeMember}{Dr. Mike Holenderski} % usually the daily supervisor
 \newcommand{\thirdCommitteeMember}{Dr. Savio Sciancalepore} % usually the external member
 \newcommand{\builddate}{\today} 
-% \def\markdownOptionHelperScriptFileName{thesis2.markdown.lua}
-% \def\markdownOptionOutputDir{build}
-% \def\markdownOptionCacheDir{build}
-  
+
 \usepackage{mdframed} % surround environments with tags
-% \usepackage[linenos=true]{minted} % code snippet colors
 \usepackage[outputdir=build]{minted} % code snippet colors
 \usemintedstyle{xcode}
 % \usemintedstyle{paraiso-light}
@@ -112,7 +34,6 @@
 
 \definecolor{LightGray}{gray}{0.9}
 
-
 \frontmatter
 
 \let\inputmintedorg\inputminted
@@ -122,66 +43,13 @@
   \end{mdframed}
 }
 
-%---------------------------------------TITLE PAGE-----------------------------------%
-
 \input{shared/titlepage-v2}
 
-% \clearpage
-
-%Sometimes line numbers are nice, uncomment the next line to enable:
 %\linenumbers
-%---------------------------------------ABSTRACT-----------------------------------%
-
-% \begin{abstract}
-\chapter*{Abstract}
-% \markdownInput{prep/00-abstract.md}
-% \end{abstract}
-% \markdownInput[slice=^ ^section2]{prep/00-abstract.md}
-
-
-
-
-%---------------------------------------CONTENTS-----------------------------------%
-
-\tableofcontents
-
-%---------------------------------------ABBREVIATIONS-----------------------------------%
-
-\printnoidxglossary[type=\acronymtype,title=List of Abbreviations]
-\listoffigures
-
-% \lstlistoflistings
-% \listoftables
-%---------------------------------------TABLE OF CONTENTS-----------------------------------%
-
-
-\mainmatter
-
-
-
-%---------------------------------------CHAPTERS-----------------------------------%
-
-
-\input{thesis/latex/01-testing}
-% \markdownInput{prep/02-goals.md}
 
 \setkeys{Gin}{scale=0.25}
-% \markdownInput{prep/03-technical-survey.md}
-% % \markdownInput{prep/04-design.md}
-% \markdownInput{prep/05-implementation.md}
-% \markdownInput{prep/06-conclusions.md}
-
-
-%---------------------------------------BIBLIOGRAPHY-----------------------------------%
+\input{thesis/latex/full.tex}
 
 \printbibliography
-% \bibliographystyle{plain}
-% \bibliographystyle{plainurl}
-% \bibliography{references}
-
-
-
-%\appendix
-%\addcontentsline{toc}{chapter}{Appendix}
 
 \end{document}

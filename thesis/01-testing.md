@@ -9,4 +9,16 @@ During the thesis assignment we will look at a number of solutions for ad hoc MP
 ## Performance
 
 Each solution will be deployed using the \gls{e3} framework and the performance will be quantitatively measured in terms of the speed of execution of a number of pre-selected MPyC demos of different round complexities and message sizes:
-- secret santa - high round complexity
+- Secret santa - high round complexity
+- Convolutional Neural Network (CNN) MNIST classifier - low round complexity, large message size
+
+## Security
+
+We will analyze aspects such as
+    - key distribution
+    - trust model - are there any trusted third parties and what would be the consequences if they are corrupted or breached
+    - 
+
+## Usability
+
+Each solution will be analyzed in terms of the actions that need to be taken by the parties in order to perform a multiparty computation.

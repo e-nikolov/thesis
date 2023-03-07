@@ -4,7 +4,7 @@
 - 
 - Coordination service
     - Closed source
-    - Facilitates [STUN](0202-nat#Session Traversal Utilities for NAT (STUN))/[TURN](0202-nat "123 456") for peer discovery
+    - Facilitates [STUN](0202-nat#Session Traversal Utilities for NAT (STUN))/[TURN](0202-nat#test) for peer discovery
     - Distributes wireguard public keys
 - Client
     - Open source

@@ -1,6 +1,7 @@
-\href{prep/01-introduction.md\#background}{TEST}
-\protect\hyperlink{background}{TEST2}
-\href{prep/./01-introduction.md\#background}{TEST3}
+\hypertarget{abstract}{%
+\chapter*{Abstract}\label{abstract}}
+
+\href{prep/010-introduction.md\#background}{TEST3}
 
 The field of Secure Multiparty Computation provides methods for jointly
 computing functions without revealing their private inputs from multple
@@ -20,6 +21,13 @@ deploying software to them. The reference implementation described in
 this report uses the Tailscale mesh VPN for connectivity, and a number
 of additional implementations are planned for the next phase of the
 project.
+
+\tableofcontents
+
+\printnoidxglossary[type=\acronymtype,title=List of Abbreviations]
+\listoffigures
+
+\mainmatter
 
 \hypertarget{introduction}{%
 \chapter{Introduction}\label{introduction}}
@@ -290,12 +298,6 @@ terms of several important characteristics:
     parameter between performance and privacy.
   \end{itemize}
 \end{itemize}
-
-\hypertarget{goals}{%
-\chapter{Goals}\label{goals}}
-
-\hypertarget{motivation}{%
-\section{Motivation}\label{motivation}}
 
 \hypertarget{technical-survey}{%
 \chapter{Technical Survey}\label{technical-survey}}
@@ -584,12 +586,6 @@ running NixOS on DigitalOcean and Colmena for deploying to them. Our
 initial implementation will use Tailscale as the connectivity layer due
 to its ease of use. In the next phase of the project, we plan to explore
 solutions based on Nebula, DIDComm, TOR and combinations of the above.
-
-\hypertarget{design}{%
-\chapter{Design}\label{design}}
-
-\hypertarget{section}{%
-\section{}\label{section}}
 
 \hypertarget{implementation-details}{%
 \chapter{Implementation details}\label{implementation-details}}
@@ -1259,6 +1255,7 @@ The following is a list of high level tasks that we plan to carry out as
 part of the implementation phase:
 
 \begin{itemize}
+\tightlist
 \item
   replace the proprietary Tailscale coordination service from our
   reference implementation of \gls{e3} with the open-source self-hosted
@@ -1329,70 +1326,4 @@ part of the implementation phase:
 \item
   compare \gls{e3} to other work related to deploying MPC such as the
   Carbyne stack\autocite{robertboschgmbhCarbyneStack2022}
-\item
-  references
-
-  \begin{itemize}
-  \tightlist
-  \item[$\boxtimes$]
-    don't cite tcp/ip
-  \item[$\square$]
-    Don't cite assorted mpc algorithms
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Write something like ``A good itroduction to MPC can be found on
-      WIkipedia {[}cite{]}, while an assortment of MPC techniques is
-      presented indepth by {[}assorted{]}''
-    \end{itemize}
-  \item
-    Blue links
-  \end{itemize}
-\item
-  requirements -\textgreater{} goals/objectives
-\item
-  Title -\textgreater{} Secure Sessions for Ad Hoc Multiparty
-  Computation in MPyC
-\item
-  e\^{}3? evaluation?
-\item
-  remove the footers
-\item
-  something with the abreviations
-\item
-  proof read
-
-  \begin{itemize}
-  \tightlist
-  \item
-    check for things like we've
-  \end{itemize}
-\item
-  Intro
-
-  \begin{itemize}
-  \tightlist
-  \item
-    what is this project?
-  \item
-    what is mpc
-  \item
-    what is mpyc
-  \item
-  \item
-    research questions
-  \end{itemize}
-\item
-  Demo
-
-  \begin{itemize}
-  \tightlist
-  \item
-    provisioning with terraform
-  \item
-    run an mpc demo
-  \item
-    destruction of the infra
-  \end{itemize}
 \end{itemize}

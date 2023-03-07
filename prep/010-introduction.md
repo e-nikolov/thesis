@@ -2,6 +2,7 @@
 link: https://www.notion.so/01-introduction-145d822b8f9c4d1ab08a056c16f4ea48
 notionID: 145d822b-8f9c-4d1a-b08a-056c16f4ea48
 ---
+
 # Introduction
 
 This report will present the results of the preparation phase of the master thesis project titled "Secure Sessions for Ad Hoc Multiparty Computation in MPyC". The goal of this phase is to gain sufficient insight into the topic, perform some preliminary tasks and propose a plan with well defined goals for the implementation phase of the project.

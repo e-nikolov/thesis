@@ -96,8 +96,8 @@
 %---------------------------------------ABSTRACT-----------------------------------%
 
 % \begin{abstract}
-\chapter*{Abstract}
-\input{prep/latex/00-abstract.tex}
+% \chapter*{Abstract}
+% \input{prep/latex/00-abstract.tex}
 % \markdownInput{prep/00-abstract.md}
 % \end{abstract}
 % \markdownInput[slice=^ ^section2]{prep/00-abstract.md}
@@ -107,33 +107,35 @@
 
 %---------------------------------------CONTENTS-----------------------------------%
 
-\tableofcontents
+% \tableofcontents
 
-%---------------------------------------ABBREVIATIONS-----------------------------------%
+% %---------------------------------------ABBREVIATIONS-----------------------------------%
 
-\printnoidxglossary[type=\acronymtype,title=List of Abbreviations]
-\listoffigures
+% \printnoidxglossary[type=\acronymtype,title=List of Abbreviations]
+% \listoffigures
 
-% \lstlistoflistings
-% \listoftables
-%---------------------------------------TABLE OF CONTENTS-----------------------------------%
+% % \lstlistoflistings
+% % \listoftables
+% %---------------------------------------TABLE OF CONTENTS-----------------------------------%
 
 
-\mainmatter
+% \mainmatter
 
 
 %---------------------------------------CHAPTERS-----------------------------------%
 \setkeys{Gin}{scale=0.25}
 
-\input{prep/latex/00-abstract}
+\input{prep/latex/full.tex}
 
-\input{prep/latex/01-introduction}
+% \input{prep/latex/00-abstract}
 
-\input{prep/latex/03-technical-survey}
+% \input{prep/latex/01-introduction}
 
-\input{prep/latex/05-implementation}
+% \input{prep/latex/03-technical-survey}
 
-\input{prep/latex/06-conclusions}
+% \input{prep/latex/05-implementation}
+
+% \input{prep/latex/06-conclusions}
 
 %---------------------------------------BIBLIOGRAPHY-----------------------------------%
 
