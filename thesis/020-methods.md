@@ -1,0 +1,46 @@
+
+
+# Testing methodology
+
+
+During the preparation phase of the project we developed the \gls{e3} framework which simplifies and automates the process of deploying machines in different geographical regions, connecting them via an overlay network and executing multiparty computations between them, where each machine represents a different party.
+During the thesis assignment we will look at a number of solutions for ad hoc MPC sessions and compare them in terms of performance, security and usability.
+
+## Performance
+
+Each solution will be deployed using the \gls{e3} framework and the performance will be quantitatively measured in terms of the time it takes to execute a number of MPyC demos. The selected demos have different complexities in terms of communication rounds and message sizes which will allow us to observe their impact on the overall performance.
+
+1. Secret Santa - high round complexity with small messages
+2. Convolutional Neural Network (CNN) MNIST classifier - low round complexity with large messages
+ 
+The demos will be configured at three different input size levels
+- Low,
+- Medium
+- High 
+
+Furthermore, the demos will be executed in several networking scenarios:
+
+1. 1-10 parties in the same geographic region
+2. 1-10 parties evenly distributed across two nearby regions
+3. 1-10 parties evenly distributed across two distant regions
+4. 1-10 parties distributed across multiple distant regions
+
+
+## Security
+
+We will analyze aspects such as
+- key distribution
+- trust model - are there any trusted third parties and what would be the consequences if they are corrupted or breached
+- traffic encryption
+- identity strength
+
+## Usability
+
+For each solution we will describe the steps that the parties need to perform in order to execute a joint multiparty computation. Those steps will be analyzed in terms of:
+
+- Complexity - how much technical expertise is expected from the parties in order to be able to execute the steps
+- Initial effort - how much effort is each party expected to put in preparing for their first joint computation
+- Repeated effort - after the initial setup, how much effort is required to perform another computation
+	- with the same set of parties
+	- with another set of parties 
+	- 

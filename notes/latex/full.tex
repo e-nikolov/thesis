@@ -23,12 +23,11 @@
   \begin{itemize}
   \tightlist
   \item
-    Chapters per solution with subsections for overview, security,
-    usability, performance analysis
+    A chapter for each solution with subsections for Overview, Security,
+    Usability, Performance analysis
   \item
-    Chapters for Overview, Security, Usability, Performance analysis
+    A chapter for Overview, Security, Usability, Performance analysis
     with subsections for each solution
-  \item
   \end{itemize}
 \end{itemize}
 
@@ -199,6 +198,16 @@ Traversal}\label{network-address-translation-nat-traversal}}
   Built with the \href{notes/0204-noise}{Noise Protocol Framework}
 \item
   Typically used as a building block in more complicated systems
+\item
+  OSI Layer
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Kernel mode - Network Layer 3 (IP)
+  \item
+    Userspace mode - Transport Layer 4 (UDP, TCP)
+  \end{itemize}
 \item
   Simple configuration
 
@@ -478,6 +487,37 @@ Traversal}\label{network-address-translation-nat-traversal}}
 \item
 \end{itemize}
 
+\hypertarget{teleport}{%
+\section{Teleport}\label{teleport}}
+
+\hypertarget{solution-notes}{%
+\chapter{Solution notes}\label{solution-notes}}
+
+\hypertarget{headscale}{%
+\section{Headscale}\label{headscale}}
+
+\begin{itemize}
+\tightlist
+\item
+  Docker seems to have a 50-100\% performance penalty (possibly due to
+  docker's internal NAT) which makes the performance results of the
+  headscale setup worse than they should be
+\item
+  Modify the deployment setup to
+
+  \begin{itemize}
+  \tightlist
+  \item
+    not depend on all machines being on the same tailscale network
+  \item
+    use the \texttt{*.demo.mpyc.tech} hostnames
+  \item
+    the nodes should switch between the tailscale and headscale network
+    depending on the demo script
+  \item
+  \end{itemize}
+\end{itemize}
+
 \hypertarget{brainstorm-for-custom-solutions}{%
 \chapter{Brainstorm for custom
 solutions}\label{brainstorm-for-custom-solutions}}
@@ -660,6 +700,202 @@ With tailscale we'd need to
   They run the demos with the downloaded config file
 \item
   A temporary Wireguard mesh VPN is created between all parties
+\end{itemize}
+
+\hypertarget{writing}{%
+\chapter{Writing}\label{writing}}
+
+\begin{itemize}
+\tightlist
+\item
+  Ask questions and answer them
+\item
+  Don't try to get the writing perfect on the first pass
+\item
+  Write anything first and then iterate on it later
+\end{itemize}
+
+\hypertarget{preparation-phase-report-outline}{%
+\chapter{Preparation phase report
+outline}\label{preparation-phase-report-outline}}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\begin{itemize}
+\item
+  \begin{itemize}
+  \tightlist
+  \item
+    What is the purpose of this report?
+  \item
+    How does it relate to the thesis assignment?
+  \end{itemize}
+\item
+  Background information
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What do I need to know to in order to be able to understand the
+    problem that this thesis is trying to solve and its importance?
+
+    \begin{itemize}
+    \tightlist
+    \item
+      What is MPC?
+    \item
+      What does MPC achieve?
+    \item
+      When is MPC useful?
+    \item
+      How does MPC work?
+    \item
+      What is MPyC?
+    \end{itemize}
+  \end{itemize}
+\item
+  Problem description
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What is the issue with MPyC that this assignment is trying to solve?
+  \end{itemize}
+\item
+  Research questions
+\item
+  Scope
+\end{itemize}
+
+\hypertarget{technical-survey}{%
+\section{Technical survey}\label{technical-survey}}
+
+\begin{itemize}
+\tightlist
+\item
+  Deployment
+\item
+  Connectivity
+\item
+  Summary
+\end{itemize}
+
+\hypertarget{implementation-details}{%
+\section{Implementation details}\label{implementation-details}}
+
+\begin{itemize}
+\tightlist
+\item
+  Reproducible development
+\item
+  NixOS image
+\item
+  Provisioning
+\item
+  Deployment
+\item
+  Runtime execution
+\end{itemize}
+
+\hypertarget{conclusions}{%
+\section{Conclusions}\label{conclusions}}
+
+\hypertarget{thesis-outline}{%
+\chapter{Thesis outline}\label{thesis-outline}}
+
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
+
+\begin{itemize}
+\tightlist
+\item
+  Background information
+\item
+  Problem description
+\item
+  Research questions
+\item
+  Scope
+\end{itemize}
+
+\hypertarget{related-work-literature-review}{%
+\section{Related work / Literature
+review}\label{related-work-literature-review}}
+
+\begin{itemize}
+\tightlist
+\item
+  Are there any existing solutions that can be applied to the problem in
+  some capacity?
+\end{itemize}
+
+\hypertarget{methodology}{%
+\section{Methodology}\label{methodology}}
+
+\begin{itemize}
+\tightlist
+\item
+  How are the solutions going to be evaluated?
+\item
+  Performance
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Which performance characteristics are relevant to multiparty
+    computations?
+  \item
+    How are the chosen solutions going to be implemented and deployed?
+  \item
+    How are the performance metrics going to be measured?
+  \end{itemize}
+\item
+  Security
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What security aspects are relevant to multiparty computations?
+  \item
+    How are they going to be analyzed?
+  \end{itemize}
+\item
+  Usability
+
+  \begin{itemize}
+  \tightlist
+  \item
+    How is the usability of a solution going to be evaluated? \#\#
+    Solutions
+  \end{itemize}
+\item
+  For each solution
+
+  \begin{itemize}
+  \tightlist
+  \item
+    What is the solution?
+  \item
+    How was it implemented?
+  \item
+    What are the security implications?
+  \item
+    How can it be used by the parties?
+  \item
+    What is the performance of the solution?
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{conclusions}{%
+\section{Conclusions}\label{conclusions}}
+
+\begin{itemize}
+\tightlist
+\item
+  How do the proposed solutions compare to each other?
+\item
+  Which solution is preferred under which circumstances?
 \end{itemize}
 
 \hypertarget{latex}{%

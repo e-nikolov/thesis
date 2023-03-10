@@ -7,42 +7,217 @@
 \mainmatter
 \end{frame}
 
+\begin{frame}{Introduction}
+\protect\hypertarget{introduction}{}
+\end{frame}
+
 \begin{frame}{Testing methodology}
 \protect\hypertarget{testing-methodology}{}
 During the preparation phase of the project we developed the \gls{e3}
 framework which simplifies and automates the process of deploying
-machines in different georgraphical regions, connecting them in an
-overlay network and executing MPC computations between them, where each
-machine represents a different party. During the thesis assignment we
-will look at a number of solutions for ad hoc MPC sessions and compare
-them in terms of performance, security and usability.
+machines in different geographical regions, connecting them via an
+overlay network and executing multiparty computations between them,
+where each machine represents a different party. During the thesis
+assignment we will look at a number of solutions for ad hoc MPC sessions
+and compare them in terms of performance, security and usability.
 
 \begin{block}{Performance}
 \protect\hypertarget{performance}{}
 Each solution will be deployed using the \gls{e3} framework and the
-performance will be quantitatively measured in terms of the speed of
-execution of a number of pre-selected MPyC demos of different round
-complexities and message sizes: - Secret santa - high round complexity -
-Convolutional Neural Network (CNN) MNIST classifier - low round
-complexity, large message size
+performance will be quantitatively measured in terms of the time it
+takes to execute a number of MPyC demos. The selected demos have
+different complexities in terms of communication rounds and message
+sizes which will allow us to observe their impact on the overall
+performance.
+
+\begin{enumerate}
+\tightlist
+\item
+  Secret Santa - high round complexity with small messages
+\item
+  Convolutional Neural Network (CNN) MNIST classifier - low round
+  complexity with large messages
+\end{enumerate}
+
+The demos will be configured at three different input size levels - Low,
+- Medium - High
+
+Furthermore, the demos will be executed in several networking scenarios:
+
+\begin{enumerate}
+\tightlist
+\item
+  1-10 parties in the same geographic region
+\item
+  1-10 parties evenly distributed across two nearby regions
+\item
+  1-10 parties evenly distributed across two distant regions
+\item
+  1-10 parties distributed across multiple distant regions
+\end{enumerate}
 \end{block}
 
 \begin{block}{Security}
 \protect\hypertarget{security}{}
 We will analyze aspects such as - key distribution - trust model - are
 there any trusted third parties and what would be the consequences if
-they are corrupted or breached -
+they are corrupted or breached - traffic encryption - identity strength
 \end{block}
 
 \begin{block}{Usability}
 \protect\hypertarget{usability}{}
-Each solution will be analyzed in terms of the actions that need to be
-taken by the parties in order to perform a multiparty computation.
+For each solution we will describe the steps that the parties need to
+perform in order to execute a joint multiparty computation. Those steps
+will be analyzed in terms of:
+
+\begin{itemize}
+\tightlist
+\item
+  Complexity - how much technical expertise is expected from the parties
+  in order to be able to execute the steps
+\item
+  Initial effort - how much effort is each party expected to put in
+  preparing for their first joint computation
+\item
+  Repeated effort - after the initial setup, how much effort is required
+  to perform another computation
+
+  \begin{itemize}
+  \tightlist
+  \item
+    with the same set of parties
+  \item
+    with another set of parties
+  \item
+  \end{itemize}
+\end{itemize}
 \end{block}
 \end{frame}
 
-\begin{frame}{Wireguard}
+\begin{frame}{Overview}
+\protect\hypertarget{overview}{}
+In this chapter we will provide a high level overview of the solutions
+that will be analyzed in more detail in the following chapters.
+
+\begin{block}{Overlay Networking}
+\protect\hypertarget{overlay-networking}{}
+The Open Systems Interconnection (OSI) model distinguishes 7 layers in
+computer networks:
+
+\begin{itemize}
+\tightlist
+\item
+  7 - Application layer
+\item
+  6 - Presentation layer
+\item
+  5 - Session layer
+\item
+  4 - Transport layer
+\item
+  3 - Network layer
+\item
+  2 - Data link layer -
+\item
+  1 - Physical layer
+\end{itemize}
+\end{block}
+
+\begin{block}{Virtual Private Networks (VPN)}
+\protect\hypertarget{virtual-private-networks-vpn}{}
+\end{block}
+\end{frame}
+
+\begin{frame}[fragile]{Wireguard}
 \protect\hypertarget{wireguard}{}
-Wireguard is a simple VPN protocol built with the Noise Protocol
-Framework.
+Wireguard\autocite{donenfeldWireGuardNextGeneration2017} is a VPN
+protocol built with the Noise Protocol Framework\autocite{noiseProtocol}
+that focuses on configuration simplicity. It considers issues such as
+peer discovery and key distribution as out of scope and a responsibility
+of a higher level system that uses Wireguard as a building block. The
+snippets below show a minimal set of configuration options that need to
+be provided in order for two peers to be able to form secure tunnels
+with each another.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# peer1.conf}
+\KeywordTok{[}\DataTypeTok{Interface}\KeywordTok{]}
+\DataTypeTok{Address} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{1}\ErrorTok{/}\DataTypeTok{32}
+\DataTypeTok{ListenPort} \OperatorTok{=} \DecValTok{53063}
+\DataTypeTok{PrivateKey} \OperatorTok{=} \DataTypeTok{ePTiXXhHjvAHdWUr8Bimk30n0gh3m241RAzsN0JZDW0}\OperatorTok{=}
+
+\KeywordTok{[}\DataTypeTok{Peer}\KeywordTok{]}
+\DataTypeTok{PublicKey} \OperatorTok{=} \DataTypeTok{BSn0ejd1Y3bKuD}\ErrorTok{+}\DataTypeTok{Xpg0ZZeOf}\ErrorTok{+}\DataTypeTok{Ies}\ErrorTok{/}\DataTypeTok{oql0NZxw}\ErrorTok{+}\DataTypeTok{SOmkc}\OperatorTok{=}
+\DataTypeTok{AllowedIPs} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{2}\ErrorTok{/}\DataTypeTok{32}
+\DataTypeTok{Endpoint} \OperatorTok{=} \DataTypeTok{peer1}\KeywordTok{.}\DataTypeTok{example}\KeywordTok{.}\DataTypeTok{com}\ErrorTok{:}\DataTypeTok{38133}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# peer2.conf}
+\KeywordTok{[}\DataTypeTok{Interface}\KeywordTok{]}
+\DataTypeTok{Address} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{2}\ErrorTok{/}\DataTypeTok{32}
+\DataTypeTok{ListenPort} \OperatorTok{=} \DecValTok{38133}
+\DataTypeTok{PrivateKey} \OperatorTok{=} \DataTypeTok{sN}\ErrorTok{/}\DataTypeTok{d6XUPEVPGSziVgCCOnOivDK}\ErrorTok{+}\DataTypeTok{qAoYC3nxnssQ5Rls}\OperatorTok{=}
+
+\KeywordTok{[}\DataTypeTok{Peer}\KeywordTok{]}
+\DataTypeTok{PublicKey} \OperatorTok{=} \DataTypeTok{e}\ErrorTok{/}\DataTypeTok{TxvPmrgcc1G4cSH2bHv5J0PRHXKjYxTFoU8r}\ErrorTok{+}\DataTypeTok{G93E}\OperatorTok{=}
+\DataTypeTok{AllowedIPs} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{1}\ErrorTok{/}\DataTypeTok{32}
+\end{Highlighting}
+\end{Shaded}
+
+Each peer has a public/private key pair that is used for authentication
+and encryption. It is notable that only one of the peers must be
+configured with a reachable endpoint for the other peer. In the above
+example once \texttt{peer1} initiates communication with \texttt{peer2},
+\texttt{peer2} will learn the current endpoint of \texttt{peer1} and
+will be able to communicate back with it.
+
+\begin{block}{Imple}
+\protect\hypertarget{imple}{}
+\end{block}
+\end{frame}
+
+\begin{frame}{Tailscale}
+\protect\hypertarget{tailscale}{}
+Tailscale is a VPN solution that configures a mesh of direct Wireguard
+tunnels between the peers.
+
+\begin{block}{Overview}
+\protect\hypertarget{overview}{}
+\end{block}
+
+\begin{block}{Usability}
+\protect\hypertarget{usability}{}
+With tailscale each party needs to - register a Tailscale account -
+Download and install tailscale on the machine they want to run a
+multiparty computation - Run tailscale on their machine and logs into
+their account in order to link it to their own Tailnet - Share their
+Tailscale machine with the Tailnets of each of the other parties -
+Download the demo they want to run - Form the flags for running the
+chosen demo - add -P \$HOST:\$PORT for each party using their Tailscale
+hostname/virtual IP - Run the demo
+\end{block}
+
+\begin{block}{Security}
+\protect\hypertarget{security}{}
+\begin{block}{Trust model}
+\protect\hypertarget{trust-model}{}
+There is a centralized service that deals with the key distribution,
+which needs to be trusted to provide the correct public keys for the
+correct parties
+\end{block}
+
+\begin{block}{Identity}
+\protect\hypertarget{identity}{}
+Identity is based on third party identity providers such as Microsoft
+and GitHub
+\end{block}
+\end{block}
+
+\begin{block}{Performance}
+\protect\hypertarget{performance}{}
+\end{block}
 \end{frame}

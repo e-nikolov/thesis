@@ -84,7 +84,7 @@ presentation.html: presentation/*.md FORCE
 
 %/latex/full.tex: %/*.md
 # 	map all .md files from the parent directory to .tex files in the latex directory
-	$(MAKE) $(?:$*/%.md=$*/latex/%.tex) $*/latex/beamer.tex
+	$(MAKE) $(?:"$*/%.md"="$*/latex/%.tex") $*/latex/beamer.tex
 
 	$(PANDOC) \
 		-o $@ \

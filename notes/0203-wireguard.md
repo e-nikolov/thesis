@@ -4,6 +4,9 @@
 - Whitepaper - [https://www.wireguard.com/papers/wireguard.pdf](https://www.wireguard.com/papers/wireguard.pdf)
 - Built with the  [Noise Protocol Framework](0204-noise) 
 - Typically used as a building block in more complicated systems
+- OSI Layer
+  - Kernel mode - Network Layer 3 (IP)
+  - Userspace mode - Transport Layer 4 (UDP, TCP)
 - Simple configuration
     - Each peer has a public/private key pair for authentication and traffic encryption
     - Each peer has a config file:
