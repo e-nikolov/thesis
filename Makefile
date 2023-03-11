@@ -15,6 +15,9 @@ PANDOC=$(pandock) \
 #		\
 # .PRECIOUS: prep/latex/%.tex %.tex %/latex %/latex/
 
+all: thesis.pdf notes.pdf prep.pdf presentation.pdf
+
+
 test:
 	@echo test
 
@@ -82,7 +85,7 @@ presentation.html: presentation/*.md FORCE
 %/latex:
 	mkdir -p $@
 
-%/latex/full.tex: %/*.md
+%/latex/full.tex: %/**.md
 # 	map all .md files from the parent directory to .tex files in the latex directory
 	$(MAKE) $(?:"$*/%.md"="$*/latex/%.tex") $*/latex/beamer.tex
 

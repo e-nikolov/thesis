@@ -1,4 +1,5 @@
 # Brainstorm for custom solutions
+
 - Initial state
     - Here’s my identity, here are the identities of the other parties
 - Desired result

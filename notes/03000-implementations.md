@@ -1,4 +1,4 @@
-# Solution notes
+# Implementation notes
 
 ## Headscale
 

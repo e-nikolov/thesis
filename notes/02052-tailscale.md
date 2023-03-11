@@ -1,0 +1,21 @@
+## Tailscale
+
+- Mesh VPN
+- Built on top of [Wireguard](02051-wireguard.md)
+- Coordination service
+    - Closed source
+    - Facilitates [STUN](0202-nat#Session Traversal Utilities for NAT (STUN))/[TURN](02021-internet-protocol.md#test) for peer discovery
+    - Distributes wireguard public keys
+    - Magic DNS
+- Client
+    - Open source
+    - Interacts with the Coordination service
+    - Configures Wireguard
+- Implementations based on Tailscale
+	- Tailnet per party
+		- Parties have their own tailscale accounts and manage their own tailnet
+		- Each party shares adds the machine they will use for MPC to their tailnet
+		- They share that machine with the tailnets of the other parties
+	- "Host" party manages a tailnet
+		- The host party creates authorization keys for the machines of the other parties
+		- Each party runs the tailscale client with their authorization key which lets them join the host party's tailnet

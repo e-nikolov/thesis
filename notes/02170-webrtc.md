@@ -1,9 +1,10 @@
 ## WebRTC
+
 - Peer to peer communications for browsers
     - can also work without a browser
     - Mainly used for multimedia communications - Peer-to-peer Audio/Video/VoIP
 - Spec - [https://www.w3.org/TR/webrtc/](https://www.w3.org/TR/webrtc/#persistent-information-exposed-by-webrtc)
-- Uses [nat](0202-nat) STUN/TURN/ICE
+- Uses [nat](02021-internet-protocol.md) STUN/TURN/ICE
 - Data is encrypted
 - Identity
     - Session Description Protocol (SDP)
@@ -12,6 +13,9 @@
 - Not a VPN
     - I think it can’t serve as a TCP/IP network overlay that other applications can use
 - Does not require additional plugins or native apps
+- We could design a solution based on WebRTC in a browser by compiling the MPyC demos to web assembly or using PyScript.
+	- https://www.win.tue.nl/~berry/mpyc/pyscript.html
+	- https://pyscript.net/
 - There seem to be many publicly available services that can be used as ICE servers for WebRTC
     - [stun.l.google.com:19302](http://stun.l.google.com:19302/)
     - [https://gist.github.com/zziuni/3741933](https://gist.github.com/zziuni/3741933)

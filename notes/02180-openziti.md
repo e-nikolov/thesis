@@ -1,4 +1,5 @@
 ## OpenZiti
+
 - Network Overlay
 - No STUN
 - Works by relaying traffic through intermediaries

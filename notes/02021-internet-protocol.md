@@ -1,22 +1,35 @@
-## Network Address Translation (NAT) Traversal
+### IP Stack
+
+- IP addresses
+- Routing
+- DNS
+- TLS
+
+#### Network Address Translation (NAT) Traversal
+
 [https://bford.info/pub/net/p2pnat/](https://bford.info/pub/net/p2pnat/)
 
 [https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/](https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/)
 
-### test caption { #test }
+#### Session Traversal Utilities for NAT (STUN)
 
-### Session Traversal Utilities for NAT (STUN)
--  Uses a STUN server for discovery and UDP hole-punching
+- Uses a STUN server for discovery and UDP hole-punching
 - Communications are peer-to-peer
 - Examples:
 	- [https://github.com/shawwwn/Gole](https://github.com/shawwwn/Gole)
 	- [https://github.com/malcolmseyd/natpunch-go](https://github.com/malcolmseyd/natpunch-go)
-### Traversal Using Relays around NAT (TURN)
+
+#### Traversal Using Relays around NAT (TURN)
+
 - Peers use a relay server as a mediator to route traffic
-### Interactive Connectivity Establishment (ICE)
+
+
+#### Interactive Connectivity Establishment (ICE)
+
 - Umbrella term covering STUN/TURN and other related techniques
 
-### Designated Encrypted Relay for Packets (DERP)
+#### Designated Encrypted Relay for Packets (DERP)
+
 - TURN-like protocol by Tailscale
 - Relaying encrypted Wireguard traffic over HTTP
 - Routing based on the Peer’s public key

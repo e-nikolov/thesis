@@ -39,8 +39,17 @@ performance.
   complexity with large messages
 \end{enumerate}
 
-The demos will be configured at three different input size levels - Low,
-- Medium - High
+The demos will be configured at three different input size levels
+
+\begin{itemize}
+\tightlist
+\item
+  Low,
+\item
+  Medium
+\item
+  High
+\end{itemize}
 
 Furthermore, the demos will be executed in several networking scenarios:
 
@@ -59,9 +68,20 @@ Furthermore, the demos will be executed in several networking scenarios:
 
 \begin{block}{Security}
 \protect\hypertarget{security}{}
-We will analyze aspects such as - key distribution - trust model - are
-there any trusted third parties and what would be the consequences if
-they are corrupted or breached - traffic encryption - identity strength
+We will analyze aspects such as
+
+\begin{itemize}
+\tightlist
+\item
+  key distribution
+\item
+  trust model - are there any trusted third parties and what would be
+  the consequences if they are corrupted or breached
+\item
+  traffic encryption
+\item
+  identity strength
+\end{itemize}
 \end{block}
 
 \begin{block}{Usability}
@@ -88,8 +108,11 @@ will be analyzed in terms of:
     with the same set of parties
   \item
     with another set of parties
-  \item
   \end{itemize}
+\item
+  Finalization effort - how much effort is required to finalize the MPC
+  session once it is complete and clean up any left-over artifacts or
+  resources so that the machine of each party is in its original state
 \end{itemize}
 \end{block}
 \end{frame}
@@ -175,8 +198,8 @@ example once \texttt{peer1} initiates communication with \texttt{peer2},
 \texttt{peer2} will learn the current endpoint of \texttt{peer1} and
 will be able to communicate back with it.
 
-\begin{block}{Imple}
-\protect\hypertarget{imple}{}
+\begin{block}{Implementation}
+\protect\hypertarget{implementation}{}
 \end{block}
 \end{frame}
 
@@ -191,14 +214,35 @@ tunnels between the peers.
 
 \begin{block}{Usability}
 \protect\hypertarget{usability}{}
-With tailscale each party needs to - register a Tailscale account -
-Download and install tailscale on the machine they want to run a
-multiparty computation - Run tailscale on their machine and logs into
-their account in order to link it to their own Tailnet - Share their
-Tailscale machine with the Tailnets of each of the other parties -
-Download the demo they want to run - Form the flags for running the
-chosen demo - add -P \$HOST:\$PORT for each party using their Tailscale
-hostname/virtual IP - Run the demo
+With tailscale each party needs to
+
+\begin{itemize}
+\tightlist
+\item
+  register a Tailscale account
+\item
+  Download and install tailscale on the machine they want to run a
+  multiparty computation
+\item
+  Run tailscale on their machine and logs into their account in order to
+  link it to their own Tailnet
+\item
+  Share their Tailscale machine with the Tailnets of each of the other
+  parties
+\item
+  Download the demo they want to run
+\item
+  Form the flags for running the chosen demo
+
+  \begin{itemize}
+  \tightlist
+  \item
+    add -P \$HOST:\$PORT for each party using their Tailscale
+    hostname/virtual IP
+  \end{itemize}
+\item
+  Run the demo
+\end{itemize}
 \end{block}
 
 \begin{block}{Security}
@@ -214,6 +258,12 @@ correct parties
 \protect\hypertarget{identity}{}
 Identity is based on third party identity providers such as Microsoft
 and GitHub
+
+\begin{itemize}
+\tightlist
+\item
+  Magic DNS
+\end{itemize}
 \end{block}
 \end{block}
 

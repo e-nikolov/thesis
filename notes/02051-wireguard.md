@@ -1,8 +1,9 @@
 ## Wireguard
+
 - VPN Protocol
 - Used by Tailscale
 - Whitepaper - [https://www.wireguard.com/papers/wireguard.pdf](https://www.wireguard.com/papers/wireguard.pdf)
-- Built with the  [Noise Protocol Framework](0204-noise) 
+- Built with the  [Noise Protocol Framework](02022-noise.md) 
 - Typically used as a building block in more complicated systems
 - OSI Layer
   - Kernel mode - Network Layer 3 (IP)

@@ -12,119 +12,76 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{Landscape Overview}
-\protect\hypertarget{landscape-overview}{}
+\begin{frame}[fragile]{Related work}
+\protect\hypertarget{related-work}{}
 \begin{itemize}
 \tightlist
 \item
-  How should the thesis be layed out?
-
-  \begin{itemize}
-  \tightlist
-  \item
-    A chapter for each solution with subsections for Overview, Security,
-    Usability, Performance analysis
-  \item
-    A chapter for Overview, Security, Usability, Performance analysis
-    with subsections for each solution
-  \end{itemize}
+  There is a huge amount of primitives and partial solutions that are
+  relevant to our problem, which makes it difficult to review them all,
+  so we will try to arrange them in groups based on similarity and focus
+  on one or two per group while only briefly mentioning the alternatives
 \end{itemize}
 
-\begin{block}{WebRTC}
-\protect\hypertarget{webrtc}{}
+\begin{block}{OSI Model}
+\protect\hypertarget{osi-model}{}
 \begin{itemize}
-\tightlist
 \item
-  Peer to peer communications for browsers
+  Create a figure that maps the various related components to OSI model
+  layers
+\item
+  It can be a ``more or less accurate'' artistic impression since the
+  components can cover multiple layers and the layers are somewhat fluid
+\item
+  Make a distinction between
 
   \begin{itemize}
   \tightlist
   \item
-    can also work without a browser
-  \item
-    Mainly used for multimedia communications - Peer-to-peer
-    Audio/Video/VoIP
-  \end{itemize}
-\item
-  Spec -
-  \href{https://www.w3.org/TR/webrtc/\#persistent-information-exposed-by-webrtc}{https://www.w3.org/TR/webrtc/}
-\item
-  Uses \href{notes/0202-nat}{nat} STUN/TURN/ICE
-\item
-  Data is encrypted
-\item
-  Identity
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Session Description Protocol (SDP)
-  \item
-    peer certificates are generated and announced over SDP
-  \item
-    ICE Candidates are negotiated for STUN/TURN connections
-  \end{itemize}
-\item
-  Not a VPN
-
-  \begin{itemize}
-  \tightlist
-  \item
-    I think it can't serve as a TCP/IP network overlay that other
-    applications can use
-  \end{itemize}
-\item
-  Does not require additional plugins or native apps
-\item
-  There seem to be many publicly available services that can be used as
-  ICE servers for WebRTC
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \href{http://stun.l.google.com:19302/}{stun.l.google.com:19302}
-  \item
-    \url{https://gist.github.com/zziuni/3741933}
-  \end{itemize}
-\item
-  Examples
-
-  \begin{itemize}
-  \tightlist
-  \item
-    \url{https://github.com/pion/webrtc}
+    primitives - lower level concepts, techniques or frameworks that
+    cannot be used as a solution directly, but are used inside higher
+    level solutions
 
     \begin{itemize}
     \tightlist
     \item
-      Go
+      STUN/TURN/ICE
+    \item
+      Noise Protocol Framework
+    \item
+      Identity solutions
     \end{itemize}
   \item
-    \url{https://github.com/pojntfx/weron}
-  \end{itemize}
-\item
-  Resources
-
-  \begin{itemize}
-  \tightlist
+    solutions that create a virtual network by emulating the Internet
+    protocol stack (VPNs, Wireguard, \ldots)
   \item
-    \url{https://webrtcforthecurious.com/}
-  \item
-    \url{https://temasys.io/guides/developers/webrtc-ice-sorcery/}
-  \item
-    \href{https://web.dev/webrtc-basics/\#toc-rtcpeerconnection}{https://web.dev/webrtc-basics/}
+    solutions that work on the application layer, which need a separate
+    library to
   \end{itemize}
 \end{itemize}
 \end{block}
+
+\begin{block}{Primitives}
+\protect\hypertarget{primitives}{}
+\begin{block}{IP Stack}
+\protect\hypertarget{ip-stack}{}
+\begin{itemize}
+\tightlist
+\item
+  IP addresses
+\item
+  Routing
+\item
+  DNS
+\item
+  TLS
+\end{itemize}
 
 \begin{block}{Network Address Translation (NAT) Traversal}
 \protect\hypertarget{network-address-translation-nat-traversal}{}
 \url{https://bford.info/pub/net/p2pnat/}
 
 \url{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}
-
-\begin{block}{test caption}
-\protect\hypertarget{test}{}
 \end{block}
 
 \begin{block}{Session Traversal Utilities for NAT (STUN)}
@@ -143,12 +100,24 @@
   \item
     \url{https://github.com/shawwwn/Gole}
   \item
-    \url{https://github.com/malcolmseyd/natpunch-go} \#\#\# Traversal
-    Using Relays around NAT (TURN)
+    \url{https://github.com/malcolmseyd/natpunch-go}
   \end{itemize}
+\end{itemize}
+\end{block}
+
+\begin{block}{Traversal Using Relays around NAT (TURN)}
+\protect\hypertarget{traversal-using-relays-around-nat-turn}{}
+\begin{itemize}
+\tightlist
 \item
-  Peers use a relay server as a mediator to route traffic \#\#\#
-  Interactive Connectivity Establishment (ICE)
+  Peers use a relay server as a mediator to route traffic
+\end{itemize}
+\end{block}
+
+\begin{block}{Interactive Connectivity Establishment (ICE)}
+\protect\hypertarget{interactive-connectivity-establishment-ice}{}
+\begin{itemize}
+\tightlist
 \item
   Umbrella term covering STUN/TURN and other related techniques
 \end{itemize}
@@ -180,6 +149,120 @@
 \end{block}
 \end{block}
 
+\begin{block}{Noise Protocol Framework}
+\protect\hypertarget{noise-protocol-framework}{}
+\begin{itemize}
+\tightlist
+\item
+  Framework for building protocols
+\item
+  Spec - \url{http://www.noiseprotocol.org/noise.pdf}
+\item
+  Suite of channel establishment protocols
+\item
+  Similar to TLS
+\item
+  Based on Elliptic-curve Diffie--Hellman (ECDH) Handshakes
+\item
+  Used in WhatsApp, Signal, Wireguard
+\item
+  Resources:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Crypto Layers
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Low-level primitives - AES, ChaCha20.
+    \item
+      Usefully combined primitives - AES-OCB, NaCl secretbox\ldots{}
+    \item
+      High-level protocols - TLS, Noise.
+    \item
+      (sometimes) crypto spoken over the encrypted protocols, often for
+      E2E crypto e.g.~GPG over SMTPS, or CloudFlare blinded CAPTCHA
+      tokens over HTTPS
+    \end{itemize}
+  \item
+    \url{https://noiseexplorer.com/}
+  \item
+    \url{https://duo.com/labs/tech-notes/noise-protocol-framework-intro}
+  \item
+    \url{https://www.youtube.com/watch?v=ceGTgqypwnQ}
+  \end{itemize}
+\end{itemize}
+\end{block}
+
+\begin{block}{Identity}
+\protect\hypertarget{identity}{}
+\begin{itemize}
+\tightlist
+\item
+  Identity based on a third party Identity Provider (Google, Microsoft,
+  Government, \ldots)
+\item
+  Self Sovereign Identity (SSI)
+\end{itemize}
+\end{block}
+\end{block}
+
+\begin{block}{Basic Internet Protocol solution}
+\protect\hypertarget{basic-internet-protocol-solution}{}
+\begin{itemize}
+\tightlist
+\item
+  Solution with 0 overhead to be used as a reference for the performance
+  of the other solutions
+\item
+  No encryption
+\item
+  Requires public IP addresses or DNS
+\item
+  Easy for us to create a demo for measuring the performance because we
+  control all of the machines that represent the different parties
+\item
+  In a real life scenario with separate parties that are not under a
+  shared control, it will be difficult to use this solution because it
+  requires a lot of manual configuration and coordination between the
+  parties
+\end{itemize}
+\end{block}
+
+\begin{block}{Virtual Private Networks (VPNs)}
+\protect\hypertarget{virtual-private-networks-vpns}{}
+\begin{itemize}
+\tightlist
+\item
+  Traditional centralized VPNs
+
+  \begin{itemize}
+  \tightlist
+  \item
+    OpenVPN
+  \item
+    IPSec
+  \end{itemize}
+\item
+  Mesh VPNs
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Direct peer-to-peer tunnels between the participants when possible
+  \item
+    Relaying via an intermediary when necessary
+  \item
+    Tinc has been around for a long time (first release in 2000)
+  \item
+    Newer solutions like Tailscale are modernized and more accessible
+  \item
+  \end{itemize}
+\end{itemize}
+\end{block}
+
 \begin{block}{Wireguard}
 \protect\hypertarget{wireguard}{}
 \begin{itemize}
@@ -191,7 +274,7 @@
 \item
   Whitepaper - \url{https://www.wireguard.com/papers/wireguard.pdf}
 \item
-  Built with the \href{notes/0204-noise}{Noise Protocol Framework}
+  Built with the \href{notes/02022-noise.md}{Noise Protocol Framework}
 \item
   Typically used as a building block in more complicated systems
 \item
@@ -267,53 +350,6 @@
 \end{itemize}
 \end{block}
 
-\begin{block}{Noise Protocol Framework}
-\protect\hypertarget{noise-protocol-framework}{}
-\begin{itemize}
-\tightlist
-\item
-  Framework for building protocols
-\item
-  Spec - \url{http://www.noiseprotocol.org/noise.pdf}
-\item
-  Suite of channel establishment protocols
-\item
-  Similar to TLS
-\item
-  Based on Elliptic-curve Diffie--Hellman (ECDH) Handshakes
-\item
-  Used in WhatsApp, Signal, Wireguard
-\item
-  Resources:
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Crypto Layers
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Low-level primitives - AES, ChaCha20.
-    \item
-      Usefully combined primitives - AES-OCB, NaCl secretbox\ldots{}
-    \item
-      High-level protocols - TLS, Noise.
-    \item
-      (sometimes) crypto spoken over the encrypted protocols, often for
-      E2E crypto e.g.~GPG over SMTPS, or CloudFlare blinded CAPTCHA
-      tokens over HTTPS
-    \end{itemize}
-  \item
-    \url{https://noiseexplorer.com/}
-  \item
-    \url{https://duo.com/labs/tech-notes/noise-protocol-framework-intro}
-  \item
-    \url{https://www.youtube.com/watch?v=ceGTgqypwnQ}
-  \end{itemize}
-\end{itemize}
-\end{block}
-
 \begin{block}{Tailscale}
 \protect\hypertarget{tailscale}{}
 \begin{itemize}
@@ -321,8 +357,7 @@
 \item
   Mesh VPN
 \item
-  Built on top of {[}{[}0203-wireguard\textbar Wireguard{]}{]}
-\item
+  Built on top of \href{notes/02051-wireguard.md}{Wireguard}
 \item
   Coordination service
 
@@ -332,10 +367,12 @@
     Closed source
   \item
     Facilitates
-    \href{notes/0202-nat\#Session\%20Traversal\%20Utilities\%20for\%20NAT\%20(STUN)}{STUN}/\href{notes/0202-nat\#test}{TURN}
+    \href{notes/0202-nat\#Session\%20Traversal\%20Utilities\%20for\%20NAT\%20(STUN)}{STUN}/\href{notes/02021-internet-protocol.md\#test}{TURN}
     for peer discovery
   \item
     Distributes wireguard public keys
+  \item
+    Magic DNS
   \end{itemize}
 \item
   Client
@@ -349,6 +386,57 @@
   \item
     Configures Wireguard
   \end{itemize}
+\item
+  Implementations based on Tailscale
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Tailnet per party
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Parties have their own tailscale accounts and manage their own
+      tailnet
+    \item
+      Each party shares adds the machine they will use for MPC to their
+      tailnet
+    \item
+      They share that machine with the tailnets of the other parties
+    \end{itemize}
+  \item
+    ``Host'' party manages a tailnet
+
+    \begin{itemize}
+    \tightlist
+    \item
+      The host party creates authorization keys for the machines of the
+      other parties
+    \item
+      Each party runs the tailscale client with their authorization key
+      which lets them join the host party's tailnet
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+\end{block}
+
+\begin{block}{Headscale}
+\protect\hypertarget{headscale}{}
+\begin{itemize}
+\tightlist
+\item
+  Mostly the same as Tailscale, but with an open source coordination
+  service that must be self-hosted
+\item
+  Describe the differences in the deployment and how it affects
+  usability
+\item
+  We implemented a headscale based solution in order to be able to gain
+  some insights into how they deal with peer discovery via STUN/TURN and
+  configure Wireguard, and whether we can modify it or use parts of it
+  in our own custom solution that is a better fit for ad hoc mpc
+  sessions.
 \end{itemize}
 \end{block}
 
@@ -363,7 +451,7 @@
 \item
   Does not use Wireguard
 \item
-  Built using the {[}{[}0204-noise\textbar Noise Protocol
+  Built using the {[}{[}02022-noise\textbar Noise Protocol
   Framework{]}{]} (used in Wireguard)
 \item
   Uses a Certificate Authority that needs to sign each Peer's
@@ -382,23 +470,6 @@
       Peer's public key
     \end{itemize}
   \end{itemize}
-\end{itemize}
-\end{block}
-
-\begin{block}{OpenZiti}
-\protect\hypertarget{openziti}{}
-\begin{itemize}
-\tightlist
-\item
-  Network Overlay
-\item
-  No STUN
-\item
-  Works by relaying traffic through intermediaries
-\item
-  Focused on Services
-\item
-  Allows embedding into apps via an SDK
 \end{itemize}
 \end{block}
 
@@ -442,15 +513,6 @@
 \end{itemize}
 \end{block}
 
-\begin{block}{BitTorrent}
-\protect\hypertarget{bittorrent}{}
-\begin{itemize}
-\tightlist
-\item
-  No concept of identity based communication or peer discovery
-\end{itemize}
-\end{block}
-
 \begin{block}{Ethereum's P2P Protocol}
 \protect\hypertarget{ethereums-p2p-protocol}{}
 \end{block}
@@ -469,6 +531,17 @@
 
 \begin{block}{TOR}
 \protect\hypertarget{tor}{}
+\begin{itemize}
+\tightlist
+\item
+  The Onion Router has the concept of Onion Services, which receive an
+  address under the .onion pseudo top level domain and correspond to a
+  public key
+  (e.g.~vww6ybal4bd7szmgncyruucpgfkqahzddi37ktceo3ah7ngmcopnpyyd.onion)
+\item
+  Can be used as a privacy layer in other solutions to hide the real IP
+  addresses of the parties
+\end{itemize}
 \end{block}
 
 \begin{block}{Friend2Friend Networks}
@@ -489,10 +562,123 @@
 \begin{block}{Teleport}
 \protect\hypertarget{teleport}{}
 \end{block}
+
+\begin{block}{BitTorrent}
+\protect\hypertarget{bittorrent}{}
+\begin{itemize}
+\tightlist
+\item
+  No concept of identity based communication or peer discovery
+\end{itemize}
+\end{block}
+
+\begin{block}{WebRTC}
+\protect\hypertarget{webrtc}{}
+\begin{itemize}
+\tightlist
+\item
+  Peer to peer communications for browsers
+
+  \begin{itemize}
+  \tightlist
+  \item
+    can also work without a browser
+  \item
+    Mainly used for multimedia communications - Peer-to-peer
+    Audio/Video/VoIP
+  \end{itemize}
+\item
+  Spec -
+  \href{https://www.w3.org/TR/webrtc/\#persistent-information-exposed-by-webrtc}{https://www.w3.org/TR/webrtc/}
+\item
+  Uses \href{notes/02021-internet-protocol.md}{nat} STUN/TURN/ICE
+\item
+  Data is encrypted
+\item
+  Identity
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Session Description Protocol (SDP)
+  \item
+    peer certificates are generated and announced over SDP
+  \item
+    ICE Candidates are negotiated for STUN/TURN connections
+  \end{itemize}
+\item
+  Not a VPN
+
+  \begin{itemize}
+  \tightlist
+  \item
+    I think it can't serve as a TCP/IP network overlay that other
+    applications can use
+  \end{itemize}
+\item
+  Does not require additional plugins or native apps
+\item
+  There seem to be many publicly available services that can be used as
+  ICE servers for WebRTC
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{http://stun.l.google.com:19302/}{stun.l.google.com:19302}
+  \item
+    \url{https://gist.github.com/zziuni/3741933}
+  \end{itemize}
+\item
+  Examples
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://github.com/pion/webrtc}
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Go
+    \end{itemize}
+  \item
+    \url{https://github.com/pojntfx/weron}
+  \end{itemize}
+\item
+  Resources
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \url{https://webrtcforthecurious.com/}
+  \item
+    \url{https://temasys.io/guides/developers/webrtc-ice-sorcery/}
+  \item
+    \href{https://web.dev/webrtc-basics/\#toc-rtcpeerconnection}{https://web.dev/webrtc-basics/}
+  \end{itemize}
+\end{itemize}
+\end{block}
+
+\begin{block}{OpenZiti}
+\protect\hypertarget{openziti}{}
+\begin{itemize}
+\tightlist
+\item
+  Network Overlay
+\item
+  No STUN
+\item
+  Works by relaying traffic through intermediaries
+\item
+  Focused on Services
+\item
+  Allows embedding into apps via an SDK
+\end{itemize}
+\end{block}
 \end{frame}
 
-\begin{frame}[fragile]{Solution notes}
-\protect\hypertarget{solution-notes}{}
+\begin{frame}[fragile]{Implementation notes}
+\protect\hypertarget{implementation-notes}{}
 \begin{block}{Headscale}
 \protect\hypertarget{headscale}{}
 \begin{itemize}
@@ -865,9 +1051,15 @@ With tailscale we'd need to
   \begin{itemize}
   \tightlist
   \item
-    How is the usability of a solution going to be evaluated? \#\#
-    Solutions
+    How is the usability of a solution going to be evaluated?
   \end{itemize}
+\end{itemize}
+\end{block}
+
+\begin{block}{Solutions}
+\protect\hypertarget{solutions}{}
+\begin{itemize}
+\tightlist
 \item
   For each solution
 

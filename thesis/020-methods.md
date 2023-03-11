@@ -14,6 +14,7 @@ Each solution will be deployed using the \gls{e3} framework and the performance 
 2. Convolutional Neural Network (CNN) MNIST classifier - low round complexity with large messages
  
 The demos will be configured at three different input size levels
+
 - Low,
 - Medium
 - High 
@@ -29,6 +30,7 @@ Furthermore, the demos will be executed in several networking scenarios:
 ## Security
 
 We will analyze aspects such as
+
 - key distribution
 - trust model - are there any trusted third parties and what would be the consequences if they are corrupted or breached
 - traffic encryption
@@ -43,4 +45,4 @@ For each solution we will describe the steps that the parties need to perform in
 - Repeated effort - after the initial setup, how much effort is required to perform another computation
 	- with the same set of parties
 	- with another set of parties 
-	- 
+- Finalization effort - how much effort is required to finalize the MPC session once it is complete and clean up any left-over artifacts or resources so that the machine of each party is in its original state

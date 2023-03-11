@@ -28,4 +28,4 @@ AllowedIPs = 101.0.0.1/32
 ```
 Each peer has a public/private key pair that is used for authentication and encryption. It is notable that only one of the peers must be configured with a reachable endpoint for the other peer. In the above example once `peer1`  initiates communication with `peer2`, `peer2` will learn the current endpoint of `peer1` and will be able to communicate back with it.
 
-## Imple
+## Implementation

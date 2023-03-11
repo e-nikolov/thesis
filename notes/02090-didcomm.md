@@ -1,4 +1,5 @@
 ## DIDComm v2
+
 - Protocol for communicating that uses DID for identity management
 - Spec: [https://identity.foundation/didcomm-messaging/spec/](https://identity.foundation/didcomm-messaging/spec/)
 - No sessions

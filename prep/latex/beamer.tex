@@ -497,7 +497,7 @@ and appears to be more academic than industry motivated. Nebula and
 Tailscale are both business driven. Tailscale was started by a number of
 high profile ex-googlers and is the most end-user focused of the three,
 providing a service that allows people to sign up using a variety of
-identity providers including google, microsoft, github and others. They
+identity providers including Google, Microsoft, GitHub and others. They
 also provide an Admin console that allows a user to easily add their
 personal devices to a network or share them with others. It also has
 support for automation tools like Terraform for creating authorization
@@ -535,12 +535,12 @@ their own identities, usually in the form of an asymmetric key-pair.
 reached W3C Recommendation Status and DIDComm\autocite{didcommSpec} is a
 set of communication protocols based on DIDs. Its main design goals are
 to be private, secure, decentralized, transport agnostic and routable.
-Its primary concerns are with the message formats, cryptograhic
+Its primary concerns are with the message formats, cryptographic
 algorithms and processes that enable identity owners to find each other
 and interact digitally based on their identities rather than TCP
 concepts like IP addresses. One thing we noticed was that the initial
 version of DIDComm does not support stateful sessions and therefore all
-messages need to be both encrypted with the recepient's public key and
+messages need to be both encrypted with the recipient's public key and
 signed by the sender's private key. This will likely cause performance
 issues in the MPC setting because it usually involves a large number of
 small messages containing the secret shares of the parties. In order for
@@ -554,7 +554,7 @@ Two machines need to know each other's IP addresses in order to be able
 to interact via the internet. An IP address can reveal details about a
 person's location or be used to launch a \gls{ddos} attack against them.
 Additionally, nearby attackers could be listening to their traffic and
-tracking their internet behaviour, which may be undesirable depending on
+tracking their internet behavior, which may be undesirable depending on
 a person's privacy requirements. TOR uses a network of relays to
 obfuscate the communication route between two parties. The original
 sender prepares a multi-layered message, where each layer is encrypted
