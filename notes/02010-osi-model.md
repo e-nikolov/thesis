@@ -15,70 +15,35 @@ The Open Systems Interconnection (OSI) model distinguishes 7 layers in computer 
 
 | OSI Layer       | Description                                                              |          Protocols          | Network overlays                                                             |
 |---|--------|--|---|
-| 7. Application  | High level protocols                                                                                           | HTTP, HTTPS, DNS, FTP, SMTP | WebRTC, OpenZiti, ngrok, TOR, BitTorrent, Ethereum, Teleport, Freenet |
-| 6. Presentation | Translation of data between a networking service and an application, e.g. encoding, compression, encryption           |       MIME, TLS*        |     Noise Protocol Framework                                                                  |
-| 5. Session      | continuous exchange of information                                                                             |                             |                                                                       |
-| 4. Transport    | Variable length data over a network while maintaining quality-of-service, e.g. ports, connections, packet splitting |          UDP, TCP           |                                                                       |
-| 3. Network      | data packets between two nodes, routed via a path of other nodes, e.g. addressing, routing                |          IP, ICMP           | OpenVPN, IPSec, Tinc, Wireguard, Tailscale, Nebula, ZeroTier                                       |
-| 2. Data link    | data frames between two nodes, directly connected via a physical layer                                         |                             | N2N                                                                   |
-| 1. Physical     | sending raw bits over a physical medium                                                                        |                             |                                                                       |
-
-- Layer 7 - Application - high level protocols
-	- Protocols
-		- HTTP
-		- HTTPS
-		- DNS
-		- FTP
-		- SMTP
-	- Solutions
-		- WebRTC
-		- OpenZiti
-		- ngrok
-		- TOR
-		- BitTorrent
-		- IPFS
-		- Ethereum
-		- Teleport
-		- Freenet
-- Layer 6 - Presentation - Translation of data between a networking service and an application
-	- Concepts
-		- encoding
-		- compression
-		- encryption
-	- Protocols
-		- MIME
-		- SSL/TLS*
-	- Solutions
-		- Noise Protocol Famework
-- Layer 5 - Session - continuous exchange of information
-- Layer 4 - Transport - Variable length data over a network while maintaining quality-of-service
-	- Concepts:
-		- Ports
-		- Stateful Connections / Connectionless
-		- Splitting of variable length data into multiple smaller packets
-	- Protocols:
-		- TCP
-		- UDP
-- Layer 3 - Network - data packets between two nodes, routed via a path of other nodes 
-	- Concepts:
-		- Routing
-		- IP Addresses
-	- Protocols:
-		- IP
-		- ICMP
-	- Solutions
-		- IPSec
-		- OpenVPN
-		- Tinc
-		- Wireguard
-- Layer 2 - Data link - data frames between two nodes, directly connected via a physical layer
-	- Solutions
-		- OpenVPN in network bridge mode
-		- Tinc
-		- N2N
-- Layer 1 - Physical - sending raw bits over a physical medium
+| 7. Application  | High level protocols that user-facing services use                                                                                        | HTTP, HTTPS, DNS, FTP, SMTP | WebRTC, OpenZiti, ngrok, TOR, BitTorrent, IPFS, Ethereum, Teleport, Freenet |
+| \hline 6. Presentation | Translation of data between a networking service and an application, e.g. encoding, compression, encryption           |       MIME, TLS*        |     Noise Protocol Framework                                                                  |
+| \hline 5. Session      | Session setup, management, teardown, authentication, authorization                                                                            |          SOCKS, X.225                   |                                                                       |
+| \hline 4. Transport    | Sending data of variable length over a network while maintaining quality-of-service, e.g. ports, connections, packet splitting |          UDP, TCP, NAT port mapping           |                                                                       |
+| \hline 3. Network      | Sending data packets between two nodes, routed via a path of other nodes, e.g. addressing, routing                |          IP, ICMP, NAT           | TUN driver, IPSec, OpenVPN, Tinc, Wireguard, Tailscale, Nebula, ZeroTier                                       |
+| \hline 2. Data link    | Sending data frames between two nodes, directly connected via a physical layer, e.g. on a LAN                                         |     MAC, L2TP                        | TAP driver, N2N, OpenVPN, Tinc                                                                   |
+| \hline 1. Physical     | Sending raw bits over a physical medium                                                                        |     RS232, Ethernet, WiFi, USB, Bluetooth                        |                                                                       |
 
 
+\newpage
+
+| Network overlay | Open source | OSI Layer  | Peer-to-Peer | NAT Traversal           | Implementation                                                       |
+|-|-|-|-|-|-|
+| IPSec           | Yes | Layer 3    | No           |                         | TUN driver                                                           |
+| \hline OpenVPN         |  Yes | Layer 2, 3 | No           |                         | TUN or TAP driver                                                    |
+| \hline Tinc            |  Yes | Layer 2, 3 | Yes          |    STUN or TURN                     | TUN or TAP driver                                                    |
+| \hline Wireguard       |  Yes | Layer 3    | No           |                         | Linux kernel module or TUN driver; Uses Noise |
+| \hline Tailscale       |  Yes (client); No (server) | Layer 3    | Yes          | STUN or DERP | Uses Wireguard                                                       |
+| \hline Nebula          |  Yes  | Layer 3 | Yes          | STUN or TURN | Uses Noise                                    |
+| \hline ZeroTier        | No | Layer 3 | Yes          | STUN or TURN |
+| \hline WebRTC        | Yes | Layer 7 | Yes          | STUN or TURN |
+| \hline OpenZiti        | Yes | Layer 7 | ?          | Relaying |
+| \hline Teleport        | Yes | Layer 7 | ?          | Relaying |
+| \hline ngrok        | No | Layer 7 | No          | Proxy |
+| \hline TOR        | Yes | Layer 7 | Yes          | Relaying |
+| \hline BitTorrent        | Yes | Layer 7 | Yes          | ? |
+| \hline IPFS        | Yes | Layer 7 | Yes          | ? |
+| \hline Ethereum        | Yes | Layer 7 | Yes          | ? |
+| \hline Freenet        | Yes | Layer 7 | Yes          | ? |
 
 
 - Resources

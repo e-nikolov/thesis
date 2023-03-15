@@ -11,18 +11,303 @@
 \protect\hypertarget{introduction}{}
 \end{frame}
 
+\begin{frame}[fragile]{Related work}
+\protect\hypertarget{related-work}{}
+In this chapter we will provide a high level overview of the solutions
+that will be analyzed in more detail in the following chapters. There is
+a large body of existing protocols and applications that are relevant to
+our problem of connecting the parties of a multiparty computation over
+the internet. To make reviewing them easier, we will try to
+approximately map them to the 7 layers of the OSI model, which will not
+always be entirely accurate because many protocols and applications
+implement aspects of several layers. The table below
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1875}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+OSI Layer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Protocols
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Network overlays
+\end{minipage} \\
+\midrule()
+\endhead
+7. Application & High level protocols that user-facing services use &
+HTTP, HTTPS, DNS, FTP, SMTP & WebRTC, OpenZiti, Teleport, ngrok, TOR,
+BitTorrent, IPFS, Ethereum, Freenet \\
+\hline 6. Presentation & Translation of data between a networking
+service and an application, e.g.~encoding, compression, encryption &
+MIME, TLS*, Noise & \\
+\hline 5. Session & Session setup, management, teardown, authentication,
+authorization & SOCKS, X.225 & \\
+\hline 4. Transport & Sending data of variable length over a network
+while maintaining quality-of-service, e.g.~ports, connections, packet
+splitting & UDP, TCP, NAT port mapping & \\
+\hline 3. Network & Sending data packets between two nodes, routed via a
+path of other nodes, e.g.~addressing, routing & IP, ICMP, NAT & TUN
+driver, IPSec, OpenVPN, Tinc, Wireguard, Tailscale, Nebula, ZeroTier \\
+\hline 2. Data link & Sending data frames between two nodes, directly
+connected via a physical layer, e.g.~on a LAN & MAC, L2TP & TAP driver,
+N2N, OpenVPN, Tinc \\
+\hline 1. Physical & Sending raw bits over a physical medium & RS232,
+Ethernet, WiFi, USB, Bluetooth & \\
+\bottomrule()
+\end{longtable}
+
+\begin{block}{Internet protocol}
+\protect\hypertarget{internet-protocol}{}
+\begin{itemize}
+\tightlist
+\item
+  IPv4 routing
+\item
+  NAT
+\item
+  NAT Traversal
+
+  \begin{itemize}
+  \tightlist
+  \item
+    STUN
+  \item
+    TURN
+  \end{itemize}
+\item
+  TUN/TAP driver
+\item
+  Network overlays
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Traditional VPNs
+
+    \begin{itemize}
+    \tightlist
+    \item
+      IPSec
+    \item
+      OpenVPN
+    \end{itemize}
+  \item
+    Wireguard
+
+    \begin{itemize}
+    \tightlist
+    \item
+    \end{itemize}
+  \item
+    Mesh VPNs
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Tinc
+    \item
+      N2N
+    \item
+      Tailscale
+    \item
+      Nebula
+    \item
+      ZeroTier
+    \end{itemize}
+  \item
+    L7 overlays
+
+    \begin{itemize}
+    \tightlist
+    \item
+      WebRTC
+    \item
+      OpenZiti
+    \item
+      ngrok
+    \item
+      TOR
+    \item
+      BitTorrent
+    \item
+      IPFS
+    \item
+      Ethereum
+    \item
+      Teleport
+    \item
+      Freenet
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+\end{block}
+
+\begin{block}{Virtual Private Networks (VPN)}
+\protect\hypertarget{virtual-private-networks-vpn}{}
+\glspl{vpn} are implemented as Layer 2 or 3 network overlays. They are
+commonly used for securely connecting machines from different
+\glspl{lan}. They provide software emulation of a network device on the
+operating system level and allow other software to transparently use the
+functionality of the \gls{ip} suite without requiring extra changes.
+Traditional \glspl{vpn} such as IPSec\autocite{ipSecDocs} and
+OpenVPN\autocite{openVPNDocs} use a centralized service that all
+(encrypted) client communications must pass through.
+
+\begin{block}{Wireguard}
+\protect\hypertarget{wireguard}{}
+Wireguard\autocite{donenfeldWireGuardNextGeneration2017} is a VPN
+protocol built with the Noise Protocol Framework\autocite{noiseProtocol}
+that focuses on configuration simplicity. It considers issues such as
+peer discovery and key distribution as out of scope and a responsibility
+of a higher level system that uses Wireguard as a building block. The
+snippets below show a minimal set of configuration options that need to
+be provided in order for two peers to be able to form secure tunnels
+with each another.
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# peer1.conf}
+\KeywordTok{[}\DataTypeTok{Interface}\KeywordTok{]}
+\DataTypeTok{Address} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{1}\ErrorTok{/}\DataTypeTok{32}
+\DataTypeTok{ListenPort} \OperatorTok{=} \DecValTok{53063}
+\DataTypeTok{PrivateKey} \OperatorTok{=} \DataTypeTok{ePTiXXhHjvAHdWUr8Bimk30n0gh3m241RAzsN0JZDW0}\OperatorTok{=}
+
+\KeywordTok{[}\DataTypeTok{Peer}\KeywordTok{]}
+\DataTypeTok{PublicKey} \OperatorTok{=} \DataTypeTok{BSn0ejd1Y3bKuD}\ErrorTok{+}\DataTypeTok{Xpg0ZZeOf}\ErrorTok{+}\DataTypeTok{Ies}\ErrorTok{/}\DataTypeTok{oql0NZxw}\ErrorTok{+}\DataTypeTok{SOmkc}\OperatorTok{=}
+\DataTypeTok{AllowedIPs} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{2}\ErrorTok{/}\DataTypeTok{32}
+\DataTypeTok{Endpoint} \OperatorTok{=} \DataTypeTok{peer1}\KeywordTok{.}\DataTypeTok{example}\KeywordTok{.}\DataTypeTok{com}\ErrorTok{:}\DataTypeTok{38133}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\CommentTok{\# peer2.conf}
+\KeywordTok{[}\DataTypeTok{Interface}\KeywordTok{]}
+\DataTypeTok{Address} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{2}\ErrorTok{/}\DataTypeTok{32}
+\DataTypeTok{ListenPort} \OperatorTok{=} \DecValTok{38133}
+\DataTypeTok{PrivateKey} \OperatorTok{=} \DataTypeTok{sN}\ErrorTok{/}\DataTypeTok{d6XUPEVPGSziVgCCOnOivDK}\ErrorTok{+}\DataTypeTok{qAoYC3nxnssQ5Rls}\OperatorTok{=}
+
+\KeywordTok{[}\DataTypeTok{Peer}\KeywordTok{]}
+\DataTypeTok{PublicKey} \OperatorTok{=} \DataTypeTok{e}\ErrorTok{/}\DataTypeTok{TxvPmrgcc1G4cSH2bHv5J0PRHXKjYxTFoU8r}\ErrorTok{+}\DataTypeTok{G93E}\OperatorTok{=}
+\DataTypeTok{AllowedIPs} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{1}\ErrorTok{/}\DataTypeTok{32}
+\end{Highlighting}
+\end{Shaded}
+
+Each peer has a public/private key pair that is used for authentication
+and encryption. The Address field specifies the virtual IP address that
+the local network interface will use, while the AllowedIPs specifies
+what virtual IP addresses are associated with a peer's public key. A
+peer's Endpoint field specifies the URL at which it can be reached. Only
+one of the peers must be configured with a reachable endpoint for the
+other peer. In the above example once \texttt{peer1} initiates
+communication with \texttt{peer2}, \texttt{peer2} will learn the current
+endpoint of \texttt{peer1} and will be able to communicate back with it.
+
+This introduces a single point of failure and a potential bottleneck
+that might negatively impact the performance of the multi-party
+computations due to their \gls{p2p} nature.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth,height=0.25\textheight]{thesis/../figures/nat-intro.png}
+\caption{``Two parties behind separate NATs''\label{nat-intro}}
+\end{figure}
+
+On the other hand, mesh \glspl{vpn} such as Tinc\autocite{tincDocs},
+Tailscale\autocite{tailscaleDocs} and Nebula\autocite{nebulaDocs}
+utilize direct \gls{p2p} links between the clients for the data traffic.
+Authentication, authorization and traffic encryption are performed using
+certificates based on public key cryptography. As we mentioned in the
+introduction chapter, the devices in a typical home network can only
+initiate connections to public endpoints (via \gls{nat}) but cannot be
+discovered from outside their \gls{lan}. This poses a challenge when two
+parties who want to communicate via a direct link are both behind
+separate \glspl{nat} \ref{nat-intro} and neither can be contacted by the
+other one first. Mesh \glspl{vpn} solve this issue via \gls{nat}
+traversal techniques such as \gls{udp} hole punching based on concepts
+from \gls{stun}. The machines of each party can contact a public
+\gls{stun} server \ref{nat-traversal}, which will note what \gls{ip}
+addresses the connections come from and inform the parties. Since the
+parties initiated the connection to the STUN server, their routers will
+keep a mapping between their local IP addresses and the port that was
+allocated for the connection in order to be able to forward the incoming
+traffic. Those ``holes'' in the NATs were originally intended for the
+STUN server, but mesh VPNs use the stateless ``fire and forget'' UDP
+protocol for their internal communication, which does not require nor
+provides a mechanism for the NATs to verify who sent a UDP packet. With
+most NATs, this is enough to be able to (ab)use the ``punched holes''
+for the purpose of \gls{p2p} traffic from other parties. Mesh VPNs
+implement the stateful \gls{tcp} and \gls{tls} protocols on top of UDP
+and expose an regular network interface to the other programs, keeping
+them shielded from the underlying complexities. Other NAT
+implementations such as Symmetric NAT and \glspl{cgnat} can be more
+difficult to ``punch through'' due to their more complex port mapping
+strategies. In those cases, establishing P2P connections might involve
+guess work or even fail and require falling back to routing the
+(encrypted) traffic via another party or service.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth,height=0.25\textheight]{thesis/../figures/nat-traversal.png}
+\caption{``NAT traversal via STUN''\label{nat-traversal}}
+\end{figure}
+
+Now that we have a general understanding of how mesh VPNs work, let us
+see how Tinc, Tailscale and Nebula compare. All three are open-source,
+with the exception of Tailscale's coordination service which handles the
+peer discovery and identity management. Headscale
+\autocite{fontJuanfontHeadscale2022} is a community driven open-source
+alternative for that component. Tinc is the oldest of the three but has
+a relatively small community. It is mainly developed by a single author
+and appears to be more academic than industry motivated. Nebula and
+Tailscale are both business driven. Tailscale was started by a number of
+high profile ex-googlers and is the most end-user focused of the three,
+providing a service that allows people to sign up using a variety of
+identity providers including Google, Microsoft, GitHub and others. They
+also provide an Admin console that allows a user to easily add their
+personal devices to a network or share them with others. It also has
+support for automation tools like Terraform for creating authorization
+keys and managing an \gls{acl} based firewall. Nebula was originally
+developed at the instant messaging company Slack to create overlay
+networks for their cross region cloud infrastructure, but the authors
+later started a new company and are currently developing a user-centric
+platform similar to Tailscale's. Nebula is more customizable than
+Tailscale and since it is completely open-source it can be adapted to
+different use cases, but it is also more involved to set up. A
+certificate authority needs to be configured for issuing the identities
+of the participating hosts. Furthermore, publicly accessible
+coordination servers need to be deployed to facilitate the host
+discovery. Tailscale employs a distributed relay network of \gls{derp}
+servers, while Nebula can be configured to route via one of the other
+peers in the VPN.
+\end{block}
+\end{block}
+\end{frame}
+
 \begin{frame}{Testing methodology}
 \protect\hypertarget{testing-methodology}{}
+In the following chapters we will design and implement several solutions
+for ad hoc MPC sessions based on a subset of the previously discussed
+related works: - Internet protocol - Wireguard - Tailscale - Headscale -
+? Headscale with DID identity? - ? WebRTC? - Custom solution that
+automates the wireguard configuration by visiting a web page
+
+Additionally we will analyse and compare them in terms of performance,
+security and usability
+
+\begin{block}{Measuring performance}
+\protect\hypertarget{measuring-performance}{}
 During the preparation phase of the project we developed the \gls{e3}
 framework which simplifies and automates the process of deploying
 machines in different geographical regions, connecting them via an
 overlay network and executing multiparty computations between them,
-where each machine represents a different party. During the thesis
-assignment we will look at a number of solutions for ad hoc MPC sessions
-and compare them in terms of performance, security and usability.
+where each machine represents a different party.
 
-\begin{block}{Performance}
-\protect\hypertarget{performance}{}
 To summarize, \gls{e3} is a set of scripts that use a number of
 automation tools:
 
@@ -140,92 +425,51 @@ will be analyzed in terms of:
 \end{block}
 \end{frame}
 
-\begin{frame}{Overview}
-\protect\hypertarget{overview}{}
-In this chapter we will provide a high level overview of the solutions
-that will be analyzed in more detail in the following chapters.
+\begin{frame}{Internet protocol}
+\protect\hypertarget{internet-protocol}{}
+This solution focuses on directly using the internet protocol without
+involving an overlay network. Our goal is to analyze the implications of
+using only the functionalities that MPyC directly supports to serve as
+the reference for our later experiments.
 
-\begin{block}{Overlay Networking}
-\protect\hypertarget{overlay-networking}{}
-The Open Systems Interconnection (OSI) model distinguishes 7 layers in
-computer networks:
-
-\begin{itemize}
-\tightlist
-\item
-  7 - Application layer
-\item
-  6 - Presentation layer
-\item
-  5 - Session layer
-\item
-  4 - Transport layer
-\item
-  3 - Network layer
-\item
-  2 - Data link layer -
-\item
-  1 - Physical layer
-\end{itemize}
+\begin{block}{Implementation details}
+\protect\hypertarget{implementation-details}{}
+We will manually set up the multiparty computations via the public IP
+addresses of the machines and DNS.
 \end{block}
 
-\begin{block}{Virtual Private Networks (VPN)}
-\protect\hypertarget{virtual-private-networks-vpn}{}
+\begin{block}{Performance analysis}
+\protect\hypertarget{performance-analysis}{}
+\end{block}
+
+\begin{block}{Security analysis}
+\protect\hypertarget{security-analysis}{}
+\end{block}
+
+\begin{block}{Usability analysis}
+\protect\hypertarget{usability-analysis}{}
 \end{block}
 \end{frame}
 
-\begin{frame}[fragile]{Wireguard}
+\begin{frame}{Wireguard}
 \protect\hypertarget{wireguard}{}
-Wireguard\autocite{donenfeldWireGuardNextGeneration2017} is a VPN
-protocol built with the Noise Protocol Framework\autocite{noiseProtocol}
-that focuses on configuration simplicity. It considers issues such as
-peer discovery and key distribution as out of scope and a responsibility
-of a higher level system that uses Wireguard as a building block. The
-snippets below show a minimal set of configuration options that need to
-be provided in order for two peers to be able to form secure tunnels
-with each another.
+This solution creates an overlay network by manually configuring
+wireguard on each machine.
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# peer1.conf}
-\KeywordTok{[}\DataTypeTok{Interface}\KeywordTok{]}
-\DataTypeTok{Address} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{1}\ErrorTok{/}\DataTypeTok{32}
-\DataTypeTok{ListenPort} \OperatorTok{=} \DecValTok{53063}
-\DataTypeTok{PrivateKey} \OperatorTok{=} \DataTypeTok{ePTiXXhHjvAHdWUr8Bimk30n0gh3m241RAzsN0JZDW0}\OperatorTok{=}
+\begin{block}{Implementation details}
+\protect\hypertarget{implementation-details}{}
+\end{block}
 
-\KeywordTok{[}\DataTypeTok{Peer}\KeywordTok{]}
-\DataTypeTok{PublicKey} \OperatorTok{=} \DataTypeTok{BSn0ejd1Y3bKuD}\ErrorTok{+}\DataTypeTok{Xpg0ZZeOf}\ErrorTok{+}\DataTypeTok{Ies}\ErrorTok{/}\DataTypeTok{oql0NZxw}\ErrorTok{+}\DataTypeTok{SOmkc}\OperatorTok{=}
-\DataTypeTok{AllowedIPs} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{2}\ErrorTok{/}\DataTypeTok{32}
-\DataTypeTok{Endpoint} \OperatorTok{=} \DataTypeTok{peer1}\KeywordTok{.}\DataTypeTok{example}\KeywordTok{.}\DataTypeTok{com}\ErrorTok{:}\DataTypeTok{38133}
-\end{Highlighting}
-\end{Shaded}
+\begin{block}{Performance analysis}
+\protect\hypertarget{performance-analysis}{}
+\end{block}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\CommentTok{\# peer2.conf}
-\KeywordTok{[}\DataTypeTok{Interface}\KeywordTok{]}
-\DataTypeTok{Address} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{2}\ErrorTok{/}\DataTypeTok{32}
-\DataTypeTok{ListenPort} \OperatorTok{=} \DecValTok{38133}
-\DataTypeTok{PrivateKey} \OperatorTok{=} \DataTypeTok{sN}\ErrorTok{/}\DataTypeTok{d6XUPEVPGSziVgCCOnOivDK}\ErrorTok{+}\DataTypeTok{qAoYC3nxnssQ5Rls}\OperatorTok{=}
+\begin{block}{Security analysis}
+\protect\hypertarget{security-analysis}{}
+\end{block}
 
-\KeywordTok{[}\DataTypeTok{Peer}\KeywordTok{]}
-\DataTypeTok{PublicKey} \OperatorTok{=} \DataTypeTok{e}\ErrorTok{/}\DataTypeTok{TxvPmrgcc1G4cSH2bHv5J0PRHXKjYxTFoU8r}\ErrorTok{+}\DataTypeTok{G93E}\OperatorTok{=}
-\DataTypeTok{AllowedIPs} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{1}\ErrorTok{/}\DataTypeTok{32}
-\end{Highlighting}
-\end{Shaded}
-
-Each peer has a public/private key pair that is used for authentication
-and encryption. The Address field specifies the virtual IP address that
-the local network interface will use, while the AllowedIPs specifies
-what virtual IP addresses are associated with a peer's public key. A
-peer's Endpoint field specifies the URL at which it can be reached. Only
-one of the peers must be configured with a reachable endpoint for the
-other peer. In the above example once \texttt{peer1} initiates
-communication with \texttt{peer2}, \texttt{peer2} will learn the current
-endpoint of \texttt{peer1} and will be able to communicate back with it.
-
-\begin{block}{Implementation}
-\protect\hypertarget{implementation}{}
+\begin{block}{Usability analysis}
+\protect\hypertarget{usability-analysis}{}
 \end{block}
 \end{frame}
 
@@ -234,12 +478,36 @@ endpoint of \texttt{peer1} and will be able to communicate back with it.
 Tailscale is a VPN solution that configures a mesh of direct Wireguard
 tunnels between the peers.
 
-\begin{block}{Overview}
-\protect\hypertarget{overview}{}
+\begin{block}{Implementation details}
+\protect\hypertarget{implementation-details}{}
 \end{block}
 
-\begin{block}{Usability}
-\protect\hypertarget{usability}{}
+\begin{block}{Performance analysis}
+\protect\hypertarget{performance-analysis}{}
+\end{block}
+
+\begin{block}{Security analysis}
+\protect\hypertarget{security-analysis}{}
+\begin{block}{Trust model}
+\protect\hypertarget{trust-model}{}
+There is a centralized service that deals with the key distribution,
+which needs to be trusted to provide the correct public keys for the
+correct parties
+\end{block}
+
+\begin{block}{Identity}
+\protect\hypertarget{identity}{}
+Identity is based on third party identity providers such as Microsoft
+and GitHub
+
+\begin{itemize}
+\item
+  Magic DNS
+\item ~
+  \hypertarget{usability-analysis}{%
+  \section{Usability analysis}\label{usability-analysis}}
+\end{itemize}
+
 With tailscale each party needs to
 
 \begin{itemize}
@@ -270,30 +538,37 @@ With tailscale each party needs to
   Run the demo
 \end{itemize}
 \end{block}
+\end{block}
+\end{frame}
 
-\begin{block}{Security}
-\protect\hypertarget{security}{}
+\begin{frame}{Headscale}
+\protect\hypertarget{headscale}{}
+This solution is similar to the Tailscale one, but it uses Headscale - a
+self-hosted open-source alternative to the closed-source Tailscale
+coordination service.
+
+\begin{block}{Implementation details}
+\protect\hypertarget{implementation-details}{}
+\end{block}
+
+\begin{block}{Performance analysis}
+\protect\hypertarget{performance-analysis}{}
+\end{block}
+
+\begin{block}{Security analysis}
+\protect\hypertarget{security-analysis}{}
 \begin{block}{Trust model}
 \protect\hypertarget{trust-model}{}
-There is a centralized service that deals with the key distribution,
-which needs to be trusted to provide the correct public keys for the
-correct parties
+There still is a centralized service like in the Tailscale solution, but
+here it is self-deployed.
 \end{block}
 
 \begin{block}{Identity}
 \protect\hypertarget{identity}{}
-Identity is based on third party identity providers such as Microsoft
-and GitHub
-
-\begin{itemize}
-\tightlist
-\item
-  Magic DNS
-\end{itemize}
 \end{block}
 \end{block}
 
-\begin{block}{Performance}
-\protect\hypertarget{performance}{}
+\begin{block}{Usability analysis}
+\protect\hypertarget{usability-analysis}{}
 \end{block}
 \end{frame}

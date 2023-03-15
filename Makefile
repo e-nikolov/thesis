@@ -50,7 +50,7 @@ $(wildcard *.tex): %.tex: %/latex/full.tex
 		-pdf \
 		-time \
 		--output-directory="build" \
-		-silent \
+		-quiet \
 		$*.tex
 
 # \

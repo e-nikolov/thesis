@@ -56,6 +56,18 @@
       Peer-to-peer
     \end{itemize}
   \item
+    In terms of NAT Traversal
+
+    \begin{itemize}
+    \tightlist
+    \item
+      STUN
+    \item
+      TURN
+    \end{itemize}
+  \item
+    User/Kernel space
+  \item
     In terms of OSI layers:
 
     \begin{itemize}
@@ -143,201 +155,77 @@ Network overlays
 \end{minipage} \\
 \midrule()
 \endhead
-7. Application & High level protocols & HTTP, HTTPS, DNS, FTP, SMTP &
-WebRTC, OpenZiti, ngrok, TOR, BitTorrent, Ethereum, Teleport, Freenet \\
-6. Presentation & Translation of data between a networking service and
-an application, e.g.~encoding, compression, encryption & MIME, TLS* &
-Noise Protocol Framework \\
-5. Session & continuous exchange of information & & \\
-4. Transport & Variable length data over a network while maintaining
-quality-of-service, e.g.~ports, connections, packet splitting & UDP, TCP
-& \\
-3. Network & data packets between two nodes, routed via a path of other
-nodes, e.g.~addressing, routing & IP, ICMP & OpenVPN, IPSec, Tinc,
-Wireguard, Tailscale, Nebula, ZeroTier \\
-2. Data link & data frames between two nodes, directly connected via a
-physical layer & & N2N \\
-1. Physical & sending raw bits over a physical medium & & \\
+7. Application & High level protocols that user-facing services use &
+HTTP, HTTPS, DNS, FTP, SMTP & WebRTC, OpenZiti, ngrok, TOR, BitTorrent,
+IPFS, Ethereum, Teleport, Freenet \\
+\hline 6. Presentation & Translation of data between a networking
+service and an application, e.g.~encoding, compression, encryption &
+MIME, TLS* & Noise Protocol Framework \\
+\hline 5. Session & Session setup, management, teardown, authentication,
+authorization & SOCKS, X.225 & \\
+\hline 4. Transport & Sending data of variable length over a network
+while maintaining quality-of-service, e.g.~ports, connections, packet
+splitting & UDP, TCP, NAT port mapping & \\
+\hline 3. Network & Sending data packets between two nodes, routed via a
+path of other nodes, e.g.~addressing, routing & IP, ICMP, NAT & TUN
+driver, IPSec, OpenVPN, Tinc, Wireguard, Tailscale, Nebula, ZeroTier \\
+\hline 2. Data link & Sending data frames between two nodes, directly
+connected via a physical layer, e.g.~on a LAN & MAC, L2TP & TAP driver,
+N2N, OpenVPN, Tinc \\
+\hline 1. Physical & Sending raw bits over a physical medium & RS232,
+Ethernet, WiFi, USB, Bluetooth & \\
+\bottomrule()
+\end{longtable}
+
+\newpage
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Network overlay
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Open source
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+OSI Layer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Peer-to-Peer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+NAT Traversal
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Implementation
+\end{minipage} \\
+\midrule()
+\endhead
+IPSec & Yes & Layer 3 & No & & TUN driver \\
+\hline OpenVPN & Yes & Layer 2, 3 & No & & TUN or TAP driver \\
+\hline Tinc & Yes & Layer 2, 3 & Yes & STUN or TURN & TUN or TAP
+driver \\
+\hline Wireguard & Yes & Layer 3 & No & & Linux kernel module or TUN
+driver; Uses Noise \\
+\hline Tailscale & Yes (client); No (server) & Layer 3 & Yes & STUN or
+DERP & Uses Wireguard \\
+\hline Nebula & Yes & Layer 3 & Yes & STUN or TURN & Uses Noise \\
+\hline ZeroTier & No & Layer 3 & Yes & STUN or TURN & \\
+\hline WebRTC & Yes & Layer 7 & Yes & STUN or TURN & \\
+\hline OpenZiti & Yes & Layer 7 & ? & Relaying & \\
+\hline Teleport & Yes & Layer 7 & ? & Relaying & \\
+\hline ngrok & No & Layer 7 & No & Proxy & \\
+\hline TOR & Yes & Layer 7 & Yes & Relaying & \\
+\hline BitTorrent & Yes & Layer 7 & Yes & ? & \\
+\hline IPFS & Yes & Layer 7 & Yes & ? & \\
+\hline Ethereum & Yes & Layer 7 & Yes & ? & \\
+\hline Freenet & Yes & Layer 7 & Yes & ? & \\
 \bottomrule()
 \end{longtable}
 
 \begin{itemize}
-\item
-  Layer 7 - Application - high level protocols
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Protocols
-
-    \begin{itemize}
-    \tightlist
-    \item
-      HTTP
-    \item
-      HTTPS
-    \item
-      DNS
-    \item
-      FTP
-    \item
-      SMTP
-    \end{itemize}
-  \item
-    Solutions
-
-    \begin{itemize}
-    \tightlist
-    \item
-      WebRTC
-    \item
-      OpenZiti
-    \item
-      ngrok
-    \item
-      TOR
-    \item
-      BitTorrent
-    \item
-      IPFS
-    \item
-      Ethereum
-    \item
-      Teleport
-    \item
-      Freenet
-    \end{itemize}
-  \end{itemize}
-\item
-  Layer 6 - Presentation - Translation of data between a networking
-  service and an application
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Concepts
-
-    \begin{itemize}
-    \tightlist
-    \item
-      encoding
-    \item
-      compression
-    \item
-      encryption
-    \end{itemize}
-  \item
-    Protocols
-
-    \begin{itemize}
-    \tightlist
-    \item
-      MIME
-    \item
-      SSL/TLS*
-    \end{itemize}
-  \item
-    Solutions
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Noise Protocol Famework
-    \end{itemize}
-  \end{itemize}
-\item
-  Layer 5 - Session - continuous exchange of information
-\item
-  Layer 4 - Transport - Variable length data over a network while
-  maintaining quality-of-service
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Concepts:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Ports
-    \item
-      Stateful Connections / Connectionless
-    \item
-      Splitting of variable length data into multiple smaller packets
-    \end{itemize}
-  \item
-    Protocols:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      TCP
-    \item
-      UDP
-    \end{itemize}
-  \end{itemize}
-\item
-  Layer 3 - Network - data packets between two nodes, routed via a path
-  of other nodes
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Concepts:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Routing
-    \item
-      IP Addresses
-    \end{itemize}
-  \item
-    Protocols:
-
-    \begin{itemize}
-    \tightlist
-    \item
-      IP
-    \item
-      ICMP
-    \end{itemize}
-  \item
-    Solutions
-
-    \begin{itemize}
-    \tightlist
-    \item
-      IPSec
-    \item
-      OpenVPN
-    \item
-      Tinc
-    \item
-      Wireguard
-    \end{itemize}
-  \end{itemize}
-\item
-  Layer 2 - Data link - data frames between two nodes, directly
-  connected via a physical layer
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Solutions
-
-    \begin{itemize}
-    \tightlist
-    \item
-      OpenVPN in network bridge mode
-    \item
-      Tinc
-    \item
-      N2N
-    \end{itemize}
-  \end{itemize}
-\item
-  Layer 1 - Physical - sending raw bits over a physical medium
+\tightlist
 \item
   Resources
 
@@ -353,8 +241,8 @@ physical layer & & N2N \\
 \hypertarget{primitives}{%
 \section{Primitives}\label{primitives}}
 
-\hypertarget{ip-stack}{%
-\subsection{IP Stack}\label{ip-stack}}
+\hypertarget{internet-protocol}{%
+\subsection{Internet Protocol}\label{internet-protocol}}
 
 \begin{itemize}
 \tightlist

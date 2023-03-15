@@ -2,11 +2,20 @@
 
 # Testing methodology
 
+In the following chapters we will design and implement several solutions for ad hoc MPC sessions based on a subset of the previously discussed related works:
+- Internet protocol
+- Wireguard
+- Tailscale
+- Headscale
+- ? Headscale with DID identity?
+- ? WebRTC?
+- Custom solution that automates the wireguard configuration by visiting a web page
+
+Additionally we will analyse and compare them in terms of performance, security and usability
+
+## Measuring performance
 
 During the preparation phase of the project we developed the \gls{e3} framework which simplifies and automates the process of deploying machines in different geographical regions, connecting them via an overlay network and executing multiparty computations between them, where each machine represents a different party.
-During the thesis assignment we will look at a number of solutions for ad hoc MPC sessions and compare them in terms of performance, security and usability.
-
-## Performance
 
 To summarize, \gls{e3} is a set of scripts that use a number of automation tools:
 

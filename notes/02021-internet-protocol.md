@@ -1,4 +1,4 @@
-### IP Stack
+### Internet Protocol
 
 - IP addresses
 - Routing
