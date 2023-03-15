@@ -9,15 +9,17 @@
 
 The Open Systems Interconnection (OSI) model distinguishes 7 layers in computer networks:
 
+
+
 \newpage
 
-| OSI Layer       | Description                                                              |          Protocols          | Solutions                                                             |
-|---|:-----|--|--|
+| OSI Layer       | Description                                                              |          Protocols          | Network overlays                                                             |
+|---|--------|--|---|
 | 7. Application  | High level protocols                                                                                           | HTTP, HTTPS, DNS, FTP, SMTP | WebRTC, OpenZiti, ngrok, TOR, BitTorrent, Ethereum, Teleport, Freenet |
-| 6. Presentation | Translation of data between a networking service and an application, e.g. encoding, compression, encryption           |       MIME, TLS*        |                                                                       |
+| 6. Presentation | Translation of data between a networking service and an application, e.g. encoding, compression, encryption           |       MIME, TLS*        |     Noise Protocol Framework                                                                  |
 | 5. Session      | continuous exchange of information                                                                             |                             |                                                                       |
 | 4. Transport    | Variable length data over a network while maintaining quality-of-service, e.g. ports, connections, packet splitting |          UDP, TCP           |                                                                       |
-| 3. Network      | data packets between two nodes, routed via a path of other nodes, e.g. addressing, routing                |          IP, ICMP           | OpenVPN, IPSec, Tinc, Wireguard                                       |
+| 3. Network      | data packets between two nodes, routed via a path of other nodes, e.g. addressing, routing                |          IP, ICMP           | OpenVPN, IPSec, Tinc, Wireguard, Tailscale, Nebula, ZeroTier                                       |
 | 2. Data link    | data frames between two nodes, directly connected via a physical layer                                         |                             | N2N                                                                   |
 | 1. Physical     | sending raw bits over a physical medium                                                                        |                             |                                                                       |
 

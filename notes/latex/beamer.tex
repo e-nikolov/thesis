@@ -127,10 +127,10 @@ computer networks:
 \newpage
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2308}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4615}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1538}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1538}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1875}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.5000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1250}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1875}}@{}}
 \toprule()
 \begin{minipage}[b]{\linewidth}\raggedright
 OSI Layer
@@ -139,21 +139,22 @@ Description
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Protocols
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-Solutions
+Network overlays
 \end{minipage} \\
 \midrule()
 \endhead
 7. Application & High level protocols & HTTP, HTTPS, DNS, FTP, SMTP &
 WebRTC, OpenZiti, ngrok, TOR, BitTorrent, Ethereum, Teleport, Freenet \\
 6. Presentation & Translation of data between a networking service and
-an application, e.g.~encoding, compression, encryption & MIME, TLS* & \\
+an application, e.g.~encoding, compression, encryption & MIME, TLS* &
+Noise Protocol Framework \\
 5. Session & continuous exchange of information & & \\
 4. Transport & Variable length data over a network while maintaining
 quality-of-service, e.g.~ports, connections, packet splitting & UDP, TCP
 & \\
 3. Network & data packets between two nodes, routed via a path of other
 nodes, e.g.~addressing, routing & IP, ICMP & OpenVPN, IPSec, Tinc,
-Wireguard \\
+Wireguard, Tailscale, Nebula, ZeroTier \\
 2. Data link & data frames between two nodes, directly connected via a
 physical layer & & N2N \\
 1. Physical & sending raw bits over a physical medium & & \\
