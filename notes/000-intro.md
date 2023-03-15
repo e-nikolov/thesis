@@ -1,3 +1,8 @@
+\makeatletter
+\def\fps@figure{h}
+\makeatother
+
+
 # Intro
 
 - Emphasize on the difference between the Solutions Test Framework (E3) and the actual Solutions

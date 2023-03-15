@@ -1,3 +1,7 @@
+\makeatletter
+\def\fps@figure{h}
+\makeatother
+
 \hypertarget{intro}{%
 \chapter{Intro}\label{intro}}
 
@@ -16,24 +20,12 @@
 \chapter{Related work}\label{related-work}}
 
 \begin{itemize}
-\tightlist
 \item
   There is a huge amount of primitives and partial solutions that are
   relevant to our problem, which makes it difficult to review them all,
-  so we will try to arrange them in groups based on similarity and focus
-  on one or two per group while only briefly mentioning the alternatives
-\end{itemize}
-
-\hypertarget{osi-model}{%
-\section{OSI Model}\label{osi-model}}
-
-\begin{itemize}
-\item
-  Create a figure that maps the various related components to OSI model
-  layers
-\item
-  It can be a ``more or less accurate'' artistic impression since the
-  components can cover multiple layers and the layers are somewhat fluid
+  so we will try to design a classification system for them and focus on
+  one or two solutions per class while only briefly mentioning their
+  alternatives
 \item
   Make a distinction between
 
@@ -54,11 +46,306 @@
       Identity solutions
     \end{itemize}
   \item
-    solutions that create a virtual network by emulating the Internet
-    protocol stack (VPNs, Wireguard, \ldots)
+    In terms of topology
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Star shaped
+    \item
+      Peer-to-peer
+    \end{itemize}
   \item
-    solutions that work on the application layer, which need a separate
-    library to
+    In terms of OSI layers:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Virtual Network Interface Controller - solutions that emulate a
+      physical network controller in the OS using TUN/TAP driver. Most
+      networked applications are already designed to work with the
+      Internet Protocol Stack (Suite - definitions; Stack -
+      implementations) in the host operating system and they do not need
+      to do anything extra to work with a virtual NIC. Those solutions
+      are usually more general purpose as they allow any other
+      application on the host machine to use the overlay network.
+      Installing an application that also uses this type of a solution
+      may be unintuitive because it will essentially install 2 separate
+      programs - the actual application and another one that manages the
+      virtual network, while the virtual network will not be limited to
+      our application but will also be usable by the others.
+
+      \begin{itemize}
+      \tightlist
+      \item
+        IPSec
+      \item
+        Wireguard
+      \item
+        Tailscale
+      \item
+      \end{itemize}
+    \item
+      Application layer - require the applications to be implemented in
+      a way that supports the protocols of the solution by using
+      additional libraries or SDKs to facilitate the communications.
+      Those solutions result in more purpose built applications as it is
+      not possible for an application to use the overlay network if it
+      wasn't specifically designed to be able to.
+
+      \begin{itemize}
+      \tightlist
+      \item
+        WebRTC
+      \item
+        OpenZiti
+      \item
+      \end{itemize}
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{osi-model}{%
+\section{OSI Model}\label{osi-model}}
+
+\begin{itemize}
+\tightlist
+\item
+  Create a figure that maps the various related components to OSI model
+  layers
+\item
+  It can be a ``more or less accurate'' artistic impression since the
+  components can cover multiple layers and the layers are somewhat fluid
+\end{itemize}
+
+\includegraphics[width=0.5\textwidth,height=0.3\textheight]{notes/../figures/osi-model-2.png}
+\includegraphics[width=0.4\textwidth,height=0.3\textheight]{notes/../figures/osi-model-1.png}
+
+The Open Systems Interconnection (OSI) model distinguishes 7 layers in
+computer networks:
+
+\newpage
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2308}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4615}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1538}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1538}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+OSI Layer
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Description
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Protocols
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Solutions
+\end{minipage} \\
+\midrule()
+\endhead
+7. Application & High level protocols & HTTP, HTTPS, DNS, FTP, SMTP &
+WebRTC, OpenZiti, ngrok, TOR, BitTorrent, Ethereum, Teleport, Freenet \\
+6. Presentation & Translation of data between a networking service and
+an application, e.g.~encoding, compression, encryption & MIME, TLS* & \\
+5. Session & continuous exchange of information & & \\
+4. Transport & Variable length data over a network while maintaining
+quality-of-service, e.g.~ports, connections, packet splitting & UDP, TCP
+& \\
+3. Network & data packets between two nodes, routed via a path of other
+nodes, e.g.~addressing, routing & IP, ICMP & OpenVPN, IPSec, Tinc,
+Wireguard \\
+2. Data link & data frames between two nodes, directly connected via a
+physical layer & & N2N \\
+1. Physical & sending raw bits over a physical medium & & \\
+\bottomrule()
+\end{longtable}
+
+\begin{itemize}
+\item
+  Layer 7 - Application - high level protocols
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Protocols
+
+    \begin{itemize}
+    \tightlist
+    \item
+      HTTP
+    \item
+      HTTPS
+    \item
+      DNS
+    \item
+      FTP
+    \item
+      SMTP
+    \end{itemize}
+  \item
+    Solutions
+
+    \begin{itemize}
+    \tightlist
+    \item
+      WebRTC
+    \item
+      OpenZiti
+    \item
+      ngrok
+    \item
+      TOR
+    \item
+      BitTorrent
+    \item
+      IPFS
+    \item
+      Ethereum
+    \item
+      Teleport
+    \item
+      Freenet
+    \end{itemize}
+  \end{itemize}
+\item
+  Layer 6 - Presentation - Translation of data between a networking
+  service and an application
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Concepts
+
+    \begin{itemize}
+    \tightlist
+    \item
+      encoding
+    \item
+      compression
+    \item
+      encryption
+    \end{itemize}
+  \item
+    Protocols
+
+    \begin{itemize}
+    \tightlist
+    \item
+      MIME
+    \item
+      SSL/TLS*
+    \end{itemize}
+  \item
+    Solutions
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Noise Protocol Famework
+    \end{itemize}
+  \end{itemize}
+\item
+  Layer 5 - Session - continuous exchange of information
+\item
+  Layer 4 - Transport - Variable length data over a network while
+  maintaining quality-of-service
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Concepts:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Ports
+    \item
+      Stateful Connections / Connectionless
+    \item
+      Splitting of variable length data into multiple smaller packets
+    \end{itemize}
+  \item
+    Protocols:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      TCP
+    \item
+      UDP
+    \end{itemize}
+  \end{itemize}
+\item
+  Layer 3 - Network - data packets between two nodes, routed via a path
+  of other nodes
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Concepts:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Routing
+    \item
+      IP Addresses
+    \end{itemize}
+  \item
+    Protocols:
+
+    \begin{itemize}
+    \tightlist
+    \item
+      IP
+    \item
+      ICMP
+    \end{itemize}
+  \item
+    Solutions
+
+    \begin{itemize}
+    \tightlist
+    \item
+      IPSec
+    \item
+      OpenVPN
+    \item
+      Tinc
+    \item
+      Wireguard
+    \end{itemize}
+  \end{itemize}
+\item
+  Layer 2 - Data link - data frames between two nodes, directly
+  connected via a physical layer
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Solutions
+
+    \begin{itemize}
+    \tightlist
+    \item
+      OpenVPN in network bridge mode
+    \item
+      Tinc
+    \item
+      N2N
+    \end{itemize}
+  \end{itemize}
+\item
+  Layer 1 - Physical - sending raw bits over a physical medium
+\item
+  Resources
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://jvns.ca/blog/2021/05/11/what-s-the-osi-model-/}{The
+    OSI model doesn't map well to TCP/IP}
+  \item
   \end{itemize}
 \end{itemize}
 
@@ -195,11 +482,15 @@ Traversal}\label{network-address-translation-nat-traversal}}
       tokens over HTTPS
     \end{itemize}
   \item
-    \url{https://noiseexplorer.com/}
+    \href{https://noiseexplorer.com/}{Design and Explore Noise Handshake
+    Patterns}
   \item
-    \url{https://duo.com/labs/tech-notes/noise-protocol-framework-intro}
+    \href{https://duo.com/labs/tech-notes/noise-protocol-framework-intro}{An
+    Introduction to the Noise Protocol Framework}
   \item
-    \url{https://www.youtube.com/watch?v=ceGTgqypwnQ}
+    \href{https://www.youtube.com/watch?v=ceGTgqypwnQ}{The Noise
+    Protocol Framework (Video)}
+  \item
   \end{itemize}
 \end{itemize}
 
@@ -242,6 +533,12 @@ solution}\label{basic-internet-protocol-solution}}
 \section{Virtual Private Networks
 (VPNs)}\label{virtual-private-networks-vpns}}
 
+``A virtual private network {[}4{]} is a secure logical network that is
+tunnelled though another network. VPNs are often used for implementing
+secure point-to-point communications through the public Internet.
+Therefore they usually feature user authentication and content
+encryption.'' -- n2n whitepaper
+
 \begin{itemize}
 \tightlist
 \item
@@ -267,6 +564,15 @@ solution}\label{basic-internet-protocol-solution}}
     Tinc has been around for a long time (first release in 2000)
   \item
     Newer solutions like Tailscale are modernized and more accessible
+  \end{itemize}
+\item
+  Resources:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://www.rfc-editor.org/rfc/rfc2764.html}{A Framework for
+    IP Based Virtual Private Networks (RFC 2764)}
   \item
   \end{itemize}
 \end{itemize}
@@ -277,7 +583,7 @@ solution}\label{basic-internet-protocol-solution}}
 \begin{itemize}
 \tightlist
 \item
-  VPN Protocol
+  Low level VPN Protocol
 \item
   Used by Tailscale
 \item
@@ -285,42 +591,67 @@ solution}\label{basic-internet-protocol-solution}}
 \item
   Built with the \href{notes/02022-noise.md}{Noise Protocol Framework}
 \item
+  Added to Linux Kernel 5.6 in May 2020
+\item
   Typically used as a building block in more complicated systems
 \item
-  OSI Layer
+  Layer 3 over UDP
 
   \begin{itemize}
   \tightlist
   \item
-    Kernel mode - Network Layer 3 (IP)
+    Linux Kernel module
+
+    \begin{itemize}
+    \tightlist
+    \item
+      faster - packets are not copied between kernel memory and
+      userspace memory
+    \end{itemize}
   \item
-    Userspace mode - Transport Layer 4 (UDP, TCP)
+    Userspace virtual \href{notes/02021-internet-protocol}{TUN} device
+
+    \begin{itemize}
+    \tightlist
+    \item
+      easier to update because it does not require specific kernel
+      modules
+    \item
+      available on windows
+    \end{itemize}
   \end{itemize}
 \item
   Simple configuration
 
   \begin{itemize}
+  \tightlist
   \item
     Each peer has a public/private key pair for authentication and
     traffic encryption
   \item
     Each peer has a config file:
+  \end{itemize}
+\end{itemize}
+
+\newpage
 
 \begin{Shaded}
 \begin{Highlighting}[]
-\KeywordTok{[}\DataTypeTok{Interface}\KeywordTok{]}
-\DataTypeTok{Address} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{1}\ErrorTok{/}\DataTypeTok{32}
-\DataTypeTok{ListenPort} \OperatorTok{=} \DecValTok{53063}
-\DataTypeTok{PrivateKey} \OperatorTok{=} \DataTypeTok{ePTiXXhHjvAHdWUr8Bimk30n0gh3m241RAzsN0JZDW0}\OperatorTok{=}
+\KeywordTok{[Interface]}
+\DataTypeTok{Address }\OtherTok{=}\StringTok{ 101.0.0.1/32}
+\DataTypeTok{ListenPort }\OtherTok{=}\StringTok{ }\DecValTok{53063}
+\DataTypeTok{PrivateKey }\OtherTok{=}\StringTok{ ePTiXXhHjvAHdWUr8Bimk30n0gh3m241RAzsN0JZDW0=}
 
-\KeywordTok{[}\DataTypeTok{Peer}\KeywordTok{]}
-\DataTypeTok{PublicKey} \OperatorTok{=} \DataTypeTok{BSn0ejd1Y3bKuD}\ErrorTok{+}\DataTypeTok{Xpg0ZZeOf}\ErrorTok{+}\DataTypeTok{Ies}\ErrorTok{/}\DataTypeTok{oql0NZxw}\ErrorTok{+}\DataTypeTok{SOmkc}\OperatorTok{=}
-\DataTypeTok{AllowedIPs} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{2}\ErrorTok{/}\DataTypeTok{32}
-\DataTypeTok{Endpoint} \OperatorTok{=} \FloatTok{142.93}\KeywordTok{.}\DataTypeTok{135}\KeywordTok{.}\DataTypeTok{154}\ErrorTok{:}\DataTypeTok{38133}
-\DataTypeTok{PersistentKeepalive} \OperatorTok{=} \DecValTok{25}
+\KeywordTok{[Peer]}
+\DataTypeTok{PublicKey }\OtherTok{=}\StringTok{ BSn0ejd1Y3bKuD+Xpg0ZZeOf+Ies/oql0NZxw+SOmkc=}
+\DataTypeTok{AllowedIPs }\OtherTok{=}\StringTok{ 101.0.0.2/32}
+\DataTypeTok{Endpoint }\OtherTok{=}\StringTok{ 142.93.135.154:38133}
+\DataTypeTok{PersistentKeepalive }\OtherTok{=}\StringTok{ }\DecValTok{25}
 \end{Highlighting}
 \end{Shaded}
-  \end{itemize}
+
+\begin{itemize}
+\tightlist
 \item
   Creates a virtual network interface in the operating system that looks
   like an additional network card and can be used for TCP/IP
@@ -354,7 +685,16 @@ solution}\label{basic-internet-protocol-solution}}
   \begin{itemize}
   \tightlist
   \item
-    \url{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}
+    \href{https://blogs.keysight.com/blogs/tech/nwvs.entry.html/2022/09/22/wireguard_the_next-genvpnprotocol-OcEz.html}{WireGuard:
+    The Next-Gen VPN Protocol}
+  \item
+    \href{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}{WireGuard
+    Endpoint Discovery and NAT Traversal using DNS-SD}
+  \item
+    \href{https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e7096c131e5161fa3b8e52a650d7719d2857adfd}{Kernel
+    Commit}
+  \item
+    \href{https://wiki.archlinux.org/title/WireGuard}{Arch Linux Wiki}
   \end{itemize}
 \end{itemize}
 
@@ -377,7 +717,7 @@ solution}\label{basic-internet-protocol-solution}}
   \item
     Facilitates
     \href{notes/0202-nat\#Session\%20Traversal\%20Utilities\%20for\%20NAT\%20(STUN)}{STUN}/\href{notes/02021-internet-protocol.md\#test}{TURN}
-    for peer discovery
+    for peer discovery and NAT traversal
   \item
     Distributes wireguard public keys
   \item
@@ -454,14 +794,16 @@ solution}\label{basic-internet-protocol-solution}}
 \begin{itemize}
 \tightlist
 \item
-  Mesh VPN
+  \href{https://github.com/slackhq/nebula}{Open source} Mesh VPN
 \item
   Similar to Tailscale
 \item
   Does not use Wireguard
 \item
-  Built using the {[}{[}02022-noise\textbar Noise Protocol
-  Framework{]}{]} (used in Wireguard)
+  NAT traversal via Lighthouses
+\item
+  Built using the \href{notes/02022-noise}{Noise Protocol Framework}
+  (used in Wireguard)
 \item
   Uses a Certificate Authority that needs to sign each Peer's
   certificate
@@ -481,10 +823,98 @@ solution}\label{basic-internet-protocol-solution}}
   \end{itemize}
 \end{itemize}
 
+\hypertarget{zerotier}{%
+\section{ZeroTier}\label{zerotier}}
+
+\begin{itemize}
+\tightlist
+\item
+  Closed source Mesh VPN
+\item
+  Similar to Tailscale
+\item
+  Does not use Wireguard
+\item
+\end{itemize}
+
+\hypertarget{n2n}{%
+\section{N2N}\label{n2n}}
+
+\begin{itemize}
+\tightlist
+\item
+  \href{https://github.com/ntop/n2n}{Open source} Mesh VPN
+\item
+  Initial release - 27.03.2008
+\item
+  Layer 2 \href{notes/02021-internet-protocol}{TAP} in userspace over
+  Layer 3
+
+  \begin{itemize}
+  \tightlist
+  \item
+    offers a virtual ethernet jack
+  \item
+    virtual devices have MAC addresses
+  \item
+    Multicast/broadcast via the Supernode
+  \end{itemize}
+\item
+  Similar to Nebula
+\item
+  Does not use Wireguard
+\item
+  Does not use the Noise protocol
+\item
+  NAT traversal by relaying via Supernodes
+
+  \begin{itemize}
+  \tightlist
+  \item
+    No STUN - https://github.com/ntop/n2n/issues/57
+  \end{itemize}
+\item
+  Resources:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{http://luca.ntop.org/n2n.pdf}{Whitepaper}
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{tinc}{%
+\section{Tinc}\label{tinc}}
+
+\begin{itemize}
+\tightlist
+\item
+  Mesh VPN released in 2000
+\item
+  Less modern
+\item
+  Fewer features
+\item
+  Slower development
+\item
+  More academic
+\item
+  Runs in userspace as a TAP device
+\item
+  Resources:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://www.tinc-vpn.org/documentation-1.1/tinc.pdf}{Manual}
+  \end{itemize}
+\end{itemize}
+
 \hypertarget{didcomm-v2}{%
 \section{DIDComm v2}\label{didcomm-v2}}
 
 \begin{itemize}
+\tightlist
 \item
   Protocol for communicating that uses DID for identity management
 \item
@@ -500,15 +930,15 @@ solution}\label{basic-internet-protocol-solution}}
 \item
   Routing happens via mediators
 \item
-  \begin{longtable}[]{@{}l@{}}
-  \toprule()
-  sources: \\
-  \midrule()
-  \endhead
-  -
-  \url{https://newsletter.impervious.ai/decentralized-identifiers-implications-for-your-data-payments-and-communications-2/} \\
-  \bottomrule()
-  \end{longtable}
+  Resources:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    \href{https://newsletter.impervious.ai/decentralized-identifiers-implications-for-your-data-payments-and-communications-2/}{Decentralized
+    Identifiers: Implications for Your Data, Payments and
+    Communications}
+  \end{itemize}
 \end{itemize}
 
 \hypertarget{ngrok}{%
@@ -518,6 +948,10 @@ solution}\label{basic-internet-protocol-solution}}
 \tightlist
 \item
   Paid service for creating public URLs for local services
+\item
+  Never peer-to-peer
+\item
+  The traffic always goes through their centralized service
 \item
 \end{itemize}
 
@@ -551,11 +985,15 @@ solution}\label{basic-internet-protocol-solution}}
   addresses of the parties
 \end{itemize}
 
-\hypertarget{friend2friend-networks}{%
-\section{Friend2Friend Networks}\label{friend2friend-networks}}
+\hypertarget{freenet}{%
+\section{Freenet}\label{freenet}}
 
 \begin{itemize}
 \tightlist
+\item
+  \href{https://homepage.divms.uiowa.edu/~ghosh/freenet.pdf}{Whitepaper}
+\item
+  Friend2Friend network
 \item
   Peer to Peer Dark Web network
 \item
@@ -564,10 +1002,34 @@ solution}\label{basic-internet-protocol-solution}}
 \item
   Services and files accessible only by other people on the network
 \item
+  Application layer
+\item
+  Similar software:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    retroshare
+  \item
+    gnunet
+  \item
+    waste
+  \item
+    peerkeep
+  \item
+    camlistore
+  \end{itemize}
 \end{itemize}
 
 \hypertarget{teleport}{%
 \section{Teleport}\label{teleport}}
+
+\begin{itemize}
+\tightlist
+\item
+  Layer 7
+\item
+\end{itemize}
 
 \hypertarget{bittorrent}{%
 \section{BitTorrent}\label{bittorrent}}
@@ -625,6 +1087,17 @@ solution}\label{basic-internet-protocol-solution}}
 \item
   Does not require additional plugins or native apps
 \item
+  We could design a solution based on WebRTC in a browser by compiling
+  the MPyC demos to web assembly or using PyScript.
+
+  \begin{itemize}
+  \tightlist
+  \item
+    https://www.win.tue.nl/\textasciitilde berry/mpyc/pyscript.html
+  \item
+    https://pyscript.net/
+  \end{itemize}
+\item
   There seem to be many publicly available services that can be used as
   ICE servers for WebRTC
 
@@ -680,6 +1153,9 @@ solution}\label{basic-internet-protocol-solution}}
   Focused on Services
 \item
   Allows embedding into apps via an SDK
+\item
+  Tunneler is a proxy that allows non-ziti aware applications to use the
+  overlay network by intercepting their traffic
 \end{itemize}
 
 \hypertarget{implementation-notes}{%

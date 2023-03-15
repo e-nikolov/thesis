@@ -1,8 +1,9 @@
+\begin{frame}
 \section{Introduction}
+\end{frame}
 
-\hypertarget{introduction}{%
-\chapter{Introduction}\label{introduction}}
-
+\begin{frame}{Introduction}
+\protect\hypertarget{introduction}{}
 What is Secure Multi-Party Computation?
 
 \begin{itemize}
@@ -30,10 +31,10 @@ Examples:
 \item
   Machine learning
 \end{itemize}
+\end{frame}
 
-\hypertarget{mpc-basics}{%
-\chapter{MPC Basics}\label{mpc-basics}}
-
+\begin{frame}{MPC Basics}
+\protect\hypertarget{mpc-basics}{}
 \begin{itemize}
 \tightlist
 \item
@@ -76,10 +77,10 @@ Examples:
     \(g(0)=f(S_1, S_2, \dots, S_m)\)
   \end{itemize}
 \end{itemize}
+\end{frame}
 
-\hypertarget{problem-description}{%
-\chapter{Problem Description}\label{problem-description}}
-
+\begin{frame}{Problem Description}
+\protect\hypertarget{problem-description}{}
 MPyC:
 
 \begin{itemize}
@@ -115,10 +116,10 @@ MPyC:
     Network Address Translation (NAT)
   \end{itemize}
 \end{itemize}
+\end{frame}
 
-\hypertarget{research-questions}{%
-\chapter{Research Questions}\label{research-questions}}
-
+\begin{frame}{Research Questions}
+\protect\hypertarget{research-questions}{}
 \emph{How can MPyC be extended to enable casual users, power users and
 enterprises with limited prior knowledge of each other to discover each
 other and perform a secure multiparty computation under diverse
@@ -145,10 +146,10 @@ networking conditions?}
     performance?
   \end{itemize}
 \end{itemize}
+\end{frame}
 
-\hypertarget{preparation-phase-scope}{%
-\chapter{Preparation Phase Scope}\label{preparation-phase-scope}}
-
+\begin{frame}{Preparation Phase Scope}
+\protect\hypertarget{preparation-phase-scope}{}
 \begin{itemize}
 \tightlist
 \item
@@ -177,15 +178,15 @@ networking conditions?}
 \item
   Implementation Phase Planning
 \end{itemize}
+\end{frame}
 
-\hypertarget{section}{%
-\chapter{}\label{section}}
-
+\begin{frame}{}
+\protect\hypertarget{section}{}
 \section{Technical Survey}
+\end{frame}
 
-\hypertarget{technical-survey}{%
-\chapter{Technical Survey}\label{technical-survey}}
-
+\begin{frame}{Technical Survey}
+\protect\hypertarget{technical-survey}{}
 \begin{itemize}
 \tightlist
 \item
@@ -193,11 +194,10 @@ networking conditions?}
 \item
   Connectivity approaches
 \end{itemize}
+\end{frame}
 
-\hypertarget{infrastructure-as-code-iac}{%
-\chapter{Infrastructure as Code
-(IaC)}\label{infrastructure-as-code-iac}}
-
+\begin{frame}{Infrastructure as Code (IaC)}
+\protect\hypertarget{infrastructure-as-code-iac}{}
 Tools:
 
 \begin{itemize}
@@ -235,11 +235,10 @@ Operating Systems:
     Deployment tools: NixOps, Colmena, morph, deploy-rs
   \end{itemize}
 \end{itemize}
+\end{frame}
 
-\hypertarget{virtual-private-networks-vpns}{%
-\chapter{Virtual Private Networks
-(VPNs)}\label{virtual-private-networks-vpns}}
-
+\begin{frame}{Virtual Private Networks (VPNs)}
+\protect\hypertarget{virtual-private-networks-vpns}{}
 \begin{itemize}
 \tightlist
 \item
@@ -267,17 +266,20 @@ Operating Systems:
     Discovery can happen via a public service or from a known peer
   \end{itemize}
 \end{itemize}
+\end{frame}
 
-\hypertarget{network-address-translation-nat}{%
-\chapter{Network Address Translation
-(NAT)}\label{network-address-translation-nat}}
-
+\begin{frame}{Network Address Translation (NAT)}
+\protect\hypertarget{network-address-translation-nat}{}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=0.66\textheight]{presentation/../figures/nat-intro.png}
 \caption{``Two parties behind separate NATs''\label{nat-intro}}
 \end{figure}
+\end{column}
 
+\begin{column}{0.48\textwidth}
 \begin{itemize}
 \tightlist
 \item
@@ -293,16 +295,22 @@ Operating Systems:
     Neither party can initiate the connection to the other
   \end{itemize}
 \end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
 
-\hypertarget{nat-traversal}{%
-\chapter{NAT Traversal}\label{nat-traversal}}
-
+\begin{frame}{NAT Traversal}
+\protect\hypertarget{nat-traversal}{}
+\begin{columns}[T]
+\begin{column}{0.48\textwidth}
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=0.66\textheight]{presentation/../figures/nat-traversal.png}
 \caption{``NAT traversal via STUN''\label{nat-traversal}}
 \end{figure}
+\end{column}
 
+\begin{column}{0.48\textwidth}
 \begin{itemize}
 \tightlist
 \item
@@ -326,10 +334,12 @@ Operating Systems:
     \end{itemize}
   \end{itemize}
 \end{itemize}
+\end{column}
+\end{columns}
+\end{frame}
 
-\hypertarget{other-approaches}{%
-\chapter{Other approaches}\label{other-approaches}}
-
+\begin{frame}{Other approaches}
+\protect\hypertarget{other-approaches}{}
 \begin{itemize}
 \tightlist
 \item
@@ -365,15 +375,15 @@ Operating Systems:
     IPFS
   \end{itemize}
 \end{itemize}
+\end{frame}
 
-\hypertarget{section}{%
-\chapter{}\label{section}}
-
+\begin{frame}{}
+\protect\hypertarget{section}{}
 \section{Reference Implementation}
+\end{frame}
 
-\hypertarget{reference-implementation}{%
-\chapter{Reference Implementation}\label{reference-implementation}}
-
+\begin{frame}{Reference Implementation}
+\protect\hypertarget{reference-implementation}{}
 \begin{itemize}
 \tightlist
 \item
@@ -393,10 +403,10 @@ Operating Systems:
 \item
   pssh - execute commands on multiple hosts in parallel over ssh
 \end{itemize}
+\end{frame}
 
-\hypertarget{nix---basic-flake.nix}{%
-\chapter{Nix - Basic flake.nix}\label{nix---basic-flake.nix}}
-
+\begin{frame}[fragile]{Nix - Basic flake.nix}
+\protect\hypertarget{nix---basic-flake.nix}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{\{}
@@ -416,10 +426,10 @@ Operating Systems:
 \OperatorTok{\}}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{nix---flake.lock}{%
-\chapter{Nix - flake.lock}\label{nix---flake.lock}}
-
+\begin{frame}[fragile]{Nix - flake.lock}
+\protect\hypertarget{nix---flake.lock}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{\{}
@@ -445,10 +455,10 @@ Operating Systems:
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{nix---development-shell}{%
-\chapter{Nix - Development Shell}\label{nix---development-shell}}
-
+\begin{frame}[fragile]{Nix - Development Shell}
+\protect\hypertarget{nix---development-shell}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 
@@ -471,10 +481,10 @@ Operating Systems:
   \OperatorTok{\}}\NormalTok{;}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{nix---mpyc-package}{%
-\chapter{Nix - MPyC Package}\label{nix---mpyc-package}}
-
+\begin{frame}[fragile]{Nix - MPyC Package}
+\protect\hypertarget{nix---mpyc-package}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \OperatorTok{\{} \VariableTok{pkgs}\OperatorTok{,} \VariableTok{dir} \OperatorTok{\}}\NormalTok{:}
@@ -493,11 +503,10 @@ Operating Systems:
   \OperatorTok{\})}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{nix---digitalocean-image-1}{%
-\chapter{Nix - DigitalOcean Image
-(1)}\label{nix---digitalocean-image-1}}
-
+\begin{frame}[fragile]{Nix - DigitalOcean Image (1)}
+\protect\hypertarget{nix---digitalocean-image-1}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#\# flake.nix}
@@ -522,11 +531,10 @@ Operating Systems:
 \OperatorTok{\}}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{nix---digitalocean-image-2}{%
-\chapter{Nix - DigitalOCean Image
-(2)}\label{nix---digitalocean-image-2}}
-
+\begin{frame}[fragile]{Nix - DigitalOCean Image (2)}
+\protect\hypertarget{nix---digitalocean-image-2}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\#\# nix/digitalocean/image.nix}
@@ -548,10 +556,10 @@ Operating Systems:
 \OperatorTok{\}}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{nix---raspberrypi-image}{%
-\chapter{Nix - RaspberryPi Image}\label{nix---raspberrypi-image}}
-
+\begin{frame}[fragile]{Nix - RaspberryPi Image}
+\protect\hypertarget{nix---raspberrypi-image}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \KeywordTok{let}
@@ -575,10 +583,10 @@ Operating Systems:
 \OperatorTok{\}}\NormalTok{;}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{terraform---image-import}{%
-\chapter{Terraform - Image Import}\label{terraform---image-import}}
-
+\begin{frame}[fragile]{Terraform - Image Import}
+\protect\hypertarget{terraform---image-import}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \NormalTok{resource "digitalocean\_spaces\_bucket\_object" "nixos{-}image" \{}
@@ -604,11 +612,10 @@ Operating Systems:
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{terraform---hostname-generation}{%
-\chapter{Terraform - Hostname
-Generation}\label{terraform---hostname-generation}}
-
+\begin{frame}[fragile]{Terraform - Hostname Generation}
+\protect\hypertarget{terraform---hostname-generation}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 
@@ -636,11 +643,10 @@ Generation}\label{terraform---hostname-generation}}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{terraform---digitalocean-droplets}{%
-\chapter{Terraform - DigitalOcean
-Droplets}\label{terraform---digitalocean-droplets}}
-
+\begin{frame}[fragile]{Terraform - DigitalOcean Droplets}
+\protect\hypertarget{terraform---digitalocean-droplets}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 
@@ -667,10 +673,10 @@ Droplets}\label{terraform---digitalocean-droplets}}
 \NormalTok{\}}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{colmena}{%
-\chapter{Colmena}\label{colmena}}
-
+\begin{frame}[fragile]{Colmena}
+\protect\hypertarget{colmena}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 
@@ -696,10 +702,10 @@ Droplets}\label{terraform---digitalocean-droplets}}
 \OperatorTok{\}}\NormalTok{;}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{colmena---hosts.json}{%
-\chapter{Colmena - hosts.json}\label{colmena---hosts.json}}
-
+\begin{frame}[fragile]{Colmena - hosts.json}
+\protect\hypertarget{colmena---hosts.json}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 \ErrorTok{\#\#} \ErrorTok{hosts.json}
@@ -713,10 +719,10 @@ Droplets}\label{terraform---digitalocean-droplets}}
 \FunctionTok{\}}
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{runtime}{%
-\chapter{Runtime}\label{runtime}}
-
+\begin{frame}[fragile]{Runtime}
+\protect\hypertarget{runtime}{}
 \begin{Shaded}
 \begin{Highlighting}[]
 
@@ -749,15 +755,15 @@ Droplets}\label{terraform---digitalocean-droplets}}
 
 \end{Highlighting}
 \end{Shaded}
+\end{frame}
 
-\hypertarget{section}{%
-\chapter{}\label{section}}
-
+\begin{frame}{}
+\protect\hypertarget{section}{}
 \section{Demo}
+\end{frame}
 
-\hypertarget{demo}{%
-\chapter{Demo}\label{demo}}
-
+\begin{frame}{Demo}
+\protect\hypertarget{demo}{}
 \begin{itemize}
 \tightlist
 \item
@@ -769,16 +775,15 @@ Droplets}\label{terraform---digitalocean-droplets}}
 \item
   Destruction of the infrastructure
 \end{itemize}
+\end{frame}
 
-\hypertarget{section}{%
-\chapter{}\label{section}}
-
+\begin{frame}{}
+\protect\hypertarget{section}{}
 \section{Planning}
+\end{frame}
 
-\hypertarget{planning---connectivity-implementations}{%
-\chapter{Planning - connectivity
-implementations}\label{planning---connectivity-implementations}}
-
+\begin{frame}{Planning - connectivity implementations}
+\protect\hypertarget{planning---connectivity-implementations}{}
 \begin{itemize}
 \tightlist
 \item
@@ -811,10 +816,10 @@ implementations}\label{planning---connectivity-implementations}}
 \item
   Carbyne stack
 \end{itemize}
+\end{frame}
 
-\hypertarget{planning---analysis}{%
-\chapter{Planning - analysis}\label{planning---analysis}}
-
+\begin{frame}{Planning - analysis}
+\protect\hypertarget{planning---analysis}{}
 Compare the implementations in terms of:
 
 \begin{itemize}
@@ -828,3 +833,4 @@ Compare the implementations in terms of:
 \item
   Privacy
 \end{itemize}
+\end{frame}

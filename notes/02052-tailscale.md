@@ -4,7 +4,7 @@
 - Built on top of [Wireguard](02051-wireguard.md)
 - Coordination service
     - Closed source
-    - Facilitates [STUN](0202-nat#Session Traversal Utilities for NAT (STUN))/[TURN](02021-internet-protocol.md#test) for peer discovery
+    - Facilitates [STUN](0202-nat#Session Traversal Utilities for NAT (STUN))/[TURN](02021-internet-protocol.md#test) for peer discovery and NAT traversal
     - Distributes wireguard public keys
     - Magic DNS
 - Client

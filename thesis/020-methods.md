@@ -8,6 +8,16 @@ During the thesis assignment we will look at a number of solutions for ad hoc MP
 
 ## Performance
 
+To summarize, \gls{e3} is a set of scripts that use a number of automation tools:
+
+- Terraform - declarative provisioning
+- NixOS - declarative Linux distribution
+- Colmena - declarative deployment for NixOS
+- PSSH - parallel execution of remote scripts over ssh
+- DigitalOcean - a cloud provider
+
+It allows us to quickly provision cloud virtual machines in multiple regions and reproducibly deploy all necessary software for running a multiparty computation over a chosen network overlay solution.  The source code of \gls{e3} can be found on [GitHub](https://github.com/e-nikolov/mpyc)
+
 Each solution will be deployed using the \gls{e3} framework and the performance will be quantitatively measured in terms of the time it takes to execute a number of MPyC demos. The selected demos have different complexities in terms of communication rounds and message sizes which will allow us to observe their impact on the overall performance.
 
 1. Secret Santa - high round complexity with small messages

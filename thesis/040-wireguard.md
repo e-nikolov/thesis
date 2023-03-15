@@ -26,6 +26,7 @@ PublicKey = e/TxvPmrgcc1G4cSH2bHv5J0PRHXKjYxTFoU8r+G93E=
 AllowedIPs = 101.0.0.1/32
 
 ```
-Each peer has a public/private key pair that is used for authentication and encryption. It is notable that only one of the peers must be configured with a reachable endpoint for the other peer. In the above example once `peer1`  initiates communication with `peer2`, `peer2` will learn the current endpoint of `peer1` and will be able to communicate back with it.
+Each peer has a public/private key pair that is used for authentication and encryption. The Address field specifies the virtual IP address that the local network interface will use, while the AllowedIPs specifies what virtual IP addresses are associated with a peer's public key. A peer's Endpoint field specifies the URL at which it can be reached. Only one of the peers must be configured with a reachable endpoint for the other peer. In the above example once `peer1`  initiates communication with `peer2`, `peer2` will learn the current endpoint of `peer1` and will be able to communicate back with it.
 
 ## Implementation
+

@@ -22,6 +22,29 @@ and compare them in terms of performance, security and usability.
 \hypertarget{performance}{%
 \section{Performance}\label{performance}}
 
+To summarize, \gls{e3} is a set of scripts that use a number of
+automation tools:
+
+\begin{itemize}
+\tightlist
+\item
+  Terraform - declarative provisioning
+\item
+  NixOS - declarative Linux distribution
+\item
+  Colmena - declarative deployment for NixOS
+\item
+  PSSH - parallel execution of remote scripts over ssh
+\item
+  DigitalOcean - a cloud provider
+\end{itemize}
+
+It allows us to quickly provision cloud virtual machines in multiple
+regions and reproducibly deploy all necessary software for running a
+multiparty computation over a chosen network overlay solution. The
+source code of \gls{e3} can be found on
+\href{https://github.com/e-nikolov/mpyc}{GitHub}
+
 Each solution will be deployed using the \gls{e3} framework and the
 performance will be quantitatively measured in terms of the time it
 takes to execute a number of MPyC demos. The selected demos have
@@ -192,11 +215,14 @@ with each another.
 \end{Shaded}
 
 Each peer has a public/private key pair that is used for authentication
-and encryption. It is notable that only one of the peers must be
-configured with a reachable endpoint for the other peer. In the above
-example once \texttt{peer1} initiates communication with \texttt{peer2},
-\texttt{peer2} will learn the current endpoint of \texttt{peer1} and
-will be able to communicate back with it.
+and encryption. The Address field specifies the virtual IP address that
+the local network interface will use, while the AllowedIPs specifies
+what virtual IP addresses are associated with a peer's public key. A
+peer's Endpoint field specifies the URL at which it can be reached. Only
+one of the peers must be configured with a reachable endpoint for the
+other peer. In the above example once \texttt{peer1} initiates
+communication with \texttt{peer2}, \texttt{peer2} will learn the current
+endpoint of \texttt{peer1} and will be able to communicate back with it.
 
 \hypertarget{implementation}{%
 \section{Implementation}\label{implementation}}

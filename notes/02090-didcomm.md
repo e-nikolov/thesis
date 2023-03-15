@@ -6,5 +6,4 @@
     - messages are always encrypted with the public keys of the peers
 - Routing happens via mediators
 - Resources:
-    - 
-    - [https://newsletter.impervious.ai/decentralized-identifiers-implications-for-your-data-payments-and-communications-2/](https://newsletter.impervious.ai/decentralized-identifiers-implications-for-your-data-payments-and-communications-2/)
+    - [Decentralized Identifiers: Implications for Your Data, Payments and Communications](https://newsletter.impervious.ai/decentralized-identifiers-implications-for-your-data-payments-and-communications-2/)
