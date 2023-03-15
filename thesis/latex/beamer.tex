@@ -63,92 +63,68 @@ Ethernet, WiFi, USB, Bluetooth & \\
 
 \begin{block}{Internet protocol}
 \protect\hypertarget{internet-protocol}{}
-\begin{itemize}
-\tightlist
-\item
-  IPv4 routing
-\item
-  NAT
-\item
-  NAT Traversal
-
-  \begin{itemize}
-  \tightlist
-  \item
-    STUN
-  \item
-    TURN
-  \end{itemize}
-\item
-  TUN/TAP driver
-\item
-  Network overlays
-
-  \begin{itemize}
-  \tightlist
-  \item
-    Traditional VPNs
-
-    \begin{itemize}
-    \tightlist
-    \item
-      IPSec
-    \item
-      OpenVPN
-    \end{itemize}
-  \item
-    Wireguard
-
-    \begin{itemize}
-    \tightlist
-    \item
-    \end{itemize}
-  \item
-    Mesh VPNs
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Tinc
-    \item
-      N2N
-    \item
-      Tailscale
-    \item
-      Nebula
-    \item
-      ZeroTier
-    \end{itemize}
-  \item
-    L7 overlays
-
-    \begin{itemize}
-    \tightlist
-    \item
-      WebRTC
-    \item
-      OpenZiti
-    \item
-      ngrok
-    \item
-      TOR
-    \item
-      BitTorrent
-    \item
-      IPFS
-    \item
-      Ethereum
-    \item
-      Teleport
-    \item
-      Freenet
-    \end{itemize}
-  \end{itemize}
-\end{itemize}
+\begin{block}{IPv4 routing}
+\protect\hypertarget{ipv4-routing}{}
+\begin{block}{NAT}
+\protect\hypertarget{nat}{}
+\end{block}
 \end{block}
 
-\begin{block}{Virtual Private Networks (VPN)}
-\protect\hypertarget{virtual-private-networks-vpn}{}
+\begin{block}{NAT Traversal}
+\protect\hypertarget{nat-traversal}{}
+\begin{block}{STUN and TURN}
+\protect\hypertarget{stun-and-turn}{}
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth,height=0.25\textheight]{thesis/../figures/nat-intro.png}
+\caption{``Two parties behind separate NATs''\label{nat-intro}}
+\end{figure}
+
+As we mentioned in the introduction chapter, the devices in a typical
+home network can only initiate connections to public endpoints (via
+\gls{nat}) but cannot be discovered from outside their \gls{lan}. This
+poses a challenge when two parties who want to communicate via a direct
+link are both behind separate \glspl{nat} \ref{nat-intro} and neither
+can be contacted by the other one first. Mesh \glspl{vpn} solve this
+issue via \gls{nat} traversal techniques such as \gls{udp} hole punching
+based on concepts from \gls{stun}. The machines of each party can
+contact a public \gls{stun} server \ref{nat-traversal}, which will note
+what \gls{ip} addresses the connections come from and inform the
+parties. Since the parties initiated the connection to the STUN server,
+their routers will keep a mapping between their local IP addresses and
+the port that was allocated for the connection in order to be able to
+forward the incoming traffic. Those ``holes'' in the NATs were
+originally intended for the STUN server, but mesh VPNs use the stateless
+``fire and forget'' UDP protocol for their internal communication, which
+does not require nor provides a mechanism for the NATs to verify who
+sent a UDP packet. With most NATs, this is enough to be able to (ab)use
+the ``punched holes'' for the purpose of \gls{p2p} traffic from other
+parties. Mesh VPNs implement the stateful \gls{tcp} and \gls{tls}
+protocols on top of UDP and expose an regular network interface to the
+other programs, keeping them shielded from the underlying complexities.
+Other NAT implementations such as Symmetric NAT and \glspl{cgnat} can be
+more difficult to ``punch through'' due to their more complex port
+mapping strategies. In those cases, establishing P2P connections might
+involve guess work or even fail and require falling back to routing the
+(encrypted) traffic via another party or service.
+
+\begin{figure}
+\centering
+\includegraphics[width=0.5\textwidth,height=0.25\textheight]{thesis/../figures/nat-traversal.png}
+\caption{``NAT traversal via STUN''\label{nat-traversal}}
+\end{figure}
+\end{block}
+\end{block}
+\end{block}
+
+\begin{block}{Network overlays}
+\protect\hypertarget{network-overlays}{}
+\begin{block}{TUN/TAP driver}
+\protect\hypertarget{tuntap-driver}{}
+\end{block}
+
+\begin{block}{Traditional VPNs}
+\protect\hypertarget{traditional-vpns}{}
 \glspl{vpn} are implemented as Layer 2 or 3 network overlays. They are
 commonly used for securely connecting machines from different
 \glspl{lan}. They provide software emulation of a network device on the
@@ -156,7 +132,11 @@ operating system level and allow other software to transparently use the
 functionality of the \gls{ip} suite without requiring extra changes.
 Traditional \glspl{vpn} such as IPSec\autocite{ipSecDocs} and
 OpenVPN\autocite{openVPNDocs} use a centralized service that all
-(encrypted) client communications must pass through.
+(encrypted) client communications must pass through. This introduces a
+single point of failure and a potential bottleneck that might negatively
+impact the performance of the multi-party computations due to their
+\gls{p2p} nature.
+\end{block}
 
 \begin{block}{Wireguard}
 \protect\hypertarget{wireguard}{}
@@ -172,119 +152,118 @@ with each another.
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# peer1.conf}
-\KeywordTok{[}\DataTypeTok{Interface}\KeywordTok{]}
-\DataTypeTok{Address} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{1}\ErrorTok{/}\DataTypeTok{32}
-\DataTypeTok{ListenPort} \OperatorTok{=} \DecValTok{53063}
-\DataTypeTok{PrivateKey} \OperatorTok{=} \DataTypeTok{ePTiXXhHjvAHdWUr8Bimk30n0gh3m241RAzsN0JZDW0}\OperatorTok{=}
+\KeywordTok{[Interface]}
+\DataTypeTok{Address }\OtherTok{=}\StringTok{ 101.0.0.1/32}
+\DataTypeTok{ListenPort }\OtherTok{=}\StringTok{ }\DecValTok{53063}
+\DataTypeTok{PrivateKey }\OtherTok{=}\StringTok{ ePTiXXhHjvAHdWUr8Bimk30n0gh3m241RAzsN0JZDW0=}
 
-\KeywordTok{[}\DataTypeTok{Peer}\KeywordTok{]}
-\DataTypeTok{PublicKey} \OperatorTok{=} \DataTypeTok{BSn0ejd1Y3bKuD}\ErrorTok{+}\DataTypeTok{Xpg0ZZeOf}\ErrorTok{+}\DataTypeTok{Ies}\ErrorTok{/}\DataTypeTok{oql0NZxw}\ErrorTok{+}\DataTypeTok{SOmkc}\OperatorTok{=}
-\DataTypeTok{AllowedIPs} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{2}\ErrorTok{/}\DataTypeTok{32}
-\DataTypeTok{Endpoint} \OperatorTok{=} \DataTypeTok{peer1}\KeywordTok{.}\DataTypeTok{example}\KeywordTok{.}\DataTypeTok{com}\ErrorTok{:}\DataTypeTok{38133}
+\KeywordTok{[Peer]}
+\DataTypeTok{PublicKey }\OtherTok{=}\StringTok{ BSn0ejd1Y3bKuD+Xpg0ZZeOf+Ies/oql0NZxw+SOmkc=}
+\DataTypeTok{AllowedIPs }\OtherTok{=}\StringTok{ 101.0.0.2/32}
+\DataTypeTok{Endpoint }\OtherTok{=}\StringTok{ peer1.example.com:38133}
 \end{Highlighting}
 \end{Shaded}
 
 \begin{Shaded}
 \begin{Highlighting}[]
 \CommentTok{\# peer2.conf}
-\KeywordTok{[}\DataTypeTok{Interface}\KeywordTok{]}
-\DataTypeTok{Address} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{2}\ErrorTok{/}\DataTypeTok{32}
-\DataTypeTok{ListenPort} \OperatorTok{=} \DecValTok{38133}
-\DataTypeTok{PrivateKey} \OperatorTok{=} \DataTypeTok{sN}\ErrorTok{/}\DataTypeTok{d6XUPEVPGSziVgCCOnOivDK}\ErrorTok{+}\DataTypeTok{qAoYC3nxnssQ5Rls}\OperatorTok{=}
+\KeywordTok{[Interface]}
+\DataTypeTok{Address }\OtherTok{=}\StringTok{ 101.0.0.2/32}
+\DataTypeTok{ListenPort }\OtherTok{=}\StringTok{ }\DecValTok{38133}
+\DataTypeTok{PrivateKey }\OtherTok{=}\StringTok{ sN/d6XUPEVPGSziVgCCOnOivDK+qAoYC3nxnssQ5Rls=}
 
-\KeywordTok{[}\DataTypeTok{Peer}\KeywordTok{]}
-\DataTypeTok{PublicKey} \OperatorTok{=} \DataTypeTok{e}\ErrorTok{/}\DataTypeTok{TxvPmrgcc1G4cSH2bHv5J0PRHXKjYxTFoU8r}\ErrorTok{+}\DataTypeTok{G93E}\OperatorTok{=}
-\DataTypeTok{AllowedIPs} \OperatorTok{=} \FloatTok{101.0}\KeywordTok{.}\DataTypeTok{0}\KeywordTok{.}\DataTypeTok{1}\ErrorTok{/}\DataTypeTok{32}
+\KeywordTok{[Peer]}
+\DataTypeTok{PublicKey }\OtherTok{=}\StringTok{ e/TxvPmrgcc1G4cSH2bHv5J0PRHXKjYxTFoU8r+G93E=}
+\DataTypeTok{AllowedIPs }\OtherTok{=}\StringTok{ 101.0.0.1/32}
 \end{Highlighting}
 \end{Shaded}
 
 Each peer has a public/private key pair that is used for authentication
-and encryption. The Address field specifies the virtual IP address that
-the local network interface will use, while the AllowedIPs specifies
-what virtual IP addresses are associated with a peer's public key. A
-peer's Endpoint field specifies the URL at which it can be reached. Only
-one of the peers must be configured with a reachable endpoint for the
-other peer. In the above example once \texttt{peer1} initiates
-communication with \texttt{peer2}, \texttt{peer2} will learn the current
-endpoint of \texttt{peer1} and will be able to communicate back with it.
+and encryption. The \texttt{Address} field specifies the virtual IP
+address that the local network interface will use, while the
+\texttt{AllowedIPs} field specifies what virtual IP addresses are
+associated with a peer's public key. A peer's \texttt{Endpoint} field
+specifies the URL at which it can be reached. Only one of the peers must
+be configured with a reachable endpoint for the other peer. In the above
+example once \texttt{peer1} initiates communication with \texttt{peer2},
+\texttt{peer2} will learn the current endpoint of \texttt{peer1} and
+will be able to communicate back with it.
+\end{block}
 
-This introduces a single point of failure and a potential bottleneck
-that might negatively impact the performance of the multi-party
-computations due to their \gls{p2p} nature.
+\begin{block}{Mesh VPNs}
+\protect\hypertarget{mesh-vpns}{}
+\begin{itemize}
+\tightlist
+\item
+  Tinc
+\item
+  N2N
+\item
+  Tailscale
+\item
+  Nebula
+\item
+  ZeroTier
+\end{itemize}
 
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth,height=0.25\textheight]{thesis/../figures/nat-intro.png}
-\caption{``Two parties behind separate NATs''\label{nat-intro}}
-\end{figure}
-
-On the other hand, mesh \glspl{vpn} such as Tinc\autocite{tincDocs},
+Mesh \glspl{vpn} such as Tinc\autocite{tincDocs},
 Tailscale\autocite{tailscaleDocs} and Nebula\autocite{nebulaDocs}
-utilize direct \gls{p2p} links between the clients for the data traffic.
-Authentication, authorization and traffic encryption are performed using
-certificates based on public key cryptography. As we mentioned in the
-introduction chapter, the devices in a typical home network can only
-initiate connections to public endpoints (via \gls{nat}) but cannot be
-discovered from outside their \gls{lan}. This poses a challenge when two
-parties who want to communicate via a direct link are both behind
-separate \glspl{nat} \ref{nat-intro} and neither can be contacted by the
-other one first. Mesh \glspl{vpn} solve this issue via \gls{nat}
-traversal techniques such as \gls{udp} hole punching based on concepts
-from \gls{stun}. The machines of each party can contact a public
-\gls{stun} server \ref{nat-traversal}, which will note what \gls{ip}
-addresses the connections come from and inform the parties. Since the
-parties initiated the connection to the STUN server, their routers will
-keep a mapping between their local IP addresses and the port that was
-allocated for the connection in order to be able to forward the incoming
-traffic. Those ``holes'' in the NATs were originally intended for the
-STUN server, but mesh VPNs use the stateless ``fire and forget'' UDP
-protocol for their internal communication, which does not require nor
-provides a mechanism for the NATs to verify who sent a UDP packet. With
-most NATs, this is enough to be able to (ab)use the ``punched holes''
-for the purpose of \gls{p2p} traffic from other parties. Mesh VPNs
-implement the stateful \gls{tcp} and \gls{tls} protocols on top of UDP
-and expose an regular network interface to the other programs, keeping
-them shielded from the underlying complexities. Other NAT
-implementations such as Symmetric NAT and \glspl{cgnat} can be more
-difficult to ``punch through'' due to their more complex port mapping
-strategies. In those cases, establishing P2P connections might involve
-guess work or even fail and require falling back to routing the
-(encrypted) traffic via another party or service.
+utilize NAT Traversal techniques in order to create direct \gls{p2p}
+links between the clients for the data traffic. Authentication,
+authorization and traffic encryption are performed using certificates
+based on public key cryptography.
 
-\begin{figure}
-\centering
-\includegraphics[width=0.5\textwidth,height=0.25\textheight]{thesis/../figures/nat-traversal.png}
-\caption{``NAT traversal via STUN''\label{nat-traversal}}
-\end{figure}
+All three are open-source, with the exception of Tailscale's
+coordination service which handles the peer discovery and identity
+management. Headscale \autocite{fontJuanfontHeadscale2022} is a
+community driven open-source alternative for that component. Tinc is the
+oldest of the three but has a relatively small community. It is mainly
+developed by a single author and appears to be more academic than
+industry motivated. Nebula and Tailscale are both business driven.
+Tailscale was started by a number of high profile ex-googlers and is the
+most end-user focused of the three, providing a service that allows
+people to sign up using a variety of identity providers including
+Google, Microsoft, GitHub and others. They also provide an Admin console
+that allows a user to easily add their personal devices to a network or
+share them with others. It also has support for automation tools like
+Terraform for creating authorization keys and managing an \gls{acl}
+based firewall. Nebula was originally developed at the instant messaging
+company Slack to create overlay networks for their cross region cloud
+infrastructure, but the authors later started a new company and are
+currently developing a user-centric platform similar to Tailscale's.
+Nebula is more customizable than Tailscale and since it is completely
+open-source it can be adapted to different use cases, but it is also
+more involved to set up. A certificate authority needs to be configured
+for issuing the identities of the participating hosts. Furthermore,
+publicly accessible coordination servers need to be deployed to
+facilitate the host discovery. Tailscale employs a distributed relay
+network of \gls{derp} servers, while Nebula can be configured to route
+via one of the other peers in the VPN.
+\end{block}
 
-Now that we have a general understanding of how mesh VPNs work, let us
-see how Tinc, Tailscale and Nebula compare. All three are open-source,
-with the exception of Tailscale's coordination service which handles the
-peer discovery and identity management. Headscale
-\autocite{fontJuanfontHeadscale2022} is a community driven open-source
-alternative for that component. Tinc is the oldest of the three but has
-a relatively small community. It is mainly developed by a single author
-and appears to be more academic than industry motivated. Nebula and
-Tailscale are both business driven. Tailscale was started by a number of
-high profile ex-googlers and is the most end-user focused of the three,
-providing a service that allows people to sign up using a variety of
-identity providers including Google, Microsoft, GitHub and others. They
-also provide an Admin console that allows a user to easily add their
-personal devices to a network or share them with others. It also has
-support for automation tools like Terraform for creating authorization
-keys and managing an \gls{acl} based firewall. Nebula was originally
-developed at the instant messaging company Slack to create overlay
-networks for their cross region cloud infrastructure, but the authors
-later started a new company and are currently developing a user-centric
-platform similar to Tailscale's. Nebula is more customizable than
-Tailscale and since it is completely open-source it can be adapted to
-different use cases, but it is also more involved to set up. A
-certificate authority needs to be configured for issuing the identities
-of the participating hosts. Furthermore, publicly accessible
-coordination servers need to be deployed to facilitate the host
-discovery. Tailscale employs a distributed relay network of \gls{derp}
-servers, while Nebula can be configured to route via one of the other
-peers in the VPN.
+\begin{block}{Layer 7 overlays}
+\protect\hypertarget{layer-7-overlays}{}
+\begin{itemize}
+\tightlist
+\item
+  WebRTC
+\item
+  OpenZiti
+\item
+  ngrok
+\item
+  TOR
+\item
+  BitTorrent
+\item
+  IPFS
+\item
+  Ethereum
+\item
+  Teleport
+\item
+  Freenet
+\end{itemize}
 \end{block}
 \end{block}
 \end{frame}
