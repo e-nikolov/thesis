@@ -26,24 +26,25 @@ The Open Systems Interconnection (OSI) model distinguishes 7 layers in computer 
 
 \newpage
 
-| Network overlay | Open source | OSI Layer  | Peer-to-Peer | NAT Traversal           | Implementation                                                       |
-|-|-|-|-|-|-|
-| IPSec           | Yes | Layer 3    | No           |                         | TUN driver                                                           |
-| \hline OpenVPN         |  Yes | Layer 2, 3 | No           |                         | TUN or TAP driver                                                    |
-| \hline Tinc            |  Yes | Layer 2, 3 | Yes          |    STUN or TURN                     | TUN or TAP driver                                                    |
-| \hline Wireguard       |  Yes | Layer 3    | No           |                         | Linux kernel module or TUN driver; Uses Noise |
-| \hline Tailscale       |  Yes (client); No (server) | Layer 3    | Yes          | STUN or DERP | Uses Wireguard                                                       |
-| \hline Nebula          |  Yes  | Layer 3 | Yes          | STUN or TURN | Uses Noise                                    |
-| \hline ZeroTier        | No | Layer 3 | Yes          | STUN or TURN |
-| \hline WebRTC        | Yes | Layer 7 | Yes          | STUN or TURN |
-| \hline OpenZiti        | Yes | Layer 7 | ?          | Relaying |
-| \hline Teleport        | Yes | Layer 7 | ?          | Relaying |
-| \hline ngrok        | No | Layer 7 | No          | Proxy |
-| \hline TOR        | Yes | Layer 7 | Yes          | Relaying |
-| \hline BitTorrent        | Yes | Layer 7 | Yes          | ? |
-| \hline IPFS        | Yes | Layer 7 | Yes          | ? |
-| \hline Ethereum        | Yes | Layer 7 | Yes          | ? |
-| \hline Freenet        | Yes | Layer 7 | Yes          | ? |
+| Network overlay   | Open source               | OSI Layer  | Peer-to-Peer | NAT Traversal    | Implementation                                |
+| ----------------- | ------------------------- | ---------- | ------------ | ---------------- | --------------------------------------------- |
+| IPSec             | Yes                       | Layer 3    | No           |                  | TUN driver                                    |
+| \hline OpenVPN    | Yes                       | Layer 2, 3 | No           |                  | TUN or TAP driver                             |
+| \hline Tinc       | Yes                       | Layer 2, 3 | Yes          | STUN, TURN       | TUN or TAP driver                             |
+| \hline N2N       | Yes                       | Layer 2 | Yes          | TURN       | TAP driver                             |
+| \hline Wireguard  | Yes                       | Layer 3    | No           |                  | Linux kernel module or TUN driver; Uses Noise |
+| \hline Tailscale  | Yes (client); No (server) | Layer 3    | Yes          | STUN, DERP, UPnP | Uses Wireguard                                |
+| \hline Nebula     | Yes                       | Layer 3    | Yes          | STUN, TURN       | Uses Noise                                    |
+| \hline ZeroTier   | No                        | Layer 3    | Yes          | STUN, TURN       |                                               |
+| \hline WebRTC     | Yes                       | Layer 7    | Yes          | STUN, TURN       |                                               |
+| \hline OpenZiti   | Yes                       | Layer 7    | ?            | TURN*            |                                               |
+| \hline Teleport   | Yes                       | Layer 7    | ?            | TURN*            |                                               |
+| \hline ngrok      | No                        | Layer 7    | No           | Proxy            |                                               |
+| \hline TOR        | Yes                       | Layer 7    | Yes          | TURN*            |                                               |
+| \hline BitTorrent | Yes                       | Layer 7    | Yes          | ?                |                                               |
+| \hline IPFS       | Yes                       | Layer 7    | Yes          | ?                |                                               |
+| \hline Ethereum   | Yes                       | Layer 7    | Yes          | ?                |                                               |
+| \hline Freenet    | Yes                       | Layer 7    | Yes          | ?                |                                               |
 
 
 - Resources

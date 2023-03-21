@@ -43,3 +43,7 @@ PersistentKeepalive = 25
     - [WireGuard Endpoint Discovery and NAT Traversal using DNS-SD](https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/)
     - [Kernel Commit](https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e7096c131e5161fa3b8e52a650d7719d2857adfd)
     - [Arch Linux Wiki](https://wiki.archlinux.org/title/WireGuard)
+    - Examples:
+	- https://github.com/takutakahashi/wg-connect
+	- https://github.com/stv0g/cunicu
+	- 
