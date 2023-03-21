@@ -20,7 +20,9 @@ our problem of connecting the parties of a multiparty computation over
 the internet. To make reviewing them easier, we will try to
 approximately map them to the 7 layers of the OSI model, which will not
 always be entirely accurate because many protocols and applications
-implement aspects of several layers. The table below
+implement aspects of several layers. The table below shows the layers at
+which the protocols and network overlays appear to their users, but not
+necessarily the layer at which their internals are implemented.
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1875}}
@@ -40,11 +42,12 @@ Network overlays
 \midrule()
 \endhead
 7. Application & High level protocols that user-facing services use &
-HTTP, HTTPS, DNS, FTP, SMTP & WebRTC, OpenZiti, Teleport, ngrok, TOR,
-BitTorrent, IPFS, Ethereum, Freenet \\
+HTTP, HTTPS, DNS, FTP, SMTP, UPnP, NAT-PMP, PCP, SSH, STUN, TURN &
+WebRTC, OpenZiti, Teleport, ngrok, TOR, BitTorrent, IPFS, Ethereum,
+Freenet \\
 \hline 6. Presentation & Translation of data between a networking
 service and an application, e.g.~encoding, compression, encryption &
-MIME, TLS*, Noise & \\
+MIME, TLS, Noise & \\
 \hline 5. Session & Session setup, management, teardown, authentication,
 authorization & SOCKS, X.225 & \\
 \hline 4. Transport & Sending data of variable length over a network
@@ -65,13 +68,21 @@ Ethernet, WiFi, USB, Bluetooth & \\
 \protect\hypertarget{internet-protocol}{}
 \begin{block}{IPv4 routing}
 \protect\hypertarget{ipv4-routing}{}
+\end{block}
+
 \begin{block}{NAT}
 \protect\hypertarget{nat}{}
-\end{block}
 \end{block}
 
 \begin{block}{NAT Traversal}
 \protect\hypertarget{nat-traversal}{}
+\end{block}
+
+\begin{block}{Universal Plug and Play (UPnP)}
+\protect\hypertarget{universal-plug-and-play-upnp}{}
+PCP, NAT-PMP
+\end{block}
+
 \begin{block}{STUN and TURN}
 \protect\hypertarget{stun-and-turn}{}
 \begin{figure}
@@ -115,7 +126,6 @@ involve guess work or even fail and require falling back to routing the
 \end{figure}
 \end{block}
 \end{block}
-\end{block}
 
 \begin{block}{Network overlays}
 \protect\hypertarget{network-overlays}{}
@@ -127,27 +137,35 @@ involve guess work or even fail and require falling back to routing the
 \protect\hypertarget{traditional-vpns}{}
 \glspl{vpn} are implemented as Layer 2 or 3 network overlays. They are
 commonly used for securely connecting machines from different
-\glspl{lan}. They provide software emulation of a network device on the
-operating system level and allow other software to transparently use the
-functionality of the \gls{ip} suite without requiring extra changes.
-Traditional \glspl{vpn} such as IPSec\autocite{ipSecDocs} and
-OpenVPN\autocite{openVPNDocs} use a centralized service that all
-(encrypted) client communications must pass through. This introduces a
-single point of failure and a potential bottleneck that might negatively
-impact the performance of the multi-party computations due to their
-\gls{p2p} nature.
+\glspl{lan}. They provide software emulation of a network interface
+controller via a TUN/TAP driver on the operating system level and allow
+other software to transparently use the functionality of the \gls{ip}
+suite without requiring extra changes. Traditional \glspl{vpn} such as
+IPSec\autocite{ipSecDocs} and OpenVPN\autocite{openVPNDocs} use a
+centralized service that all (encrypted) client communications must pass
+through. This introduces a single point of failure and a potential
+bottleneck that might negatively impact the performance of the
+multi-party computations due to their \gls{p2p} nature.
 \end{block}
 
-\begin{block}{Wireguard}
+\begin{block}{WireGuard}
 \protect\hypertarget{wireguard}{}
-Wireguard\autocite{donenfeldWireGuardNextGeneration2017} is a VPN
-protocol built with the Noise Protocol Framework\autocite{noiseProtocol}
-that focuses on configuration simplicity. It considers issues such as
-peer discovery and key distribution as out of scope and a responsibility
-of a higher level system that uses Wireguard as a building block. The
-snippets below show a minimal set of configuration options that need to
-be provided in order for two peers to be able to form secure tunnels
-with each another.
+WireGuard\autocite{donenfeldWireGuardNextGeneration2017} is a more
+recent protocol with a design informed by lessons learned from IPSec and
+OpenVPN and a key management approach inspired by SSH. It is a lower
+level protocol that focuses on configuration simplicity while network
+topology, peer discovery and key distribution are left as a
+responsibility of higher level systems that use it as a building block.
+Wireguard is implemented as a Layer 3 overlay over UDP tunnels.
+WireGuard has both user space implementations that use a TUN/TAP driver
+and also has direct support built into the Linux Kernel since version
+5.6 (May 2020). The kernel implementation allows for better performance
+because it does not need to copy packets between the kernel and
+user-space memory.
+
+The snippets below show a minimal set of configuration options that need
+to be provided in order for two peers to be able to form secure tunnels
+with each other.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -179,12 +197,13 @@ with each another.
 \end{Shaded}
 
 Each peer has a public/private key pair that is used for authentication
-and encryption. The \texttt{Address} field specifies the virtual IP
-address that the local network interface will use, while the
-\texttt{AllowedIPs} field specifies what virtual IP addresses are
+and encryption based on the Noise Protocol
+Framework\autocite{noiseProtocol}. The \texttt{Address} field specifies
+the virtual IP address that the local network interface will use, while
+the \texttt{AllowedIPs} field specifies what virtual IP addresses are
 associated with a peer's public key. A peer's \texttt{Endpoint} field
 specifies the URL at which it can be reached. Only one of the peers must
-be configured with a reachable endpoint for the other peer. In the above
+be configured with a reachable endpoint for the other one. In the above
 example once \texttt{peer1} initiates communication with \texttt{peer2},
 \texttt{peer2} will learn the current endpoint of \texttt{peer1} and
 will be able to communicate back with it.

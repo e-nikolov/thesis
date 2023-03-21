@@ -136,6 +136,12 @@
 The Open Systems Interconnection (OSI) model distinguishes 7 layers in
 computer networks:
 
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=0.8\textheight]{notes/../Excalidraw/osi-map.excalidraw.svg}
+\caption{OSI model mapping}
+\end{figure}
+
 \newpage
 
 \begin{longtable}[]{@{}
@@ -180,12 +186,12 @@ Ethernet, WiFi, USB, Bluetooth & \\
 \newpage
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1667}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1360}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.2000}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0800}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0960}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1280}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.3600}}@{}}
 \toprule()
 \begin{minipage}[b]{\linewidth}\raggedright
 Network overlay
@@ -204,19 +210,19 @@ Implementation
 \endhead
 IPSec & Yes & Layer 3 & No & & TUN driver \\
 \hline OpenVPN & Yes & Layer 2, 3 & No & & TUN or TAP driver \\
-\hline Tinc & Yes & Layer 2, 3 & Yes & STUN or TURN & TUN or TAP
-driver \\
+\hline Tinc & Yes & Layer 2, 3 & Yes & STUN, TURN & TUN or TAP driver \\
+\hline N2N & Yes & Layer 2 & Yes & TURN & TAP driver \\
 \hline Wireguard & Yes & Layer 3 & No & & Linux kernel module or TUN
 driver; Uses Noise \\
-\hline Tailscale & Yes (client); No (server) & Layer 3 & Yes & STUN or
-DERP & Uses Wireguard \\
-\hline Nebula & Yes & Layer 3 & Yes & STUN or TURN & Uses Noise \\
-\hline ZeroTier & No & Layer 3 & Yes & STUN or TURN & \\
-\hline WebRTC & Yes & Layer 7 & Yes & STUN or TURN & \\
-\hline OpenZiti & Yes & Layer 7 & ? & Relaying & \\
-\hline Teleport & Yes & Layer 7 & ? & Relaying & \\
+\hline Tailscale & Yes (client); No (server) & Layer 3 & Yes & STUN,
+DERP, UPnP & Uses Wireguard \\
+\hline Nebula & Yes & Layer 3 & Yes & STUN, TURN & Uses Noise \\
+\hline ZeroTier & No & Layer 3 & Yes & STUN, TURN & \\
+\hline WebRTC & Yes & Layer 7 & Yes & STUN, TURN & \\
+\hline OpenZiti & Yes & Layer 7 & ? & TURN* & \\
+\hline Teleport & Yes & Layer 7 & ? & TURN* & \\
 \hline ngrok & No & Layer 7 & No & Proxy & \\
-\hline TOR & Yes & Layer 7 & Yes & Relaying & \\
+\hline TOR & Yes & Layer 7 & Yes & TURN* & \\
 \hline BitTorrent & Yes & Layer 7 & Yes & ? & \\
 \hline IPFS & Yes & Layer 7 & Yes & ? & \\
 \hline Ethereum & Yes & Layer 7 & Yes & ? & \\
@@ -279,17 +285,31 @@ DERP & Uses Wireguard \\
     \url{https://github.com/shawwwn/Gole}
   \item
     \url{https://github.com/malcolmseyd/natpunch-go}
+  \item
+    https://github.com/coturn/coturn - used in NetBird
+  \item
+    https://github.com/pion/stun - used in NetBird
+  \item
+    https://github.com/ccding/go-stun - used in Headscale \#\#\#\#
+    Traversal Using Relays around NAT (TURN)
+  \end{itemize}
+\item
+  Peers use a relay server as a mediator to route traffic
+\item
+  Examples
+
+  \begin{itemize}
+  \tightlist
+  \item
+    https://github.com/coturn/coturn
+  \item
+    https://github.com/pion/stun
   \end{itemize}
 \end{itemize}
 \end{block}
 
-\begin{block}{Traversal Using Relays around NAT (TURN)}
-\protect\hypertarget{traversal-using-relays-around-nat-turn}{}
-\begin{itemize}
-\tightlist
-\item
-  Peers use a relay server as a mediator to route traffic
-\end{itemize}
+\begin{block}{Universal Plug and Play (UPnP)}
+\protect\hypertarget{universal-plug-and-play-upnp}{}
 \end{block}
 
 \begin{block}{Interactive Connectivity Establishment (ICE)}
@@ -313,6 +333,8 @@ DERP & Uses Wireguard \\
   Routing based on the Peer's public key
 \item
   Overview - \url{https://tailscale.com/kb/1232/derp-servers/}
+\item
+  DERP map - https://login.tailscale.com/derpmap/default
 \item
   Source code
 
@@ -577,6 +599,13 @@ encryption.'' -- n2n whitepaper
     Commit}
   \item
     \href{https://wiki.archlinux.org/title/WireGuard}{Arch Linux Wiki}
+  \item
+    Examples:
+  \item
+    https://github.com/takutakahashi/wg-connect
+  \item
+    https://github.com/stv0g/cunicu
+  \item
   \end{itemize}
 \end{itemize}
 \end{block}
@@ -793,6 +822,33 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\begin{block}{Netbird}
+\protect\hypertarget{netbird}{}
+\begin{itemize}
+\tightlist
+\item
+  WireGuard VPN
+\item
+  NAT Traversal
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Client library - https://github.com/pion/ice
+  \item
+    STUN/TURN server - https://github.com/coturn/coturn
+  \end{itemize}
+\item
+  Resources:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Source code - https://github.com/netbirdio/netbird
+  \end{itemize}
+\end{itemize}
+\end{block}
+
 \begin{block}{DIDComm v2}
 \protect\hypertarget{didcomm-v2}{}
 \begin{itemize}
@@ -998,14 +1054,24 @@ encryption.'' -- n2n whitepaper
   \tightlist
   \item
     \url{https://github.com/pion/webrtc}
-
-    \begin{itemize}
-    \tightlist
-    \item
-      Go
-    \end{itemize}
+  \item
+    https://github.com/pion/awesome-pion
   \item
     \url{https://github.com/pojntfx/weron}
+  \item
+    https://github.com/takutakahashi/wg-connect
+  \item
+    https://github.com/stv0g/cunicu
+  \item
+    https://github.com/gavv/webrtc-cli
+  \item
+    https://github.com/szpnygo/gtc
+  \item
+    https://github.com/cretz/webrtc-ipfs-signaling
+  \item
+    https://github.com/pion/example-webrtc-applications
+  \item
+    https://github.com/pion/webrtc/tree/master/examples
   \end{itemize}
 \item
   Resources

@@ -34,6 +34,13 @@ test:
 %.pdf-:
 	rm -rf $*.pdf build/ $*/latex/
 
+%.pdf+:
+	$(PANDOC) \
+		--citeproc \
+		--bibliography shared/references.bib \
+		-o $*.pdf \
+		$*/*.md
+
 %.pdf: %.tex
 	$(MAKE) $@~
 
