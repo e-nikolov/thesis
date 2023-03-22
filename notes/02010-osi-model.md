@@ -9,7 +9,8 @@
 
 The Open Systems Interconnection (OSI) model distinguishes 7 layers in computer networks:
 
-![OSI model mapping](../Excalidraw/osi-map.excalidraw.svg){height=80% }
+
+![OSI model mapping](../Excalidraw/osi-map.excalidraw.png){height=80% }
 
 \newpage
 

@@ -14,6 +14,7 @@ There is a large body of existing protocols and applications that are relevant t
 | \hline 1. Physical     | Sending raw bits over a physical medium                                                                        |     RS232, Ethernet, WiFi, USB, Bluetooth                        |                                                                       |
 
 
+![OSI model mapping|775](../Excalidraw/osi-map.excalidraw.png){height=80% }
 
 ## Internet protocol
 

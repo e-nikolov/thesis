@@ -1,0 +1,1 @@
+![OSI model mapping](../Excalidraw/osi-map.excalidraw.png)

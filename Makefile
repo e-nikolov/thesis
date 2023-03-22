@@ -16,6 +16,7 @@ PANDOC=$(pandock) \
 # .PRECIOUS: prep/latex/%.tex %.tex %/latex %/latex/
 
 all: thesis.pdf notes.pdf prep.pdf presentation.pdf
+all!: thesis.pdf! notes.pdf! prep.pdf! presentation.pdf!
 
 
 test:
