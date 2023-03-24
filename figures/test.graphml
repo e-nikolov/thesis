@@ -1,0 +1,1201 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<graphml xmlns="http://graphml.graphdrawing.org/xmlns" xmlns:java="http://www.yworks.com/xml/yfiles-common/1.0/java" xmlns:sys="http://www.yworks.com/xml/yfiles-common/markup/primitives/2.0" xmlns:x="http://www.yworks.com/xml/yfiles-common/markup/2.0" xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance" xmlns:y="http://www.yworks.com/xml/graphml" xmlns:yed="http://www.yworks.com/xml/yed/3" xsi:schemaLocation="http://graphml.graphdrawing.org/xmlns http://www.yworks.com/xml/schema/graphml/1.1/ygraphml.xsd">
+  <!--Created by yEd 3.23-->
+  <key attr.name="Description" attr.type="string" for="graph" id="d0"/>
+  <key for="port" id="d1" yfiles.type="portgraphics"/>
+  <key for="port" id="d2" yfiles.type="portgeometry"/>
+  <key for="port" id="d3" yfiles.type="portuserdata"/>
+  <key attr.name="url" attr.type="string" for="node" id="d4"/>
+  <key attr.name="description" attr.type="string" for="node" id="d5"/>
+  <key for="node" id="d6" yfiles.type="nodegraphics"/>
+  <key for="graphml" id="d7" yfiles.type="resources"/>
+  <key attr.name="url" attr.type="string" for="edge" id="d8"/>
+  <key attr.name="description" attr.type="string" for="edge" id="d9"/>
+  <key for="edge" id="d10" yfiles.type="edgegraphics"/>
+  <graph edgedefault="directed" id="G">
+    <data key="d0" xml:space="preserve"/>
+    <node id="n0" yfiles.foldertype="group">
+      <data key="d4" xml:space="preserve"/>
+      <data key="d6">
+        <y:ProxyAutoBoundsNode>
+          <y:Realizers active="0">
+            <y:GroupNode>
+              <y:Geometry height="1327.4409836065572" width="919.0000000000005" x="497.346037926151" y="-117.65018106841512"/>
+              <y:Fill hasColor="false" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="dashed" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="22.37646484375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="false" width="919.0000000000005" x="0.0" xml:space="preserve" y="0.0">Background</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+              <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
+              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="5.6843418860808015E-14"/>
+            </y:GroupNode>
+            <y:GroupNode>
+              <y:Geometry height="50.0" width="50.0" x="497.346037926151" y="-117.65018106841512"/>
+              <y:Fill color="#F5F5F5" transparent="false"/>
+              <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="59.02685546875" x="-4.513427734375" xml:space="preserve" y="0.0">Folder 1</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+              <y:State closed="true" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
+              <y:Insets bottom="5" bottomF="5.0" left="5" leftF="5.0" right="5" rightF="5.0" top="5" topF="5.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GroupNode>
+          </y:Realizers>
+        </y:ProxyAutoBoundsNode>
+      </data>
+      <graph edgedefault="directed" id="n0:">
+        <node id="n0::n0">
+          <data key="d5" xml:space="preserve"><![CDATA[Background]]></data>
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="310.04001748633874" width="889.0" x="512.346037926151" y="-64.95686522142049"/>
+              <y:Fill color="#FA52527F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="54.39994812011719" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="105.95988464355469" x="4.0" xml:space="preserve" y="4.0">Layer 7
+Application</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n0::n1">
+          <data key="d5" xml:space="preserve"><![CDATA[Background]]></data>
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="117.0" width="889.0" x="512.346037926151" y="245.08315226491817"/>
+              <y:Fill color="#BE4BDB7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="54.39994812011719" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="128.63986206054688" x="4.0" xml:space="preserve" y="4.0">Layer 6
+Presentation</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n0::n2">
+          <data key="d5" xml:space="preserve"><![CDATA[Background]]></data>
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="709.9409836065571" width="204.40000000000077" x="924.146037926151" y="484.84981893158505"/>
+              <y:Fill color="#FD7E147F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="bl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="61.33995056152344" x="4.0" xml:space="preserve" y="676.7410095464984">Kernel</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n0::n3">
+          <data key="d5" xml:space="preserve"><![CDATA[Background]]></data>
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="166.2939890710386" width="889.0" x="512.3460379261514" y="870.6831522649181"/>
+              <y:Fill color="#FD7E137F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="54.39994812011719" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="96.29989624023438" x="4.0" xml:space="preserve" y="4.0">Layer 2
+Data link</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n0::n4">
+          <data key="d5" xml:space="preserve"><![CDATA[Background]]></data>
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="97.70601092896163" width="889.0" x="512.346037926151" y="1036.9771413359567"/>
+              <y:Fill color="#868E967F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="54.39994812011719" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="80.35990905761719" x="4.0" xml:space="preserve" y="4.0">Layer 1
+Physical</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n0::n5">
+          <data key="d5" xml:space="preserve"><![CDATA[Background]]></data>
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="274.5999999999998" width="889.0" x="512.346037926151" y="596.0831522649182"/>
+              <y:Fill color="#218AE67F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="54.39994812011719" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="81.85990905761719" x="4.0" xml:space="preserve" y="4.0">Layer 3
+Network</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n0::n6">
+          <data key="d5" xml:space="preserve"><![CDATA[Background]]></data>
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="1077.8333333333328" width="169.17360437158527" x="640.3460379261512" y="-102.65018106841507"/>
+              <y:Fill color="#12B8867F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="130.2198486328125" x="4.0" xml:space="preserve" y="4.0">Peer-to-Peer</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n0::n7">
+          <data key="d5" xml:space="preserve"><![CDATA[Background]]></data>
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="1077.8333333333328" width="137.67413333333388" x="1231.6460379261507" y="-102.65018106841507"/>
+              <y:Fill color="#FA52527F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="129.79986572265625" x="4.0" xml:space="preserve" y="4.0">Client/Server</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n0::n8">
+          <data key="d5" xml:space="preserve"><![CDATA[Background]]></data>
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="117.00000000000011" width="889.0" x="512.346037926151" y="479.08315226491817"/>
+              <y:Fill color="#40C0577F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="54.39994812011719" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="103.05989074707031" x="4.0" xml:space="preserve" y="4.000000000000057">Layer 4
+Transport</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n0::n9">
+          <data key="d5" xml:space="preserve"><![CDATA[Background]]></data>
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="117.0" width="889.0" x="512.346037926151" y="362.08315226491817"/>
+              <y:Fill color="#FD7E147F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="54.39994812011719" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="80.59991455078125" x="4.0" xml:space="preserve" y="4.0">Layer 5
+Session</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+      </graph>
+    </node>
+    <node id="n1" yfiles.foldertype="group">
+      <data key="d4" xml:space="preserve"/>
+      <data key="d6">
+        <y:ProxyAutoBoundsNode>
+          <y:Realizers active="0">
+            <y:GroupNode>
+              <y:Geometry height="1217.7666768645804" width="927.1299438476562" x="437.3400115966797" y="-74.10836947118867"/>
+              <y:Fill hasColor="false" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="dashed" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="false" width="927.1299438476562" x="0.0" xml:space="preserve" y="0.0">Overlays</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+              <y:State closed="false" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
+              <y:Insets bottom="15" bottomF="15.0" left="15" leftF="15.0" right="15" rightF="15.0" top="15" topF="15.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="218" leftF="217.99012756347656" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GroupNode>
+            <y:GroupNode>
+              <y:Geometry height="50.0" width="50.0" x="437.3400115966797" y="-74.10836947118867"/>
+              <y:Fill color="#F5F5F5" transparent="false"/>
+              <y:BorderStyle color="#000000" type="dashed" width="1.0"/>
+              <y:NodeLabel alignment="right" autoSizePolicy="node_width" backgroundColor="#EBEBEB" borderDistance="0.0" fontFamily="Dialog" fontSize="15" fontStyle="plain" hasLineColor="false" height="22.37646484375" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="t" textColor="#000000" verticalTextPosition="bottom" visible="true" width="59.02685546875" x="-4.513427734375" xml:space="preserve" y="0.0">Folder 2</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+              <y:State closed="true" closedHeight="50.0" closedWidth="50.0" innerGraphDisplayEnabled="false"/>
+              <y:Insets bottom="5" bottomF="5.0" left="5" leftF="5.0" right="5" rightF="5.0" top="5" topF="5.0"/>
+              <y:BorderInsets bottom="0" bottomF="0.0" left="0" leftF="0.0" right="0" rightF="0.0" top="0" topF="0.0"/>
+            </y:GroupNode>
+          </y:Realizers>
+        </y:ProxyAutoBoundsNode>
+      </data>
+      <graph edgedefault="directed" id="n1:">
+        <node id="n1::n0">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="110.73989868164062" x="934.6300506591797" y="1095.2564613627687"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="100.73989868164062" x="4.0" xml:space="preserve" y="4.0">Bluetooth</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n1">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="99.7799072265625" x="935.4727695682715" y="1047.6831522649181"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="89.7799072265625" x="4.0" xml:space="preserve" y="4.0">Ethernet</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n2">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="49.15995788574219" x="1065.2526767948339" y="1095.4583333333333"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="39.15995788574219" x="4.0" xml:space="preserve" y="4.0">WiFi</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n3">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="55.319976806640625" x="1052.3400115966797" y="988.5998189315848"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="45.319976806640625" x="4.0" xml:space="preserve" y="4.0">MAC</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n4">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="56.07997131347656" x="935.0695786995002" y="647.4921346220233"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="46.07997131347656" x="4.0" xml:space="preserve" y="4.0">NAT</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n5">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="38.11997985839844" x="935.0695786995002" y="608.1374999999998"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="28.119979858398438" x="4.0" xml:space="preserve" y="4.0">IP</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n6">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="69.01995849609375" x="1015.4900207519531" y="315.4583333333333"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="59.01995849609375" x="4.0" xml:space="preserve" y="4.0">MIME</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n7">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="54.63996887207031" x="1050.4070399341547" y="28.894607788415215"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="44.63996887207031" x="4.0" xml:space="preserve" y="4.0">DNS</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n8">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="90.11991882324219" x="911.7860785145299" y="386.875444932476"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="80.11991882324219" x="4.0" xml:space="preserve" y="4.0">Sockets</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n9">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="58.15995788574219" x="670.3301391601562" y="165.7813482910496"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="48.15995788574219" x="4.0" xml:space="preserve" y="4.0">TOR</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n10">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="92.5399169921875" x="670.3301391601562" y="210.75929184349724"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="82.5399169921875" x="4.0" xml:space="preserve" y="4.0">WebRTC</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n11">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="70.79994201660156" x="912.6446780145202" y="15.911945555409773"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="60.79994201660156" x="4.0" xml:space="preserve" y="4.0">TURN</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n12">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="69.39994812011719" x="912.6446780145202" y="87.70546866766165"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="59.39994812011719" x="4.0" xml:space="preserve" y="4.0">STUN</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n13">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="64.05995178222656" x="912.6446780145202" y="159.49899177991352"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="54.05995178222656" x="4.0" xml:space="preserve" y="4.0">UPnP</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n14">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="54.219970703125" x="912.6446780145202" y="252.18958333333342"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="44.219970703125" x="4.0" xml:space="preserve" y="4.0">TLS</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n15">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="64.13993835449219" x="912.6446780145202" y="291.1000000000001"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="54.13993835449219" x="4.0" xml:space="preserve" y="4.0">Noise</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n16">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="81.25993347167969" x="1050.4070399341547" y="79.69607834928959"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="71.25993347167969" x="4.0" xml:space="preserve" y="4.0">HTTPs</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n17">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="70.39994812011719" x="1050.4070399341547" y="130.49754891016397"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="60.39994812011719" x="4.0" xml:space="preserve" y="4.0">HTTP</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n18">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="62.77995300292969" x="1243.5570255345278" y="79.69607834928959"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="52.77995300292969" x="4.0" xml:space="preserve" y="4.0">ngrok</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n19">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="57.09996032714844" x="948.3503501082873" y="506.0835827742765"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="47.09996032714844" x="4.0" xml:space="preserve" y="3.999999999999943">UDP</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n20">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="56.179962158203125" x="1051.9100189208984" y="506.0835827742765"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="46.179962158203125" x="4.0" xml:space="preserve" y="3.999999999999943">TCP</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n21">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="113.29988098144531" x="883.230281194086" y="686.846769244047"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="103.29988098144531" x="4.0" xml:space="preserve" y="4.0">WireGuard</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n22">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="121.59988403320312" x="959.2000579833984" y="798.5585144017472"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="111.59988403320312" x="4.0" xml:space="preserve" y="4.0">TUN driver</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n23">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="120.77989196777344" x="959.6100540161133" y="885.4583333333333"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.77989196777344" x="4.0" xml:space="preserve" y="4.0">TAP driver</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n24">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="95.09992980957031" x="1254.3700256347656" y="855.4583333333333"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="85.09992980957031" x="4.0" xml:space="preserve" y="4.0">OpenVPN</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n25">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="71.25994873046875" x="1254.3700256347656" y="686.846769244047"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="61.25994873046875" x="4.0" xml:space="preserve" y="4.0">IPSec</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n26">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="88.01992797851562" x="670.3301391601562" y="645.4583333333333"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="78.01992797851562" x="4.0" xml:space="preserve" y="4.0">NetBird</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n27">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="77.93992614746094" x="670.3301391601562" y="795.4583333333333"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="67.93992614746094" x="4.0" xml:space="preserve" y="4.0">Nebula</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n28">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="103.49989318847656" x="670.3301391601562" y="720.4583333333334"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="93.49989318847656" x="4.0" xml:space="preserve" y="4.0">Tailscale</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n29">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="53.8399658203125" x="670.3301391601562" y="855.4583333333333"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="43.8399658203125" x="4.0" xml:space="preserve" y="4.0">Tinc</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n30">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="53.999969482421875" x="670.3301391601562" y="915.4583333333333"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="43.999969482421875" x="4.0" xml:space="preserve" y="4.0">N2N</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n31">
+          <data key="d4" xml:space="preserve"/>
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="103.15989685058594" x="670.3301391601562" y="120.80340473860196"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="93.15989685058594" x="4.0" xml:space="preserve" y="4.0">Ethereum</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n32">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="61.75996398925781" x="670.3301391601562" y="75.8254611861543"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="51.75996398925781" x="4.0" xml:space="preserve" y="4.0">IPFS</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n33">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="120.15989685058594" x="670.3301391601562" y="30.847517633706644"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="110.15989685058594" x="4.0" xml:space="preserve" y="4.0">BitTorrent</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n34">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="94.659912109375" x="670.3301391601562" y="-14.130425918741011"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="84.659912109375" x="4.0" xml:space="preserve" y="4.0">OpenZiti</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n35">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="87.53993225097656" x="670.3301391601562" y="-59.10836947118867"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="77.53993225097656" x="4.0" xml:space="preserve" y="4.0">Freenet</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+        <node id="n1::n36">
+          <data key="d6">
+            <y:ShapeNode>
+              <y:Geometry height="29.0833333333334" width="66.31996154785156" x="1051.9600143432617" y="608.1374999999998"/>
+              <y:Fill color="#F0EEEE7F" transparent="false"/>
+              <y:BorderStyle hasColor="false" type="line" width="1.0"/>
+              <y:NodeLabel alignment="left" autoSizePolicy="content" fontFamily="Virgil 3 YOFF" fontSize="20" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="29.199974060058594" horizontalTextPosition="center" iconTextGap="4" modelName="internal" modelPosition="tl" textColor="#000000" verticalTextPosition="bottom" visible="true" width="56.31996154785156" x="4.0" xml:space="preserve" y="4.0">ICMP</y:NodeLabel>
+              <y:Shape type="roundrectangle"/>
+            </y:ShapeNode>
+          </data>
+        </node>
+      </graph>
+    </node>
+    <edge id="n1::e0" source="n1::n9" target="n1::n11">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-29.079978942871094" sy="0.0" tx="-35.39997100830078" ty="-4.495079334564359">
+            <y:Point x="645.0" y="180.32301495771628"/>
+            <y:Point x="645.0" y="25.958532887512092"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="37.328125" x="85.3151368588226" xml:space="preserve" y="-152.36448041815197">TURN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e1" source="n1::n10" target="n1::n12">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="46.26995849609375" sy="0.0" tx="-34.699974060058594" ty="0.0">
+            <y:Point x="803.0" y="225.30095851016392"/>
+            <y:Point x="803.0" y="102.24713533432833"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="shead" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="36.666015625" x="6.294464111328125" xml:space="preserve" y="-20.701177720304827">STUN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e2" source="n1::n10" target="n1::n11">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-46.26995849609375" sy="0.0" tx="-35.39997100830078" ty="-4.495079334564359">
+            <y:Point x="645.0" y="225.30095851016392"/>
+            <y:Point x="645.0" y="25.958532887512092"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="37.328125" x="85.3151368588226" xml:space="preserve" y="-197.34243146795666">TURN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e3" source="n1::n16" target="n1::n17">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-16.163317362467524" sy="14.5416666666667" tx="-10.733324686686274" ty="-14.541666666666686"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" hasText="false" height="4.0" horizontalTextPosition="center" iconTextGap="4" modelName="free" modelPosition="anywhere" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="true" width="4.0" x="-20.25887293358801" y="6.161641602972836">
+            <y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/>
+          </y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e4" source="n1::n16" target="n1::n14">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="34.199974060058594" sy="14.5416666666667" tx="27.1099853515625" ty="0.0">
+            <y:Point x="1125.2369807300531" y="266.7312500000001"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="free" modelPosition="anywhere" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="26.0078125" x="-31.26276901106189" xml:space="preserve" y="-1.188944334527207">TLS<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e5" source="n1::n17" target="n1::n20">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="35.199974060058594" sy="0.0" tx="28.089981079101562" ty="0.0">
+            <y:Point x="1147.0" y="145.03921557683066"/>
+            <y:Point x="1147.0" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="stail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.0" x="3.658987191198321" xml:space="preserve" y="2.0000004889400316">TCP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e6" source="n1::n18" target="n1::n16">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-31.389976501464844" sy="0.0" tx="40.629966735839844" ty="0.0"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="free" modelPosition="anywhere" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="41.330078125" x="-30.89306785017743" xml:space="preserve" y="-27.60949312847903">HTTPs<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e7" source="n1::n18" target="n1::n20">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-30.889976501464844" sy="12.4479166666667" tx="28.089981079101562" ty="0.0">
+            <y:Point x="1244.0570255345278" y="209.55000000000004"/>
+            <y:Point x="1147.0" y="209.55000000000007"/>
+            <y:Point x="1147.0" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.0" x="-95.0570068359375" xml:space="preserve" y="249.0262615002568">TCP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e8" source="n1::n21" target="n1::n15">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-56.649940490722656" sy="0.0" tx="-32.069969177246094" ty="0.0">
+            <y:Point x="854.0" y="701.3884359107137"/>
+            <y:Point x="854.0" y="305.64166666666677"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="34.6796875" x="-27.20172119140625" xml:space="preserve" y="-207.2239623831847">Noise<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="true"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e9" source="n1::n21" target="n1::n19">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="54.63067991659045" sy="14.023335774739508" tx="28.54998016357422" ty="0.0">
+            <y:Point x="996.5301621755314" y="715.9301025773804"/>
+            <y:Point x="996.5301621755314" y="748.0"/>
+            <y:Point x="1032.783400005776" y="748.0"/>
+            <y:Point x="1032.783400005776" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="shead" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="29.3359375" x="-29.31670061743739" xml:space="preserve" y="10.643359413317853">UDP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e10" source="n1::n21" target="n1::n22">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-56.149940490722656" sy="12.447916666666629" tx="-1.0" ty="-14.541666666666742">
+            <y:Point x="883.730281194086" y="773.0"/>
+            <y:Point x="1019.0" y="773.0"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.662109375" x="53.30380026501177" xml:space="preserve" y="61.134765625">TUN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e11" source="n1::n24" target="n1::n23">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-47.049964904785156" sy="12.447916666666629" tx="-59.88994598388672" ty="12.447916666666629">
+            <y:Point x="1254.8700256347656" y="968.0"/>
+            <y:Point x="960.1100540161133" y="968.0"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="27.337890625" x="-161.04890060424805" xml:space="preserve" y="64.80914306640625">TAP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e12" source="n1::n24" target="n1::n22">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-1.0" sy="-14.541666666666742" tx="-1.0" ty="-14.541666666666742">
+            <y:Point x="1300.9199905395508" y="773.0"/>
+            <y:Point x="1019.0" y="773.0"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.662109375" x="-155.2911033630371" xml:space="preserve" y="-80.4180908203125">TUN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e13" source="n1::n24" target="n1::n20">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-47.549964904785156" sy="0.0" tx="28.089981079101562" ty="0.0">
+            <y:Point x="1147.0" y="870.0"/>
+            <y:Point x="1147.0" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.0" x="-105.3438720703125" xml:space="preserve" y="-184.0379612170284">TCP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e14" source="n1::n24" target="n1::n19">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="29.366643269856695" sy="-14.541666666666742" tx="28.54998016357422" ty="0.0">
+            <y:Point x="1331.2866338094075" y="748.0"/>
+            <y:Point x="1032.783400005776" y="748.0"/>
+            <y:Point x="1032.783400005776" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="29.3359375" x="-163.91957293615815" xml:space="preserve" y="-105.43212890625">UDP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e15" source="n1::n25" target="n1::n22">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-35.129974365234375" sy="12.447916666666629" tx="-1.0" ty="-14.541666666666742">
+            <y:Point x="1254.8700256347656" y="773.0"/>
+            <y:Point x="1019.0" y="773.0"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.662109375" x="-132.2660369873047" xml:space="preserve" y="61.134765625">TUN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e16" source="n1::n25" target="n1::n20">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-35.629974365234375" sy="0.0" tx="28.089981079101562" ty="0.0">
+            <y:Point x="1147.0" y="701.3884359107137"/>
+            <y:Point x="1147.0" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.0" x="-105.3438720703125" xml:space="preserve" y="-99.73217099604653">TCP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e17" source="n1::n25" target="n1::n19">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="34.129974365234375" sy="13.635416666666629" tx="28.54998016357422" ty="0.0">
+            <y:Point x="1324.1299743652344" y="748.0"/>
+            <y:Point x="1032.783400005776" y="748.0"/>
+            <y:Point x="1032.783400005776" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="29.3359375" x="-160.3412864473073" xml:space="preserve" y="34.9439697265625">UDP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e18" source="n1::n26" target="n1::n10">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-43.00996398925781" sy="-13.197916666666742" tx="-45.26995849609375" ty="13.197916666666714"/>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="free" modelPosition="anywhere" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="53.3359375" x="-8.409065980028231" xml:space="preserve" y="-78.16846105692537">WebRTC<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e19" source="n1::n26" target="n1::n21">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-43.50996398925781" sy="12.447916666666629" tx="-56.649940490722656" ty="9.694444444444457">
+            <y:Point x="670.8301391601562" y="698.0"/>
+            <y:Point x="827.0" y="698.0"/>
+            <y:Point x="827.0" y="711.0828803551582"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="24.66015625" x="65.75485229492188" xml:space="preserve" y="27.502197265625">WG<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e20" source="n1::n27" target="n1::n22">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-1.0" sy="-14.541666666666742" tx="-1.0" ty="-14.541666666666742">
+            <y:Point x="708.3001022338867" y="773.0"/>
+            <y:Point x="1019.0" y="773.0"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="stail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.662109375" x="1.9999923706054688" xml:space="preserve" y="-25.09840901692712">TUN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e21" source="n1::n27" target="n1::n15">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="37.46996307373047" sy="13.635416666666629" tx="-32.069969177246094" ty="0.0">
+            <y:Point x="746.7700653076172" y="828.5999870300293"/>
+            <y:Point x="854.0" y="828.5999870300293"/>
+            <y:Point x="854.0" y="305.64166666666677"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="shead" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="34.6796875" x="9.624984741210938" xml:space="preserve" y="-13.775379180908203">Noise<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="true"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e22" source="n1::n27" target="n1::n12">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="37.46996307373047" sy="-13.635416666666742" tx="-34.699974060058594" ty="0.0">
+            <y:Point x="803.0" y="796.3645833333333"/>
+            <y:Point x="803.0" y="102.24713533432835"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="36.666015625" x="58.20245361328125" xml:space="preserve" y="-356.4092895919504">STUN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e23" source="n1::n27" target="n1::n11">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-38.96996307373047" sy="0.0" tx="-35.39997100830078" ty="-4.495079334564359">
+            <y:Point x="645.0" y="810.0"/>
+            <y:Point x="645.0" y="25.958532887512114"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="37.328125" x="-23.2806396484375" xml:space="preserve" y="-401.37131949374395">TURN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e24" source="n1::n27" target="n1::n19">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="38.96996307373047" sy="0.0" tx="28.54998016357422" ty="0.0">
+            <y:Point x="829.0" y="810.0"/>
+            <y:Point x="829.0" y="748.0"/>
+            <y:Point x="1032.783400005776" y="748.0"/>
+            <y:Point x="1032.783400005776" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="shead" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="29.3359375" x="10.124984741210938" xml:space="preserve" y="-20.701171875">UDP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e25" source="n1::n28" target="n1::n22">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-13.779983520507812" sy="12.447916666666629" tx="-1.0" ty="-14.541666666666742">
+            <y:Point x="708.3001022338867" y="773.0"/>
+            <y:Point x="1019.0" y="773.0"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.662109375" x="141.0188865661621" xml:space="preserve" y="25.50592041015625">TUN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e26" source="n1::n28" target="n1::n21">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="1.9199142456054688" sy="-14.541666666666742" tx="-56.649940490722656" ty="9.694444444444457">
+            <y:Point x="724.0" y="698.0"/>
+            <y:Point x="827.0" y="698.0"/>
+            <y:Point x="827.0" y="711.0828803551582"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="24.66015625" x="39.169921875" xml:space="preserve" y="-43.11566162109375">WG<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e27" source="n1::n28" target="n1::n12">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="51.74994659423828" sy="2.9722222222221717" tx="-34.699974060058594" ty="0.0">
+            <y:Point x="803.0" y="737.9722222222223"/>
+            <y:Point x="803.0" y="102.24713533432833"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="thead" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="36.666015625" x="92.02364529967645" xml:space="preserve" y="-656.426265544578">STUN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e28" source="n1::n28" target="n1::n11">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-51.74994659423828" sy="-1.1368683772161603E-13" tx="-35.39997100830078" ty="-4.495079334564359">
+            <y:Point x="645.0" y="735.0"/>
+            <y:Point x="645.0" y="25.958532887512092"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="37.328125" x="-23.2806396484375" xml:space="preserve" y="-363.87131949374395">TURN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e29" source="n1::n28" target="n1::n13">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="49.74994659423828" sy="-14.010416666666742" tx="-32.02997589111328" ty="2.141178255568036">
+            <y:Point x="771.8300323486328" y="176.18183670214825"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="35.34765625" x="2.0000152587890625" xml:space="preserve" y="-286.58256390804047">UPnP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e30" source="n1::n29" target="n1::n23">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="26.91998291015625" sy="2.4583333333332575" tx="-59.88994598388672" ty="12.447916666666629">
+            <y:Point x="775.8350524902344" y="872.4583333333333"/>
+            <y:Point x="775.8350524902344" y="968.0"/>
+            <y:Point x="960.1100540161133" y="968.0"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="27.337890625" x="130.13350296020508" xml:space="preserve" y="74.84051513671875">TAP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e31" source="n1::n29" target="n1::n20">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="26.91998291015625" sy="-0.04166666666674246" tx="28.089981079101562" ty="0.0">
+            <y:Point x="1147.0" y="869.9583333333333"/>
+            <y:Point x="1147.0" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="free" modelPosition="anywhere" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.0" x="-3.744608763732117" xml:space="preserve" y="8.908339422104518">TCP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e32" source="n1::n29" target="n1::n19">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="25.41998291015625" sy="13.635416666666629" tx="28.54998016357422" ty="0.0">
+            <y:Point x="722.6701049804688" y="888.5999870300293"/>
+            <y:Point x="829.0" y="888.5999870300293"/>
+            <y:Point x="829.0" y="748.0"/>
+            <y:Point x="1032.783400005776" y="748.0"/>
+            <y:Point x="1032.783400005776" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="29.3359375" x="288.34128149013713" xml:space="preserve" y="-363.0489448949943">UDP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e33" source="n1::n29" target="n1::n12">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-8.806660970052121" sy="-14.541666666666742" tx="-34.699974060058594" ty="0.0">
+            <y:Point x="688.4434611002604" y="843.5999870300293"/>
+            <y:Point x="803.0" y="843.5999870300293"/>
+            <y:Point x="803.0" y="102.24713533432833"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="thead" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="36.666015625" x="177.4101809442077" xml:space="preserve" y="-773.8660238453592">STUN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e34" source="n1::n29" target="n1::n11">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-26.91998291015625" sy="0.0" tx="-35.39997100830078" ty="-4.495079334564359">
+            <y:Point x="645.0" y="870.0"/>
+            <y:Point x="645.0" y="25.958532887512092"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="thead" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="37.328125" x="194.9109133660827" xml:space="preserve" y="-864.7426389874879">TURN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e35" source="n1::n30" target="n1::n23">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-26.499984741210938" sy="12.447916666666629" tx="-59.88994598388672" ty="12.447916666666629">
+            <y:Point x="670.8301391601562" y="968.0"/>
+            <y:Point x="960.1100540161133" y="968.0"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="27.337890625" x="130.97101211547852" xml:space="preserve" y="4.801025390625">TAP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e36" source="n1::n30" target="n1::n20">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="26.999984741210938" sy="3.099987030029297" tx="28.089981079101562" ty="0.0">
+            <y:Point x="1147.0" y="933.0999870300293"/>
+            <y:Point x="1147.0" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.0" x="201.89747619628906" xml:space="preserve" y="2.000011444091797">TCP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e37" source="n1::n30" target="n1::n11">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="-26.999984741210938" sy="0.0" tx="-35.39997100830078" ty="-4.495079334564359">
+            <y:Point x="645.0" y="930.0"/>
+            <y:Point x="645.0" y="25.958532887512092"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="line" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="37.328125" x="-23.2806396484375" xml:space="preserve" y="-461.37131949374395">TURN<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e38" source="n1::n30" target="n1::n19">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="26.781234741210938" sy="-11.900012969970703" tx="28.54998016357422" ty="0.0">
+            <y:Point x="829.0" y="918.0999870300293"/>
+            <y:Point x="829.0" y="748.0"/>
+            <y:Point x="1032.783400005776" y="748.0"/>
+            <y:Point x="1032.783400005776" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="head" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="29.3359375" x="277.336134380776" xml:space="preserve" y="-293.1379368029659">UDP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e39" source="n1::n30" target="n1::n20">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="26.999984741210938" sy="3.099987030029297" tx="28.089981079101562" ty="0.0">
+            <y:Point x="1147.0" y="933.0999870300293"/>
+            <y:Point x="1147.0" y="520.6252494409432"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dotted" width="2.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="six_pos" modelPosition="tail" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.0" x="201.89747619628906" xml:space="preserve" y="2.000011444091797">TCP<y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+    <edge id="n1::e40" source="n1::n29" target="n1::n22">
+      <data key="d10">
+        <y:PolyLineEdge>
+          <y:Path sx="25.41998291015625" sy="-13.635416666666742" tx="-1.0" ty="-14.541666666666742">
+            <y:Point x="883.730281194086" y="856.3645833333333"/>
+            <y:Point x="883.730281194086" y="773.0"/>
+            <y:Point x="1019.0" y="773.0"/>
+          </y:Path>
+          <y:LineStyle color="#000000" type="dashed" width="1.0"/>
+          <y:Arrows source="none" target="standard"/>
+          <y:EdgeLabel alignment="center" configuration="AutoFlippingLabel" distance="2.0" fontFamily="Dialog" fontSize="12" fontStyle="plain" hasBackgroundColor="false" hasLineColor="false" height="18.701171875" horizontalTextPosition="center" iconTextGap="4" modelName="custom" preferredPlacement="anywhere" ratio="0.5" textColor="#000000" verticalTextPosition="bottom" visible="false" width="28.662109375" x="147.42939821882567" xml:space="preserve" y="-23.374784581227686">TUN<y:LabelModel><y:SmartEdgeLabelModel autoRotationEnabled="false" defaultAngle="0.0" defaultDistance="10.0"/></y:LabelModel><y:ModelParameter><y:SmartEdgeLabelModelParameter angle="6.283185307179586" distance="0.7395833333333419" distanceToCenter="true" position="right" ratio="0.16822754253690503" segment="1"/></y:ModelParameter><y:PreferredPlacementDescriptor angle="0.0" angleOffsetOnRightSide="0" angleReference="absolute" angleRotationOnRightSide="co" distance="-1.0" frozen="true" placement="anywhere" side="anywhere" sideReference="relative_to_edge_flow"/></y:EdgeLabel>
+          <y:BendStyle smoothed="false"/>
+        </y:PolyLineEdge>
+      </data>
+    </edge>
+  </graph>
+  <data key="d7">
+    <y:Resources/>
+  </data>
+</graphml>

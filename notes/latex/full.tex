@@ -138,8 +138,16 @@ computer networks:
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth,height=0.8\textheight]{notes/../Excalidraw/osi-map.excalidraw.png}
+\includegraphics[width=\textwidth,height=0.9\textheight]{notes/../Excalidraw/osi-map.excalidraw.png}
 \caption{OSI model mapping}
+\end{figure}
+
+\newpage
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=1\textheight]{notes/../figures/test.png}
+\caption{OSI model mapping 2\textbar500}
 \end{figure}
 
 \newpage
@@ -162,11 +170,12 @@ Network overlays
 \midrule()
 \endhead
 7. Application & High level protocols that user-facing services use &
-HTTP, HTTPS, DNS, FTP, SMTP & WebRTC, OpenZiti, ngrok, TOR, BitTorrent,
-IPFS, Ethereum, Teleport, Freenet \\
+HTTP, HTTPS, DNS, FTP, SMTP, UPnP, NAT-PMP, PCP, SSH, STUN, TURN &
+WebRTC, OpenZiti, Teleport, ngrok, TOR, BitTorrent, IPFS, Ethereum,
+Freenet \\
 \hline 6. Presentation & Translation of data between a networking
 service and an application, e.g.~encoding, compression, encryption &
-MIME, TLS* & Noise Protocol Framework \\
+MIME, TLS, Noise & \\
 \hline 5. Session & Session setup, management, teardown, authentication,
 authorization & SOCKS, X.225 & \\
 \hline 4. Transport & Sending data of variable length over a network

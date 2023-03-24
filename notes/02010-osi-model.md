@@ -3,21 +3,26 @@
 
 - Create a figure that maps the various related components to OSI model layers
 - It can be a "more or less accurate" artistic impression since the components can cover multiple layers and the layers are somewhat fluid
-
+ 
 
 ![test](../figures/osi-model-2.png){height=30% width=50%} ![test2](../figures/osi-model-1.png){height=30% width=40% }
 
 The Open Systems Interconnection (OSI) model distinguishes 7 layers in computer networks:
 
 
-![OSI model mapping](../Excalidraw/osi-map.excalidraw.png){height=80% }
+![OSI model mapping](../Excalidraw/osi-map.excalidraw.png){height=90% }
+
+\newpage
+
+![OSI model mapping 2|500](../figures/test.png){height=100% }
+
 
 \newpage
 
 | OSI Layer       | Description                                                              |          Protocols          | Network overlays                                                             |
 |---|--------|--|---|
-| 7. Application  | High level protocols that user-facing services use                                                                                        | HTTP, HTTPS, DNS, FTP, SMTP | WebRTC, OpenZiti, ngrok, TOR, BitTorrent, IPFS, Ethereum, Teleport, Freenet |
-| \hline 6. Presentation | Translation of data between a networking service and an application, e.g. encoding, compression, encryption           |       MIME, TLS*        |     Noise Protocol Framework                                                                  |
+| 7. Application  | High level protocols that user-facing services use                                                                                        | HTTP, HTTPS, DNS, FTP, SMTP, UPnP, NAT-PMP, PCP, SSH, STUN, TURN  | WebRTC, OpenZiti, Teleport, ngrok, TOR, BitTorrent, IPFS, Ethereum, Freenet |
+| \hline 6. Presentation | Translation of data between a networking service and an application, e.g. encoding, compression, encryption           |       MIME, TLS, Noise       |                                                                       |
 | \hline 5. Session      | Session setup, management, teardown, authentication, authorization                                                                            |          SOCKS, X.225                   |                                                                       |
 | \hline 4. Transport    | Sending data of variable length over a network while maintaining quality-of-service, e.g. ports, connections, packet splitting |          UDP, TCP, NAT port mapping           |                                                                       |
 | \hline 3. Network      | Sending data packets between two nodes, routed via a path of other nodes, e.g. addressing, routing                |          IP, ICMP, NAT           | TUN driver, IPSec, OpenVPN, Tinc, Wireguard, Tailscale, Nebula, ZeroTier                                       |

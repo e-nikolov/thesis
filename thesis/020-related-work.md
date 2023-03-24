@@ -1,20 +1,11 @@
 # Related work
 
-In this chapter we will provide a high level overview of the solutions that will be analyzed in more detail in the following chapters.
-There is a large body of existing protocols and applications that are relevant to our problem of connecting the parties of a multiparty computation over the internet. To make reviewing them easier, we will try to approximately map them to the 7 layers of the OSI model, which will not always be entirely accurate because many protocols and applications implement aspects of several layers. The table below shows the layers at which the protocols and network overlays appear to their users, but not necessarily the layer at which their internals are implemented.
+In this chapter we will provide a high level overview of the network overlay solutions that will be considered for MPyC and analyzed in more detail in the following chapters.
 
-| OSI Layer       | Description                                                              |          Protocols          | Network overlays                                                             |
-|---|--------|--|---|
-| 7. Application  | High level protocols that user-facing services use                                                                                        | HTTP, HTTPS, DNS, FTP, SMTP, UPnP, NAT-PMP, PCP, SSH, STUN, TURN  | WebRTC, OpenZiti, Teleport, ngrok, TOR, BitTorrent, IPFS, Ethereum, Freenet |
-| \hline 6. Presentation | Translation of data between a networking service and an application, e.g. encoding, compression, encryption           |       MIME, TLS, Noise       |                                                                       |
-| \hline 5. Session      | Session setup, management, teardown, authentication, authorization                                                                            |          SOCKS, X.225                   |                                                                       |
-| \hline 4. Transport    | Sending data of variable length over a network while maintaining quality-of-service, e.g. ports, connections, packet splitting |          UDP, TCP, NAT port mapping           |                                                                       |
-| \hline 3. Network      | Sending data packets between two nodes, routed via a path of other nodes, e.g. addressing, routing                |          IP, ICMP, NAT           | TUN driver, IPSec, OpenVPN, Tinc, Wireguard, Tailscale, Nebula, ZeroTier                                       |
-| \hline 2. Data link    | Sending data frames between two nodes, directly connected via a physical layer, e.g. on a LAN                                         |     MAC, L2TP                        | TAP driver, N2N, OpenVPN, Tinc                                                                   |
-| \hline 1. Physical     | Sending raw bits over a physical medium                                                                        |     RS232, Ethernet, WiFi, USB, Bluetooth                        |                                                                       |
+There is a large body of existing protocols and applications that are relevant to our problem of connecting the parties of a multiparty computation over the internet. To make reviewing them easier, we will try to approximately map them to the 7 layers of the OSI model, which will not always be entirely accurate because many protocols and applications implement aspects of several layers. The diagram below shows the layers at which the protocols and network overlays appear to their users and the arrows show dependency relations.
 
 
-![OSI model mapping|775](../Excalidraw/osi-map.excalidraw.png){height=80% }
+![OSI model mapping](../Excalidraw/osi-map.excalidraw.png){height=90% }
 
 ## Internet protocol
 
