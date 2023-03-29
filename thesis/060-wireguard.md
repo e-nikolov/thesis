@@ -1,6 +1,6 @@
-# Wireguard
+# WireGuard
 
-This solution creates an overlay network by manually configuring wireguard on each machine.
+This solution creates an overlay network by manually configuring WireGuard on each machine.
 
 ## Implementation details
 

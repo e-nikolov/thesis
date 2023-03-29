@@ -4,6 +4,7 @@
 
 - Background information
 - Problem description
+	- In this Work we focus on ...
 - Research questions
 - Scope
 
@@ -11,7 +12,7 @@
 
 - Are there any existing solutions that can be applied to the problem in some capacity?
 
-## Methodology
+## Methodology / Approach
 
 - How are the solutions going to be evaluated?
 - Performance
@@ -24,7 +25,7 @@
 - Usability
 	- How is the usability of a solution going to be evaluated? 
 
-## Solutions
+## Solution/Implementation Evaluations
 
 - For each solution
 	- What is the solution?

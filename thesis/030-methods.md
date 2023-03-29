@@ -3,6 +3,7 @@
 # Testing methodology
 
 In the following chapters we will design and implement several solutions for ad hoc MPC sessions based on a subset of the previously discussed related works:
+
 - Internet protocol
 - Wireguard
 - Tailscale

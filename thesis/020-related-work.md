@@ -1,25 +1,65 @@
 # Related work
 
-In this chapter we will provide a high level overview of the network overlay solutions that will be considered for MPyC and analyzed in more detail in the following chapters.
+In this chapter we will provide a high level overview of relevant solutions for connecting the parties of an MPyC multiparty computation over the internet. We will use the \gls{osi} model to help us categorize those solutions and highlight the similarities and differences between them. The OSI model has 7 layers with different responsibilities:
 
-There is a large body of existing protocols and applications that are relevant to our problem of connecting the parties of a multiparty computation over the internet. To make reviewing them easier, we will try to approximately map them to the 7 layers of the OSI model, which will not always be entirely accurate because many protocols and applications implement aspects of several layers. The diagram below shows the layers at which the protocols and network overlays appear to their users and the arrows show dependency relations.
+Layer 7 - Application: 
+
+: high level protocols that interact with user-facing services
+
+Layer 6 - Presentation:
+: translation of data between a networking service and an application, e.g. encoding, compression, encryption
+
+Layer 5 - Session:
+
+: session setup, management, tear-down, authentication, authorization
+
+Layer 4 - Transport:
+
+: sending data of variable length over a network while maintaining quality-of-service, e.g. ports, connections,
+packet fragmentation
 
 
-![OSI model mapping](../Excalidraw/osi-map.excalidraw.png){height=90% }
+Layer 3 - Network:
 
-## Internet protocol
+: sending data packets between two nodes, routed via a path of other nodes, e.g. addressing, routing
 
-#### IPv4 routing
+Layer 2 - Data link:
 
-#### NAT
+: sending data frames between two nodes, directly connected via a physical layer, e.g. on a LAN
 
-#### NAT Traversal
+Layer 1 - Physical:
 
-#### Universal Plug and Play (UPnP)
+: sending raw bits over a physical medium
 
-PCP, NAT-PMP
+While many protocols implement aspects of several layers and do not strictly fit inside the OSI model, it still a useful visualization tool. The diagram below shows an approximate OSI model mapping of several protocols and network overlay solutions from the point of view of the systems that use them and the arrows show dependency relations between them.  
 
-#### STUN and TURN
+\newpage
+
+![OSI model mapping of various protocols \label{osiMap}](../Excalidraw/osi-map.excalidraw.png){height=90% }
+
+
+## The Internet
+
+The modern Internet is a global multi-tiered network of devices that communicate using the protocols of the Internet Protocol Suite (TCP/IP). Typically, an \gls{isp} manages the physical infrastructure that connects an end-user's \gls{lan} with the rest of the internet.
+
+<!-- IP -->
+
+The **\acrfull{ip}** is a Network (Layer 3) protocol of the Internet Protocol Suite that is responsible for delivering datagrams between devices across the boundaries of their \glspl{lan} by possibly routing traffic via multiple intermediate devices (routers). A datagram is a connectionless packet that is delivered on a best effort basis. It has a header that contains the IP addresses of its source and destination, and a payload that encapsulates the data from the protocols of the layers above. Routers are devices that are part of multiple networks and relay datagrams between them based on a routing table that maps IP address ranges (\gls{cidr}) to networks.
+
+**\acrfull{udp}** and **\acrfull{tcp}** are Transport (Layer 4) protocols that \todo{udp, tcp}
+
+**\acrfull{tls}** is a protocol that adds encryption on top of a reliable transport protocol such as TCP. It is usually placed in the Presentation Layer (Layer 6), but it does not strictly fit in any single OSI layer. It handles \todo{tls}
+
+
+The **Noise Protocol Framework** [@noiseDocs] is a more recent effort that applies the ideas of TLS in a simplified and generic way by serving as a blueprint for designing purpose built protocols for establishing secure channels based on \gls{ecdh} handshake patterns. It powers the end-to-end encryption in messaging applications such as WhatsApp and Signal, and \gls{vpn} software such as WireGuard and Nebula.
+\todo{transport agnostic}
+<!-- CIDR -->
+
+- **\acrfull{nat}**
+	- **\gls{nat} traversal**
+		- **\acrfull{upnp}**, **\acrfull{pcp}**, **\acrfull{nat-pmp}**
+		- **\acrfull{stun}**, **\acrfull{turn}**
+
 
 !["Two parties behind separate NATs"\label{nat-intro}](../figures/nat-intro.png "Two parties behind separate NATs" ){ height=25% width=50% }
 
@@ -68,7 +108,7 @@ PublicKey = e/TxvPmrgcc1G4cSH2bHv5J0PRHXKjYxTFoU8r+G93E=
 AllowedIPs = 101.0.0.1/32
 
 ```
-Each peer has a public/private key pair that is used for authentication and encryption based on the Noise Protocol Framework[@noiseProtocol]. The `Address` field specifies the virtual IP address that the local network interface will use, while the `AllowedIPs` field specifies what virtual IP addresses are associated with a peer's public key. A peer's `Endpoint` field specifies the URL at which it can be reached. Only one of the peers must be configured with a reachable endpoint for the other one. In the above example once `peer1`  initiates communication with `peer2`, `peer2` will learn the current endpoint of `peer1` and will be able to communicate back with it.
+Each peer has a public/private key pair that is used for authentication and encryption based on the Noise Protocol Framework[@noiseDocs]. The `Address` field specifies the virtual IP address that the local network interface will use, while the `AllowedIPs` field specifies what virtual IP addresses are associated with a peer's public key. A peer's `Endpoint` field specifies the URL at which it can be reached. Only one of the peers must be configured with a reachable endpoint for the other one. In the above example once `peer1`  initiates communication with `peer2`, `peer2` will learn the current endpoint of `peer1` and will be able to communicate back with it.
 
 
 ### Mesh VPNs
