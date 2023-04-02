@@ -7,7 +7,6 @@
 \begin{frame}{Intro}
 \protect\hypertarget{intro}{}
 \begin{itemize}
-\tightlist
 \item
   Emphasize on the difference between the Solutions Test Framework (E3)
   and the actual Solutions
@@ -121,7 +120,6 @@
 \begin{block}{OSI Model}
 \protect\hypertarget{osi-model}{}
 \begin{itemize}
-\tightlist
 \item
   Create a figure that maps the various related components to OSI model
   layers
@@ -146,17 +144,17 @@ computer networks:
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth,height=1\textheight]{notes/../figures/test.png}
-\caption{OSI model mapping 2\textbar500}
+\includegraphics[width=\textwidth,height=0.9\textheight]{notes/../figures/test.png}
+\caption{OSI model mapping 2}
 \end{figure}
 
 \newpage
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1875}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.5000}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1250}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1875}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.0799}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4375}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2604}}@{}}
 \toprule()
 \begin{minipage}[b]{\linewidth}\raggedright
 OSI Layer
@@ -240,7 +238,6 @@ DERP, UPnP & Uses Wireguard \\
 \end{longtable}
 
 \begin{itemize}
-\tightlist
 \item
   Resources
 
@@ -249,7 +246,6 @@ DERP, UPnP & Uses Wireguard \\
   \item
     \href{https://jvns.ca/blog/2021/05/11/what-s-the-osi-model-/}{The
     OSI model doesn't map well to TCP/IP}
-  \item
   \end{itemize}
 \end{itemize}
 \end{block}
@@ -259,7 +255,6 @@ DERP, UPnP & Uses Wireguard \\
 \begin{block}{Internet Protocol}
 \protect\hypertarget{internet-protocol}{}
 \begin{itemize}
-\tightlist
 \item
   IP addresses
 \item
@@ -280,7 +275,6 @@ DERP, UPnP & Uses Wireguard \\
 \begin{block}{Session Traversal Utilities for NAT (STUN)}
 \protect\hypertarget{session-traversal-utilities-for-nat-stun}{}
 \begin{itemize}
-\tightlist
 \item
   Uses a STUN server for discovery and UDP hole-punching
 \item
@@ -289,30 +283,33 @@ DERP, UPnP & Uses Wireguard \\
   Examples:
 
   \begin{itemize}
-  \tightlist
   \item
     \url{https://github.com/shawwwn/Gole}
   \item
     \url{https://github.com/malcolmseyd/natpunch-go}
   \item
-    https://github.com/coturn/coturn - used in NetBird
+    \url{https://github.com/coturn/coturn} - used in NetBird
   \item
-    https://github.com/pion/stun - used in NetBird
+    \url{https://github.com/pion/stun} - used in NetBird
   \item
-    https://github.com/ccding/go-stun - used in Headscale \#\#\#\#
-    Traversal Using Relays around NAT (TURN)
+    \url{https://github.com/ccding/go-stun} - used in Headscale
   \end{itemize}
+\end{itemize}
+\end{block}
+
+\begin{block}{Traversal Using Relays around NAT (TURN)}
+\protect\hypertarget{traversal-using-relays-around-nat-turn}{}
+\begin{itemize}
 \item
   Peers use a relay server as a mediator to route traffic
 \item
   Examples
 
   \begin{itemize}
-  \tightlist
   \item
-    https://github.com/coturn/coturn
+    \url{https://github.com/coturn/coturn}
   \item
-    https://github.com/pion/stun
+    \url{https://github.com/pion/stun}
   \end{itemize}
 \end{itemize}
 \end{block}
@@ -333,7 +330,6 @@ DERP, UPnP & Uses Wireguard \\
 \begin{block}{Designated Encrypted Relay for Packets (DERP)}
 \protect\hypertarget{designated-encrypted-relay-for-packets-derp}{}
 \begin{itemize}
-\tightlist
 \item
   TURN-like protocol by Tailscale
 \item
@@ -343,12 +339,11 @@ DERP, UPnP & Uses Wireguard \\
 \item
   Overview - \url{https://tailscale.com/kb/1232/derp-servers/}
 \item
-  DERP map - https://login.tailscale.com/derpmap/default
+  DERP map - \url{https://login.tailscale.com/derpmap/default}
 \item
   Source code
 
   \begin{itemize}
-  \tightlist
   \item
     \url{https://github.com/tailscale/tailscale/tree/main/cmd/derper}
   \item
@@ -404,9 +399,58 @@ DERP, UPnP & Uses Wireguard \\
   \item
     \href{https://www.youtube.com/watch?v=ceGTgqypwnQ}{The Noise
     Protocol Framework (Video)}
-  \item
   \end{itemize}
 \end{itemize}
+
+\begin{description}
+\item[ChatGPT]
+:
+
+TLS (Transport Layer Security) and the Noise Protocol Framework are both
+cryptographic protocols that are used to secure communications over the
+internet. However, there are some key differences between the two
+protocols.
+
+Here are some of the main differences between TLS and the Noise Protocol
+Framework:
+
+\begin{enumerate}
+\tightlist
+\item
+  Design Philosophy: TLS is designed to be a general-purpose protocol
+  that can be used to secure a wide range of internet communications,
+  including web browsing, email, and file transfers. The Noise Protocol
+  Framework, on the other hand, is designed to be a lightweight, modular
+  protocol that can be easily adapted to different use cases and network
+  architectures.
+\item
+  Cipher Suites: TLS supports a wide range of cipher suites, which are
+  combinations of encryption algorithms and key exchange methods. The
+  Noise Protocol Framework, on the other hand, supports only a few
+  cipher suites that are designed to be secure and efficient.
+\item
+  Handshake: The TLS handshake is a complex process that involves
+  multiple rounds of communication between the client and server. The
+  Noise Protocol Framework, on the other hand, has a simpler handshake
+  process that involves only a few messages.
+\item
+  Forward Secrecy: Both TLS and the Noise Protocol Framework support
+  forward secrecy, which means that even if an attacker gains access to
+  the secret keys used to encrypt communications, they cannot decrypt
+  past communications. However, the way that forward secrecy is
+  implemented in the two protocols is different.
+\item
+  Adoption: TLS is widely adopted and supported by most internet
+  applications and services. The Noise Protocol Framework is a newer
+  protocol that is not yet as widely adopted, although it is gaining
+  popularity in certain applications and communities.
+\end{enumerate}
+
+Overall, both TLS and the Noise Protocol Framework are effective ways to
+secure internet communications. The choice between the two protocols
+depends on factors such as the specific use case, the network
+architecture, and the desired level of security and efficiency.
+\end{description}
 \end{block}
 
 \begin{block}{Identity}
@@ -446,6 +490,13 @@ DERP, UPnP & Uses Wireguard \\
 
 \begin{block}{Virtual Private Networks (VPNs)}
 \protect\hypertarget{virtual-private-networks-vpns}{}
+\begin{itemize}
+\item
+  asd
+\item
+  {[} {]}
+\end{itemize}
+
 ``A virtual private network {[}4{]} is a secure logical network that is
 tunnelled though another network. VPNs are often used for implementing
 secure point-to-point communications through the public Internet.
@@ -453,7 +504,6 @@ Therefore they usually feature user authentication and content
 encryption.'' -- n2n whitepaper
 
 \begin{itemize}
-\tightlist
 \item
   Traditional centralized VPNs
 
@@ -502,7 +552,7 @@ encryption.'' -- n2n whitepaper
 \item
   Whitepaper - \url{https://www.wireguard.com/papers/wireguard.pdf}
 \item
-  Built with the \href{notes/02022-noise.md}{Noise Protocol Framework}
+  Built with the \href{notes/02022-noise.md}{Noise Protocol Framework}d
 \item
   Added to Linux Kernel 5.6 in May 2020
 \item
@@ -1035,6 +1085,9 @@ encryption.'' -- n2n whitepaper
 \item
   Does not require additional plugins or native apps
 \item
+  Perhaps it can be used with PyScript or WebAssembly to run MPyC
+  programs in the browser?
+\item
   We could design a solution based on WebRTC in a browser by compiling
   the MPyC demos to web assembly or using PyScript.
 
@@ -1539,7 +1592,7 @@ With tailscale we'd need to
 \end{block}
 \end{frame}
 
-\begin{frame}{Latex}
+\begin{frame}[fragile]{Latex}
 \protect\hypertarget{latex}{}
 \begin{itemize}
 \tightlist
@@ -1547,4 +1600,76 @@ With tailscale we'd need to
   use \textbackslash input instead of \textbackslash include to avoid
   issues with missing directories and .aux files
 \end{itemize}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2222}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2917}}@{}}
+\toprule()
+\begin{minipage}[b]{\linewidth}\raggedright
+Fruit
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Price
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+Advantages
+\end{minipage} \\
+\midrule()
+\endhead
+Bananas & \$1.34 & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  built-in wrapper
+\item
+  bright color
+\end{itemize}
+\end{minipage} \\
+Oranges & \$2.10 & \begin{minipage}[t]{\linewidth}\raggedright
+\begin{itemize}
+\tightlist
+\item
+  cures scurvy
+\item
+  tasty
+\end{itemize}
+\end{minipage} \\
+\bottomrule()
+\end{longtable}
+
+\begin{longtable}[]{@{}rllc@{}}
+\caption{Demonstration of simple table syntax.}\tabularnewline
+\toprule()
+Right & Left & Default & Center \\
+\midrule()
+\endfirsthead
+\toprule()
+Right & Left & Default & Center \\
+\midrule()
+\endhead
+12 & 12 & 12 & 12 \\
+123 & 123 & 123 & 123 \\
+1 & 1 & 1 & 1 \\
+\bottomrule()
+\end{longtable}
+
+\begin{quote}
+\textbf{\emph{NOTE:}} The note content.
+\end{quote}
+
+!! test sdfg
+
+==asdff==
+
+::asdff::
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\NormalTok{graph TD}
+\NormalTok{    A[Client] {-}{-}\textgreater{} B[Load Balancer]}
+\NormalTok{    B {-}{-}\textgreater{} C[Server01]}
+\NormalTok{    B {-}{-}\textgreater{} D[Server02]}
+\end{Highlighting}
+\end{Shaded}
+
+: sending raw bits over a physical medium ip IP TCP tcp W3C
 \end{frame}

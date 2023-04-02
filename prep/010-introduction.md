@@ -7,7 +7,6 @@ notionID: 145d822b-8f9c-4d1a-b08a-056c16f4ea48
 
 This report will present the results of the preparation phase of the master thesis project titled "Secure Sessions for Ad Hoc Multiparty Computation in MPyC". The goal of this phase is to gain sufficient insight into the topic, perform some preliminary tasks and propose a plan with well defined goals for the implementation phase of the project.
 
-
 ## Background
 
 \gls{mpc} is a set of techniques and protocols for computing a function over the secret inputs of multiple parties without revealing their values, but only the final result. A good overview can be found on Wikipedia[@wikiMPC]. Yao's Millionaires' Problem[@yaoProtocolsSecureComputations1982] is one famous example in which a number of millionaires want to know who is richer without revealing their net worths. Other practical applications[@laudApplicationsSecureMultiparty2015] include electronic voting, auctions or even machine learning[@knottCrypTenSecureMultiParty2022] where one party's private data can be used as an input for another party's private machine learning model.
@@ -63,19 +62,19 @@ During the implementation phase, we will answer the posed research questions of 
 Below, we formulate our requirements for \gls{e3} and group them in terms of several important characteristics:
 
 - Complexity
-    - simple - given the limited time of the preparation phase, \gls{e3} must focus on simplicity, e.g. the easiest to implement connectivity approach should be chosen
-    - extensible - \gls{e3} must allow for switching the building blocks during the next phase of the project, e.g. it should be easy to experiment with different connectivity approaches in order to measure and compare their characteristics
+  - simple - given the limited time of the preparation phase, \gls{e3} must focus on simplicity, e.g. the easiest to implement connectivity approach should be chosen
+  - extensible - \gls{e3} must allow for switching the building blocks during the next phase of the project, e.g. it should be easy to experiment with different connectivity approaches in order to measure and compare their characteristics
 - Source code
-    - open-source - the source code of the resulting implementation of \gls{e3} must be available in a public repository, e.g. on Github.com
-    - no plaintext secrets such as \gls{api} keys and passwords should be present in the public repository, but others should be able to easily provide their own secrets in order to use \gls{e3} in their own environment.
+  - open-source - the source code of the resulting implementation of \gls{e3} must be available in a public repository, e.g. on Github.com
+  - no plaintext secrets such as \gls{api} keys and passwords should be present in the public repository, but others should be able to easily provide their own secrets in order to use \gls{e3} in their own environment.
 - Deployment
-    - cross region - the machines should be provisioned in multiple geographical regions in order to be able to observe the effects of varying latency on the system
-    - cross platform - in a real world scenario the machines will be controlled by different parties that run various operating systems, hardware architectures and deployed using different tools, e.g. Party A might be an enterprise that uses containers, while Party B is a power user running a few \glspl{vm} and Party C ****could be using an ARM-based raspberry pi
-    - automated - appropriate tools should be chosen to allow automatically deploying and destroying the runtime environment without manual intervention other than running a minimal set of commands
-    - reproducible - it should be easy for others to reproduce the test setup in their own environment
-    - disposable - \gls{e3} should be easy to destroy and quickly recreate from scratch at any time; as in the famous DevOps analogy[@biasHistoryPetsVs2016], it should be based on machines that are like cattle rather than pets
+  - cross region - the machines should be provisioned in multiple geographical regions in order to be able to observe the effects of varying latency on the system
+  - cross platform - in a real world scenario the machines will be controlled by different parties that run various operating systems, hardware architectures and deployed using different tools, e.g. Party A might be an enterprise that uses containers, while Party B is a power user running a few \glspl{vm} and Party C ****could be using an ARM-based raspberry pi
+  - automated - appropriate tools should be chosen to allow automatically deploying and destroying the runtime environment without manual intervention other than running a minimal set of commands
+  - reproducible - it should be easy for others to reproduce the test setup in their own environment
+  - disposable - \gls{e3} should be easy to destroy and quickly recreate from scratch at any time; as in the famous DevOps analogy[@biasHistoryPetsVs2016], it should be based on machines that are like cattle rather than pets
 - Connectivity
-    - identity - it must be possible for the machines to communicate based on a long-lived identity rather than a potentially temporary \gls{ip} address.
-    - secure - a message sent by a party must be readable only by its intended targets.
-    - authenticated - a party must be able to determine which party a message was sent by
-    - private - no more information than strictly necessary should be revealed about a party. Depending on the method of communication, it may be necessary to choose a tradeoff or introduce a tuning parameter between performance and privacy.
+  - identity - it must be possible for the machines to communicate based on a long-lived identity rather than a potentially temporary \gls{ip} address.
+  - secure - a message sent by a party must be readable only by its intended targets.
+  - authenticated - a party must be able to determine which party a message was sent by
+  - private - no more information than strictly necessary should be revealed about a party. Depending on the method of communication, it may be necessary to choose a tradeoff or introduce a tuning parameter between performance and privacy.

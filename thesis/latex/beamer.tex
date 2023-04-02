@@ -60,34 +60,44 @@ them.
 The modern Internet is a global multi-tiered network of devices that
 communicate using the protocols of the Internet Protocol Suite (TCP/IP).
 Typically, an \gls{isp} manages the physical infrastructure that
-connects an end-user's \gls{lan} with the rest of the internet.
+connects an end-user's devices with the rest of the internet.
 
 The \textbf{\acrfull{ip}} is a Network (Layer 3) protocol of the
 Internet Protocol Suite that is responsible for delivering datagrams
 between devices across the boundaries of their \glspl{lan} by possibly
 routing traffic via multiple intermediate devices (routers). A datagram
 is a connectionless packet that is delivered on a best effort basis. It
-has a header that contains the IP addresses of its source and
-destination, and a payload that encapsulates the data from the protocols
-of the layers above. Routers are devices that are part of multiple
-networks and relay datagrams between them based on a routing table that
-maps IP address ranges (\gls{cidr}) to networks.
+has a header that contains fields such as the IP addresses of its source
+and destination, and a payload that encapsulates the data from the
+protocols of the layers above. Routers are devices that are part of
+multiple networks and relay datagrams between them based on a routing
+table that maps IP address ranges (\gls{cidr}) to networks. IPv4 is the
+version of the Internet Protocol that was originally deployed globally
+and it is still the most widely used version today. It uses 32-bit
+numbers as IP addresses, allowing for up to with 32 bitThe IP addresses
+has a limited address space of 32 w globally deployed Nowadays, the most
+widespread version of the Internet Protocol is IPv4, which versions of
+the Internet Protocol IPv4 and IPv6 are
 
 \textbf{\acrfull{udp}} and \textbf{\acrfull{tcp}} are Transport (Layer
-4) protocols that \todo{udp, tcp}
+4) protocols that add the concept of ports to allow having multiple
+communication channels between two devices. UDP provides best-effort
+delivery, while TCP is a reliable transport with delivery guarantees.
+TCP maintains stateful connections and handles acknowledgements and
+retransmissions in case of packets lost in transit.
 
 \textbf{\acrfull{tls}} is a protocol that adds encryption on top of a
 reliable transport protocol such as TCP. It is usually placed in the
 Presentation Layer (Layer 6), but it does not strictly fit in any single
-OSI layer. It handles \todo{tls}
+OSI layer. \todo{tls}
 
 The \textbf{Noise Protocol Framework} \autocite{noiseDocs} is a more
-recent effort that applies the ideas of TLS in a simplified and generic
-way by serving as a blueprint for designing purpose built protocols for
-establishing secure channels based on \gls{ecdh} handshake patterns. It
-powers the end-to-end encryption in messaging applications such as
-WhatsApp and Signal, and \gls{vpn} software such as WireGuard and
-Nebula. \todo{transport agnostic}
+recent effort that applies the ideas of TLS in a simplified way by
+serving as a blueprint for designing use-case specific protocols for
+establishing secure communication channels based on \gls{ecdh} handshake
+patterns. It powers the end-to-end encryption in messaging applications
+such as WhatsApp and Signal, and \gls{vpn} software such as WireGuard
+and Nebula. \todo{transport agnostic} \todo{limited cipher suites}
 
 \begin{itemize}
 \tightlist
@@ -104,16 +114,38 @@ Nebula. \todo{transport agnostic}
     \item
       \textbf{\acrfull{upnp}}, \textbf{\acrfull{pcp}},
       \textbf{\acrfull{nat-pmp}}
+
+      \begin{itemize}
+      \tightlist
+      \item
+        allow configuring port forwarding in a router
+      \item
+      \end{itemize}
     \item
       \textbf{\acrfull{stun}}, \textbf{\acrfull{turn}}
     \end{itemize}
+  \end{itemize}
+\item
+  \textbf{\acrfull{ipsec}}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    part of the Internet Protocol Suite
+  \item
+    used inside VPN software
+  \item
+    has implementations in both user and kernel space as well as
+    hardware implementations
+  \item
+    rewrites the IP headers
   \end{itemize}
 \end{itemize}
 
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth,height=0.25\textheight]{thesis/../figures/nat-intro.png}
-\caption{``Two parties behind separate NATs''\label{nat-intro}}
+\caption{Two parties behind separate NATs\label{nat-intro}}
 \end{figure}
 
 As we mentioned in the introduction chapter, the devices in a typical
@@ -147,7 +179,7 @@ involve guess work or even fail and require falling back to routing the
 \begin{figure}
 \centering
 \includegraphics[width=0.5\textwidth,height=0.25\textheight]{thesis/../figures/nat-traversal.png}
-\caption{``NAT traversal via STUN''\label{nat-traversal}}
+\caption{NAT traversal via STUN\label{nat-traversal}}
 \end{figure}
 \end{block}
 
@@ -155,6 +187,44 @@ involve guess work or even fail and require falling back to routing the
 \protect\hypertarget{network-overlays}{}
 \begin{block}{TUN/TAP driver}
 \protect\hypertarget{tuntap-driver}{}
+\begin{itemize}
+\tightlist
+\item
+  Layer 2 vs Layer 3 Networks
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Layer 2 overlays bridge networks
+
+    \begin{itemize}
+    \tightlist
+    \item
+      virtual network switch
+    \item
+      remote machines are on the same virtual LAN and can share the same
+      IP address range
+    \item
+      allows broadcast/multicast
+    \item
+      TAP driver
+    \end{itemize}
+  \item
+    Layer 3 overlays route traffic between separate local networks
+
+    \begin{itemize}
+    \tightlist
+    \item
+      virtual network router
+    \item
+      remote machines are on separate LANs
+    \item
+      simpler to configure
+    \item
+      TUN driver
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
 \end{block}
 
 \begin{block}{Traditional VPNs}
@@ -181,9 +251,9 @@ level protocol that focuses on configuration simplicity while network
 topology, peer discovery and key distribution are left as a
 responsibility of higher level systems that use it as a building block.
 Wireguard is implemented as a Layer 3 overlay over UDP tunnels.
-WireGuard has both user space implementations that use a TUN/TAP driver
-and also has direct support built into the Linux Kernel since version
-5.6 (May 2020). The kernel implementation allows for better performance
+WireGuard has both user space implementations that use a TUN driver and
+also has direct support built into the Linux Kernel since version 5.6
+(May 2020). The kernel implementation allows for better performance
 because it does not need to copy packets between the kernel and
 user-space memory.
 

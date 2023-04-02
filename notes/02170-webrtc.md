@@ -13,6 +13,7 @@
 - Not a VPN
     - I think it can’t serve as a TCP/IP network overlay that other applications can use
 - Does not require additional plugins or native apps
+- Perhaps it can be used with PyScript or WebAssembly to run MPyC programs in the browser?
 - We could design a solution based on WebRTC in a browser by compiling the MPyC demos to web assembly or using PyScript.
 	- https://www.win.tue.nl/~berry/mpyc/pyscript.html
 	- https://pyscript.net/

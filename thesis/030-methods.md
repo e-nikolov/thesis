@@ -1,5 +1,3 @@
-
-
 # Testing methodology
 
 In the following chapters we will design and implement several solutions for ad hoc MPC sessions based on a subset of the previously discussed related works:
@@ -32,7 +30,7 @@ Each solution will be deployed using the \gls{e3} framework and the performance 
 
 1. Secret Santa - high round complexity with small messages
 2. Convolutional Neural Network (CNN) MNIST classifier - low round complexity with large messages
- 
+
 The demos will be configured at three different input size levels
 
 - Low,
@@ -45,7 +43,6 @@ Furthermore, the demos will be executed in several networking scenarios:
 2. 1-10 parties evenly distributed across two nearby regions
 3. 1-10 parties evenly distributed across two distant regions
 4. 1-10 parties distributed across multiple distant regions
-
 
 ## Security
 
@@ -63,6 +60,6 @@ For each solution we will describe the steps that the parties need to perform in
 - Complexity - how much technical expertise is expected from the parties in order to be able to execute the steps
 - Initial effort - how much effort is each party expected to put in preparing for their first joint computation
 - Repeated effort - after the initial setup, how much effort is required to perform another computation
-	- with the same set of parties
-	- with another set of parties 
+  - with the same set of parties
+  - with another set of parties 
 - Finalization effort - how much effort is required to finalize the MPC session once it is complete and clean up any left-over artifacts or resources so that the machine of each party is in its original state
