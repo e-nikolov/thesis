@@ -1,9 +1,10 @@
 ### Internet Protocol
 
 *   IP addresses
+    -   in The Netherlands Ziggo and KPN provide IPv6, but T-Mobile does not. Overall ~40% client-side adoption.
 
 *   Routing
-
+ 
 *   DNS
 
 *   TLS

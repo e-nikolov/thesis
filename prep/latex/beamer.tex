@@ -43,14 +43,14 @@ project.
 \gls{mpc} is a set of techniques and protocols for computing a function
 over the secret inputs of multiple parties without revealing their
 values, but only the final result. A good overview can be found on
-Wikipedia\autocite{wikiMPC}. Yao's Millionaires'
-Problem\autocite{yaoProtocolsSecureComputations1982} is one famous
-example in which a number of millionaires want to know who is richer
-without revealing their net worths. Other practical
-applications\autocite{laudApplicationsSecureMultiparty2015} include
-electronic voting, auctions or even machine
-learning\autocite{knottCrypTenSecureMultiParty2022} where one party's
-private data can be used as an input for another party's private machine
+Wikipedia \autocite{wikiMPC}. Yao's Millionaires' Problem
+\autocite{yaoProtocolsSecureComputations1982} is one famous example in
+which a number of millionaires want to know who is richer without
+revealing their net worths. Other practical applications
+\autocite{laudApplicationsSecureMultiparty2015} include electronic
+voting, auctions or even machine learning
+\autocite{knottCrypTenSecureMultiParty2022} where one party's private
+data can be used as an input for another party's private machine
 learning model.
 
 The general process is that each party uses a scheme like \gls{sss}
@@ -62,7 +62,7 @@ the final result from the shares it has received.
 
 A number of \gls{mpc} frameworks have been developed for various
 programming languages and security models. As part of this project we
-will focus our efforts on \textbf{MPyC}\autocite{mpycHome,mpycSource} -
+will focus our efforts on \textbf{MPyC} \autocite{mpycHome,mpycSource} -
 an opensource \gls{mpc} Python framework developed primarily at TU
 Eindhoven, but our results should be applicable to others as well.
 
@@ -270,9 +270,9 @@ terms of several important characteristics:
     setup in their own environment
   \item
     disposable - \gls{e3} should be easy to destroy and quickly recreate
-    from scratch at any time; as in the famous DevOps
-    analogy\autocite{biasHistoryPetsVs2016}, it should be based on
-    machines that are like cattle rather than pets
+    from scratch at any time; as in the famous DevOps analogy
+    \autocite{biasHistoryPetsVs2016}, it should be based on machines
+    that are like cattle rather than pets
   \end{itemize}
 \item
   Connectivity
@@ -319,14 +319,14 @@ process:
 \begin{itemize}
 \tightlist
 \item
-  provisioning - Terraform\autocite{tfDocs}, Cloud
-  Formation\autocite{cfDocs}, etc.
+  provisioning - Terraform \autocite{tfDocs}, Cloud Formation
+  \autocite{cfDocs}, etc.
 \item
-  deployment automation - Ansible\autocite{ansibleDocs},
-  Puppet\autocite{puppetDocs}, Chef\autocite{chefDocs}, etc.
+  deployment automation - Ansible \autocite{ansibleDocs}, Puppet
+  \autocite{puppetDocs}, Chef\autocite{chefDocs}, etc.
 \item
-  container orchestration - Docker Swarm\autocite{dockerDocs},
-  Kubernetes\autocite{kubeDocs}, etc.
+  container orchestration - Docker Swarm \autocite{dockerDocs},
+  Kubernetes \autocite{kubeDocs}, etc.
 \end{itemize}
 
 According to our definitions, power users typically use physical
@@ -447,8 +447,8 @@ impact the performance of the multi-party computations due to their
 \caption{``Two parties behind separate NATs''\label{nat-intro}}
 \end{figure}
 
-On the other hand, mesh \glspl{vpn} such as Tinc\autocite{tincDocs},
-Tailscale\autocite{tailscaleDocs} and Nebula\autocite{nebulaDocs}
+On the other hand, mesh \glspl{vpn} such as Tinc \autocite{tincDocs},
+Tailscale \autocite{tailscaleDocs} and Nebula \autocite{nebulaDocs}
 utilize direct \gls{p2p} links between the clients for the data traffic.
 Authentication, authorization and traffic encryption are performed using
 certificates based on public key cryptography. As we mentioned in the

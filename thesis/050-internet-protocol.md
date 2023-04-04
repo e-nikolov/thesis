@@ -1,7 +1,7 @@
 
 
 
-# Internet protocol
+# Internet Protocol based solution 
 
 This solution focuses on directly using the internet protocol without involving an overlay network. Our goal is to analyze the implications of using only the functionalities that MPyC directly supports to serve as the reference for our later experiments. 
 

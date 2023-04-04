@@ -1,4 +1,4 @@
-# Tailscale
+# Tailscale based solution
 
 Tailscale is a VPN solution that configures a mesh of direct Wireguard tunnels between the peers.  
 

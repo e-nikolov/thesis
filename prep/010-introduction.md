@@ -9,11 +9,11 @@ This report will present the results of the preparation phase of the master thes
 
 ## Background
 
-\gls{mpc} is a set of techniques and protocols for computing a function over the secret inputs of multiple parties without revealing their values, but only the final result. A good overview can be found on Wikipedia[@wikiMPC]. Yao's Millionaires' Problem[@yaoProtocolsSecureComputations1982] is one famous example in which a number of millionaires want to know who is richer without revealing their net worths. Other practical applications[@laudApplicationsSecureMultiparty2015] include electronic voting, auctions or even machine learning[@knottCrypTenSecureMultiParty2022] where one party's private data can be used as an input for another party's private machine learning model.
+\gls{mpc} is a set of techniques and protocols for computing a function over the secret inputs of multiple parties without revealing their values, but only the final result. A good overview can be found on Wikipedia [@wikiMPC]. Yao's Millionaires' Problem [@yaoProtocolsSecureComputations1982] is one famous example in which a number of millionaires want to know who is richer without revealing their net worths. Other practical applications [@laudApplicationsSecureMultiparty2015] include electronic voting, auctions or even machine learning [@knottCrypTenSecureMultiParty2022] where one party's private data can be used as an input for another party's private machine learning model.
 
 The general process is that each party uses a scheme like \gls{sss} [@shamirHowShareSecret1979] to split its secret input into shares and sends one to each of the other parties. A protocol involving multiple communication rounds and further re-shares of intermediate secret results is used by the parties so that each of them can compute the final result from the shares it has received.
 
-A number of \gls{mpc} frameworks have been developed for various programming languages and security models. As part of this project we will focus our efforts on **MPyC**[ @mpycHome; @mpycSource] - an opensource \gls{mpc} Python framework developed primarily at TU Eindhoven,  but our results should be applicable to others as well.
+A number of \gls{mpc} frameworks have been developed for various programming languages and security models. As part of this project we will focus our efforts on **MPyC** [ @mpycHome; @mpycSource] - an opensource \gls{mpc} Python framework developed primarily at TU Eindhoven,  but our results should be applicable to others as well.
 
 To help us determine the types of solutions we need to consider, we can group the potential users of the MPyC framework into three broad categories: casual users, power users and enterprises.
 
@@ -72,7 +72,7 @@ Below, we formulate our requirements for \gls{e3} and group them in terms of sev
   - cross platform - in a real world scenario the machines will be controlled by different parties that run various operating systems, hardware architectures and deployed using different tools, e.g. Party A might be an enterprise that uses containers, while Party B is a power user running a few \glspl{vm} and Party C ****could be using an ARM-based raspberry pi
   - automated - appropriate tools should be chosen to allow automatically deploying and destroying the runtime environment without manual intervention other than running a minimal set of commands
   - reproducible - it should be easy for others to reproduce the test setup in their own environment
-  - disposable - \gls{e3} should be easy to destroy and quickly recreate from scratch at any time; as in the famous DevOps analogy[@biasHistoryPetsVs2016], it should be based on machines that are like cattle rather than pets
+  - disposable - \gls{e3} should be easy to destroy and quickly recreate from scratch at any time; as in the famous DevOps analogy [@biasHistoryPetsVs2016], it should be based on machines that are like cattle rather than pets
 - Connectivity
   - identity - it must be possible for the machines to communicate based on a long-lived identity rather than a potentially temporary \gls{ip} address.
   - secure - a message sent by a party must be readable only by its intended targets.

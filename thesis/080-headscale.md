@@ -1,4 +1,4 @@
-# Headscale
+# Headscale based solution
 
 This solution is similar to the Tailscale one, but it uses Headscale - a self-hosted open-source alternative to the closed-source Tailscale coordination service.
 

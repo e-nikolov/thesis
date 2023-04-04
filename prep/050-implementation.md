@@ -354,6 +354,7 @@ resource "tailscale_tailnet_key" "keys" {
 
 #### Interfacing with other tools
 This snippet outputs the hostnames of the provisioned droplets so they can be picked up by other tools. For example Colmena will read them from a json file so it can deploy further software changes to them.
+
 ```terraform
 
 
