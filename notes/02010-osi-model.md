@@ -1,4 +1,4 @@
-## OSI Model
+# OSI Model
 
 *   Create a figure that maps the various related components to OSI model layers
 

@@ -1,0 +1,18 @@
+[
+    {
+        "type": "Directory",
+        "name": "/home/enikolov/dev/thesis/build",
+        "parent_id": null,
+        "workspaceRoot": "/home/enikolov/dev/thesis",
+        "workspacePath": "build",
+        "id": "VHGvQ8pwjKr7W9Nt"
+    },
+    {
+        "type": "File",
+        "name": "/home/enikolov/dev/thesis/build/thesis.log",
+        "parent_id": null,
+        "workspaceRoot": "/home/enikolov/dev/thesis",
+        "workspacePath": "build/thesis.log",
+        "id": "ZGyCHMW9vabqQkOV"
+    }
+]
