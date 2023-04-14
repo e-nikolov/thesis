@@ -11,7 +11,7 @@ In this chapter we will look at prior works relevant to our problem of connectin
 
 The modern Internet is a global multi-tiered network of devices that communicate using the protocols of the Internet Protocol Suite (TCP/IP). Typically, an \gls{isp} manages the physical infrastructure that connects an end-user's devices with the rest of the internet. Figure \ref{osi-map-tcp} describes the responsibilities of the 7 layers of the OSI model and how they fit with the protocols of the Internet Protocol Suite, which are often referred to as the TCP/IP model. The newer TCP/IP model only recognizes 4 layers as it merges the OSI Session (L5) and Presentation (L6) layers into the Application layer (L7), as well as the Physical layer (L1) into the Data link layer (L2). While the TCP/IP model is a more accurate representation of The Internet, the 7 layer numbers of the OSI model are still widely used in the literature.
 
-![OSI model mapping of the Internet Protocol Suite\label{osi-map-tcp}](../figures/osi-map-tcp.png){height=50% }
+![OSI model mapping of the Internet Protocol Suite\label{osi-map-tcp}](../figures/osi-map-tcp.drawio.png){height=50% }
 
 
 <!-- IP -->
@@ -56,7 +56,7 @@ Most Network Overlay solutions can be placed in Layers 2, 3 or 7. Layer 2 overla
 
 Figure \ref{osi-map-overlays} shows an approximate OSI model mapping of several protocols and network overlay solutions from the point of view of the systems that use them and the arrows show dependency relations between them.
 
-![OSI model mapping of various protocols \label{osi-map-overlays}](../figures/osi-map-overlays.png){height=90% }
+![OSI model mapping of various protocols \label{osi-map-overlays}](../figures/osi-map-overlays.drawio.png){height=90% }
 
 ### TUN/TAP driver
 

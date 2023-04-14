@@ -16,9 +16,11 @@ PANDOC=$(pandock) \
 #		\
 # .PRECIOUS: prep/latex/%.tex %.tex %/latex %/latex/
 
-all: thesis.pdf notes.pdf prep.pdf presentation.pdf
+all:  thesis.pdf notes.pdf prep.pdf presentation.pdf
 all!: thesis.pdf! notes.pdf! prep.pdf! presentation.pdf!
 
+figures/%.png: figures/%
+	drawio -p 1 figures/$* -o figures/$*.png -s 1.5 -x
 
 test:
 	@echo test
@@ -43,7 +45,7 @@ test:
 		-o $*.pdf \
 		$*/*.md
 
-%.pdf: %.tex
+%.pdf: %.tex figures/*.drawio.png
 	$(MAKE) $@~
 
 $(wildcard *.tex): %.tex: %/latex/full.tex

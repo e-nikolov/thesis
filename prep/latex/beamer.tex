@@ -1,6 +1,7 @@
+\hypertarget{prep__000-abstract.md}{}
 \begin{frame}{Abstract}
-\protect\hypertarget{abstract}{}
-\href{prep/010-introduction.md\#background}{TEST3}
+\protect\hypertarget{prep__000-abstract.md__abstract}{}
+\protect\hyperlink{prep__010-introduction.md__background}{TEST3}
 
 The field of Secure Multiparty Computation provides methods for jointly
 computing functions without revealing their private inputs from multple
@@ -20,17 +21,19 @@ deploying software to them. The reference implementation described in
 this report uses the Tailscale mesh VPN for connectivity, and a number
 of additional implementations are planned for the next phase of the
 project.
+\end{frame}
 
+\hypertarget{prep__001-preamble.md}{}
 \tableofcontents
 
 \printnoidxglossary[type=\acronymtype,title=List of Abbreviations]
 \listoffigures
 
 \mainmatter
-\end{frame}
 
+\hypertarget{prep__010-introduction.md}{}
 \begin{frame}{Introduction}
-\protect\hypertarget{introduction}{}
+\protect\hypertarget{prep__010-introduction.md__introduction}{}
 This report will present the results of the preparation phase of the
 master thesis project titled ``Secure Sessions for Ad Hoc Multiparty
 Computation in MPyC''. The goal of this phase is to gain sufficient
@@ -39,7 +42,7 @@ plan with well defined goals for the implementation phase of the
 project.
 
 \begin{block}{Background}
-\protect\hypertarget{background}{}
+\protect\hypertarget{prep__010-introduction.md__background}{}
 \gls{mpc} is a set of techniques and protocols for computing a function
 over the secret inputs of multiple parties without revealing their
 values, but only the final result. A good overview can be found on
@@ -89,7 +92,7 @@ deployed either in the cloud or on premise in an automated way using
 \end{block}
 
 \begin{block}{Problem description}
-\protect\hypertarget{problem-description}{}
+\protect\hypertarget{prep__010-introduction.md__problem-description}{}
 MPyC supports \gls{tcp} connections from the \gls{ip} suite between the
 \gls{mpc} participants but it does not currently provide a service
 discovery mechanism. Before performing a joint computation, all parties
@@ -114,7 +117,7 @@ communications.
 \end{block}
 
 \begin{block}{Research questions}
-\protect\hypertarget{research-questions}{}
+\protect\hypertarget{prep__010-introduction.md__research-questions}{}
 Based on the problem description above, we formulate the following
 central research question:
 
@@ -198,7 +201,7 @@ be evaluated.
 \end{block}
 
 \begin{block}{Preparation phase scope}
-\protect\hypertarget{preparation-phase-scope}{}
+\protect\hypertarget{prep__010-introduction.md__preparation-phase-scope}{}
 During the implementation phase, we will answer the posed research
 questions of the project after evaluating various connectivity
 approaches for MPyC. The scope of the preparation phase will cover a
@@ -299,8 +302,9 @@ terms of several important characteristics:
 \end{block}
 \end{frame}
 
+\hypertarget{prep__030-technical-survey.md}{}
 \begin{frame}{Technical Survey}
-\protect\hypertarget{technical-survey}{}
+\protect\hypertarget{prep__030-technical-survey.md__technical-survey}{}
 In this chapter we will perform a high level survey of the available
 tools and approaches that could be used for \gls{e3} and select ones
 that fit our requirements. In the next chapter we will go more in depth
@@ -311,7 +315,7 @@ to choose building blocks that are compatible with as many scenarios as
 possible while also keeping the complexity low.
 
 \begin{block}{Deployment}
-\protect\hypertarget{deployment}{}
+\protect\hypertarget{prep__030-technical-survey.md__deployment}{}
 Our primary users are enterprises and power users. Enterprises can
 employ a variety of \gls{iac} tools in their infrastructure management
 process:
@@ -419,7 +423,7 @@ supported by Terraform and offered free credits for educational use.
 \end{block}
 
 \begin{block}{Connectivity}
-\protect\hypertarget{connectivity}{}
+\protect\hypertarget{prep__030-technical-survey.md__connectivity}{}
 There are a number of approaches for communication between our host
 machines. During the preparation phase of the project we will perform a
 high level exploration of our options and summarize them. For \gls{e3}
@@ -429,7 +433,7 @@ implement more approaches and analyze how they compare to each other in
 practice.
 
 \begin{block}{Virtual Private Networks (VPNs)}
-\protect\hypertarget{virtual-private-networks-vpns}{}
+\protect\hypertarget{prep__030-technical-survey.md__virtual-private-networks-vpns}{}
 \glspl{vpn} are commonly used for securely connecting machines from
 different \glspl{lan}. They provide software emulation of a network
 device on the operating system level and allow other software to
@@ -525,7 +529,7 @@ that may be a good starting point for the next phase of the project.
 \end{block}
 
 \begin{block}{Decentralized Identifiers (DIDs) and DIDComm}
-\protect\hypertarget{decentralized-identifiers-dids-and-didcomm}{}
+\protect\hypertarget{prep__030-technical-survey.md__decentralized-identifiers-dids-and-didcomm}{}
 \gls{ssi} is a way of managing a digital identity that emphasises an
 individual's ownerhip and control over their personal data. In contrast
 with more traditional methods, SSI does not rely on a third party such
@@ -549,7 +553,7 @@ TLS-like protocol on top of it that supports sessions.
 \end{block}
 
 \begin{block}{The Onion Router (TOR)}
-\protect\hypertarget{the-onion-router-tor}{}
+\protect\hypertarget{prep__030-technical-survey.md__the-onion-router-tor}{}
 Two machines need to know each other's IP addresses in order to be able
 to interact via the internet. An IP address can reveal details about a
 person's location or be used to launch a \gls{ddos} attack against them.
@@ -574,7 +578,7 @@ MPyC computations when routed via a TOR-like relay network.
 \end{block}
 
 \begin{block}{Summary}
-\protect\hypertarget{summary}{}
+\protect\hypertarget{prep__030-technical-survey.md__summary}{}
 In this chapter we compared a number of potential building blocks for
 \gls{e3} and made some choices informed by our requirements.
 Specifically, we will use Terraform for provisioning Virtual Machines
@@ -585,8 +589,9 @@ solutions based on Nebula, DIDComm, TOR and combinations of the above.
 \end{block}
 \end{frame}
 
+\hypertarget{prep__050-implementation.md}{}
 \begin{frame}[fragile]{Implementation details}
-\protect\hypertarget{implementation-details}{}
+\protect\hypertarget{prep__050-implementation.md__implementation-details}{}
 In this chapter we will cover the implementation of \gls{e3}, which can
 be found on \href{https://github.com/e-nikolov/mpyc}{Github}. It is a
 fork of \href{https://github.com/lschoe/mpyc}{MPyC} that adds deployment
@@ -594,7 +599,7 @@ capabilities. We will now discuss the more critical parts of the
 implementation.
 
 \begin{block}{Reproducible development of MPyC}
-\protect\hypertarget{reproducible-development-of-mpyc}{}
+\protect\hypertarget{prep__050-implementation.md__reproducible-development-of-mpyc}{}
 As previously discussed, the \glspl{vm} of \gls{e3} run the NixOS
 distribution of Linux, which is based on the declarative package manager
 Nix. One of its benefits is that it can also be used to declaratively
@@ -756,7 +761,7 @@ ready to make changes to MPyC or locally run the demos, e.g.~via
 \end{block}
 
 \begin{block}{Building a NixOS image for DigitalOcean}
-\protect\hypertarget{building-a-nixos-image-for-digitalocean}{}
+\protect\hypertarget{prep__050-implementation.md__building-a-nixos-image-for-digitalocean}{}
 As previously discussed we will deploy \gls{e3} on DigitalOcean droplets
 - their name for \glspl{vm}. They do not provide an official NixOS
 image, but we can build our own using nix.
@@ -841,7 +846,7 @@ DigitalOcean.
 \end{block}
 
 \begin{block}{Building a NixOS image for RaspberryPi}
-\protect\hypertarget{building-a-nixos-image-for-raspberrypi}{}
+\protect\hypertarget{prep__050-implementation.md__building-a-nixos-image-for-raspberrypi}{}
 We can build a NixOS image for a RaspberryPi4 with a similar nix
 expression:
 
@@ -885,14 +890,14 @@ all that is required is to add
 \end{block}
 
 \begin{block}{Provisioning via Terraform}
-\protect\hypertarget{provisioning-via-terraform}{}
+\protect\hypertarget{prep__050-implementation.md__provisioning-via-terraform}{}
 We will provision DigitalOcean droplets with Terraform from the VM image
 created earlier. We need to provide it with a DigitalOcean authorization
 key in the \texttt{DIGITALOCEAN\_TOKEN} environment variable so it can
 use their API on our behalf.
 
 \begin{block}{Importing the image}
-\protect\hypertarget{importing-the-image}{}
+\protect\hypertarget{prep__050-implementation.md__importing-the-image}{}
 The snippet below handles the upload of our NixOS image.
 
 \newpage
@@ -946,7 +951,7 @@ image from the URL generated by the bucket.
 \end{block}
 
 \begin{block}{Generating hostnames}
-\protect\hypertarget{generating-hostnames}{}
+\protect\hypertarget{prep__050-implementation.md__generating-hostnames}{}
 The snippet below starts with a specification of how many machines per
 region we want to have and transforms it into a list of descriptive ids
 (e.g.~\texttt{mpyc-demo-\/-ams3-0-15e53f39}) that will be used as host
@@ -989,7 +994,7 @@ communicating with each other.
 \end{block}
 
 \begin{block}{Provisioning the hosts}
-\protect\hypertarget{provisioning-the-hosts}{}
+\protect\hypertarget{prep__050-implementation.md__provisioning-the-hosts}{}
 The snippet below provisions the droplets in the specified regions and
 then using Tailscale's terraform provider creates auth keys for the
 machines, copies them to the machines and configures them to join the
@@ -1045,7 +1050,7 @@ provisioner will remove the nodes from the network.
 \end{block}
 
 \begin{block}{Interfacing with other tools}
-\protect\hypertarget{interfacing-with-other-tools}{}
+\protect\hypertarget{prep__050-implementation.md__interfacing-with-other-tools}{}
 This snippet outputs the hostnames of the provisioned droplets so they
 can be picked up by other tools. For example Colmena will read them from
 a json file so it can deploy further software changes to them.
@@ -1067,7 +1072,7 @@ a json file so it can deploy further software changes to them.
 \end{block}
 
 \begin{block}{Colmena deployment}
-\protect\hypertarget{colmena-deployment}{}
+\protect\hypertarget{prep__050-implementation.md__colmena-deployment}{}
 Whenever we need to update the NixOS configuration of our VMs, we could
 rebuild the image and re-provision them, but this would be slow. Instead
 we use Colmena to deploy and apply the new configuration to all existing
@@ -1113,7 +1118,7 @@ our changes baked in.
 \end{block}
 
 \begin{block}{Runtime execution}
-\protect\hypertarget{runtime-execution}{}
+\protect\hypertarget{prep__050-implementation.md__runtime-execution}{}
 We have identified the tools we will use to deploy \gls{e3} and how the
 host machines will communicate. What remains is to determine how to run
 a joint computation on the hosts. When running such an experiment, it
@@ -1207,7 +1212,7 @@ Party ID based on the index at which its hostname appears in the
 \end{block}
 
 \begin{block}{Secrets}
-\protect\hypertarget{secrets}{}
+\protect\hypertarget{prep__050-implementation.md__secrets}{}
 The implementation expects that secrets are supplied as environment
 variables with the specific mechanism being left up to the user. We are
 currently keeping the secret values in the 1Password manager and use its
@@ -1216,8 +1221,9 @@ currently keeping the secret values in the 1Password manager and use its
 \end{block}
 \end{frame}
 
+\hypertarget{prep__060-conclusions.md}{}
 \begin{frame}[fragile]{Conclusions}
-\protect\hypertarget{conclusions}{}
+\protect\hypertarget{prep__060-conclusions.md__conclusions}{}
 In this report we presented the results of the preparation phase for the
 master thesis assignment ``Secure Sessions for Ad Hoc Multiparty
 Computation in MPyC''. We developed an \acrfull{e3} for the purpose of
@@ -1237,7 +1243,7 @@ used to declaratively manage the software installed on them via
 MPyC demos in parallel on the deployed hosts.
 
 \begin{block}{Implementation phase planning}
-\protect\hypertarget{implementation-phase-planning}{}
+\protect\hypertarget{prep__060-conclusions.md__implementation-phase-planning}{}
 During the next phase of the thesis assignment, we plan to implement
 various connectivity approaches for \gls{e3}'s host machines and analyse
 their suitability for MPyC.

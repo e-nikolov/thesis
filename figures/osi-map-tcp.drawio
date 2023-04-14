@@ -1,0 +1,463 @@
+<mxfile host="Electron" modified="2023-04-14T19:58:05.839Z" agent="Mozilla/5.0 (Windows NT 10.0; Win64; x64) AppleWebKit/537.36 (KHTML, like Gecko) draw.io/21.1.2 Chrome/106.0.5249.199 Electron/21.4.3 Safari/537.36" etag="7JYEQEaemYvRVzGHBYqk" version="21.1.2" type="device">
+  <diagram name="tcp" id="onETi5prbbMaYWHy8T5J">
+    <mxGraphModel dx="1562" dy="959" grid="1" gridSize="10" guides="1" tooltips="1" connect="1" arrows="1" fold="1" page="1" pageScale="1" pageWidth="850" pageHeight="1100" background="none" math="1" shadow="1">
+      <root>
+        <mxCell id="RTqUCXjV9ranWYJAu2tO-0" />
+        <mxCell id="RTqUCXjV9ranWYJAu2tO-1" value="OSI Layers" style="" parent="RTqUCXjV9ranWYJAu2tO-0" />
+        <UserObject label="Layer 7&lt;br style=&quot;font-size: 16px;&quot;&gt;Application" tags="L7" id="RTqUCXjV9ranWYJAu2tO-2">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;shadow=0;swimlaneLine=1;fillColor=#fa5252;fontColor=#000000;strokeColor=none;glass=0;fillStyle=hachure;gradientDirection=east;sketch=1;curveFitting=1;jiggle=1;align=left;verticalAlign=top;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;fontSize=16;horizontal=1;labelPosition=center;verticalLabelPosition=middle;spacing=6;spacingTop=6;strokeWidth=0.25;comic=0;snapToPoint=0;hachureGap=2;container=1;collapsible=0;dropTarget=1;fillWeight=-1;hachureAngle=-41;simplification=0;fontStyle=0;labelBackgroundColor=none;labelBorderColor=none;spacingRight=0;recursiveResize=0;" parent="RTqUCXjV9ranWYJAu2tO-1" vertex="1">
+            <mxGeometry y="30" width="770" height="80" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="S1g-FRACnewnE2eSd2Cl-0" value="high level protocols facilitating the network access of user-facing applications and services" style="text;strokeColor=none;fillColor=none;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=16;fontFamily=Kalam;fontColor=default;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="RTqUCXjV9ranWYJAu2tO-2" vertex="1">
+          <mxGeometry x="100" y="10" width="390" height="80" as="geometry" />
+        </mxCell>
+        <UserObject label="Layer 6&lt;br style=&quot;font-size: 16px;&quot;&gt;Presentation" tags="L6" id="RTqUCXjV9ranWYJAu2tO-3">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;shadow=0;swimlaneLine=1;fillColor=#be4bdb;fontColor=#000000;strokeColor=none;glass=0;fillStyle=hachure;gradientDirection=east;sketch=1;curveFitting=1;jiggle=1;align=left;verticalAlign=top;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;spacingTop=6;spacing=6;fontSize=16;comic=0;snapToPoint=0;hachureGap=2;container=1;collapsible=0;fillWeight=-1;hachureAngle=-41;simplification=0;fontStyle=0;strokeWidth=0.25;spacingRight=0;dropTarget=1;recursiveResize=0;" parent="RTqUCXjV9ranWYJAu2tO-1" vertex="1">
+            <mxGeometry y="110" width="770" height="60" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="RVRi0FHdcS4LNddHadgT-5" value="&lt;span dir=&quot;ltr&quot; role=&quot;presentation&quot; style=&quot;left: 35.59%; top: 46.08%; font-size: 16px; transform: scaleX(0.95014);&quot;&gt;data representation, e.g. handles&amp;nbsp;&lt;/span&gt;&lt;span dir=&quot;ltr&quot; role=&quot;presentation&quot; style=&quot;left: 18.19%; top: 47.69%; font-size: 16px; transform: scaleX(0.962961);&quot;&gt;encoding, compression, encryption&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Kalam;fontColor=default;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="RTqUCXjV9ranWYJAu2tO-3" vertex="1">
+          <mxGeometry x="100" y="10" width="430" height="50" as="geometry" />
+        </mxCell>
+        <UserObject label="Layer 5&lt;br style=&quot;font-size: 16px;&quot;&gt;Session" tags="L5" id="RTqUCXjV9ranWYJAu2tO-4">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;shadow=0;swimlaneLine=1;fillColor=#fd7e14;fontColor=#000000;strokeColor=none;glass=0;fillStyle=hachure;gradientDirection=east;sketch=1;curveFitting=1;jiggle=1;align=left;verticalAlign=top;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;fontSize=16;spacing=6;spacingTop=6;comic=0;snapToPoint=0;hachureGap=2;container=1;collapsible=0;fillWeight=-1;hachureAngle=-41;simplification=0;fontStyle=0;strokeWidth=0.25;spacingRight=0;dropTarget=1;recursiveResize=0;" parent="RTqUCXjV9ranWYJAu2tO-1" vertex="1">
+            <mxGeometry y="170" width="770" height="60" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="RVRi0FHdcS4LNddHadgT-6" value="&lt;span dir=&quot;ltr&quot; role=&quot;presentation&quot; style=&quot;left: 30.59%; top: 50.11%; font-size: 16px; transform: scaleX(0.979495);&quot;&gt;session setup, management, tear-down, authentication, authorization&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Kalam;fontColor=default;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="RTqUCXjV9ranWYJAu2tO-4" vertex="1">
+          <mxGeometry x="100" width="430" height="50" as="geometry" />
+        </mxCell>
+        <UserObject label="Layer 4&lt;br style=&quot;font-size: 16px;&quot;&gt;Transport" tags="L4" id="RTqUCXjV9ranWYJAu2tO-5">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;shadow=0;swimlaneLine=1;fillColor=#40c057;fontColor=#000000;strokeColor=none;glass=0;fillStyle=hachure;gradientDirection=east;sketch=1;curveFitting=1;jiggle=1;align=left;verticalAlign=top;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;fontSize=16;spacing=6;spacingTop=6;comic=0;snapToPoint=0;hachureGap=2;container=1;collapsible=0;fillWeight=-1;hachureAngle=-41;simplification=0;fontStyle=0;strokeWidth=0.25;spacingRight=0;dropTarget=1;recursiveResize=0;" parent="RTqUCXjV9ranWYJAu2tO-1" vertex="1">
+            <mxGeometry y="230" width="770" height="80" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="RVRi0FHdcS4LNddHadgT-4" value="&lt;span dir=&quot;ltr&quot; role=&quot;presentation&quot; style=&quot;left: 32.19%; top: 52.52%; font-size: 16px;&quot;&gt; &lt;/span&gt;&lt;span dir=&quot;ltr&quot; role=&quot;presentation&quot; style=&quot;left: 33.11%; top: 52.52%; font-size: 16px; transform: scaleX(1.04881);&quot;&gt;transmission of variable length data over a network with specific delivery guarantees&lt;/span&gt;&lt;span dir=&quot;ltr&quot; role=&quot;presentation&quot; style=&quot;left: 18.19%; top: 54.13%; font-size: 16px; transform: scaleX(0.979941);&quot;&gt;, e.g.&amp;nbsp; handles ports, connections, packet fragmentation&lt;/span&gt;" style="text;whiteSpace=wrap;html=1;fontSize=16;fontFamily=Kalam;fontColor=default;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="RTqUCXjV9ranWYJAu2tO-5" vertex="1">
+          <mxGeometry x="100" y="10" width="430" height="70" as="geometry" />
+        </mxCell>
+        <UserObject label="Transport&lt;br style=&quot;font-size: 16px;&quot;&gt;Layer" tags="L1" id="YgaQCrEQrOvV3wjsoiL2-11">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;shadow=0;swimlaneLine=1;fillColor=#008a00;strokeColor=#005700;glass=0;fillStyle=hachure;gradientDirection=east;sketch=1;curveFitting=1;jiggle=1;align=right;verticalAlign=top;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;locked=0;fontSize=16;spacing=6;spacingTop=6;comic=0;snapToPoint=0;hachureGap=2;container=1;collapsible=0;fillWeight=-1;hachureAngle=45;simplification=0;fontStyle=0;strokeWidth=0.25;spacingRight=0;recursiveResize=0;fontColor=#030303;" parent="RTqUCXjV9ranWYJAu2tO-5" vertex="1">
+            <mxGeometry x="530" width="320" height="80" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="TCP" tags="L4 Kernel" id="RTqUCXjV9ranWYJAu2tO-30">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-11" vertex="1">
+            <mxGeometry x="70" y="20" width="40" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="UDP" tags="L4 Kernel" id="RTqUCXjV9ranWYJAu2tO-32">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-11" vertex="1">
+            <mxGeometry x="9.999999999999979" y="20" width="40" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="RTqUCXjV9ranWYJAu2tO-146" value="" style="shape=waypoint;sketch=0;fillStyle=solid;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;strokeColor=default;" parent="YgaQCrEQrOvV3wjsoiL2-11" vertex="1">
+          <mxGeometry x="50" y="50" width="20" height="20" as="geometry" />
+        </mxCell>
+        <UserObject label="" tags="DOT" id="RTqUCXjV9ranWYJAu2tO-106">
+          <mxCell style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=0;hachureGap=4;orthogonalLoop=0;jettySize=auto;html=1;dashed=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;fontColor=default;endArrow=none;endFill=0;dashPattern=1 1;strokeWidth=2;metaEdit=0;orthogonal=1;ignoreEdge=0;flowAnimation=0;backgroundOutline=0;fixDash=0;snapToPoint=0;startFill=1;anchorPointDirection=1;arcSize=0;perimeterSpacing=0;elbow=vertical;" parent="YgaQCrEQrOvV3wjsoiL2-11" source="RTqUCXjV9ranWYJAu2tO-30" target="RTqUCXjV9ranWYJAu2tO-146" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="-30" y="150" as="targetPoint" />
+              <Array as="points">
+                <mxPoint x="90" y="60" />
+                <mxPoint x="90" y="50" />
+                <mxPoint x="100" y="60" />
+                <mxPoint x="100" y="50" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="DOT" id="RTqUCXjV9ranWYJAu2tO-105">
+          <mxCell style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=0;hachureGap=4;orthogonalLoop=0;jettySize=auto;html=1;dashed=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;fontColor=default;endArrow=none;endFill=0;dashPattern=1 1;strokeWidth=2;metaEdit=0;orthogonal=1;ignoreEdge=0;flowAnimation=0;backgroundOutline=0;fixDash=0;snapToPoint=0;startFill=1;anchorPointDirection=1;arcSize=0;perimeterSpacing=0;elbow=vertical;exitX=0.5;exitY=1;exitDx=0;exitDy=0;" parent="YgaQCrEQrOvV3wjsoiL2-11" source="RTqUCXjV9ranWYJAu2tO-32" target="RTqUCXjV9ranWYJAu2tO-146" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="-79.99000000000001" y="151.77800000000002" as="targetPoint" />
+              <Array as="points">
+                <mxPoint x="30" y="60" />
+                <mxPoint x="40" y="50" />
+                <mxPoint x="50" y="55" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="Layer 3&lt;br style=&quot;font-size: 16px;&quot;&gt;Network" tags="L3" id="RTqUCXjV9ranWYJAu2tO-6">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;shadow=0;swimlaneLine=1;fillColor=#228be6;fontColor=#000000;strokeColor=none;glass=0;fillStyle=hachure;gradientDirection=east;sketch=1;curveFitting=1;jiggle=1;align=left;verticalAlign=top;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;fontSize=16;spacing=6;spacingTop=6;comic=0;snapToPoint=0;hachureGap=2;container=1;collapsible=0;dropTarget=1;perimeter=centerPerimeter;portConstraint=west;portConstraintRotation=1;fillWeight=-1;hachureAngle=-41;simplification=0;fontStyle=0;strokeWidth=0.25;spacingRight=0;recursiveResize=0;" parent="RTqUCXjV9ranWYJAu2tO-1" vertex="1">
+            <mxGeometry y="310" width="770" height="80" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="RVRi0FHdcS4LNddHadgT-1" value="transmission of data packets between two nodes, routed via a path of intermediate nodes, e.g. handles logical addressing,&amp;nbsp;&lt;span dir=&quot;ltr&quot; role=&quot;presentation&quot; style=&quot;left: 13.61%; top: 60.57%; font-size: 16px; transform: scaleX(1.03033);&quot;&gt;path finding&lt;/span&gt;" style="text;strokeColor=none;fillColor=none;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=16;fontFamily=Kalam;fontColor=default;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="RTqUCXjV9ranWYJAu2tO-6" vertex="1">
+          <mxGeometry x="100" y="10" width="430" height="70" as="geometry" />
+        </mxCell>
+        <UserObject label="Internet &lt;br style=&quot;font-size: 16px;&quot;&gt;Layer" tags="L1" id="YgaQCrEQrOvV3wjsoiL2-8">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;shadow=0;swimlaneLine=1;fillColor=#0050ef;strokeColor=#001DBC;glass=0;fillStyle=hachure;gradientDirection=east;sketch=1;curveFitting=1;jiggle=1;align=right;verticalAlign=top;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;locked=0;fontSize=16;spacing=6;spacingTop=6;comic=0;snapToPoint=0;hachureGap=2;container=1;collapsible=0;fillWeight=-1;hachureAngle=45;simplification=0;fontStyle=0;strokeWidth=0.25;spacingRight=0;recursiveResize=0;fontColor=#0F0F0F;" parent="RTqUCXjV9ranWYJAu2tO-6" vertex="1">
+            <mxGeometry x="530" width="320" height="80" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="ICMP" tags="L3 Kernel" id="RTqUCXjV9ranWYJAu2tO-28">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-8" vertex="1">
+            <mxGeometry x="170" y="30" width="50" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="IP" tags="L3 Kernel" id="RTqUCXjV9ranWYJAu2tO-29">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-8" vertex="1">
+            <mxGeometry x="40" y="30" width="40" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="IPSec" tags="Kernel L3" id="RTqUCXjV9ranWYJAu2tO-27">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-8" vertex="1">
+            <mxGeometry x="110" y="30" width="50" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="DOT" id="RTqUCXjV9ranWYJAu2tO-92">
+          <mxCell style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=0;hachureGap=4;orthogonalLoop=0;jettySize=auto;html=1;dashed=1;dashPattern=1 1;labelBackgroundColor=default;strokeColor=default;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;fontColor=default;endArrow=classicThin;endFill=1;strokeWidth=2;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;orthogonal=1;ignoreEdge=0;flowAnimation=0;snapToPoint=1;startFill=1;anchorPointDirection=0;arcSize=0;perimeterSpacing=0;elbow=vertical;" parent="YgaQCrEQrOvV3wjsoiL2-8" source="RTqUCXjV9ranWYJAu2tO-27" target="RTqUCXjV9ranWYJAu2tO-29" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="265" y="265" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="NAT" tags="L4 L3" id="RTqUCXjV9ranWYJAu2tO-31">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#314354;fontColor=#ffffff;arcSize=19;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-8" vertex="1">
+            <mxGeometry x="110" y="-20" width="50" height="30" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Layer 2&lt;br style=&quot;font-size: 16px;&quot;&gt;Data link" tags="L2" id="RTqUCXjV9ranWYJAu2tO-7">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;shadow=0;swimlaneLine=1;fillColor=#fd7e14;fontColor=#000000;strokeColor=none;glass=0;fillStyle=hachure;gradientDirection=east;sketch=1;curveFitting=1;jiggle=1;align=left;verticalAlign=top;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;fontSize=16;spacing=6;spacingTop=6;comic=0;snapToPoint=0;hachureGap=2;dropTarget=1;container=1;collapsible=0;fillWeight=-1;hachureAngle=-41;simplification=0;fontStyle=0;strokeWidth=0.25;spacingRight=0;recursiveResize=0;" parent="RTqUCXjV9ranWYJAu2tO-1" vertex="1">
+            <mxGeometry y="390" width="770" height="60" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="S1g-FRACnewnE2eSd2Cl-2" value="transmission of data frames between two nodes connected via a physical layer" style="text;strokeColor=none;fillColor=none;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=16;fontFamily=Kalam;fontColor=default;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="RTqUCXjV9ranWYJAu2tO-7" vertex="1">
+          <mxGeometry x="100" y="10" width="430" height="50" as="geometry" />
+        </mxCell>
+        <UserObject label="Link &lt;br style=&quot;font-size: 16px;&quot;&gt;Layer" tags="L1" id="YgaQCrEQrOvV3wjsoiL2-1">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;shadow=0;swimlaneLine=1;fillColor=#6a00ff;strokeColor=#3700CC;glass=0;fillStyle=hachure;gradientDirection=east;sketch=1;curveFitting=1;jiggle=1;align=right;verticalAlign=top;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;locked=0;fontSize=16;spacing=6;spacingTop=6;comic=0;snapToPoint=0;hachureGap=2;container=1;collapsible=0;fillWeight=-1;hachureAngle=45;simplification=0;fontStyle=0;strokeWidth=0.25;spacingRight=0;recursiveResize=0;fontColor=#303030;" parent="RTqUCXjV9ranWYJAu2tO-7" vertex="1">
+            <mxGeometry x="530" width="320" height="120" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Bluetooth" tags="Kernel L1" id="RTqUCXjV9ranWYJAu2tO-21">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-1" vertex="1">
+            <mxGeometry x="150.00104477611944" y="40" width="68.95522388059702" height="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Ethernet" tags="Kernel L1" id="RTqUCXjV9ranWYJAu2tO-22">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-1" vertex="1">
+            <mxGeometry x="69.99507462686563" y="40" width="68.95522388059702" height="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="WiFi" tags="Kernel L1" id="RTqUCXjV9ranWYJAu2tO-23">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-1" vertex="1">
+            <mxGeometry x="10.003411513859305" y="40" width="47.142857142857146" height="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="MAC" tags="Kernel L2" id="RTqUCXjV9ranWYJAu2tO-24">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-1" vertex="1">
+            <mxGeometry x="84.47" y="10" width="40" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Layer 1&lt;br style=&quot;font-size: 16px;&quot;&gt;Physical" tags="L1" id="RTqUCXjV9ranWYJAu2tO-8">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;shadow=0;swimlaneLine=1;fillColor=#868e96;fontColor=#000000;strokeColor=none;glass=0;fillStyle=hachure;gradientDirection=east;sketch=1;curveFitting=1;jiggle=1;align=left;verticalAlign=top;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;locked=0;fontSize=16;spacing=6;spacingTop=6;comic=0;snapToPoint=0;hachureGap=2;container=1;collapsible=0;fillWeight=-1;hachureAngle=-41;simplification=0;fontStyle=0;strokeWidth=0.25;spacingRight=0;recursiveResize=0;" parent="RTqUCXjV9ranWYJAu2tO-1" vertex="1">
+            <mxGeometry y="450" width="770" height="60" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="S1g-FRACnewnE2eSd2Cl-1" value="transmission of raw bits over a physical medium" style="text;strokeColor=none;fillColor=none;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=16;fontFamily=Kalam;fontColor=default;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="RTqUCXjV9ranWYJAu2tO-8" vertex="1">
+          <mxGeometry x="100" y="10" width="340" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RTqUCXjV9ranWYJAu2tO-9" value="Types" style="" parent="RTqUCXjV9ranWYJAu2tO-0" />
+        <mxCell id="RTqUCXjV9ranWYJAu2tO-13" value="Protocols" parent="RTqUCXjV9ranWYJAu2tO-0" />
+        <mxCell id="YgaQCrEQrOvV3wjsoiL2-9" value="TCP/IP Model" parent="RTqUCXjV9ranWYJAu2tO-0" />
+        <UserObject label="Application&lt;br style=&quot;font-size: 16px;&quot;&gt;Layer" tags="L1" id="YgaQCrEQrOvV3wjsoiL2-12">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;shadow=0;swimlaneLine=1;fillColor=#fad7ac;strokeColor=#b46504;glass=0;fillStyle=hachure;gradientDirection=east;sketch=1;curveFitting=1;jiggle=1;align=right;verticalAlign=top;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;locked=0;fontSize=16;spacing=6;spacingTop=6;comic=0;snapToPoint=0;hachureGap=2;container=1;collapsible=0;fillWeight=-1;hachureAngle=45;simplification=0;fontStyle=0;strokeWidth=0.25;spacingRight=0;recursiveResize=0;" parent="YgaQCrEQrOvV3wjsoiL2-9" vertex="1">
+            <mxGeometry x="530" y="30" width="320" height="200" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="TURN" tags="L7" id="RTqUCXjV9ranWYJAu2tO-17">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;fontFamily=Kalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;portConstraint=east;snapToPoint=0;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-12" vertex="1">
+            <mxGeometry x="170" y="10" width="60" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="STUN" tags="L7" id="RTqUCXjV9ranWYJAu2tO-16">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;fontFamily=Kalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-12" vertex="1">
+            <mxGeometry x="170" y="50" width="60" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="UPnP" tags="L7" id="RTqUCXjV9ranWYJAu2tO-15">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;fontFamily=Kalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-12" vertex="1">
+            <mxGeometry x="100" y="50" width="60" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="TLS" tags="L6" id="RTqUCXjV9ranWYJAu2tO-36">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-12" vertex="1">
+            <mxGeometry x="10.64" y="100" width="60" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Noise" tags="L6" id="RTqUCXjV9ranWYJAu2tO-14">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;fontFamily=Kalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-12" vertex="1">
+            <mxGeometry x="170" y="100" width="60" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Sockets" tags="L6" id="RTqUCXjV9ranWYJAu2tO-38">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#314354;fontColor=#ffffff;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-12" vertex="1">
+            <mxGeometry x="10.64" y="160" width="60" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="DNS" tags="L7" id="RTqUCXjV9ranWYJAu2tO-35">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-12" vertex="1">
+            <mxGeometry x="100" y="10" width="60" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="HTTPS" tags="L7" id="RTqUCXjV9ranWYJAu2tO-34">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-12" vertex="1">
+            <mxGeometry x="10.64" y="10" width="60" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="DOT" id="RTqUCXjV9ranWYJAu2tO-135">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;exitX=0;exitY=0.5;exitDx=0;exitDy=0;entryX=0;entryY=0.5;entryDx=0;entryDy=0;fontSize=16;startSize=6;endSize=6;endArrow=classicThin;fontFamily=Kalam;hachureGap=4;dashed=1;dashPattern=1 1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;endFill=1;strokeWidth=2;startFill=1;arcSize=0;" parent="YgaQCrEQrOvV3wjsoiL2-12" source="RTqUCXjV9ranWYJAu2tO-34" target="RTqUCXjV9ranWYJAu2tO-36" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="HTTP" tags="L7" id="RTqUCXjV9ranWYJAu2tO-33">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-12" vertex="1">
+            <mxGeometry x="10.64" y="50" width="60" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="DOT" id="RTqUCXjV9ranWYJAu2tO-68">
+          <mxCell style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=16;startSize=6;endSize=6;endArrow=classicThin;fontFamily=Kalam;hachureGap=4;dashed=1;dashPattern=1 1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;endFill=1;strokeWidth=2;startFill=1;arcSize=0;" parent="YgaQCrEQrOvV3wjsoiL2-12" source="RTqUCXjV9ranWYJAu2tO-34" target="RTqUCXjV9ranWYJAu2tO-33" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="160.64" y="60" as="sourcePoint" />
+              <mxPoint x="59.639999999999986" y="89" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="MIME" tags="L6" id="RTqUCXjV9ranWYJAu2tO-37">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#314354;fontColor=#ffffff;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-12" vertex="1">
+            <mxGeometry x="100" y="100" width="60" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Cookies" tags="L6" id="A1NzPCWOjQ5FdaoQ-Jyu-14">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontColor=#ffffff;strokeColor=#314354;fontFamily=Kalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;shadow=1;" parent="YgaQCrEQrOvV3wjsoiL2-12" vertex="1">
+            <mxGeometry x="100" y="160" width="60" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="vccciff3yIBG3zHQTHzS-2" style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=0;hachureGap=4;orthogonalLoop=1;jettySize=auto;elbow=vertical;html=1;exitX=1.026;exitY=0.477;exitDx=0;exitDy=0;shadow=0;dashed=1;dashPattern=1 1;labelBackgroundColor=default;strokeColor=default;strokeWidth=2;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;fontColor=default;startFill=1;endArrow=none;endFill=0;startSize=3;endSize=3;fillColor=none;gradientColor=none;exitPerimeter=0;" parent="YgaQCrEQrOvV3wjsoiL2-12" source="RTqUCXjV9ranWYJAu2tO-36" target="vccciff3yIBG3zHQTHzS-0" edge="1">
+          <mxGeometry relative="1" as="geometry" />
+        </mxCell>
+        <mxCell id="vccciff3yIBG3zHQTHzS-1" value="" style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=16;startSize=8;endSize=6;endArrow=none;fontFamily=Kalam;hachureGap=4;dashed=1;dashPattern=1 1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;endFill=0;strokeWidth=2;startFill=1;arcSize=0;elbow=vertical;orthogonal=1;entryDx=0;entryDy=0;" parent="YgaQCrEQrOvV3wjsoiL2-12" source="RTqUCXjV9ranWYJAu2tO-33" target="vccciff3yIBG3zHQTHzS-0" edge="1">
+          <mxGeometry relative="1" as="geometry">
+            <mxPoint x="50" y="110" as="sourcePoint" />
+            <mxPoint x="100" y="280" as="targetPoint" />
+            <Array as="points">
+              <mxPoint x="80" y="60" />
+              <mxPoint x="90" y="110" />
+              <mxPoint x="90" y="100" />
+              <mxPoint x="110" y="130" />
+              <mxPoint x="110" y="120" />
+            </Array>
+          </mxGeometry>
+        </mxCell>
+        <mxCell id="vccciff3yIBG3zHQTHzS-0" value="" style="shape=waypoint;sketch=0;fillStyle=solid;size=6;pointerEvents=1;points=[];fillColor=none;resizable=0;rotatable=0;perimeter=centerPerimeter;snapToPoint=1;hachureGap=4;jiggle=2;curveFitting=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;strokeColor=default;" parent="YgaQCrEQrOvV3wjsoiL2-12" vertex="1">
+          <mxGeometry x="80" y="100" width="20" height="20" as="geometry" />
+        </mxCell>
+        <UserObject label="Legend" tags="L1" id="A1NzPCWOjQ5FdaoQ-Jyu-20">
+          <mxCell style="rounded=0;whiteSpace=wrap;html=1;shadow=0;swimlaneLine=1;glass=0;fillStyle=hachure;gradientDirection=east;sketch=1;curveFitting=1;jiggle=1;align=left;verticalAlign=top;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;fixDash=0;metaEdit=0;locked=0;fontSize=16;spacing=6;spacingTop=6;comic=0;snapToPoint=0;hachureGap=2;container=1;collapsible=0;fillWeight=-1;hachureAngle=45;simplification=0;fontStyle=0;strokeWidth=0.25;spacingRight=0;recursiveResize=0;" parent="YgaQCrEQrOvV3wjsoiL2-9" vertex="1">
+            <mxGeometry y="510" width="850" height="50" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="&lt;span style=&quot;white-space: pre; font-size: 16px;&quot;&gt; &lt;/span&gt;" tags="Kernel L1" id="A1NzPCWOjQ5FdaoQ-Jyu-23">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#647687;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#314354;fontColor=#ffffff;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="A1NzPCWOjQ5FdaoQ-Jyu-20" vertex="1">
+            <mxGeometry x="450" y="10" width="40" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="Kernel L2" id="A1NzPCWOjQ5FdaoQ-Jyu-24">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fillColor=#e3c800;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;strokeColor=#B09500;fontColor=#000000;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;shadow=1;" parent="A1NzPCWOjQ5FdaoQ-Jyu-20" vertex="1">
+            <mxGeometry x="80" y="10" width="40" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="A1NzPCWOjQ5FdaoQ-Jyu-29" value="Core protocols of the Internet Protocol Suite (TCP/IP)" style="text;strokeColor=none;fillColor=none;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=16;fontFamily=Kalam;fontColor=default;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="A1NzPCWOjQ5FdaoQ-Jyu-20" vertex="1">
+          <mxGeometry x="140" width="280" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="A1NzPCWOjQ5FdaoQ-Jyu-30" value="Other protocols and concepts" style="text;strokeColor=none;fillColor=none;html=1;align=left;verticalAlign=top;whiteSpace=wrap;rounded=0;fontSize=16;fontFamily=Kalam;fontColor=default;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="A1NzPCWOjQ5FdaoQ-Jyu-20" vertex="1">
+          <mxGeometry x="500" width="240" height="50" as="geometry" />
+        </mxCell>
+        <mxCell id="RTqUCXjV9ranWYJAu2tO-39" value="Overlays" style="" parent="RTqUCXjV9ranWYJAu2tO-0" visible="0" />
+        <UserObject label="NetBird" tags="L3 P2P" id="RTqUCXjV9ranWYJAu2tO-40">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;expand=1;collapsible=0;dropTarget=1;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="150" y="660" width="100" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Tailscale" tags="L3 P2P" id="RTqUCXjV9ranWYJAu2tO-41">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;locked=0;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="150" y="710" width="100" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Nebula" tags="L3 P2P" id="RTqUCXjV9ranWYJAu2tO-42">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="150" y="760" width="100" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Tinc" tags="L2 P2P L3" id="RTqUCXjV9ranWYJAu2tO-43">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;expand=1;imageAspect=1;snapToPoint=1;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="150" y="820" width="100" height="40" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <object label="OpenVPN" tags="S/C L1 L2" id="RTqUCXjV9ranWYJAu2tO-44">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="580" y="820" width="80" height="40" as="geometry" />
+          </mxCell>
+        </object>
+        <UserObject label="WebRTC" tags="L7 P2P" id="RTqUCXjV9ranWYJAu2tO-45">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="150" y="280" width="100" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="TOR" tags="L7 P2P" id="RTqUCXjV9ranWYJAu2tO-46">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="150" y="250" width="100" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Ethereum" tags="L7 P2P" id="RTqUCXjV9ranWYJAu2tO-47">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="150" y="220" width="100" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="IPFS" tags="L7 P2P" id="RTqUCXjV9ranWYJAu2tO-48">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="150" y="190" width="100" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="BitTorrent" tags="L7 P2P" id="RTqUCXjV9ranWYJAu2tO-49">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="150" y="160" width="100" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="OpenZiti" tags="L7 P2P" id="RTqUCXjV9ranWYJAu2tO-50">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="150" y="130" width="100" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="FreeNet" tags="L7 P2P" id="RTqUCXjV9ranWYJAu2tO-51">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="150" y="100" width="100" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="Ngrok" tags="L7 S/C" id="RTqUCXjV9ranWYJAu2tO-52">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="580" y="200" width="50" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <object label="WireGuard" tags="Kernel L3" id="RTqUCXjV9ranWYJAu2tO-53">
+          <mxCell style="rounded=1;whiteSpace=wrap;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;portConstraintRotation=0;dropTarget=0;autosize=1;glass=0;labelBorderColor=none;labelBackgroundColor=none;html=1;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="325" y="720" width="90" height="30" as="geometry" />
+          </mxCell>
+        </object>
+        <UserObject label="N2N" tags="L2 P2P" id="RTqUCXjV9ranWYJAu2tO-54">
+          <mxCell style="rounded=1;whiteSpace=wrap;html=1;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;movable=1;resizable=1;rotatable=1;deletable=1;editable=1;connectable=1;backgroundOutline=0;container=0;fixDash=0;metaEdit=0;fontSize=16;fillColor=#b1ddf0;strokeColor=#10739e;shadow=1;" parent="RTqUCXjV9ranWYJAu2tO-39" vertex="1">
+            <mxGeometry x="150" y="900" width="100" height="20" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <mxCell id="RTqUCXjV9ranWYJAu2tO-20" value="TCP/IP" parent="RTqUCXjV9ranWYJAu2tO-0" />
+        <mxCell id="YgaQCrEQrOvV3wjsoiL2-6" value="OSI Model" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontFamily=Kalam;fontColor=default;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="RTqUCXjV9ranWYJAu2tO-20" vertex="1">
+          <mxGeometry width="90" height="30" as="geometry" />
+        </mxCell>
+        <mxCell id="YgaQCrEQrOvV3wjsoiL2-7" value="TCP/IP Model" style="text;html=1;align=center;verticalAlign=middle;resizable=0;points=[];autosize=1;strokeColor=none;fillColor=none;fontSize=16;fontFamily=Kalam;fontColor=default;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;" parent="RTqUCXjV9ranWYJAu2tO-20" vertex="1">
+          <mxGeometry x="730" width="120" height="30" as="geometry" />
+        </mxCell>
+        <object label="Edges" id="RTqUCXjV9ranWYJAu2tO-55">
+          <mxCell style="" parent="RTqUCXjV9ranWYJAu2tO-0" />
+        </object>
+        <UserObject label="" tags="DOT" id="RTqUCXjV9ranWYJAu2tO-67">
+          <mxCell style="edgeStyle=none;curved=1;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=16;startSize=8;endSize=8;endArrow=classicThin;fontFamily=Architects Daughter;hachureGap=4;dashed=1;dashPattern=1 1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DArchitects%2BDaughter;endFill=1;strokeWidth=2;startFill=1;arcSize=0;" parent="RTqUCXjV9ranWYJAu2tO-55" source="RTqUCXjV9ranWYJAu2tO-52" target="RTqUCXjV9ranWYJAu2tO-34" edge="1">
+            <mxGeometry relative="1" as="geometry" />
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="Wires" id="RTqUCXjV9ranWYJAu2tO-70">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;orthogonalLoop=0;jettySize=auto;html=1;fontSize=12;sketch=1;curveFitting=-10;jiggle=2;disableMultiStroke=0;flowAnimation=0;simplification=1;endArrow=classic;endFill=1;endSize=4;strokeWidth=2;shadow=0;startFill=1;arcSize=1;fillOpacity=80;strokeOpacity=80;exitX=0;exitY=0.25;exitDx=0;exitDy=0;" parent="RTqUCXjV9ranWYJAu2tO-55" source="RTqUCXjV9ranWYJAu2tO-41" target="RTqUCXjV9ranWYJAu2tO-15" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="220" y="670" as="sourcePoint" />
+              <mxPoint x="220" y="307" as="targetPoint" />
+              <Array as="points">
+                <mxPoint x="140" y="715" />
+                <mxPoint x="140" y="330" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="Wires" id="RTqUCXjV9ranWYJAu2tO-71">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;orthogonalLoop=0;jettySize=auto;html=1;fontSize=12;sketch=1;curveFitting=-10;jiggle=2;disableMultiStroke=0;flowAnimation=0;simplification=1;endArrow=classic;endFill=1;endSize=3;strokeWidth=2;shadow=0;startFill=1;arcSize=1;fillOpacity=80;strokeOpacity=80;entryX=0.306;entryY=-0.037;entryDx=0;entryDy=0;entryPerimeter=0;exitX=1;exitY=0;exitDx=0;exitDy=0;" parent="RTqUCXjV9ranWYJAu2tO-55" source="RTqUCXjV9ranWYJAu2tO-40" target="RTqUCXjV9ranWYJAu2tO-53" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="244" y="721" as="sourcePoint" />
+              <mxPoint x="330" y="340" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="Wires" id="RTqUCXjV9ranWYJAu2tO-72">
+          <mxCell style="orthogonalLoop=0;jettySize=auto;html=1;fontSize=12;disableMultiStroke=0;flowAnimation=0;simplification=1;endArrow=classic;endFill=1;endSize=3;strokeWidth=2;shadow=0;startFill=1;arcSize=111;fillOpacity=100;strokeOpacity=80;exitX=0.972;exitY=0.07;exitDx=0;exitDy=0;curved=1;labelBorderColor=none;strokeColor=#000000;backgroundOutline=0;fixDash=0;snapToPoint=0;sketch=1;curveFitting=1;jiggle=2;exitPerimeter=0;entryX=0.188;entryY=0.002;entryDx=0;entryDy=0;entryPerimeter=0;" parent="RTqUCXjV9ranWYJAu2tO-55" source="RTqUCXjV9ranWYJAu2tO-41" target="RTqUCXjV9ranWYJAu2tO-53" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="235" y="670" as="sourcePoint" />
+              <mxPoint x="353" y="710" as="targetPoint" />
+              <Array as="points">
+                <mxPoint x="290" y="650" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="Wires" id="RTqUCXjV9ranWYJAu2tO-73">
+          <mxCell style="orthogonalLoop=0;jettySize=auto;html=1;fontSize=12;disableMultiStroke=0;flowAnimation=0;simplification=1;endArrow=classic;endFill=1;endSize=4;strokeWidth=2;shadow=0;startFill=1;arcSize=111;fillOpacity=100;strokeOpacity=80;exitX=0;exitY=0;exitDx=0;exitDy=0;curved=1;labelBorderColor=none;strokeColor=#000000;backgroundOutline=0;fixDash=0;snapToPoint=0;sketch=1;curveFitting=1;jiggle=2;entryX=0;entryY=0.75;entryDx=0;entryDy=0;targetPerimeterSpacing=4;" parent="RTqUCXjV9ranWYJAu2tO-55" source="RTqUCXjV9ranWYJAu2tO-42" target="RTqUCXjV9ranWYJAu2tO-14" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="257" y="721" as="sourcePoint" />
+              <mxPoint x="362" y="710" as="targetPoint" />
+              <Array as="points">
+                <mxPoint x="120" y="710" />
+                <mxPoint x="150" y="590" />
+                <mxPoint x="300" y="410" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="Wires" id="RTqUCXjV9ranWYJAu2tO-74">
+          <mxCell style="orthogonalLoop=0;jettySize=auto;html=1;fontSize=12;disableMultiStroke=0;flowAnimation=0;simplification=1;endArrow=classic;endFill=1;endSize=4;strokeWidth=2;shadow=0;startFill=1;arcSize=111;fillOpacity=100;strokeOpacity=80;curved=1;labelBorderColor=none;strokeColor=#000000;backgroundOutline=0;fixDash=0;snapToPoint=0;sketch=1;curveFitting=1;jiggle=2;entryX=1;entryY=0.5;entryDx=0;entryDy=0;targetPerimeterSpacing=4;startSize=4;sourcePerimeterSpacing=4;exitX=0.866;exitY=-0.1;exitDx=0;exitDy=0;exitPerimeter=0;" parent="RTqUCXjV9ranWYJAu2tO-55" source="RTqUCXjV9ranWYJAu2tO-53" target="RTqUCXjV9ranWYJAu2tO-14" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="400" y="730" as="sourcePoint" />
+              <mxPoint x="372" y="720" as="targetPoint" />
+              <Array as="points">
+                <mxPoint x="410" y="610" />
+                <mxPoint x="420" y="520" />
+                <mxPoint x="430" y="450" />
+                <mxPoint x="410" y="410" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="DOT" id="RTqUCXjV9ranWYJAu2tO-83">
+          <mxCell style="edgeStyle=elbowEdgeStyle;rounded=0;orthogonalLoop=1;jettySize=auto;html=1;fontSize=16;startSize=3;endSize=6;endArrow=classicThin;fontFamily=Kalam;hachureGap=4;dashed=1;dashPattern=1 1;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;endFill=1;strokeWidth=2;startFill=0;arcSize=0;elbow=vertical;orthogonal=1;entryX=0.5;entryY=0;entryDx=0;entryDy=0;startArrow=ERmany;" parent="RTqUCXjV9ranWYJAu2tO-55" source="vccciff3yIBG3zHQTHzS-0" target="RTqUCXjV9ranWYJAu2tO-30" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="470" y="200" as="sourcePoint" />
+              <mxPoint x="580" y="260" as="targetPoint" />
+              <Array as="points">
+                <mxPoint x="620" y="230" />
+                <mxPoint x="620" y="170" />
+                <mxPoint x="630" y="260" />
+                <mxPoint x="650" y="210" />
+              </Array>
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="DOT" id="RTqUCXjV9ranWYJAu2tO-85">
+          <mxCell style="edgeStyle=elbowEdgeStyle;shape=connector;rounded=0;hachureGap=4;orthogonalLoop=0;jettySize=auto;html=1;dashed=1;labelBackgroundColor=default;strokeColor=default;fontFamily=Kalam;fontSource=https%3A%2F%2Ffonts.googleapis.com%2Fcss%3Ffamily%3DKalam;fontSize=16;fontColor=default;endArrow=classicThin;endFill=1;dashPattern=1 1;strokeWidth=2;metaEdit=0;orthogonal=1;ignoreEdge=0;flowAnimation=0;backgroundOutline=0;fixDash=0;snapToPoint=1;startFill=1;anchorPointDirection=0;arcSize=0;perimeterSpacing=0;elbow=vertical;" parent="RTqUCXjV9ranWYJAu2tO-55" source="RTqUCXjV9ranWYJAu2tO-146" target="RTqUCXjV9ranWYJAu2tO-29" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <mxPoint x="459.77" y="430.44399999999996" as="sourcePoint" />
+              <mxPoint x="500" y="442" as="targetPoint" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <UserObject label="" tags="Wires" id="RTqUCXjV9ranWYJAu2tO-99">
+          <mxCell style="edgeStyle=orthogonalEdgeStyle;curved=1;rounded=1;orthogonalLoop=0;jettySize=auto;html=1;fontSize=12;sketch=1;curveFitting=-10;jiggle=2;disableMultiStroke=0;flowAnimation=0;simplification=1;endArrow=classic;endFill=1;endSize=3;strokeWidth=2;shadow=0;startFill=1;arcSize=1;fillOpacity=80;strokeOpacity=80;" parent="RTqUCXjV9ranWYJAu2tO-55" source="RTqUCXjV9ranWYJAu2tO-40" target="RTqUCXjV9ranWYJAu2tO-45" edge="1">
+            <mxGeometry relative="1" as="geometry">
+              <Array as="points" />
+            </mxGeometry>
+          </mxCell>
+        </UserObject>
+        <object label="Waypoints" id="RTqUCXjV9ranWYJAu2tO-144">
+          <mxCell style="" parent="RTqUCXjV9ranWYJAu2tO-0" />
+        </object>
+      </root>
+    </mxGraphModel>
+  </diagram>
+</mxfile>

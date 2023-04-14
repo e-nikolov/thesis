@@ -11,7 +11,7 @@ The Open Systems Interconnection (OSI) model distinguishes 7 layers in computer 
 
 \newpage
 
-![OSI model mapping 2](../figures/test.png){height=90% }
+![OSI model mapping 2](../figures/osi-map.yed.png){height=90% }
 
 \newpage
 

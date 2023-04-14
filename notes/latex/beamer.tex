@@ -1,11 +1,11 @@
 \begin{frame}
+\hypertarget{notes__000-intro.md}{}
 \makeatletter
 \def\fps@figure{h}
 \makeatother
-\end{frame}
 
 \begin{frame}{Intro}
-\protect\hypertarget{intro}{}
+\protect\hypertarget{notes__000-intro.md__intro}{}
 \begin{itemize}
 \item
   Emphasize on the difference between the Solutions Test Framework (E3)
@@ -16,9 +16,11 @@
   in realistic scenarios
 \end{itemize}
 \end{frame}
+\end{frame}
 
+\hypertarget{notes__02000-related-work.md}{}
 \begin{frame}{Related work}
-\protect\hypertarget{related-work}{}
+\protect\hypertarget{notes__02000-related-work.md__related-work}{}
 \begin{itemize}
 \item
   There is a huge amount of primitives and partial solutions that are
@@ -118,8 +120,9 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{OSI Model}
-\protect\hypertarget{osi-model}{}
+\hypertarget{notes__02010-osi-model.md}{}
+\begin{frame}{OSI Model}
+\protect\hypertarget{notes__02010-osi-model.md__osi-model}{}
 \begin{itemize}
 \tightlist
 \item
@@ -146,7 +149,7 @@ computer networks:
 
 \begin{figure}
 \centering
-\includegraphics[width=\textwidth,height=0.9\textheight]{notes/../figures/test.png}
+\includegraphics[width=\textwidth,height=0.9\textheight]{notes/../figures/osi-map.yed.png}
 \caption{OSI model mapping 2}
 \end{figure}
 
@@ -157,7 +160,7 @@ computer networks:
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4390}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2230}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2613}}@{}}
-\toprule()
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 OSI Layer
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -167,7 +170,7 @@ Protocols
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Network overlays
 \end{minipage} \\
-\midrule()
+\midrule\noalign{}
 \endhead
 7. Application & High level protocols that user-facing services use &
 HTTP, HTTPS, DNS, FTP, SMTP, UPnP, NAT-PMP, PCP, SSH, STUN, TURN &
@@ -189,7 +192,7 @@ connected via a physical layer, e.g.~on a LAN & MAC, L2TP & TAP driver,
 N2N, OpenVPN, Tinc \\
 \hline 1. Physical & Sending raw bits over a physical medium & RS232,
 Ethernet, WiFi, USB, Bluetooth & \\
-\bottomrule()
+\bottomrule\noalign{}
 \end{longtable}
 
 \newpage
@@ -201,7 +204,7 @@ Ethernet, WiFi, USB, Bluetooth & \\
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0960}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1280}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.3600}}@{}}
-\toprule()
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Network overlay
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -215,7 +218,7 @@ NAT Traversal
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Implementation
 \end{minipage} \\
-\midrule()
+\midrule\noalign{}
 \endhead
 IPSec & Yes & Layer 3 & No & & TUN driver \\
 \hline OpenVPN & Yes & Layer 2, 3 & No & & TUN or TAP driver \\
@@ -236,7 +239,7 @@ DERP, UPnP & Uses Wireguard \\
 \hline IPFS & Yes & Layer 7 & Yes & ? & \\
 \hline Ethereum & Yes & Layer 7 & Yes & ? & \\
 \hline Freenet & Yes & Layer 7 & Yes & ? & \\
-\bottomrule()
+\bottomrule\noalign{}
 \end{longtable}
 
 \begin{itemize}
@@ -250,11 +253,16 @@ DERP, UPnP & Uses Wireguard \\
     OSI model doesn\textquotesingle t map well to TCP/IP}
   \end{itemize}
 \end{itemize}
+\end{frame}
 
+\hypertarget{notes__02020-primitives.md}{}
 \begin{block}{Primitives}
-\protect\hypertarget{primitives}{}
+\protect\hypertarget{notes__02020-primitives.md__primitives}{}
+\end{block}
+
+\hypertarget{notes__02021-internet-protocol.md}{}
 \begin{block}{Internet Protocol}
-\protect\hypertarget{internet-protocol}{}
+\protect\hypertarget{notes__02021-internet-protocol.md__internet-protocol}{}
 \begin{itemize}
 \item
   IP addresses
@@ -274,14 +282,14 @@ DERP, UPnP & Uses Wireguard \\
 \end{itemize}
 
 \begin{block}{Network Address Translation (NAT) Traversal}
-\protect\hypertarget{network-address-translation-nat-traversal}{}
+\protect\hypertarget{notes__02021-internet-protocol.md__network-address-translation-nat-traversal}{}
 \url{https://bford.info/pub/net/p2pnat/}
 
 \url{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}
 \end{block}
 
 \begin{block}{Session Traversal Utilities for NAT (STUN)}
-\protect\hypertarget{session-traversal-utilities-for-nat-stun}{}
+\protect\hypertarget{notes__02021-internet-protocol.md__session-traversal-utilities-for-nat-stun}{}
 \begin{itemize}
 \item
   Uses a STUN server for discovery and UDP hole-punching
@@ -306,7 +314,7 @@ DERP, UPnP & Uses Wireguard \\
 \end{block}
 
 \begin{block}{Traversal Using Relays around NAT (TURN)}
-\protect\hypertarget{traversal-using-relays-around-nat-turn}{}
+\protect\hypertarget{notes__02021-internet-protocol.md__traversal-using-relays-around-nat-turn}{}
 \begin{itemize}
 \item
   Peers use a relay server as a mediator to route traffic
@@ -323,11 +331,11 @@ DERP, UPnP & Uses Wireguard \\
 \end{block}
 
 \begin{block}{Universal Plug and Play (UPnP)}
-\protect\hypertarget{universal-plug-and-play-upnp}{}
+\protect\hypertarget{notes__02021-internet-protocol.md__universal-plug-and-play-upnp}{}
 \end{block}
 
 \begin{block}{Interactive Connectivity Establishment (ICE)}
-\protect\hypertarget{interactive-connectivity-establishment-ice}{}
+\protect\hypertarget{notes__02021-internet-protocol.md__interactive-connectivity-establishment-ice}{}
 \begin{itemize}
 \tightlist
 \item
@@ -336,7 +344,7 @@ DERP, UPnP & Uses Wireguard \\
 \end{block}
 
 \begin{block}{Designated Encrypted Relay for Packets (DERP)}
-\protect\hypertarget{designated-encrypted-relay-for-packets-derp}{}
+\protect\hypertarget{notes__02021-internet-protocol.md__designated-encrypted-relay-for-packets-derp}{}
 \begin{itemize}
 \item
   TURN-like protocol by Tailscale
@@ -361,8 +369,9 @@ DERP, UPnP & Uses Wireguard \\
 \end{block}
 \end{block}
 
+\hypertarget{notes__02022-noise.md}{}
 \begin{block}{Noise Protocol Framework}
-\protect\hypertarget{noise-protocol-framework}{}
+\protect\hypertarget{notes__02022-noise.md__noise-protocol-framework}{}
 \begin{itemize}
 \tightlist
 \item
@@ -461,8 +470,9 @@ architecture, and the desired level of security and efficiency.
 \end{description}
 \end{block}
 
+\hypertarget{notes__02025-identity.md}{}
 \begin{block}{Identity}
-\protect\hypertarget{identity}{}
+\protect\hypertarget{notes__02025-identity.md__identity}{}
 \begin{itemize}
 \tightlist
 \item
@@ -472,10 +482,10 @@ architecture, and the desired level of security and efficiency.
   Self Sovereign Identity (SSI)
 \end{itemize}
 \end{block}
-\end{block}
 
+\hypertarget{notes__02040-basic-ip.md}{}
 \begin{block}{Basic Internet Protocol solution}
-\protect\hypertarget{basic-internet-protocol-solution}{}
+\protect\hypertarget{notes__02040-basic-ip.md__basic-internet-protocol-solution}{}
 \begin{itemize}
 \tightlist
 \item
@@ -496,8 +506,9 @@ architecture, and the desired level of security and efficiency.
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02050-vpns.md}{}
 \begin{block}{Virtual Private Networks (VPNs)}
-\protect\hypertarget{virtual-private-networks-vpns}{}
+\protect\hypertarget{notes__02050-vpns.md__virtual-private-networks-vpns}{}
 \begin{itemize}
 \item
   asd
@@ -549,8 +560,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02051-wireguard.md}{}
 \begin{block}{Wireguard}
-\protect\hypertarget{wireguard}{}
+\protect\hypertarget{notes__02051-wireguard.md__wireguard}{}
 \begin{itemize}
 \tightlist
 \item
@@ -560,7 +572,8 @@ encryption.'' -- n2n whitepaper
 \item
   Whitepaper - \url{https://www.wireguard.com/papers/wireguard.pdf}
 \item
-  Built with the \href{notes/02022-noise.md}{Noise Protocol Framework}d
+  Built with the \protect\hyperlink{notes__02022-noise.md}{Noise
+  Protocol Framework}d
 \item
   Added to Linux Kernel 5.6 in May 2020
 \item
@@ -677,14 +690,16 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02052-tailscale.md}{}
 \begin{block}{Tailscale}
-\protect\hypertarget{tailscale}{}
+\protect\hypertarget{notes__02052-tailscale.md__tailscale}{}
 \begin{itemize}
 \tightlist
 \item
   Mesh VPN
 \item
-  Built on top of \href{notes/02051-wireguard.md}{Wireguard}
+  Built on top of
+  \protect\hyperlink{notes__02051-wireguard.md}{Wireguard}
 \item
   Coordination service
 
@@ -694,7 +709,7 @@ encryption.'' -- n2n whitepaper
     Closed source
   \item
     Facilitates
-    \href{notes/0202-nat\#Session\%20Traversal\%20Utilities\%20for\%20NAT\%20(STUN)}{STUN}/\href{notes/02021-internet-protocol.md\#test}{TURN}
+    \href{notes/0202-nat\#Session\%20Traversal\%20Utilities\%20for\%20NAT\%20(STUN)}{STUN}/\protect\hyperlink{notes__02021-internet-protocol.md__test}{TURN}
     for peer discovery and NAT traversal
   \item
     Distributes wireguard public keys
@@ -748,8 +763,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02053-headscale.md}{}
 \begin{block}{Headscale}
-\protect\hypertarget{headscale}{}
+\protect\hypertarget{notes__02053-headscale.md__headscale}{}
 \begin{itemize}
 \tightlist
 \item
@@ -767,8 +783,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02054-nebula.md}{}
 \begin{block}{Nebula}
-\protect\hypertarget{nebula}{}
+\protect\hypertarget{notes__02054-nebula.md__nebula}{}
 \begin{itemize}
 \tightlist
 \item
@@ -802,8 +819,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02055-zero-tier.md}{}
 \begin{block}{ZeroTier}
-\protect\hypertarget{zerotier}{}
+\protect\hypertarget{notes__02055-zero-tier.md__zerotier}{}
 \begin{itemize}
 \tightlist
 \item
@@ -816,8 +834,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02056-n2n.md}{}
 \begin{block}{N2N}
-\protect\hypertarget{n2n}{}
+\protect\hypertarget{notes__02056-n2n.md__n2n}{}
 \begin{itemize}
 \tightlist
 \item
@@ -862,8 +881,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02058-tinc.md}{}
 \begin{block}{Tinc}
-\protect\hypertarget{tinc}{}
+\protect\hypertarget{notes__02058-tinc.md__tinc}{}
 \begin{itemize}
 \tightlist
 \item
@@ -889,8 +909,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02059-netbird.md}{}
 \begin{block}{Netbird}
-\protect\hypertarget{netbird}{}
+\protect\hypertarget{notes__02059-netbird.md__netbird}{}
 \begin{itemize}
 \tightlist
 \item
@@ -916,8 +937,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02090-didcomm.md}{}
 \begin{block}{DIDComm v2}
-\protect\hypertarget{didcomm-v2}{}
+\protect\hypertarget{notes__02090-didcomm.md__didcomm-v2}{}
 \begin{itemize}
 \tightlist
 \item
@@ -947,8 +969,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02100-ngrok.md}{}
 \begin{block}{ngrok}
-\protect\hypertarget{ngrok}{}
+\protect\hypertarget{notes__02100-ngrok.md__ngrok}{}
 \begin{itemize}
 \tightlist
 \item
@@ -961,12 +984,14 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02110-ethereum.md}{}
 \begin{block}{Ethereum's P2P Protocol}
-\protect\hypertarget{ethereums-p2p-protocol}{}
+\protect\hypertarget{notes__02110-ethereum.md__ethereums-p2p-protocol}{}
 \end{block}
 
+\hypertarget{notes__02120-ipfs.md}{}
 \begin{block}{IPFS}
-\protect\hypertarget{ipfs}{}
+\protect\hypertarget{notes__02120-ipfs.md__ipfs}{}
 \begin{itemize}
 \tightlist
 \item
@@ -977,8 +1002,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02130-tor.md}{}
 \begin{block}{TOR}
-\protect\hypertarget{tor}{}
+\protect\hypertarget{notes__02130-tor.md__tor}{}
 \begin{itemize}
 \tightlist
 \item
@@ -992,8 +1018,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02140-freenet.md}{}
 \begin{block}{Freenet}
-\protect\hypertarget{freenet}{}
+\protect\hypertarget{notes__02140-freenet.md__freenet}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1028,8 +1055,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02150-teleport.md}{}
 \begin{block}{Teleport}
-\protect\hypertarget{teleport}{}
+\protect\hypertarget{notes__02150-teleport.md__teleport}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1038,8 +1066,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02160-bittorrent.md}{}
 \begin{block}{BitTorrent}
-\protect\hypertarget{bittorrent}{}
+\protect\hypertarget{notes__02160-bittorrent.md__bittorrent}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1047,8 +1076,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02170-webrtc.md}{}
 \begin{block}{WebRTC}
-\protect\hypertarget{webrtc}{}
+\protect\hypertarget{notes__02170-webrtc.md__webrtc}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1066,7 +1096,8 @@ encryption.'' -- n2n whitepaper
   Spec -
   \href{https://www.w3.org/TR/webrtc/\#persistent-information-exposed-by-webrtc}{https://www.w3.org/TR/webrtc/}
 \item
-  Uses \href{notes/02021-internet-protocol.md}{nat} STUN/TURN/ICE
+  Uses \protect\hyperlink{notes__02021-internet-protocol.md}{nat}
+  STUN/TURN/ICE
 \item
   Data is encrypted
 \item
@@ -1158,8 +1189,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\hypertarget{notes__02180-openziti.md}{}
 \begin{block}{OpenZiti}
-\protect\hypertarget{openziti}{}
+\protect\hypertarget{notes__02180-openziti.md__openziti}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1177,12 +1209,12 @@ encryption.'' -- n2n whitepaper
   overlay network by intercepting their traffic
 \end{itemize}
 \end{block}
-\end{frame}
 
+\hypertarget{notes__03000-implementations.md}{}
 \begin{frame}[fragile]{Implementation notes}
-\protect\hypertarget{implementation-notes}{}
+\protect\hypertarget{notes__03000-implementations.md__implementation-notes}{}
 \begin{block}{Headscale}
-\protect\hypertarget{headscale}{}
+\protect\hypertarget{notes__03000-implementations.md__headscale}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1207,8 +1239,9 @@ encryption.'' -- n2n whitepaper
 \end{block}
 \end{frame}
 
+\hypertarget{notes__03500-brainstorm.md}{}
 \begin{frame}{Brainstorm for custom solutions}
-\protect\hypertarget{brainstorm-for-custom-solutions}{}
+\protect\hypertarget{notes__03500-brainstorm.md__brainstorm-for-custom-solutions}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1264,9 +1297,9 @@ With tailscale we'd need to
     Run the demo
   \end{itemize}
 \end{itemize}
-\end{frame}
 
-\begin{frame}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \begin{itemize}
 \tightlist
 \item
@@ -1300,9 +1333,9 @@ With tailscale we'd need to
   Instead of a QR code, the information could be stored on a public
   ledger and could be resolved via DIDs
 \end{itemize}
-\end{frame}
 
-\begin{frame}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \begin{itemize}
 \tightlist
 \item
@@ -1314,9 +1347,9 @@ With tailscale we'd need to
   parties
 \item
 \end{itemize}
-\end{frame}
 
-\begin{frame}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \begin{itemize}
 \tightlist
 \item
@@ -1334,15 +1367,13 @@ With tailscale we'd need to
 \item
   Somehow everyone needs to scan each other's qr codes
 \end{itemize}
-\end{frame}
 
-\begin{frame}
-\end{frame}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\begin{frame}
-\end{frame}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\begin{frame}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \begin{itemize}
 \tightlist
 \item
@@ -1392,8 +1423,9 @@ With tailscale we'd need to
 \end{itemize}
 \end{frame}
 
+\hypertarget{notes__04000-writing.md}{}
 \begin{frame}{Writing}
-\protect\hypertarget{writing}{}
+\protect\hypertarget{notes__04000-writing.md__writing}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1406,10 +1438,11 @@ With tailscale we'd need to
 \end{itemize}
 \end{frame}
 
+\hypertarget{notes__05000-prep.md}{}
 \begin{frame}{Preparation phase report outline}
-\protect\hypertarget{preparation-phase-report-outline}{}
+\protect\hypertarget{notes__05000-prep.md__preparation-phase-report-outline}{}
 \begin{block}{Introduction}
-\protect\hypertarget{introduction}{}
+\protect\hypertarget{notes__05000-prep.md__introduction}{}
 \begin{itemize}
 \item
   \begin{itemize}
@@ -1458,7 +1491,7 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Technical survey}
-\protect\hypertarget{technical-survey}{}
+\protect\hypertarget{notes__05000-prep.md__technical-survey}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1471,7 +1504,7 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Implementation details}
-\protect\hypertarget{implementation-details}{}
+\protect\hypertarget{notes__05000-prep.md__implementation-details}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1488,14 +1521,15 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Conclusions}
-\protect\hypertarget{conclusions}{}
+\protect\hypertarget{notes__05000-prep.md__conclusions}{}
 \end{block}
 \end{frame}
 
+\hypertarget{notes__06000-thesis.md}{}
 \begin{frame}{Thesis outline}
-\protect\hypertarget{thesis-outline}{}
+\protect\hypertarget{notes__06000-thesis.md__thesis-outline}{}
 \begin{block}{Introduction}
-\protect\hypertarget{introduction}{}
+\protect\hypertarget{notes__06000-thesis.md__introduction}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1516,7 +1550,7 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Related work / Literature review}
-\protect\hypertarget{related-work-literature-review}{}
+\protect\hypertarget{notes__06000-thesis.md__related-work-literature-review}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1526,7 +1560,7 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Methodology / Approach}
-\protect\hypertarget{methodology-approach}{}
+\protect\hypertarget{notes__06000-thesis.md__methodology-approach}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1566,7 +1600,7 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Solution/Implementation Evaluations}
-\protect\hypertarget{solutionimplementation-evaluations}{}
+\protect\hypertarget{notes__06000-thesis.md__solutionimplementation-evaluations}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1589,7 +1623,7 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Conclusions}
-\protect\hypertarget{conclusions}{}
+\protect\hypertarget{notes__06000-thesis.md__conclusions}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1600,8 +1634,9 @@ With tailscale we'd need to
 \end{block}
 \end{frame}
 
+\hypertarget{notes__09999-latex.md}{}
 \begin{frame}[fragile]{Latex}
-\protect\hypertarget{latex}{}
+\protect\hypertarget{notes__09999-latex.md__latex}{}
 \begin{itemize}
 \tightlist
 \item
@@ -1613,7 +1648,7 @@ With tailscale we'd need to
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2222}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2222}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2917}}@{}}
-\toprule()
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Fruit
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -1621,7 +1656,7 @@ Price
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Advantages
 \end{minipage} \\
-\midrule()
+\midrule\noalign{}
 \endhead
 Bananas & \$1.34 & \begin{minipage}[t]{\linewidth}\raggedright
 \begin{itemize}
@@ -1641,23 +1676,23 @@ Oranges & \$2.10 & \begin{minipage}[t]{\linewidth}\raggedright
   tasty
 \end{itemize}
 \end{minipage} \\
-\bottomrule()
+\bottomrule\noalign{}
 \end{longtable}
 
 \begin{longtable}[]{@{}rllc@{}}
 \caption{Demonstration of simple table syntax.}\tabularnewline
-\toprule()
+\toprule\noalign{}
 Right & Left & Default & Center \\
-\midrule()
+\midrule\noalign{}
 \endfirsthead
-\toprule()
+\toprule\noalign{}
 Right & Left & Default & Center \\
-\midrule()
+\midrule\noalign{}
 \endhead
 12 & 12 & 12 & 12 \\
 123 & 123 & 123 & 123 \\
 1 & 1 & 1 & 1 \\
-\bottomrule()
+\bottomrule\noalign{}
 \end{longtable}
 
 \begin{quote}
