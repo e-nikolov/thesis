@@ -305,3 +305,7 @@ build/
 .direnv/
 .obsidian
 .trash
+
+
+figures/*.dtmp
+figures/*.bkp

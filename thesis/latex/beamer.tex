@@ -1,4 +1,5 @@
 \begin{frame}
+\hypertarget{thesis__001-preamble.md}{}
 \tableofcontents
 
 \printnoidxglossary[type=\acronymtype,title=List of Abbreviations]
@@ -7,60 +8,47 @@
 \mainmatter
 \end{frame}
 
+\hypertarget{thesis__010-intro.md}{}
 \begin{frame}{Introduction}
-\protect\hypertarget{introduction}{}
+\protect\hypertarget{thesis__010-intro.md__introduction}{}
 \end{frame}
 
+\hypertarget{thesis__020-related-work.md}{}
 \begin{frame}[fragile]{Related work}
-\protect\hypertarget{related-work}{}
-In this chapter we will provide a high level overview of relevant
-solutions for connecting the parties of an MPyC multiparty computation
-over the internet. We will use the \gls{osi} model to help us categorize
-those solutions and highlight the similarities and differences between
-them. The OSI model has 7 layers with different responsibilities:
-
-\begin{description}
-\item[Layer 7 - Application:]
-high level protocols that interact with user-facing services
-\item[Layer 6 - Presentation:]
-translation of data between a networking service and an application,
-e.g.~encoding, compression, encryption
-\item[Layer 5 - Session:]
-session setup, management, tear-down, authentication, authorization
-\item[Layer 4 - Transport:]
-sending data of variable length over a network while maintaining
-quality-of-service, e.g.~ports, connections, packet fragmentation
-\item[Layer 3 - Network:]
-sending data packets between two nodes, routed via a path of other
-nodes, e.g.~addressing, routing
-\item[Layer 2 - Data link:]
-sending data frames between two nodes, directly connected via a physical
-layer, e.g.~on a LAN
-\item[Layer 1 - Physical:]
-sending raw bits over a physical medium
-\end{description}
-
-While many protocols implement aspects of several layers and do not
-strictly fit inside the OSI model, it still a useful visualization tool.
-The diagram below shows an approximate OSI model mapping of several
-protocols and network overlay solutions from the point of view of the
-systems that use them and the arrows show dependency relations between
-them.
-
-\newpage
-
-\begin{figure}
-\centering
-\includegraphics[width=\textwidth,height=0.9\textheight]{thesis/../Excalidraw/osi-map.excalidraw.png}
-\caption{OSI model mapping of various protocols \label{osiMap}}
-\end{figure}
+\protect\hypertarget{thesis__020-related-work.md__related-work}{}
+In this chapter we will look at prior works relevant to our problem of
+connecting multiple parties over The Internet for a joint MPyC
+computation. In order to identify the challenges, we will begin with an
+overview of The Internet Protocol Suite which is central to the modern
+internet. Following that, we will review a number of existing network
+overlay solutions that we can later use as building blocks for an
+overall solution to our problem. In order to keep a consistent mental
+picture of the solutions, we will map them to the layers of the
+\gls{osi} model. While many protocols implement aspects of several
+layers and do not strictly fit inside the OSI model, it is still a
+useful visualization tool.
 
 \begin{block}{The Internet}
-\protect\hypertarget{the-internet}{}
+\protect\hypertarget{thesis__020-related-work.md__the-internet}{}
 The modern Internet is a global multi-tiered network of devices that
 communicate using the protocols of the Internet Protocol Suite (TCP/IP).
 Typically, an \gls{isp} manages the physical infrastructure that
-connects an end-user's devices with the rest of the internet.
+connects an end-user's devices with the rest of the internet. Figure
+\ref{osi-map-tcp} describes the responsibilities of the 7 layers of the
+OSI model and how they fit with the protocols of the Internet Protocol
+Suite, which are often referred to as the TCP/IP model. The newer TCP/IP
+model only recognizes 4 layers as it merges the OSI Session (L5) and
+Presentation (L6) layers into the Application layer (L7), as well as the
+Physical layer (L1) into the Data link layer (L2). While the TCP/IP
+model is a more accurate representation of The Internet, the 7 layer
+numbers of the OSI model are still widely used in the literature.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=0.5\textheight]{thesis/../figures/osi-map-tcp.png}
+\caption{OSI model mapping of the Internet Protocol
+Suite\label{osi-map-tcp}}
+\end{figure}
 
 The \textbf{\acrfull{ip}} is a Network (Layer 3) protocol of the
 Internet Protocol Suite that is responsible for delivering datagrams
@@ -126,14 +114,14 @@ this drawback with varying success and performance tradeoffs.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth,height=0.25\textheight]{thesis/../figures/nat-intro.png}
+\includegraphics[width=\textwidth,height=0.25\textheight]{thesis/../figures/nat-intro.png}
 \caption{Two parties behind separate NATs\label{nat-intro}}
 \end{figure}
 
 In many home networks the role of a NAT gateway is played by a publicly
-addressable router under the user's control, which often allows for port
-forwarding to be configured either manually or programmatically via a
-Layer 7 protocol like \textbf{\gls{upnp}} or its successors
+addressable router under the customer's control, which often allows for
+port forwarding to be configured either manually or programmatically via
+a Layer 7 protocol like \textbf{\gls{upnp}} or its successors
 \textbf{\gls{nat-pmp}} and \textbf{\gls{pcp}}. This would allow remote
 hosts to initiate connections with the local ones if they know the
 router's public IP address. Those protocols however are not always
@@ -176,7 +164,7 @@ another party or service.
 
 \begin{figure}
 \centering
-\includegraphics[width=0.5\textwidth,height=0.25\textheight]{thesis/../figures/nat-traversal.png}
+\includegraphics[width=\textwidth,height=0.25\textheight]{thesis/../figures/nat-traversal.png}
 \caption{NAT traversal via STUN\label{nat-traversal}}
 \end{figure}
 
@@ -215,11 +203,29 @@ used not only for introducing the peers but also for relaying all
 \end{block}
 
 \begin{block}{Network overlays}
-\protect\hypertarget{network-overlays}{}
-Most Network Overlay solutions can be placed in Layers 2, 3 or 7.
+\protect\hypertarget{thesis__020-related-work.md__network-overlays}{}
+Most Network Overlay solutions can be placed in Layers 2, 3 or 7. Layer
+2 overlays act as a virtual network switch, while Layer 3 overlays act
+as a virtual network router. Layer 7 overlays are implemented in
+user-space as libraries or applications that run on top of the network
+stack of the host operating system. Layer 2 and 3 overlays can either be
+implemented as kernel modules or as user-space applications that use a
+\textbf{TUN/TAP} driver to interface with the kernel.
+
+Figure \ref{osi-map-overlays} shows an approximate OSI model mapping of
+several protocols and network overlay solutions from the point of view
+of the systems that use them and the arrows show dependency relations
+between them.
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=0.9\textheight]{thesis/../figures/osi-map-overlays.png}
+\caption{OSI model mapping of various protocols
+\label{osi-map-overlays}}
+\end{figure}
 
 \begin{block}{TUN/TAP driver}
-\protect\hypertarget{tuntap-driver}{}
+\protect\hypertarget{thesis__020-related-work.md__tuntap-driver}{}
 \begin{itemize}
 \tightlist
 \item
@@ -261,7 +267,7 @@ Most Network Overlay solutions can be placed in Layers 2, 3 or 7.
 \end{block}
 
 \begin{block}{Traditional VPNs}
-\protect\hypertarget{traditional-vpns}{}
+\protect\hypertarget{thesis__020-related-work.md__traditional-vpns}{}
 \glspl{vpn} are implemented as Layer 2 or 3 network overlays. They are
 commonly used for securely connecting machines from different
 \glspl{lan}. They provide software emulation of a network interface
@@ -276,7 +282,7 @@ multi-party computations due to their \gls{p2p} nature.
 \end{block}
 
 \begin{block}{WireGuard}
-\protect\hypertarget{wireguard}{}
+\protect\hypertarget{thesis__020-related-work.md__wireguard}{}
 WireGuard \autocite{donenfeldWireGuardNextGeneration2017} is a more
 recent protocol with a design informed by lessons learned from IPSec and
 OpenVPN and a key management approach inspired by SSH. It is a lower
@@ -337,7 +343,7 @@ will be able to communicate back with it.
 \end{block}
 
 \begin{block}{Mesh VPNs}
-\protect\hypertarget{mesh-vpns}{}
+\protect\hypertarget{thesis__020-related-work.md__mesh-vpns}{}
 \begin{itemize}
 \tightlist
 \item
@@ -388,9 +394,9 @@ via one of the other peers in the VPN.
 \end{block}
 
 \begin{block}{Layer 7 overlays}
-\protect\hypertarget{layer-7-overlays}{}
+\protect\hypertarget{thesis__020-related-work.md__layer-7-overlays}{}
 \begin{block}{WebRTC is}
-\protect\hypertarget{webrtc-is}{}
+\protect\hypertarget{thesis__020-related-work.md__webrtc-is}{}
 \begin{itemize}
 \tightlist
 \item
@@ -430,8 +436,9 @@ via one of the other peers in the VPN.
 \end{block}
 \end{frame}
 
+\hypertarget{thesis__030-methods.md}{}
 \begin{frame}{Testing methodology}
-\protect\hypertarget{testing-methodology}{}
+\protect\hypertarget{thesis__030-methods.md__testing-methodology}{}
 In the following chapters we will design and implement several solutions
 for ad hoc MPC sessions based on a subset of the previously discussed
 related works:
@@ -459,7 +466,7 @@ Additionally we will analyse and compare them in terms of performance,
 security and usability
 
 \begin{block}{Measuring performance}
-\protect\hypertarget{measuring-performance}{}
+\protect\hypertarget{thesis__030-methods.md__measuring-performance}{}
 During the preparation phase of the project we developed the \gls{e3}
 framework which simplifies and automates the process of deploying
 machines in different geographical regions, connecting them via an
@@ -533,7 +540,7 @@ Furthermore, the demos will be executed in several networking scenarios:
 \end{block}
 
 \begin{block}{Security}
-\protect\hypertarget{security}{}
+\protect\hypertarget{thesis__030-methods.md__security}{}
 We will analyze aspects such as
 
 \begin{itemize}
@@ -551,7 +558,7 @@ We will analyze aspects such as
 \end{block}
 
 \begin{block}{Usability}
-\protect\hypertarget{usability}{}
+\protect\hypertarget{thesis__030-methods.md__usability}{}
 For each solution we will describe the steps that the parties need to
 perform in order to execute a joint multiparty computation. Those steps
 will be analyzed in terms of:
@@ -583,78 +590,81 @@ will be analyzed in terms of:
 \end{block}
 \end{frame}
 
+\hypertarget{thesis__050-internet-protocol.md}{}
 \begin{frame}{Internet Protocol based solution}
-\protect\hypertarget{internet-protocol-based-solution}{}
+\protect\hypertarget{thesis__050-internet-protocol.md__internet-protocol-based-solution}{}
 This solution focuses on directly using the internet protocol without
 involving an overlay network. Our goal is to analyze the implications of
 using only the functionalities that MPyC directly supports to serve as
 the reference for our later experiments.
 
 \begin{block}{Implementation details}
-\protect\hypertarget{implementation-details}{}
+\protect\hypertarget{thesis__050-internet-protocol.md__implementation-details}{}
 We will manually set up the multiparty computations via the public IP
 addresses of the machines and DNS.
 \end{block}
 
 \begin{block}{Performance analysis}
-\protect\hypertarget{performance-analysis}{}
+\protect\hypertarget{thesis__050-internet-protocol.md__performance-analysis}{}
 \end{block}
 
 \begin{block}{Security analysis}
-\protect\hypertarget{security-analysis}{}
+\protect\hypertarget{thesis__050-internet-protocol.md__security-analysis}{}
 \end{block}
 
 \begin{block}{Usability analysis}
-\protect\hypertarget{usability-analysis}{}
+\protect\hypertarget{thesis__050-internet-protocol.md__usability-analysis}{}
 \end{block}
 \end{frame}
 
+\hypertarget{thesis__060-wireguard.md}{}
 \begin{frame}{WireGuard based solution}
-\protect\hypertarget{wireguard-based-solution}{}
+\protect\hypertarget{thesis__060-wireguard.md__wireguard-based-solution}{}
 This solution creates an overlay network by manually configuring
 WireGuard on each machine.
 
 \begin{block}{Implementation details}
-\protect\hypertarget{implementation-details}{}
+\protect\hypertarget{thesis__060-wireguard.md__implementation-details}{}
 \end{block}
 
 \begin{block}{Performance analysis}
-\protect\hypertarget{performance-analysis}{}
+\protect\hypertarget{thesis__060-wireguard.md__performance-analysis}{}
 \end{block}
 
 \begin{block}{Security analysis}
-\protect\hypertarget{security-analysis}{}
+\protect\hypertarget{thesis__060-wireguard.md__security-analysis}{}
 \end{block}
 
 \begin{block}{Usability analysis}
-\protect\hypertarget{usability-analysis}{}
+\protect\hypertarget{thesis__060-wireguard.md__usability-analysis}{}
 \end{block}
 \end{frame}
 
+\hypertarget{thesis__070-tailscale.md}{}
 \begin{frame}{Tailscale based solution}
-\protect\hypertarget{tailscale-based-solution}{}
+\protect\hypertarget{thesis__070-tailscale.md__tailscale-based-solution}{}
 Tailscale is a VPN solution that configures a mesh of direct Wireguard
 tunnels between the peers.
 
 \begin{block}{Implementation details}
-\protect\hypertarget{implementation-details}{}
+\protect\hypertarget{thesis__070-tailscale.md__implementation-details}{}
 \end{block}
 
 \begin{block}{Performance analysis}
-\protect\hypertarget{performance-analysis}{}
+\protect\hypertarget{thesis__070-tailscale.md__performance-analysis}{}
 \end{block}
 
 \begin{block}{Security analysis}
-\protect\hypertarget{security-analysis}{}
+\protect\hypertarget{thesis__070-tailscale.md__security-analysis}{}
 \begin{block}{Trust model}
-\protect\hypertarget{trust-model}{}
+\protect\hypertarget{thesis__070-tailscale.md__trust-model}{}
 There is a centralized service that deals with the key distribution,
 which needs to be trusted to provide the correct public keys for the
 correct parties
 \end{block}
 
 \begin{block}{Identity}
-\protect\hypertarget{identity}{}
+\protect\hypertarget{thesis__070-tailscale.md__identity}{}
 Identity is based on third party identity providers such as Microsoft
 and GitHub
 
@@ -662,8 +672,9 @@ and GitHub
 \item
   Magic DNS
 \item ~
-  \hypertarget{usability-analysis}{%
-  \section{Usability analysis}\label{usability-analysis}}
+  \hypertarget{thesis__070-tailscale.md__usability-analysis}{%
+  \section{Usability
+  analysis}\label{thesis__070-tailscale.md__usability-analysis}}
 \end{itemize}
 
 With tailscale each party needs to
@@ -699,34 +710,35 @@ With tailscale each party needs to
 \end{block}
 \end{frame}
 
+\hypertarget{thesis__080-headscale.md}{}
 \begin{frame}{Headscale based solution}
-\protect\hypertarget{headscale-based-solution}{}
+\protect\hypertarget{thesis__080-headscale.md__headscale-based-solution}{}
 This solution is similar to the Tailscale one, but it uses Headscale - a
 self-hosted open-source alternative to the closed-source Tailscale
 coordination service.
 
 \begin{block}{Implementation details}
-\protect\hypertarget{implementation-details}{}
+\protect\hypertarget{thesis__080-headscale.md__implementation-details}{}
 \end{block}
 
 \begin{block}{Performance analysis}
-\protect\hypertarget{performance-analysis}{}
+\protect\hypertarget{thesis__080-headscale.md__performance-analysis}{}
 \end{block}
 
 \begin{block}{Security analysis}
-\protect\hypertarget{security-analysis}{}
+\protect\hypertarget{thesis__080-headscale.md__security-analysis}{}
 \begin{block}{Trust model}
-\protect\hypertarget{trust-model}{}
+\protect\hypertarget{thesis__080-headscale.md__trust-model}{}
 There still is a centralized service like in the Tailscale solution, but
 here it is self-deployed.
 \end{block}
 
 \begin{block}{Identity}
-\protect\hypertarget{identity}{}
+\protect\hypertarget{thesis__080-headscale.md__identity}{}
 \end{block}
 \end{block}
 
 \begin{block}{Usability analysis}
-\protect\hypertarget{usability-analysis}{}
+\protect\hypertarget{thesis__080-headscale.md__usability-analysis}{}
 \end{block}
 \end{frame}

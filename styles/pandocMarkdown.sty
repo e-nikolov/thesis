@@ -92,3 +92,15 @@
 \makeatletter
 \def\fps@figure{htbp}
 \makeatother
+
+\makeatletter
+\def\maxwidth{\ifdim\Gin@nat@width>\linewidth\linewidth\else\Gin@nat@width\fi}
+\def\maxheight{\ifdim\Gin@nat@height>\textheight\textheight\else\Gin@nat@height\fi}
+\makeatother
+
+\usepackage{svg}
+
+\usepackage{subcaption}
+
+% \usepackage{subfig}                   % sub-figures!!! hooray...
+\captionsetup[subfloat]{position=bottom}   %captions below
