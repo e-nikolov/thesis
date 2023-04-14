@@ -19,8 +19,8 @@ PANDOC=$(pandock) \
 all:  thesis.pdf notes.pdf prep.pdf presentation.pdf
 all!: thesis.pdf! notes.pdf! prep.pdf! presentation.pdf!
 
-figures/%.png: figures/%
-	drawio -p 1 figures/$* -o figures/$*.png -s 1.5 -x
+figures/%.drawio.pdf: figures/%.drawio
+	drawio figures/$*.drawio --output figures/$*.drawio.pdf --export --crop
 
 test:
 	@echo test
@@ -45,7 +45,7 @@ test:
 		-o $*.pdf \
 		$*/*.md
 
-%.pdf: %.tex figures/*.drawio.png
+%.pdf: %.tex figures/*.drawio.pdf
 	$(MAKE) $@~
 
 $(wildcard *.tex): %.tex: %/latex/full.tex
