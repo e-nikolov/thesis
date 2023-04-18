@@ -35,9 +35,7 @@
 ## Build tool auxiliary files:
 *.fdb_latexmk
 *.synctex
-*.synctex(busy)
 *.synctex.gz
-*.synctex.gz(busy)
 *.pdfsync
 
 ## Build tool directories for auxiliary files
@@ -305,7 +303,6 @@ build/
 .direnv/
 .obsidian
 .trash
-
 
 figures/*.dtmp
 figures/*.bkp

@@ -1,6 +1,6 @@
 # Testing methodology
 
-In the following chapters we will design and implement several solutions for ad hoc MPC sessions based on a subset of the previously discussed related works:
+In the following chapters, we will design and implement several solutions for ad hoc MPC sessions based on a subset of the previously discussed related works:
 
 - Internet protocol
 - Wireguard
@@ -8,15 +8,15 @@ In the following chapters we will design and implement several solutions for ad 
 - Headscale
 - ? Headscale with DID identity?
 - ? WebRTC?
-- Custom solution that automates the wireguard configuration by visiting a web page
+- A custom solution that automates the WireGuard configuration by visiting a web page
 
-Additionally we will analyse and compare them in terms of performance, security and usability
+Additionally, we will analyze and compare them in terms of performance, security and usability
 
 ## Measuring performance
 
-During the preparation phase of the project we developed the \gls{e3} framework which simplifies and automates the process of deploying machines in different geographical regions, connecting them via an overlay network and executing multiparty computations between them, where each machine represents a different party.
+During the preparation phase of the project, we developed the \gls{e3} framework which simplifies and automates the process of deploying machines in different geographical regions, connecting them via an overlay network and executing multiparty computations between them, where each machine represents a different party.
 
-To summarize, \gls{e3} is a set of scripts that use a number of automation tools:
+To summarize, \gls{e3} is a set of scripts that use several automation tools:
 
 - Terraform - declarative provisioning
 - NixOS - declarative Linux distribution
@@ -26,7 +26,7 @@ To summarize, \gls{e3} is a set of scripts that use a number of automation tools
 
 It allows us to quickly provision cloud virtual machines in multiple regions and reproducibly deploy all necessary software for running a multiparty computation over a chosen network overlay solution.  The source code of \gls{e3} can be found on [GitHub](https://github.com/e-nikolov/mpyc)
 
-Each solution will be deployed using the \gls{e3} framework and the performance will be quantitatively measured in terms of the time it takes to execute a number of MPyC demos. The selected demos have different complexities in terms of communication rounds and message sizes which will allow us to observe their impact on the overall performance.
+Each solution will be deployed using the \gls{e3} framework and the performance will be quantitatively measured in terms of the time it takes to execute several MPyC demos. The selected demos have different complexities in terms of communication rounds and message sizes which will allow us to observe their impact on the overall performance.
 
 1. Secret Santa - high round complexity with small messages
 2. Convolutional Neural Network (CNN) MNIST classifier - low round complexity with large messages
@@ -55,9 +55,9 @@ We will analyze aspects such as
 
 ## Usability
 
-For each solution we will describe the steps that the parties need to perform in order to execute a joint multiparty computation. Those steps will be analyzed in terms of:
+For each solution, we will describe the steps that the parties need to perform to execute a joint multiparty computation. Those steps will be analyzed in terms of:
 
-- Complexity - how much technical expertise is expected from the parties in order to be able to execute the steps
+- Complexity - how much technical expertise is expected from the parties to be able to execute the steps
 - Initial effort - how much effort is each party expected to put in preparing for their first joint computation
 - Repeated effort - after the initial setup, how much effort is required to perform another computation
   - with the same set of parties

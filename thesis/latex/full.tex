@@ -14,17 +14,16 @@
 \hypertarget{thesis__020-related-work.md__related-work}{%
 \chapter{Related work}\label{thesis__020-related-work.md__related-work}}
 
-In this chapter we will look at prior works relevant to our problem of
+In this chapter, we will look at prior works relevant to our problem of
 connecting multiple parties over The Internet for a joint MPyC
-computation. In order to identify the challenges, we will begin with an
-overview of The Internet Protocol Suite which is central to the modern
-internet. Following that, we will review a number of existing network
-overlay solutions that we can later use as building blocks for an
-overall solution to our problem. In order to keep a consistent mental
-picture of the solutions, we will map them to the layers of the
-\gls{osi} model. While many protocols implement aspects of several
-layers and do not strictly fit inside the OSI model, it is still a
-useful visualization tool.
+computation. To identify the challenges, we will begin with an overview
+of The Internet Protocol Suite which is central to the modern Internet.
+Following that, we will review several existing network overlay
+solutions that we can later use as building blocks for an overall
+solution to our problem. To keep a consistent mental picture of the
+solutions, we will map them to the layers of the \gls{osi} model. While
+many protocols implement aspects of several layers and do not strictly
+fit inside the OSI model, it is still a useful visualization tool.
 
 \hypertarget{thesis__020-related-work.md__the-internet}{%
 \section{The Internet}\label{thesis__020-related-work.md__the-internet}}
@@ -39,7 +38,7 @@ Suite, which are often referred to as the TCP/IP model. The newer TCP/IP
 model only recognizes 4 layers as it merges the OSI Session (L5) and
 Presentation (L6) layers into the Application layer (L7), as well as the
 Physical layer (L1) into the Data link layer (L2). While the TCP/IP
-model is a more accurate representation of The Internet, the 7 layer
+model is a more accurate representation of The Internet, the 7-layer
 numbers of the OSI model are still widely used in the literature.
 
 \begin{figure}
@@ -49,30 +48,32 @@ numbers of the OSI model are still widely used in the literature.
 Suite\label{osi-map-tcp}}
 \end{figure}
 
-The \textbf{\acrfull{ip}} is a Network (Layer 3) protocol of the
-Internet Protocol Suite that is responsible for delivering datagrams
-between devices across the boundaries of their \glspl{lan} by possibly
-routing traffic via multiple intermediate devices (routers). A datagram
-is a connectionless packet that is delivered on a best effort basis. It
-has a header that contains fields such as the \textbf{IP addresses} of
-its source and destination, and a payload that encapsulates the data
-from the protocols of the layers above. Routers are devices that are
-part of multiple networks and relay datagrams between them based on a
-routing table that maps IP address ranges (\gls{cidr}) to networks.
+The \textbf{\acrfull{ip}} is a Network (L3) protocol of the Internet
+Protocol Suite that is responsible for delivering datagrams between
+devices across the boundaries of their \glspl{lan} by possibly routing
+traffic via multiple intermediate devices (routers). A datagram is a
+connectionless packet that is delivered on a best-effort basis. IP
+datagrams have a header that contains fields such as the \textbf{IP
+addresses} of its source and destination, and a
+\todo{show a diagram of the internet with multiple local networks}
+payload that encapsulates the data from the protocols of the layers
+above. Routers are devices that are part of multiple networks and relay
+datagrams between them based on a routing table that maps IP address
+ranges (\gls{cidr}) to networks.
 
-\textbf{\acrfull{udp}} and \textbf{\acrfull{tcp}} are Transport (Layer
-4) protocols that add the concept of ports to allow having multiple
+\textbf{\acrfull{udp}} and \textbf{\acrfull{tcp}} are Transport (L4)
+protocols that add the concept of ports to allow having multiple
 communication channels simultaneously between two devices. UDP provides
 best-effort delivery, while TCP is a reliable transport with delivery
 guarantees. TCP maintains stateful connections and handles
-acknowledgements and retransmissions in case of packets lost in transit.
+acknowledgments and retransmissions in case packets are lost in transit.
 
 \textbf{\acrfull{tls}} is a protocol that adds encryption on top of a
 reliable transport protocol such as TCP. It is usually placed in the
-Presentation Layer (Layer 6), but it does not strictly fit in any single
-OSI layer. It is rather complex because it needs to support many
-possible use cases across the internet. \todo{tls} The \textbf{Noise
-Protocol Framework} \autocite{noiseDocs} is a more
+Presentation Layer (L6), but it does not strictly fit in any single OSI
+layer. It is rather complex because it needs to support many possible
+use cases across the internet. \todo{tls} The \textbf{Noise Protocol
+Framework} \autocite{noiseDocs} is a more
 \todo{noise is transport agnostic}
 \todo{noise has limited cipher suites} recent effort that applies the
 ideas of TLS in a simplified way by serving as a blueprint for designing
@@ -86,7 +87,7 @@ globally (IPv4) uses 32-bit numbers as IP addresses, allowing for up to
 4, 294, 967, 296 unique addresses. Due to the popularity of the
 internet, there are many more devices than available IPv4 addresses,
 which has caused challenges. IPv6 is a newer version of the protocol
-that uses a larger 128-bit address space, but it's adoption has been
+that uses a larger 128-bit address space, but its adoption has been
 slow. A more widespread solution is \textbf{\gls{nat}}. It allows many
 devices without globally unique IP addresses to initiate connections to
 publicly addressable devices on the Internet via a limited number of
@@ -105,11 +106,11 @@ placed somewhere between Layers 3 and 4 of the OSI model.
 The NAT approach allows devices with local IP addresses to initiate
 bidirectional connections with remote devices across the public internet
 but it does not natively allow those remote devices to initiate a
-connection first. Furthermore as Figure \ref{nat-intro} shows, when two
+connection first. Furthermore, as Figure \ref{nat-intro} shows, when two
 different devices are behind separate NATs, neither can contact the
-other one first, which causes problems for many Peer-to-Peer protocols.
-There are several \textbf{NAT traversal} techniques that try to aleviate
-this drawback with varying success and performance tradeoffs.
+other first, which causes problems for many Peer-to-Peer protocols.
+There are several \textbf{NAT traversal} techniques that try to
+alleviate this drawback with varying success and performance tradeoffs.
 
 \begin{figure}
 \centering
@@ -117,7 +118,7 @@ this drawback with varying success and performance tradeoffs.
 \caption{Two parties behind separate NATs\label{nat-intro}}
 \end{figure}
 
-In many home networks the role of a NAT gateway is played by a publicly
+In many home networks, the role of a NAT gateway is played by a publicly
 addressable router under the customer's control, which often allows for
 port forwarding to be configured either manually or programmatically via
 a Layer 7 protocol like \textbf{\gls{upnp}} or its successors
@@ -125,17 +126,34 @@ a Layer 7 protocol like \textbf{\gls{upnp}} or its successors
 hosts to initiate connections with the local ones if they know the
 router's public IP address. Those protocols however are not always
 supported by the router and are often disabled by the local network
-administrators due to the security concerns of maliscious programs being
+administrators due to the security concerns of malicious programs being
 able to request and modify the port mappings in the router's translation
 tables.
 
-Another approach for NAT traversal is \textbf{\gls{stun}}, which relies
-on the predictable port mapping algorithms that many routers use and a
-public third party host that can be contacted by the local devices and
-later serve as an introduction point for them (Figure
-\ref{nat-traversal}).
+Another approach for NAT traversal that usually achieves good
+performance, but only works with some types of NATs is to use
+\textbf{\gls{stun}} in combination with UDP hole punching.
 
-\todo{rewrite this text from the preparation phase by separating the discussions of STUN and Mesh VPNs, which will be introduced in the next section after we've looked at the lower level protocols}
+STUN is a set of protocols that allows for a device to detect if there
+is a NAT gateway that connects it to The Internet and if so to determine
+the type of the NAT and its public IP address. This is achieved by
+sending UDP datagrams to a public STUN server which responds with the
+source IP address and port it sees in them. If a NAT rewrote the
+datagrams and then informs the client of them. UDP hole punching is a
+related technique that
+
+STUN is a set of protocols that allows for a public STUN server to be
+contacted by a client device to determine the public IP address and the
+behavior of the NAT gateway that connects it to The Internet. UDP hole
+punching is a related technique
+
+to contact detect its own NAT type and the public address of the NAT
+gateway via, which relies on the predictable port mapping algorithms
+that many routers use and a public third party host that can be
+contacted by the local devices and later serve as an introduction point
+for them (Figure \ref{nat-traversal}).
+
+\todo{rewrite this text from the preparation phase by separating the discussions of STUN and Mesh VPNs, which will be introduced in the next section after we have looked at the lower-level protocols}
 
 \begin{quote}
 \gls{udp} hole punching based on concepts from \gls{stun}. The machines
@@ -144,21 +162,20 @@ of each party can contact a public \gls{stun} server
 connections come from and inform the parties. Since the parties
 initiated the connection to the STUN server, their routers will keep a
 mapping between their local IP addresses and the port that was allocated
-for the connection in order to be able to forward the incoming traffic.
-Those ``holes'' in the NATs were originally intended for the STUN
-server, but mesh VPNs use the stateless ``fire and forget'' UDP protocol
-for their internal communication, which does not require nor provides a
-mechanism for the NATs to verify who sent a UDP packet. With most NATs,
-this is enough to be able to (ab)use the ``punched holes'' for the
-purpose of \gls{p2p} traffic from other parties. Mesh VPNs implement the
-stateful \gls{tcp} and \gls{tls} protocols on top of UDP and expose an
-regular network interface to the other programs, keeping them shielded
-from the underlying complexities. Other NAT implementations such as
-Symmetric NAT and \glspl{cgnat} can be more difficult to ``punch
-through'' due to their more complex port mapping strategies. In those
-cases, establishing P2P connections might involve guess work or even
-fail and require falling back to routing the (encrypted) traffic via
-another party or service.
+for the connection to be able to forward the incoming traffic. Those
+``holes'' in the NATs were originally intended for the STUN server, but
+mesh VPNs use the stateless ``fire and forget'' UDP protocol for their
+internal communication, which does not require nor provides a mechanism
+for the NATs to verify who sent a UDP packet. With most NATs, this is
+enough to be able to (ab)use the ``punched holes'' for the purpose of
+\gls{p2p} traffic from other parties. Mesh VPNs implement the stateful
+\gls{tcp} and \gls{tls} protocols on top of UDP and expose a regular
+network interface to the other programs, keeping them shielded from the
+underlying complexities. Other NAT implementations such as Symmetric NAT
+and \glspl{cgnat} can be more difficult to ``punch through'' due to
+their more complex port mapping strategies. In those cases, establishing
+P2P connections might involve guesswork or even fail and require falling
+back to routing the (encrypted) traffic via another party or service.
 \end{quote}
 
 \begin{figure}
@@ -169,11 +186,11 @@ another party or service.
 
 In most mobile networks (4G, 5G) the \gls{isp} utilizes a
 \textbf{\gls{cgnat}} as part of their infrastructure, while all devices
-under the user's control, including the router only have local IP
+under the user's control, including the router, only have local IP
 addresses. STUN techniques would fail to discover a direct path between
 two parties behind separate CGNATs or other unpredictable NAT
-algorithms. The only remaining possiblity is for a techniques like
-\textbf{\acrfull{turn}}, where a publicly reachable third party host is
+algorithms. The only remaining possibility is for a like
+\textbf{\acrfull{turn}}, where a publicly reachable third-party host is
 used not only for introducing the peers but also for relaying all
 (possibly encrypted) traffic between them.
 
@@ -288,20 +305,20 @@ multi-party computations due to their \gls{p2p} nature.
 
 WireGuard \autocite{donenfeldWireGuardNextGeneration2017} is a more
 recent protocol with a design informed by lessons learned from IPSec and
-OpenVPN and a key management approach inspired by SSH. It is a lower
-level protocol that focuses on configuration simplicity while network
-topology, peer discovery and key distribution are left as a
-responsibility of higher level systems that use it as a building block.
+OpenVPN and a key management approach inspired by SSH. It is a
+lower-level protocol that focuses on configuration simplicity while
+network topology, peer discovery and key distribution are left as a
+responsibility of higher-level systems that use it as a building block.
 Wireguard is implemented as a Layer 3 overlay over UDP tunnels.
-WireGuard has both user space implementations that use a TUN driver and
+WireGuard has both user-space implementations that use a TUN driver and
 also has direct support built into the Linux Kernel since version 5.6
 (May 2020). The kernel implementation allows for better performance
 because it does not need to copy packets between the kernel and
 user-space memory.
 
 The snippets below show a minimal set of configuration options that need
-to be provided in order for two peers to be able to form secure tunnels
-with each other.
+to be provided for two peers to be able to form secure tunnels with each
+other.
 
 \begin{Shaded}
 \begin{Highlighting}[]
@@ -363,37 +380,37 @@ will be able to communicate back with it.
 
 Mesh \glspl{vpn} such as Tinc \autocite{tincDocs}, Tailscale
 \autocite{tailscaleDocs} and Nebula \autocite{nebulaDocs} utilize NAT
-Traversal techniques in order to create direct \gls{p2p} links between
-the clients for the data traffic. Authentication, authorization and
-traffic encryption are performed using certificates based on public key
+Traversal techniques to create direct \gls{p2p} links between the
+clients for the data traffic. Authentication, authorization and traffic
+encryption are performed using certificates based on public key
 cryptography.
 
-All three are open-source, with the exception of Tailscale's
-coordination service which handles the peer discovery and identity
-management. Headscale \autocite{fontJuanfontHeadscale2022} is a
-community driven open-source alternative for that component. Tinc is the
-oldest of the three but has a relatively small community. It is mainly
-developed by a single author and appears to be more academic than
-industry motivated. Nebula and Tailscale are both business driven.
-Tailscale was started by a number of high profile ex-googlers and is the
-most end-user focused of the three, providing a service that allows
-people to sign up using a variety of identity providers including
-Google, Microsoft, GitHub and others. They also provide an Admin console
-that allows a user to easily add their personal devices to a network or
-share them with others. It also has support for automation tools like
-Terraform for creating authorization keys and managing an \gls{acl}
-based firewall. Nebula was originally developed at the instant messaging
-company Slack to create overlay networks for their cross region cloud
-infrastructure, but the authors later started a new company and are
-currently developing a user-centric platform similar to Tailscale's.
-Nebula is more customizable than Tailscale and since it is completely
-open-source it can be adapted to different use cases, but it is also
-more involved to set up. A certificate authority needs to be configured
-for issuing the identities of the participating hosts. Furthermore,
-publicly accessible coordination servers need to be deployed to
-facilitate the host discovery. Tailscale employs a distributed relay
-network of \gls{derp} servers, while Nebula can be configured to route
-via one of the other peers in the VPN.
+All three are open-source, except Tailscale's coordination service which
+handles peer discovery and identity management. Headscale
+\autocite{fontJuanfontHeadscale2022} is a community-driven open-source
+alternative for that component. Tinc is the oldest of the three but has
+a relatively small community. It is mainly developed by a single author
+and appears to be more academic than industry motivated. Nebula and
+Tailscale are both business driven. Tailscale was started by some
+high-profile ex-googlers and is the most end-user-focused of the three,
+providing a service that allows people to sign up using a variety of
+identity providers including Google, Microsoft, GitHub and others. They
+also provide an Admin console that allows a user to easily add their
+personal devices to a network or share them with others. It also has
+support for automation tools like Terraform for creating authorization
+keys and managing an \gls{acl} based firewall. Nebula was originally
+developed at the instant messaging company Slack to create overlay
+networks for their cross-region cloud infrastructure, but the authors
+later started a new company and are currently developing a user-centric
+platform similar to Tailscale's. Nebula is more customizable than
+Tailscale and since it is completely open-source it can be adapted to
+different use cases, but it is also more involved to set up. A
+certificate authority needs to be configured for issuing the identities
+of the participating hosts. Furthermore, publicly accessible
+coordination servers need to be deployed to facilitate the host
+discovery. Tailscale employs a distributed relay network of \gls{derp}
+servers, while Nebula can be configured to route via one of the other
+peers in the VPN.
 
 \hypertarget{thesis__020-related-work.md__layer-7-overlays}{%
 \subsection{Layer 7
@@ -412,6 +429,7 @@ overlays}\label{thesis__020-related-work.md__layer-7-overlays}}
   \item
     Uses STUN/TURN
   \item
+    d
   \end{itemize}
 \item
   OpenZiti
@@ -442,9 +460,9 @@ overlays}\label{thesis__020-related-work.md__layer-7-overlays}}
 \chapter{Testing
 methodology}\label{thesis__030-methods.md__testing-methodology}}
 
-In the following chapters we will design and implement several solutions
-for ad hoc MPC sessions based on a subset of the previously discussed
-related works:
+In the following chapters, we will design and implement several
+solutions for ad hoc MPC sessions based on a subset of the previously
+discussed related works:
 
 \begin{itemize}
 \tightlist
@@ -461,25 +479,25 @@ related works:
 \item
   ? WebRTC?
 \item
-  Custom solution that automates the wireguard configuration by visiting
-  a web page
+  A custom solution that automates the WireGuard configuration by
+  visiting a web page
 \end{itemize}
 
-Additionally we will analyse and compare them in terms of performance,
+Additionally, we will analyze and compare them in terms of performance,
 security and usability
 
 \hypertarget{thesis__030-methods.md__measuring-performance}{%
 \section{Measuring
 performance}\label{thesis__030-methods.md__measuring-performance}}
 
-During the preparation phase of the project we developed the \gls{e3}
+During the preparation phase of the project, we developed the \gls{e3}
 framework which simplifies and automates the process of deploying
 machines in different geographical regions, connecting them via an
 overlay network and executing multiparty computations between them,
 where each machine represents a different party.
 
-To summarize, \gls{e3} is a set of scripts that use a number of
-automation tools:
+To summarize, \gls{e3} is a set of scripts that use several automation
+tools:
 
 \begin{itemize}
 \tightlist
@@ -503,10 +521,9 @@ source code of \gls{e3} can be found on
 
 Each solution will be deployed using the \gls{e3} framework and the
 performance will be quantitatively measured in terms of the time it
-takes to execute a number of MPyC demos. The selected demos have
-different complexities in terms of communication rounds and message
-sizes which will allow us to observe their impact on the overall
-performance.
+takes to execute several MPyC demos. The selected demos have different
+complexities in terms of communication rounds and message sizes which
+will allow us to observe their impact on the overall performance.
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
@@ -566,15 +583,15 @@ We will analyze aspects such as
 \hypertarget{thesis__030-methods.md__usability}{%
 \section{Usability}\label{thesis__030-methods.md__usability}}
 
-For each solution we will describe the steps that the parties need to
-perform in order to execute a joint multiparty computation. Those steps
-will be analyzed in terms of:
+For each solution, we will describe the steps that the parties need to
+perform to execute a joint multiparty computation. Those steps will be
+analyzed in terms of:
 
 \begin{itemize}
 \tightlist
 \item
   Complexity - how much technical expertise is expected from the parties
-  in order to be able to execute the steps
+  to be able to execute the steps
 \item
   Initial effort - how much effort is each party expected to put in
   preparing for their first joint computation
