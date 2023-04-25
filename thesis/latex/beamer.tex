@@ -16,13 +16,13 @@
 \hypertarget{thesis__020-related-work.md}{}
 \begin{frame}[fragile]{Related work}
 \protect\hypertarget{thesis__020-related-work.md__related-work}{}
-In this chapter, we will look at prior works relevant to our problem of
+In this chapter, we will examine prior works relevant to our problem of
 connecting multiple parties over The Internet for a joint MPyC
 computation. To identify the challenges, we will begin with an overview
-of The Internet Protocol Suite which is central to the modern Internet.
+of The Internet Protocol Suite, which is central to the modern Internet.
 Following that, we will review several existing network overlay
 solutions that we can later use as building blocks for an overall
-solution to our problem. To keep a consistent mental picture of the
+solution to our problem. To maintain a consistent mental picture of the
 solutions, we will map them to the layers of the \gls{osi} model. While
 many protocols implement aspects of several layers and do not strictly
 fit inside the OSI model, it is still a useful visualization tool.
@@ -84,40 +84,60 @@ end-to-end encryption in messaging applications such as WhatsApp and
 Signal, and \gls{vpn} software such as WireGuard and Nebula.
 
 The version of the Internet Protocol that was originally deployed
-globally (IPv4) uses 32-bit numbers as IP addresses, allowing for up to
-4, 294, 967, 296 unique addresses. Due to the popularity of the
-internet, there are many more devices than available IPv4 addresses,
-which has caused challenges. IPv6 is a newer version of the protocol
-that uses a larger 128-bit address space, but its adoption has been
-slow. A more widespread solution is \textbf{\gls{nat}}. It allows many
-devices without globally unique IP addresses to initiate connections to
-publicly addressable devices on the Internet via a limited number of
-gateways that must have globally unique IP addresses. A NAT gateway
-replaces the local source IP address of each outgoing IP datagram with
-its own public IP address before passing it on to the next link on the
-way to the destination while maintaining a mapping between the source
-and destination IPs in a translation table. The destination host can
-then address its responses back to the NAT gateway's public IP address,
-which in turn replaces its own IP from the incoming datagrams with the
-IP of the local device and relays them to it. If the IP datagrams
-encapsulate TCP/UDP packets, the gateway additionally rewrites the
-source and destination ports, which means that NAT techniques can be
-placed somewhere between Layers 3 and 4 of the OSI model.
+globally (IPv4) uses 32-bit numbers as IP addresses, allowing for around
+4 billion unique addresses. Due to the popularity of the internet, there
+are many more devices than available IPv4 addresses, which has caused
+challenges. IPv6 is a newer version of the protocol that uses a larger
+128-bit address space which is sufficient for assigning 100 addresses
+for each atom on Earth. Its adoption has been slow, as according to
+Google as of 2023 only around 37\% of the requests to their services use
+IPv6. Additionally, even though IPv6 allows for each device to be
+addressable on the Internet, most of them would still use firewalls to
+block incoming traffic that is not associated with outgoing connections.
+
+A more widespread solution to the addressing problem is
+\textbf{\gls{nat}}. It allows many devices without globally unique IP
+addresses to initiate connections to publicly addressable devices on the
+Internet via a limited number of gateways that must have globally unique
+IP addresses. A NAT gateway replaces the local source IP address of each
+outgoing IP datagram with its own public IP address before passing it on
+to the next link on the way to the destination while maintaining a
+mapping between the source and destination IPs in a translation table.
+The destination host can then address its responses back to the NAT
+gateway's public IP address, which in turn replaces its own IP from the
+incoming datagrams with the IP of the local device and relays them to
+it. If the IP datagrams encapsulate TCP/UDP packets, the gateway
+additionally rewrites the source and destination ports, which means that
+NAT techniques can be placed somewhere between Layers 3 and 4 of the OSI
+model.
 
 The NAT approach allows devices with local IP addresses to initiate
 bidirectional connections with remote devices across the public internet
 but it does not natively allow those remote devices to initiate a
 connection first. Furthermore, as Figure \ref{nat-intro} shows, when two
 different devices are behind separate NATs, neither can contact the
-other first, which causes problems for many Peer-to-Peer protocols.
-There are several \textbf{NAT traversal} techniques that try to
-alleviate this drawback with varying success and performance tradeoffs.
+other first. Client/Server communications are less affected by this
+limitation because the Server can be deployed to a machine with a public
+IP address that can be contacted by the Client. Peer-to-Peer
+communications, however, are more challenging, because multiple peers
+can be behind separate NATs. Several \textbf{NAT traversal} techniques
+try to solve this with varying success and different performance
+tradeoffs.
 
 \begin{figure}
 \centering
 \includegraphics[width=\textwidth,height=0.25\textheight]{thesis/../figures/nat-intro.png}
 \caption{Two parties behind separate NATs\label{nat-intro}}
 \end{figure}
+
+As in the Client/Server model, it is possible to relay the peer-to-peer
+communications via another machine with a public IP address. While the
+additional hop on the network path makes this approach less efficient
+than direct communication, it works under most networking scenarios and
+is therefore often used as a fallback in case other approaches fail to
+find a direct path. Protocols such as \textbf{\acrfull{turn}}
+\autocite{turnRFC} and \textbf{\acrfull{derp}} \autocite{derpDocs} can
+be used to securely implement relaying.
 
 In many home networks, the role of a NAT gateway is played by a publicly
 addressable router under the customer's control, which often allows for
@@ -133,20 +153,18 @@ tables.
 
 Another approach for NAT traversal that usually achieves good
 performance, but only works with some types of NATs is to use
-\textbf{\gls{stun}} in combination with UDP hole punching.
-
-STUN is a set of protocols that allows for a device to detect if there
-is a NAT gateway that connects it to The Internet and if so to determine
-the type of the NAT and its public IP address. This is achieved by
-sending UDP datagrams to a public STUN server which responds with the
-source IP address and port it sees in them. If a NAT rewrote the
-datagrams and then informs the client of them. UDP hole punching is a
-related technique that
-
-STUN is a set of protocols that allows for a public STUN server to be
-contacted by a client device to determine the public IP address and the
-behavior of the NAT gateway that connects it to The Internet. UDP hole
-punching is a related technique
+\textbf{\gls{stun}} in combination with UDP hole punching. STUN is a set
+of Client/Server protocols that allow a device to discover information
+about the NAT gateways that might connect it to The Internet. This
+includes the IP address of a NAT gateway and its behavior such as if it
+maps ports, IPs, whether the mapped IPs are different per destination
+and others. To achieve this, the device uses UDP to contact a public
+STUN server which responds with the source IP address and port of the
+incoming datagrams. If a NAT gateway rewrote the IP address and port,
+then the device will know this by comparing them to its local IP address
+and port. Additional STUN servers may be contacted to check if the NAT
+gateway maps consistent IP addresses and ports. UDP hole punching is a
+related technique that allows two devices
 
 to contact detect its own NAT type and the public address of the NAT
 gateway via, which relies on the predictable port mapping algorithms
@@ -196,7 +214,8 @@ used not only for introducing the peers but also for relaying all
 (possibly encrypted) traffic between them.
 
 \begin{itemize}
-\tightlist
+\item
+  Hairpinning
 \item
   \textbf{\acrfull{ipsec}}
 
