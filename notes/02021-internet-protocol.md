@@ -45,6 +45,16 @@
 
 #### Universal Plug and Play (UPnP)
 
+- Not always supported
+- Often disabled due to security and performance concerns
+  - Bugs in the UPnP implementation allowing remote attackers from outside the local network to configure port forwarding
+  - IOT devices 
+    - might expose themselves to the internet via UPnP
+    - often designed to prioritize convenience over security
+    - sometimes use default admin user/password
+    - Too many ports being configured for forwarding might slow down the network
+    - 
+
 #### Interactive Connectivity Establishment (ICE)
 
 *   Umbrella term covering STUN/TURN and other related techniques

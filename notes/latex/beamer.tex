@@ -332,6 +332,36 @@ DERP, UPnP & Uses Wireguard \\
 
 \begin{block}{Universal Plug and Play (UPnP)}
 \protect\hypertarget{notes__02021-internet-protocol.md__universal-plug-and-play-upnp}{}
+\begin{itemize}
+\tightlist
+\item
+  Not always supported
+\item
+  Often disabled due to security and performance concerns
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Bugs in the UPnP implementation allowing remote attackers from
+    outside the local network to configure port forwarding
+  \item
+    IOT devices
+
+    \begin{itemize}
+    \tightlist
+    \item
+      might expose themselves to the internet via UPnP
+    \item
+      often designed to prioritize convenience over security
+    \item
+      sometimes use default admin user/password
+    \item
+      Too many ports being configured for forwarding might slow down the
+      network
+    \item
+    \end{itemize}
+  \end{itemize}
+\end{itemize}
 \end{block}
 
 \begin{block}{Interactive Connectivity Establishment (ICE)}

@@ -91,38 +91,42 @@ challenges. IPv6 is a newer version of the protocol that uses a larger
 128-bit address space which is sufficient for assigning 100 addresses
 for each atom on Earth. Its adoption has been slow, as according to
 Google as of 2023 only around 37\% of the requests to their services use
-IPv6. Additionally, even though IPv6 allows for each device to be
-addressable on the Internet, most of them would still use firewalls to
-block incoming traffic that is not associated with outgoing connections.
+IPv6. Additionally, despite that IPv6 allows for all devices to be
+addressable on the Internet, for security reasons, most of them would
+use firewalls to block incoming remote traffic that is not associated
+with outgoing connections.
 
-A more widespread solution to the addressing problem is
-\textbf{\gls{nat}}. It allows many devices without globally unique IP
-addresses to initiate connections to publicly addressable devices on the
-Internet via a limited number of gateways that must have globally unique
-IP addresses. A NAT gateway replaces the local source IP address of each
-outgoing IP datagram with its own public IP address before passing it on
-to the next link on the way to the destination while maintaining a
-mapping between the source and destination IPs in a translation table.
-The destination host can then address its responses back to the NAT
-gateway's public IP address, which in turn replaces its own IP from the
-incoming datagrams with the IP of the local device and relays them to
-it. If the IP datagrams encapsulate TCP/UDP packets, the gateway
-additionally rewrites the source and destination ports, which means that
-NAT techniques can be placed somewhere between Layers 3 and 4 of the OSI
-model.
+A widespread solution to the addressing problem is \textbf{\gls{nat}}.
+It allows many devices without globally unique IP addresses to initiate
+connections to publicly addressable devices on the Internet via a
+limited number of gateways that must have globally unique IP addresses.
+A NAT gateway replaces the local source IP address of each outgoing IP
+datagram with its own public IP address before passing it on to the next
+link on the way to the destination while maintaining a mapping between
+the source and destination IPs in a translation table. The destination
+host can then address its responses back to the NAT gateway's public IP
+address, which in turn replaces its own IP from the incoming datagrams
+with the IP of the local device and relays them to it. If the IP
+datagrams encapsulate TCP/UDP packets, the gateway additionally rewrites
+the source and destination ports, which means that NAT techniques can be
+placed somewhere between Layers 3 and 4 of the OSI model.
 
-The NAT approach allows devices with local IP addresses to initiate
-bidirectional connections with remote devices across the public internet
-but it does not natively allow those remote devices to initiate a
-connection first. Furthermore, as Figure \ref{nat-intro} shows, when two
-different devices are behind separate NATs, neither can contact the
-other first. Client/Server communications are less affected by this
-limitation because the Server can be deployed to a machine with a public
-IP address that can be contacted by the Client. Peer-to-Peer
-communications, however, are more challenging, because multiple peers
-can be behind separate NATs. Several \textbf{NAT traversal} techniques
-try to solve this with varying success and different performance
-tradeoffs.
+NATs have implications on connectivity that are similar to IPv6
+firewalls as they allow devices on a local network to initiate
+bidirectional communication to remote devices with public IP addresses,
+but connections cannot be natively initiated by the remote devices. As
+Figure \ref{nat-intro} shows, it follows that when two devices are
+behind separate NATs, neither can contact the other first.
+\textbf{Client/Server} communications are less affected by this
+limitation because many local Clients can contact a Server deployed to a
+public IP address by its administrators. \textbf{Peer-to-Peer}
+communications, however, are more challenging because the peers are
+often devices in separate residential networks behind different NATs.
+Several \textbf{NAT traversal} techniques try to solve this with
+different performance tradeoffs and success that varies depending on the
+NAT \autocite{natBehaviorRFC} and its behaviors when mapping ports and
+IP addresses.
+\todo{describe some of the nat behaviors, e.g. if the source IP address/port vary per destination are changed depending on the destination/port mapping algorithms, if it maps ports, IPs, whether the mapped IPs are different per destination and others.}
 
 \begin{figure}
 \centering
@@ -130,41 +134,48 @@ tradeoffs.
 \caption{Two parties behind separate NATs\label{nat-intro}}
 \end{figure}
 
-As in the Client/Server model, it is possible to relay the peer-to-peer
-communications via another machine with a public IP address. While the
-additional hop on the network path makes this approach less efficient
-than direct communication, it works under most networking scenarios and
-is therefore often used as a fallback in case other approaches fail to
-find a direct path. Protocols such as \textbf{\acrfull{turn}}
+One approach that fits the Client/Server model is for the devices behind
+NATs to initiate bidirectional connections to a publicly addressable
+\textbf{relay} server that forwards the Peer-to-Peer traffic to the
+appropriate recipient. Compared to direct communication, relaying
+results in a higher network latency due to the longer path that each
+packet must travel. Maintaining a relay server requires some technical
+expertise and may be costly depending on the expected throughput.
+Despite the drawbacks, relaying works under most networking scenarios
+and is therefore often used as a fallback in case all other approaches
+fail to find a direct path. Protocols such as \textbf{\acrfull{turn}}
 \autocite{turnRFC} and \textbf{\acrfull{derp}} \autocite{derpDocs} can
 be used to securely implement relaying.
 
-In many home networks, the role of a NAT gateway is played by a publicly
-addressable router under the customer's control, which often allows for
-port forwarding to be configured either manually or programmatically via
-a Layer 7 protocol like \textbf{\gls{upnp}} or its successors
-\textbf{\gls{nat-pmp}} and \textbf{\gls{pcp}}. This would allow remote
-hosts to initiate connections with the local ones if they know the
-router's public IP address. Those protocols however are not always
-supported by the router and are often disabled by the local network
-administrators due to the security concerns of malicious programs being
-able to request and modify the port mappings in the router's translation
-tables.
+The NAT gateway in many residential networks is a Router device under
+the customer's control that has a statically or dynamically assigned
+public IP address. Most routers can be manually configured through their
+admin page to forward all traffic that arrives at a given port to a
+specific device on the local network. Remote applications that know the
+IP address of the router and the forwarded port can then contact it to
+initiate a connection to the local device. The manual configuration,
+however, can be inconvenient and many users may be unaware of that
+setting because it is not necessary for the more familiar Client/Server
+communications. Some routers also support programmatic configuration of
+port forwarding via a Layer 7 protocol like \textbf{\gls{upnp}} or its
+successors \textbf{\gls{nat-pmp}} and \textbf{\gls{pcp}}. Those
+protocols, however, are not always supported and are often disabled by
+the local network administrators due to security concerns related to
+bugs in their implementation, vulnerable IOT devices or malicious
+programs being able to expose local devices to the internet.
 
-Another approach for NAT traversal that usually achieves good
-performance, but only works with some types of NATs is to use
-\textbf{\gls{stun}} in combination with UDP hole punching. STUN is a set
-of Client/Server protocols that allow a device to discover information
-about the NAT gateways that might connect it to The Internet. This
-includes the IP address of a NAT gateway and its behavior such as if it
-maps ports, IPs, whether the mapped IPs are different per destination
-and others. To achieve this, the device uses UDP to contact a public
-STUN server which responds with the source IP address and port of the
-incoming datagrams. If a NAT gateway rewrote the IP address and port,
-then the device will know this by comparing them to its local IP address
-and port. Additional STUN servers may be contacted to check if the NAT
-gateway maps consistent IP addresses and ports. UDP hole punching is a
-related technique that allows two devices
+An efficient NAT traversal approach that works with some types of NATs
+is to use \textbf{\gls{stun}} \autocite{stunRFC} in combination with UDP
+hole punching. STUN is a Client/Server protocol operating at Layer 7
+that allows applications to detect the presence of NAT gateways on the
+network path to a public endpoint, to identify their types and discover
+the public IP address that they map to. To achieve this, the device uses
+UDP to contact a public STUN server which responds with the source IP
+address and port of the incoming datagrams. If a NAT gateway rewrote the
+IP address and port, then the device will know this by comparing them to
+its local IP address and port. Additional STUN servers may be contacted
+to check if the NAT gateway maps consistent IP addresses and ports. UDP
+hole punching is a related technique that allows two devices
 
 to contact detect its own NAT type and the public address of the NAT
 gateway via, which relies on the predictable port mapping algorithms
@@ -240,9 +251,10 @@ used not only for introducing the peers but also for relaying all
 
 \begin{block}{Network overlays}
 \protect\hypertarget{thesis__020-related-work.md__network-overlays}{}
-Most Network Overlay solutions can be placed in Layers 2, 3 or 7. Layer
-2 overlays act as a virtual network switch, while Layer 3 overlays act
-as a virtual network router. Layer 7 overlays are implemented in
+Most Network Overlay solutions use a combination of the NAT traversal
+techniques mentioned previously. They can be placed in Layers 2, 3 or 7.
+Layer 2 overlays act as a virtual network switch, while Layer 3 overlays
+act as a virtual network router. Layer 7 overlays are implemented in
 user-space as libraries or applications that run on top of the network
 stack of the host operating system. Layer 2 and 3 overlays can either be
 implemented as kernel modules or as user-space applications that use a
