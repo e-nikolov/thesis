@@ -52,11 +52,13 @@ In mobile networks like 4G and 5G, the \gls{isp} often utilizes a **\gls{cgnat}*
 ### Security
 
 
-**\acrfull{tls}** is a protocol that adds encryption on top of a reliable transport protocol such as TCP. It does not strictly fit in any single OSI layer, but is usually placed somewhere between the Transport Layer (L4) and the Presentation Layer (L6). It is rather complex because it needs to support many possible use cases across the internet. \todo{tls} The **Noise Protocol Framework** [@noiseDocs] is a more \todo{noise is transport agnostic} \todo{noise has limited cipher suites} recent effort that applies the ideas of TLS in a simplified way by serving as a blueprint for designing use-case specific protocols for establishing secure communication channels based on \gls{ecdh} handshake patterns. It powers the end-to-end encryption in messaging applications such as WhatsApp and Signal, and \gls{vpn} software such as WireGuard and Nebula.
+**\acrfull{tls}** is a protocol that adds encryption on top of a reliable transport protocol such as TCP. It is a successor to \gls{ssl}. TLS does not strictly fit in any single OSI layer, but is usually placed somewhere between the Transport Layer (L4) and the Presentation Layer (L6). It is rather complex because it needs to support many possible use cases across the internet. \todo{tls certificates} The **Noise Protocol Framework** [@noiseDocs] is a more \todo{noise is transport agnostic} \todo{noise has limited cipher suites} recent effort that applies the ideas of TLS in a simplified way by serving as a blueprint for designing use-case specific protocols for establishing secure communication channels based on \gls{ecdh} handshake patterns. It powers the end-to-end encryption in messaging applications such as WhatsApp and Signal, and \gls{vpn} software such as WireGuard and Nebula.
+
+***HTTPS*** uses TLS to encrypt the HTTP traffic between a client and a server.
 
 \todo{talk about https}
 
-**\acrfull{ipsec}** is a Layer 3 protocol suite for encrypting IP datagrams that was originally developed as part of IPv6 but can also be adapted for IPv4.  
+**\acrfull{ipsec}** is a protocol suite for encrypting the IP datagrams between two hosts. It was originally developed as part of IPv6 but can also be used with IPv4. IPSec is similar in purpose to TLS but operates at the Network Layer (L3). 
 
 \todo{tls requires the clients to be configured with a certificate for the server, IPSec needs to server to also be configured with a certificate for the client.}
 
