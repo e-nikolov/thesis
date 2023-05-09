@@ -2,10 +2,11 @@
 
 MAKEFLAGS += --no-print-directory
 # pandock=docker run --rm -v "$(shell pwd):/data" -u $(shell id -u):$(shell id -g) pandoc/latex:3.1
-pandock=pandoc.exe
+pandock=pandoc
 # format=markdown+mark+abbreviations+fenced_divs+inline_code_attributes+header_attributes+smart+strikeout+superscript+subscript+task_lists+definition_lists+pipe_tables+yaml_metadata_block+inline_notes+table_captions+citations+raw_tex+implicit_figures+rebase_relative_paths+link_attributes+fenced_code_blocks+fancy_lists+fenced_code_attributes+backtick_code_blocks
 format=markdown+fenced_divs+abbreviations+inline_code_attributes+header_attributes+smart+strikeout+superscript+subscript+task_lists+definition_lists+pipe_tables+yaml_metadata_block+inline_notes+table_captions+citations+raw_tex+implicit_figures+rebase_relative_paths+link_attributes+fenced_code_blocks+fancy_lists+fenced_code_attributes+backtick_code_blocks
 PANDOC=$(pandock) \
+		-F pandoc-crossref \
 		-f $(format) \
 		--biblatex \
 		--highlight-style shared/my.theme \
@@ -44,6 +45,8 @@ test:
 		--bibliography shared/references.bib \
 		-o $*.pdf \
 		$*/*.md
+
+
 
 %.pdf: %.tex figures/*.drawio.pdf
 	$(MAKE) $@~
@@ -85,6 +88,13 @@ presentation.html: presentation/*.md FORCE
 		--bibliography shared/references.bib \
 		-o $@ \
 		presentation/*.md
+
+%.docx: %/*.md
+	$(PANDOC) \
+		--citeproc \
+		--bibliography shared/references.bib \
+		-o $@ \
+		$*/*.md
 
 %.html: %/*.md
 	$(PANDOC) \
