@@ -33,7 +33,7 @@ Web Pages, available on The Internet and is typically accessed via a
 user-agent software such as a \textbf{\emph{Web Browser}}. The term
 ``The Web'' is sometimes used interchangeably with The Internet, but The
 Internet supports other services as well, e.g.~file transfer (FTP),
-email (IMAP), instant messaging, remote access (SSH) and others.
+email (SMTP), instant messaging, remote access (SSH) and others.
 Conceptual frameworks like the OSI model are useful for understanding
 the objectives and functions of communication protocols. Figure
 \ref{osi-map-tcp} describes the responsibilities of the 7 layers of the
@@ -54,38 +54,52 @@ Suite\label{osi-map-tcp}}
 
 \begin{block}{Communications}
 \protect\hypertarget{communications}{}
-The \textbf{\acrfull{ip}} is a Network (L3) protocol of the Internet
-Protocol Suite that is responsible for delivering datagrams between
-devices across the boundaries of their \glspl{lan} by possibly routing
-traffic via multiple intermediate devices (routers). A datagram is a
-connectionless packet that is delivered on a best-effort basis. IP
-datagrams have a header that contains fields such as the \textbf{IP
-addresses} of its source and destination, and a
+The Internet Protocol Suite utilizes packet-switching, meaning that
+application layer communications are broken into smaller discrete
+packets that are handled individually by the network protocols. A
+protocol typically has a \gls{pdu} that describes the information that c
+has a header i A packet contains multiple nested a header and a payload,
+where the header identifies the protocol that that which protocol which
+protocols are involvedhierarchically organized information from the
+protocols. identifies information that identifies its from the various
+communication protocols with each protocol having its own \gls{pdu}. The
+various protocols have their own \glspl{pdu} that have a header that ide
+The \textbf{\acrfull{ip}} \autocite{ipv4RFC} is a Network layer (L3)
+protocol of the Internet Protocol Suite that is responsible for
+transferring datagrams between devices across the boundaries of their
+\glspl{lan} by possibly routing them via multiple intermediate devices
+(e.g.~routers). A datagram is a self-contained unit of data, typically
+associated with connectionless protocols that provide no guarantees for
+delivery or ordering (e.g.~IP, UDP).
+\todo{packet is the physical envelope of the IP datagram}. IP datagrams
+have a header that contains fields such as the \textbf{IP addresses} of
+its source and destination, and a
 \todo{show a diagram of the internet with multiple local networks}
-payload that encapsulates the data from the protocols of the layers
-above. Routers are devices that are part of multiple networks and relay
-datagrams between them based on a routing table that maps IP address
-ranges to networks. \textbf{\emph{\gls{cidr}}} is a common notation for
-describing IP address ranges, e.g.~\texttt{192.168.0.1/16}, where the
-number after the slash describes the bit-length of the fixed prefix for
-a subnet.
+payload that encapsulates the data from the Transport Layer (L4)
+protocols. A \textbf{\emph{router}} is a device that is part of multiple
+networks and relays datagrams between them based on a routing table that
+maps IP address ranges to networks. \textbf{\emph{\gls{cidr}}} is a
+common notation for describing IP address ranges,
+e.g.~\texttt{192.168.0.1/16}, where the number after the slash describes
+the bit-length of the fixed prefix for a subnet.
 
-\textbf{\acrfull{udp}} and \textbf{\acrfull{tcp}} are Transport layer
-(L4) protocols that employ 16-bit port numbers to enable multiple
-applications on the same host to establish their own communication
-channels while sharing an IP address. UDP offers faster communication,
-but only provides best-effort delivery, while TCP is a reliable
-transport protocol with stronger delivery guarantees at the expense of
-higher network latency. TCP maintains stateful connections that handle
-error detection and correction, packet ordering, flow control,
-acknowledgments and retransmissions in case packets are lost during
-transmission.
+\textbf{\acrfull{udp}} \autocite{udpRFC} and \textbf{\acrfull{tcp}}
+\autocite{tcpRFC} are Transport layer (L4) protocols that
+\todo{IP multiplexing via ports, TCP segments and segmentation, UDP no segmentation }
+employ 16-bit port numbers to enable multiple applications on the same
+host to establish their own communication channels while sharing an IP
+address. Both protocols UDP offers faster communication, but only
+provides best-effort delivery, while TCP is a reliable transport
+protocol with stronger delivery guarantees at the expense of higher
+network latency. TCP maintains stateful connections that handle error
+detection and correction, packet ordering, flow control, acknowledgments
+and retransmissions in case packets are lost during transmission.
 
-\textbf{\emph{\gls{http}}} is an Application layer (L7) protocol used
-for transmitting data on The Web between web servers and clients like
-browsers, typically using a stateless request/response model. Similar to
-other L7 protocols, it uses \textbf{\emph{\glspl{url}}} for identifying
-resources using the format
+\textbf{\emph{\gls{http}}} is an Application layer (L7) protocol that
+enables interactions on The Web between web servers and clients
+(e.g.~browsers). Traditionally, HTTP offers stateless request/response ,
+but can also . Similar to other L7 protocols, it uses
+\textbf{\emph{\glspl{url}}} for locating resources using the format
 \texttt{scheme://host:port/path?query=value\#fragment},
 e.g.~http://www.example.com:80/path/to/file.html. It is built on top of
 TCP and provides several features such as:
@@ -242,15 +256,19 @@ publicly reachable third-party host.
 \todo{hairpinning - Hairpinning, also known as NAT loopback or NAT reflection, is a technique used by NAT devices to allow hosts on a private network to access a public server using its public IP address. Without hairpinning, the NAT device would not recognize the connection as a loopback connection and would route it to the public network, causing the connection to fail. With hairpinning, the NAT device recognizes that the connection is a loopback connection and redirects the traffic back to the same NAT device, which then forwards the traffic to the correct host on the private network. This can be useful in scenarios where a private network is hosting a public-facing server that is also accessed by internal users on the same network using its public IP address.}
 \end{block}
 
-\begin{block}{Security}
-\protect\hypertarget{security}{}
-\textbf{\acrfull{tls}} is a protocol that adds encryption on top of a
-reliable transport protocol such as TCP. It is a successor to \gls{ssl}.
-TLS does not strictly fit in any single OSI layer, but is usually placed
-somewhere between the Transport Layer (L4) and the Presentation Layer
-(L6). It is rather complex because it needs to support many possible use
-cases across the internet. \todo{tls certificates} The \textbf{Noise
-Protocol Framework} \autocite{noiseDocs} is a more
+\begin{block}{Communication Security}
+\protect\hypertarget{communication-security}{}
+\textbf{\acrfull{tls}} and its precursor \gls{ssl} provide secure
+communications to Application Layer (L7) protocols. to on top of a
+reliable transport protocol like TCP; \gls{dtls} is a related protocol
+that works with connectionless protocols like UDP. TLS does not strictly
+fit in any single OSI layer but it is usually placed somewhere between
+the Transport Layer (L4) and the Presentation Layer (L6). It is rather
+complex because it needs to support many possible use cases while
+remaining backward compatible. \todo{tls certificates}
+\todo{protects against man in the middle}
+\todo{an intruder can't see the encrypted traffic, but can see the IP addresses of the servers that are being contacted}
+The \textbf{Noise Protocol Framework} \autocite{noiseDocs} is a more
 \todo{noise is transport agnostic}
 \todo{noise has limited cipher suites} recent effort that applies the
 ideas of TLS in a simplified way by serving as a blueprint for designing
@@ -259,8 +277,8 @@ channels based on \gls{ecdh} handshake patterns. It powers the
 end-to-end encryption in messaging applications such as WhatsApp and
 Signal, and \gls{vpn} software such as WireGuard and Nebula.
 
-\textbf{\emph{HTTPS}} uses TLS to encrypt the HTTP traffic between a
-client and a server.
+\textbf{\emph{HTTPS}} is an extension to \gls{http} that uses TLS for
+encryption.
 
 \todo{talk about https}
 
