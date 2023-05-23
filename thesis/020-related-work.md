@@ -13,38 +13,36 @@ This chapter provides background information on the challenges of Internet commu
 
 \todo{Is there a more fitting section name than "The Internet"}
 
-The Internet is a global network that consists of numerous interconnected computer networks spanning billions of host devices owned by diverse parties from around the world. Various communication protocols and the physical infrastructure that connects the individual networks are key components of the Internet. Packet switching
+The Internet is a global network that consists of numerous interconnected computer networks spanning billions of host devices owned by diverse parties from around the world. Key components of the Internet include the Internet Protocol Suite (known as TCP/IP) and the physical infrastructure that connects the individual networks. Sections of the infrastructure are deployed and managed by different tiers of \glspl{isp} who also maintain links between each other. The Internet utilizes packet switching - a technique that divides data transmissions into smaller packets that are handled individually by the network infrastructure. The individual packets can be retransmitted in case of errors and may be routed via different paths to their destination before being reassembled there to restore the original data. Packet switching allows for more efficient use of the underlying hardware and better reliability.
 
 
-The Internet Protocol Suite utilizes packet-switching, meaning that application layer communications are broken into smaller discrete packets that are handled individually by the network infrastructure. A protocol typically has a \gls{pdu} that describes the information that  c has a header  i  A packet contains multiple nested a header and a payload, where the header identifies the protocol that  that  which protocol which protocols are involvedhierarchically organized information from the protocols.   identifies  information that identifies its from the various communication protocols with each protocol having its own \gls{pdu}. 
-The various protocols have their own \glspl{pdu} that have a header that ide 
-
-Different tiers of \glspl{isp} deploy and manage sections of the infrastructure and also maintain links to each other. 
-
-Communication protocols are usually organized into abstraction layers based on the scope of their functionality. There are several reference models 
-
- that communicate using the protocols of the Internet Protocol Suite, commonly known as TCP/IP.
- n
-
-The Internet is a global multi-tiered computer network of billions of host devices that communicate using the protocols of the Internet Protocol Suite (TCP/IP). \glspl{isp} are responsible for managing different sections of the infrastructure that connects the \glspl{lan} of various end-users including households and enterprises. The \gls{www} or simply the Web is a collection of interconnected documents, e.g. HTML Web Pages, available on the Internet and is typically accessed via a user-agent software such as a ***Web Browser***. The term "the Web" is sometimes used interchangeably with the Internet, but the Internet supports other services as well, e.g. file transfer (FTP), email (SMTP), instant messaging, remote access (SSH) and others.
+<!-- The Internet Protocol Suite utilizes packet-switching, meaning that application layer communications are broken into smaller discrete packets that are handled individually by the network infrastructure. A protocol typically has a \gls{pdu} that describes the information that  c has a header  i  A packet contains multiple nested a header and a payload, where the header identifies the protocol that  that  which protocol which protocols are involvedhierarchically organized information from the protocols.   identifies  information that identifies its from the various communication protocols with each protocol having its own \gls{pdu}. 
+The various protocols have their own \glspl{pdu} that have a header that ide  -->
 
 
+Communication protocols are usually organized into abstraction layers based on the scope of their functionality. Several reference models define different layering schemes. The OSI model recognizes 7 layers, while TCP/IP itself combines some of the layers and recognizes 4. Figure \ref{osi-map-tcp} shows how the two models relate to each other and describes the responsibilities of the various layers. Throughout this thesis, we will refer to the 7 layer numbers of the OSI model as they are more widely used in the literature.
 
-Conceptual frameworks like the \gls{osi} model are useful for understanding the objectives and functions of communication protocols. Figure \ref{osi-map-tcp} describes the responsibilities of the 7 layers of the OSI model and how they relate to the TCP/IP model used by the Internet Protocol Suite. The newer TCP/IP model only recognizes 4 layers as it merges the OSI Session (L5) and Presentation (L6) layers into the Application layer (L7), as well as the Physical layer (L1) into the Data link layer (L2). While the TCP/IP model is a more accurate representation of the Internet, the 7-layer numbers of the OSI model are still widely used in the literature. 
+Services that are implemented as Application layer (L7) protocols on top of TCP/IP include the \gls{www}, file transfer (FTP), email (SMTP), instant messaging, remote access (SSH) and others. The Web is a collection of interconnected documents that use Web technologies such as HTML and JavaScript. It is typically accessed via a user-agent software such as a ***Web Browser***.
+
+<!-- 
+The \gls{www} or simply the Web is a collection of interconnected documents, e.g. HTML Web Pages, available on the Internet and is typically accessed via a user-agent software such as a ***Web Browser***. The term "the Web" is sometimes used interchangeably with the Internet, but the Internet supports other services as well, e.g. file transfer (FTP), email (SMTP), instant messaging, remote access (SSH) and others. -->
+
+
+<!-- Conceptual frameworks like the \gls{osi} model are useful for understanding the objectives and functions of communication protocols. Figure \ref{osi-map-tcp} describes the responsibilities of the 7 layers of the OSI model and how they relate to the TCP/IP model used by the Internet Protocol Suite. The newer TCP/IP model only recognizes 4 layers as it merges the OSI Session (L5) and Presentation (L6) layers into the Application layer (L7), as well as the Physical layer (L1) into the Data link layer (L2). While the TCP/IP model is a more accurate representation of the Internet, the 7-layer numbers of the OSI model are still widely used in the literature.  -->
+
+<!-- 
+The Internet is a global multi-tiered computer network of billions of host devices that communicate using the protocols of the Internet Protocol Suite (TCP/IP). \glspl{isp} are responsible for managing different sections of the infrastructure that connects the \glspl{lan} of various end-users including households and enterprises.  -->
+
+
 
 
 ![OSI model mapping of the Internet Protocol Suite\label{osi-map-tcp}](../figures/osi-map-tcp.drawio.pdf){width=100% }
 
+The following sub-sections will briefly cover the main protocols of the Internet Protocol Suite, the issues with multiparty communications and some of the low-level mitigation techniques.
+
 \todo{add a paragraph that describes what the rest of the section will contain}
 <!-- IP -->
 ### Communication Protocols
-
-- packet switching
-- data is split into small packets
-- each packet is handled individually
-- each packet contains data from the protocols
-- 
-
 
 The **\acrfull{ip}** [@ipv4RFC] is a Network layer (L3) protocol of the Internet Protocol Suite that is responsible for transferring datagrams between devices across the boundaries of their \glspl{lan} by possibly routing them via multiple intermediate devices (e.g. routers). A datagram is a self-contained unit of data, typically associated with connectionless protocols that provide no guarantees for delivery or ordering (e.g. IP, UDP). \todo{packet is the physical envelope of the IP datagram}. IP datagrams have a header that contains fields such as the **IP addresses** of its source and destination, and a \todo{show a diagram of the internet with multiple local networks} payload that encapsulates the data from the Transport Layer (L4) protocols. A ***router*** is a device that is part of multiple networks and relays datagrams between them based on a routing table that maps IP address ranges to networks.
 
@@ -84,6 +82,11 @@ An efficient NAT traversal approach that works with some types of NATs is to use
 In mobile networks like 4G and 5G, the \gls{isp} often utilizes a **\gls{cgnat}** as part of their infrastructure, while all devices under the user's control, including the router, only have local IP addresses. STUN techniques would fail to discover a direct path between two parties behind separate CGNATs or other unpredictable NAT algorithms. The only remaining possibility is to relay the traffic via a publicly reachable third-party host using a protocol similar to TURN. \todo{only ~65000 ports per IP address means that CGNATs that provide more than 65000 connections from client devices require more than one public IP address}
 
 \todo{hairpinning - Hairpinning, also known as NAT loopback or NAT reflection, is a technique used by NAT devices to allow hosts on a private network to access a public server using its public IP address. Without hairpinning, the NAT device would not recognize the connection as a loopback connection and would route it to the public network, causing the connection to fail. With hairpinning, the NAT device recognizes that the connection is a loopback connection and redirects the traffic back to the same NAT device, which then forwards the traffic to the correct host on the private network. This can be useful in scenarios where a private network is hosting a public-facing server that is also accessed by internal users on the same network using its public IP address.}
+
+
+***\gls{ice}*** is a protocol that describes a standard way for peers to gather candidate addresses for direct communication via STUN and TURN and then exchange them via a signaling server. The protocol continuously checks which candidates provide the best connection and adjusts them.
+
+WebRTC is a framework that implements the ICE functionality in Web browsers and provides it to Web applications via a browser API. Web applications are normally limited to HTTP connections and cannot use the raw TCP connections that are needed for STUN and TURN.
 
 ### Communication Security
 
