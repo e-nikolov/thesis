@@ -4,7 +4,7 @@
 \section{Introduction}
 # Introduction
 
-What is Secure Multi-Party Computation?
+What is Secure Multiparty Computation?
 
 - Joint computation of a function
 - Secret inputs

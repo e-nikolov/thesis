@@ -8,40 +8,74 @@
 \hypertarget{introduction}{%
 \chapter{Introduction}\label{introduction}}
 
-\hypertarget{related-work}{%
-\chapter{Related work}\label{related-work}}
+\hypertarget{background-information}{%
+\chapter{Background information}\label{background-information}}
 
-This chapter explores prior work related to multi-party connectivity
-over The Internet and their suitability for joint MPyC computations.
-Section \ref{sec:internet} provides an overview of the protocols of the
-modern Internet, the challenges for Peer-to-Peer communications and some
-of the approaches to overcome them. Section \ref{sec:overlays} discusses
-higher-level network overlays that use different combinations of the
-lower-level protocols from the previous section.
+\todo{include a section on MPC?}
+
+This chapter provides background information on the challenges of
+Internet communications between multiple independent parties. It also
+presents a systematic overview of the available solutions, using the
+\gls{osi} reference model as a conceptual framework. Section
+\ref{sec:internet} briefly explores the fundamentals of the Internet,
+its protocols, the limitations for peer-to-peer protocols, and some of
+the approaches to overcome them. Section \ref{sec:overlays} discusses
+higher-level overlay networks that build on top of the lower-level
+protocols from section \ref{sec:internet}.
 
 \hypertarget{sec:internet}{%
-\section{The Internet}\label{sec:internet}}
+\section{Internet Fundamentals}\label{sec:internet}}
+
+\todo{Is there a more fitting section name than "The Internet"}
+
+The Internet is a global network that consists of numerous
+interconnected computer networks spanning billions of host devices owned
+by diverse parties from around the world. Various communication
+protocols and the physical infrastructure that connects the individual
+networks are key components of the Internet. Packet switching
+
+The Internet Protocol Suite utilizes packet-switching, meaning that
+application layer communications are broken into smaller discrete
+packets that are handled individually by the network infrastructure. A
+protocol typically has a \gls{pdu} that describes the information that c
+has a header i A packet contains multiple nested a header and a payload,
+where the header identifies the protocol that that which protocol which
+protocols are involvedhierarchically organized information from the
+protocols. identifies information that identifies its from the various
+communication protocols with each protocol having its own \gls{pdu}. The
+various protocols have their own \glspl{pdu} that have a header that ide
+
+Different tiers of \glspl{isp} deploy and manage sections of the
+infrastructure and also maintain links to each other.
+
+Communication protocols are usually organized into abstraction layers
+based on the scope of their functionality. There are several reference
+models
+
+that communicate using the protocols of the Internet Protocol Suite,
+commonly known as TCP/IP. n
 
 The Internet is a global multi-tiered computer network of billions of
 host devices that communicate using the protocols of the Internet
 Protocol Suite (TCP/IP). \glspl{isp} are responsible for managing
 different sections of the infrastructure that connects the \glspl{lan}
 of various end-users including households and enterprises. The \gls{www}
-or simply The Web is a collection of interconnected documents, e.g.~HTML
-Web Pages, available on The Internet and is typically accessed via a
+or simply the Web is a collection of interconnected documents, e.g.~HTML
+Web Pages, available on the Internet and is typically accessed via a
 user-agent software such as a \textbf{\emph{Web Browser}}. The term
-``The Web'' is sometimes used interchangeably with The Internet, but The
+``the Web'' is sometimes used interchangeably with the Internet, but the
 Internet supports other services as well, e.g.~file transfer (FTP),
 email (SMTP), instant messaging, remote access (SSH) and others.
-Conceptual frameworks like the OSI model are useful for understanding
-the objectives and functions of communication protocols. Figure
-\ref{osi-map-tcp} describes the responsibilities of the 7 layers of the
-OSI model and how they relate to the TCP/IP model used by the Internet
-Protocol Suite. The newer TCP/IP model only recognizes 4 layers as it
-merges the OSI Session (L5) and Presentation (L6) layers into the
+
+Conceptual frameworks like the \gls{osi} model are useful for
+understanding the objectives and functions of communication protocols.
+Figure \ref{osi-map-tcp} describes the responsibilities of the 7 layers
+of the OSI model and how they relate to the TCP/IP model used by the
+Internet Protocol Suite. The newer TCP/IP model only recognizes 4 layers
+as it merges the OSI Session (L5) and Presentation (L6) layers into the
 Application layer (L7), as well as the Physical layer (L1) into the Data
 link layer (L2). While the TCP/IP model is a more accurate
-representation of The Internet, the 7-layer numbers of the OSI model are
+representation of the Internet, the 7-layer numbers of the OSI model are
 still widely used in the literature.
 
 \begin{figure}
@@ -51,19 +85,24 @@ still widely used in the literature.
 Suite\label{osi-map-tcp}}
 \end{figure}
 
-\hypertarget{communications}{%
-\subsection{Communications}\label{communications}}
+\todo{add a paragraph that describes what the rest of the section will contain}
 
-The Internet Protocol Suite utilizes packet-switching, meaning that
-application layer communications are broken into smaller discrete
-packets that are handled individually by the network protocols. A
-protocol typically has a \gls{pdu} that describes the information that c
-has a header i A packet contains multiple nested a header and a payload,
-where the header identifies the protocol that that which protocol which
-protocols are involvedhierarchically organized information from the
-protocols. identifies information that identifies its from the various
-communication protocols with each protocol having its own \gls{pdu}. The
-various protocols have their own \glspl{pdu} that have a header that ide
+\hypertarget{communication-protocols}{%
+\subsection{Communication Protocols}\label{communication-protocols}}
+
+\begin{itemize}
+\tightlist
+\item
+  packet switching
+\item
+  data is split into small packets
+\item
+  each packet is handled individually
+\item
+  each packet contains data from the protocols
+\item
+\end{itemize}
+
 The \textbf{\acrfull{ip}} \autocite{ipv4RFC} is a Network layer (L3)
 protocol of the Internet Protocol Suite that is responsible for
 transferring datagrams between devices across the boundaries of their
@@ -78,10 +117,7 @@ its source and destination, and a
 payload that encapsulates the data from the Transport Layer (L4)
 protocols. A \textbf{\emph{router}} is a device that is part of multiple
 networks and relays datagrams between them based on a routing table that
-maps IP address ranges to networks. \textbf{\emph{\gls{cidr}}} is a
-common notation for describing IP address ranges,
-e.g.~\texttt{192.168.0.1/16}, where the number after the slash describes
-the bit-length of the fixed prefix for a subnet.
+maps IP address ranges to networks.
 
 \textbf{\acrfull{udp}} \autocite{udpRFC} and \textbf{\acrfull{tcp}}
 \autocite{tcpRFC} are Transport layer (L4) protocols that
@@ -96,7 +132,7 @@ detection and correction, packet ordering, flow control, acknowledgments
 and retransmissions in case packets are lost during transmission.
 
 \textbf{\emph{\gls{http}}} is an Application layer (L7) protocol that
-enables interactions on The Web between web servers and clients
+enables interactions on the Web between web servers and clients
 (e.g.~browsers). Traditionally, HTTP offers stateless request/response ,
 but can also . Similar to other L7 protocols, it uses
 \textbf{\emph{\glspl{url}}} for locating resources using the format
@@ -114,9 +150,8 @@ TCP and provides several features such as:
   Headers - used to provide additional information about a request or
   response, e.g.~Content-Type, Authorization, Cache-Control
 \item
-  Status codes - used to indicate whether or not the result of a
-  request, e.g.~if it was successful (200), or if the resource is
-  missing (404)
+  Status codes - used to indicate the result of a request, e.g.~if it
+  was successful (200), or if the resource is missing (404)
 \item
   Cookies - used to include stateful information about the user kept at
   the client-side
@@ -129,21 +164,23 @@ The \textbf{\emph{\gls{dns}}} operates at the Application Layer (L7) and
 allows the conversion of human-readable domains to IP addresses,
 e.g.~\texttt{google.com} to \texttt{142.250.179.142}.
 
-\hypertarget{host-addressing}{%
-\subsection{Host Addressing}\label{host-addressing}}
+\hypertarget{host-addressing-challenges}{%
+\subsection{Host Addressing
+Challenges}\label{host-addressing-challenges}}
 
 The version of the Internet Protocol, that was originally deployed
 globally (IPv4), uses 32-bit numbers as IP addresses, allowing for
-around 4 billion unique addresses. Due to the popularity of The
+around 4 billion unique addresses. Due to the popularity of the
 Internet, there are many more devices than available IPv4 addresses,
 which has caused challenges. IPv6 is a newer version of the protocol
 that uses a larger 128-bit address space which is sufficient for
-assigning 100 addresses for each atom on Earth. Its adoption has been
-slow, as according to Google as of 2023 only around 37\% of the requests
-to their services use IPv6. Additionally, despite that IPv6 allows for
-all devices to be addressable on the Internet, for security reasons,
-most of them would use firewalls to block incoming remote traffic that
-is not associated with outgoing connections.
+assigning 100 addresses for each atom on Earth. However, its adoption
+has been slow, as according to Google\autocite{IPv6Google} as of 2023
+around 41\% of their users access their services over IPv6.
+Additionally, despite that IPv6 allows for all devices to be addressable
+on the Internet, for security reasons, most of them would use firewalls
+to block incoming remote traffic that is not associated with outgoing
+connections.
 
 A widespread solution to the addressing problem is \textbf{\gls{nat}}.
 It allows many devices without globally unique IP addresses to initiate
@@ -220,23 +257,26 @@ at Layer 7 that allows a client application to detect the presence of
 NAT gateways on the network path to a public STUN server, and identify
 their types and the public IP address that they map to externally. An
 application sends UDP datagrams to the STUN server and it responds with
-the source IP address and port specified inside them. The application
-can compare its own endpoint with the source endpoint observed by the
-STUN server and if the values differ, it can be inferred that they were
-rewritten by a NAT. Additional STUN servers are contacted to determine
-if the NAT maps IPs and ports in a predictable fashion. UDP hole
-punching is a related technique that, depending on the NAT types, can
-allow direct communication between two applications behind separate
+the source IP address and port specified inside the datagrams. The
+application can compare its own endpoint with the source endpoint
+observed by the STUN server and if the values differ, it can be inferred
+that they were rewritten by a NAT. Additional STUN servers are contacted
+to determine if the NAT maps IPs and ports in a predictable fashion. UDP
+hole punching is a related technique that, depending on the NAT types,
+can allow direct communication between two applications behind separate
 NATs. The applications must discover each other's externally mapped
-endpoints, perhaps via the STUN server. If the NATs use the same
-external port regardless of the remote destination, the two applications
-can simultaneously send UDP packets to each other's external endpoints.
-Their respective NATs will see the outgoing connection to the other peer
-- the ``punched hole'' - when the incoming traffic arrives from it and
-forward it correctly. NATs that map different ports per remote
-destination sometimes allocate port numbers predictably, which can be
-used by the peers to try to guess the port that will be opened by the
-opposing side's NAT.
+endpoints, perhaps via the STUN server. \todo{If, else?} If the NATs use
+the same external port regardless of the remote destination, the two
+applications can simultaneously send UDP packets to each other's
+external endpoints. Their respective NATs will see the outgoing
+connection to the other peer - the ``punched hole'' - when the incoming
+traffic arrives from it and forward it correctly. NATs that map
+different ports per remote destination sometimes allocate port numbers
+predictably, which can be used by the peers to try to guess the port
+that will be opened by the opposing side's NAT.
+
+\todo{Talk about traversal friendly NATs and unfriendly NATs}
+\todo{add a bullet list with the steps in the STUN process and relate them to the step numbers in the figure}
 
 \begin{figure}
 \centering
@@ -250,7 +290,7 @@ under the user's control, including the router, only have local IP
 addresses. STUN techniques would fail to discover a direct path between
 two parties behind separate CGNATs or other unpredictable NAT
 algorithms. The only remaining possibility is to relay the traffic via a
-publicly reachable third-party host.
+publicly reachable third-party host using a protocol similar to TURN.
 \todo{only ~65000 ports per IP address means that CGNATs that provide more than 65000 connections from client devices require more than one public IP address}
 
 \todo{hairpinning - Hairpinning, also known as NAT loopback or NAT reflection, is a technique used by NAT devices to allow hosts on a private network to access a public server using its public IP address. Without hairpinning, the NAT device would not recognize the connection as a loopback connection and would route it to the public network, causing the connection to fail. With hairpinning, the NAT device recognizes that the connection is a loopback connection and redirects the traffic back to the same NAT device, which then forwards the traffic to the correct host on the private network. This can be useful in scenarios where a private network is hosting a public-facing server that is also accessed by internal users on the same network using its public IP address.}
@@ -268,8 +308,8 @@ complex because it needs to support many possible use cases while
 remaining backward compatible. \todo{tls certificates}
 \todo{protects against man in the middle}
 \todo{an intruder can't see the encrypted traffic, but can see the IP addresses of the servers that are being contacted}
-The \textbf{Noise Protocol Framework} \autocite{noiseDocs} is a more
-\todo{noise is transport agnostic}
+The \textbf{Noise Protocol Framework} \autocite{noiseDocs}
+\todo{elaborate} is a more \todo{noise is transport agnostic}
 \todo{noise has limited cipher suites} recent effort that applies the
 ideas of TLS in a simplified way by serving as a blueprint for designing
 use-case specific protocols for establishing secure communication
@@ -317,16 +357,25 @@ operates at the Network Layer (L3).
 \end{itemize}
 
 \hypertarget{sec:overlays}{%
-\section{Network overlays}\label{sec:overlays}}
+\section{Overlay Networks}\label{sec:overlays}}
 
-Most Network Overlay solutions use a combination of the NAT traversal
-techniques mentioned previously. They can be placed in Layers 2, 3 or 7.
-Layer 2 overlays act as a virtual network switch, while Layer 3 overlays
-act as a virtual network router. Layer 7 overlays are implemented in
-user-space as libraries or applications that run on top of the network
-stack of the host operating system. Layer 2 and 3 overlays can either be
-implemented as kernel modules or as user-space applications that use a
-\textbf{TUN/TAP} driver to interface with the kernel.
+\begin{itemize}
+\tightlist
+\item
+  the low-level solutions from the previous section are complex to set
+  up.
+\item
+  overlay networks package some of those solutions for a specfic use
+  case Most overlay networks use a combination of the NAT traversal
+  techniques mentioned previously. They can be placed in Layers 2, 3 or
+  7. Layer 2 overlays act as a virtual network switch, while Layer 3
+  overlays act as a virtual network router. Layer 7 overlays are
+  implemented in user-space as libraries or applications that run on top
+  of the network stack of the host operating system. Layer 2 and 3
+  overlays can either be implemented as kernel modules or as user-space
+  applications that use a \textbf{TUN/TAP} \todo{explain the names}
+  driver to interface with the kernel.
+\end{itemize}
 
 Figure \ref{osi-map-overlays} shows an approximate OSI model mapping of
 several protocols and network overlay solutions from the point of view
@@ -387,6 +436,13 @@ between them.
 
 \todo{tls vs ipsec vpns. TLS vpns offer a virtual network interface at layer 3, but run over L7 TLS }
 
+\begin{itemize}
+\tightlist
+\item
+  The term ``VPN'' is somewhat overloaded as it can refer to different
+  related concepts.
+\end{itemize}
+
 \glspl{vpn} are implemented as Layer 2 or 3 network overlays. They are
 commonly used for securely connecting machines from different
 \glspl{lan}. They provide software emulation of a network interface
@@ -397,7 +453,7 @@ IPSec \autocite{ipSecDocs} and OpenVPN \autocite{openVPNDocs} use a
 centralized service that all (encrypted) client communications must pass
 through. This introduces a single point of failure and a potential
 bottleneck that might negatively impact the performance of the
-multi-party computations due to their \gls{p2p} nature.
+multiparty computations due to their \gls{p2p} nature.
 
 \hypertarget{wireguard}{%
 \subsection{WireGuard}\label{wireguard}}
@@ -459,6 +515,8 @@ be configured with a reachable endpoint for the other one. In the above
 example once \texttt{peer1} initiates communication with \texttt{peer2},
 \texttt{peer2} will learn the current endpoint of \texttt{peer1} and
 will be able to communicate back with it.
+
+\todo{ ***\gls{cidr}*** is a common notation for describing IP address ranges, e.g. `192.168.0.1/16`, where the number after the slash describes the bit-length of the fixed prefix for a subnet.}
 
 \hypertarget{mesh-vpns}{%
 \subsection{Mesh VPNs}\label{mesh-vpns}}

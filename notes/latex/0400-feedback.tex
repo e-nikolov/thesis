@@ -1,0 +1,183 @@
+\hypertarget{brainstorm-for-custom-solutions}{%
+\chapter{Brainstorm for custom
+solutions}\label{brainstorm-for-custom-solutions}}
+
+\begin{itemize}
+\tightlist
+\item
+  Initial state
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Here's my identity, here are the identities of the other parties
+  \end{itemize}
+\item
+  Desired result
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Executed MPC
+  \end{itemize}
+\end{itemize}
+
+With tailscale we'd need to
+
+\begin{itemize}
+\tightlist
+\item
+  Each party:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    registers a Tailscale account
+  \item
+    Downloads and installs tailscale on the machine they want to run the
+    MPC on
+  \item
+    Runs tailscale on their machine and logs into their account in order
+    to link it to their own Tailnet
+  \item
+    Shares their Tailscale machine with the Tailnets of each of the
+    other parties
+  \item
+    Downloads the demo they want to run
+  \item
+    Form the flags for running the chosen demo
+
+    \begin{itemize}
+    \tightlist
+    \item
+      add -P \$HOST:\$PORT for each party using their Tailscale
+      hostname/virtual IP
+    \end{itemize}
+  \item
+    Run the demo
+  \end{itemize}
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  we don't need to use the same route for the communication Party A →
+  Party B and Party B → Party A
+\item
+  we can have something like an asynchronous STUN
+\item
+  Party A sends a QR code/public URL/json object/DID document containing
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Party A's public key
+  \item
+    Party A's Mediator URL
+  \end{itemize}
+\item
+  The mediator is a STUN/TURN/DERP server
+
+  \begin{itemize}
+  \tightlist
+  \item
+    other parties can either use it as a STUN server to find out how to
+    access the hole in party A's NAT punched by the mediator
+  \item
+    or use it as a relayer so that Party B can send encrypted packets to
+    party A via the mediator
+  \end{itemize}
+\item
+  Instead of a QR code, the information could be stored on a public
+  ledger and could be resolved via DIDs
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  There is a generic MPC wrapper program that deals with supporting
+  tasks like generating identities and pulling MPC demos
+\item
+  One party creates a ``lobby'' for an MPC session in their program and
+  get a session id/public URL/QR code that can be shared with the other
+  parties
+\item
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  Public Website is visited by everyone
+\item
+  They prove their identities using a SSI wallet or OIDC
+\item
+  They get a QR code that serves as an invitation
+
+  \begin{itemize}
+  \tightlist
+  \item
+    contains their STUN based endpoint and identity
+  \end{itemize}
+\item
+  Somehow everyone needs to scan each other's qr codes
+\end{itemize}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
+\begin{itemize}
+\tightlist
+\item
+  One party creates a ``lobby'' for an MPC session by visiting a public
+  website
+
+  \begin{itemize}
+  \tightlist
+  \item
+    They provide their identity via OIDC/SSI wallet
+  \end{itemize}
+\item
+  They get a public link/QR code that can be shared with the other
+  parties
+\item
+  The parties visit the URL and also provide their identities
+\item
+  The parties obtain the MPC program they want to run
+
+  \begin{itemize}
+  \tightlist
+  \item
+    MPC program distribution could be done separately via cloning the
+    github repo?
+  \item
+    They could choose a DEMO and download it from the website?
+  \item
+    There could also be a program running on the host machines that
+    deals with the source code distribution. Similar to downloading
+    custom maps for warcraft 3 or dota 2?
+  \item
+    They could specify the source code when creating the MPC session in
+    the website?
+  \item
+    If the demo is not symmetrical where different parties have
+    different roles and need to execute different programs, the roles
+    could be assigned by the host or the people could choose their
+    preferred role themselves?
+  \end{itemize}
+\item
+  The parties download a configuration file that contains information on
+  how to connect to the other parties
+\item
+  They run the demos with the downloaded config file
+\item
+  A temporary Wireguard mesh VPN is created between all parties
+\end{itemize}

@@ -1,10 +1,9 @@
-\hypertarget{notes__000-intro.md}{}
 \makeatletter
 \def\fps@figure{h}
 \makeatother
 
-\hypertarget{notes__000-intro.md__intro}{%
-\chapter{Intro}\label{notes__000-intro.md__intro}}
+\hypertarget{intro}{%
+\chapter{Intro}\label{intro}}
 
 \begin{itemize}
 \item
@@ -16,10 +15,8 @@
   in realistic scenarios
 \end{itemize}
 
-\hypertarget{notes__02000-related-work.md}{}
-\hypertarget{notes__02000-related-work.md__related-work}{%
-\chapter{Related
-work}\label{notes__02000-related-work.md__related-work}}
+\hypertarget{related-work}{%
+\chapter{Related work}\label{related-work}}
 
 \begin{itemize}
 \item
@@ -119,9 +116,8 @@ work}\label{notes__02000-related-work.md__related-work}}
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02010-osi-model.md}{}
-\hypertarget{notes__02010-osi-model.md__osi-model}{%
-\chapter{OSI Model}\label{notes__02010-osi-model.md__osi-model}}
+\hypertarget{osi-model}{%
+\chapter{OSI Model}\label{osi-model}}
 
 \begin{itemize}
 \tightlist
@@ -160,7 +156,7 @@ computer networks:
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4390}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2230}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2613}}@{}}
-\toprule\noalign{}
+\toprule()
 \begin{minipage}[b]{\linewidth}\raggedright
 OSI Layer
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -170,10 +166,8 @@ Protocols
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Network overlays
 \end{minipage} \\
-\midrule\noalign{}
+\midrule()
 \endhead
-\bottomrule\noalign{}
-\endlastfoot
 7. Application & High level protocols that user-facing services use &
 HTTP, HTTPS, DNS, FTP, SMTP, UPnP, NAT-PMP, PCP, SSH, STUN, TURN &
 WebRTC, OpenZiti, Teleport, ngrok, TOR, BitTorrent, IPFS, Ethereum,
@@ -194,6 +188,7 @@ connected via a physical layer, e.g.~on a LAN & MAC, L2TP & TAP driver,
 N2N, OpenVPN, Tinc \\
 \hline 1. Physical & Sending raw bits over a physical medium & RS232,
 Ethernet, WiFi, USB, Bluetooth & \\
+\bottomrule()
 \end{longtable}
 
 \newpage
@@ -205,7 +200,7 @@ Ethernet, WiFi, USB, Bluetooth & \\
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0960}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1280}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.3600}}@{}}
-\toprule\noalign{}
+\toprule()
 \begin{minipage}[b]{\linewidth}\raggedright
 Network overlay
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -219,10 +214,8 @@ NAT Traversal
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Implementation
 \end{minipage} \\
-\midrule\noalign{}
+\midrule()
 \endhead
-\bottomrule\noalign{}
-\endlastfoot
 IPSec & Yes & Layer 3 & No & & TUN driver \\
 \hline OpenVPN & Yes & Layer 2, 3 & No & & TUN or TAP driver \\
 \hline Tinc & Yes & Layer 2, 3 & Yes & STUN, TURN & TUN or TAP driver \\
@@ -242,6 +235,7 @@ DERP, UPnP & Uses Wireguard \\
 \hline IPFS & Yes & Layer 7 & Yes & ? & \\
 \hline Ethereum & Yes & Layer 7 & Yes & ? & \\
 \hline Freenet & Yes & Layer 7 & Yes & ? & \\
+\bottomrule()
 \end{longtable}
 
 \begin{itemize}
@@ -256,14 +250,11 @@ DERP, UPnP & Uses Wireguard \\
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02020-primitives.md}{}
-\hypertarget{notes__02020-primitives.md__primitives}{%
-\section{Primitives}\label{notes__02020-primitives.md__primitives}}
+\hypertarget{primitives}{%
+\section{Primitives}\label{primitives}}
 
-\hypertarget{notes__02021-internet-protocol.md}{}
-\hypertarget{notes__02021-internet-protocol.md__internet-protocol}{%
-\subsection{Internet
-Protocol}\label{notes__02021-internet-protocol.md__internet-protocol}}
+\hypertarget{internet-protocol}{%
+\subsection{Internet Protocol}\label{internet-protocol}}
 
 \begin{itemize}
 \item
@@ -283,17 +274,17 @@ Protocol}\label{notes__02021-internet-protocol.md__internet-protocol}}
   TLS
 \end{itemize}
 
-\hypertarget{notes__02021-internet-protocol.md__network-address-translation-nat-traversal}{%
+\hypertarget{network-address-translation-nat-traversal}{%
 \subsubsection{Network Address Translation (NAT)
-Traversal}\label{notes__02021-internet-protocol.md__network-address-translation-nat-traversal}}
+Traversal}\label{network-address-translation-nat-traversal}}
 
 \url{https://bford.info/pub/net/p2pnat/}
 
 \url{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}
 
-\hypertarget{notes__02021-internet-protocol.md__session-traversal-utilities-for-nat-stun}{%
+\hypertarget{session-traversal-utilities-for-nat-stun}{%
 \subsubsection{Session Traversal Utilities for NAT
-(STUN)}\label{notes__02021-internet-protocol.md__session-traversal-utilities-for-nat-stun}}
+(STUN)}\label{session-traversal-utilities-for-nat-stun}}
 
 \begin{itemize}
 \item
@@ -317,9 +308,9 @@ Traversal}\label{notes__02021-internet-protocol.md__network-address-translation-
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02021-internet-protocol.md__traversal-using-relays-around-nat-turn}{%
+\hypertarget{traversal-using-relays-around-nat-turn}{%
 \subsubsection{Traversal Using Relays around NAT
-(TURN)}\label{notes__02021-internet-protocol.md__traversal-using-relays-around-nat-turn}}
+(TURN)}\label{traversal-using-relays-around-nat-turn}}
 
 \begin{itemize}
 \item
@@ -335,9 +326,9 @@ Traversal}\label{notes__02021-internet-protocol.md__network-address-translation-
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02021-internet-protocol.md__universal-plug-and-play-upnp}{%
+\hypertarget{universal-plug-and-play-upnp}{%
 \subsubsection{Universal Plug and Play
-(UPnP)}\label{notes__02021-internet-protocol.md__universal-plug-and-play-upnp}}
+(UPnP)}\label{universal-plug-and-play-upnp}}
 
 \begin{itemize}
 \tightlist
@@ -370,9 +361,9 @@ Traversal}\label{notes__02021-internet-protocol.md__network-address-translation-
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02021-internet-protocol.md__interactive-connectivity-establishment-ice}{%
+\hypertarget{interactive-connectivity-establishment-ice}{%
 \subsubsection{Interactive Connectivity Establishment
-(ICE)}\label{notes__02021-internet-protocol.md__interactive-connectivity-establishment-ice}}
+(ICE)}\label{interactive-connectivity-establishment-ice}}
 
 \begin{itemize}
 \tightlist
@@ -380,9 +371,9 @@ Traversal}\label{notes__02021-internet-protocol.md__network-address-translation-
   Umbrella term covering STUN/TURN and other related techniques
 \end{itemize}
 
-\hypertarget{notes__02021-internet-protocol.md__designated-encrypted-relay-for-packets-derp}{%
+\hypertarget{designated-encrypted-relay-for-packets-derp}{%
 \subsubsection{Designated Encrypted Relay for Packets
-(DERP)}\label{notes__02021-internet-protocol.md__designated-encrypted-relay-for-packets-derp}}
+(DERP)}\label{designated-encrypted-relay-for-packets-derp}}
 
 \begin{itemize}
 \item
@@ -406,10 +397,8 @@ Traversal}\label{notes__02021-internet-protocol.md__network-address-translation-
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02022-noise.md}{}
-\hypertarget{notes__02022-noise.md__noise-protocol-framework}{%
-\subsection{Noise Protocol
-Framework}\label{notes__02022-noise.md__noise-protocol-framework}}
+\hypertarget{noise-protocol-framework}{%
+\subsection{Noise Protocol Framework}\label{noise-protocol-framework}}
 
 \begin{itemize}
 \tightlist
@@ -509,9 +498,8 @@ depends on factors such as the specific use case, the network
 architecture, and the desired level of security and efficiency.
 \end{description}
 
-\hypertarget{notes__02025-identity.md}{}
-\hypertarget{notes__02025-identity.md__identity}{%
-\subsection{Identity}\label{notes__02025-identity.md__identity}}
+\hypertarget{identity}{%
+\subsection{Identity}\label{identity}}
 
 \begin{itemize}
 \tightlist
@@ -522,10 +510,9 @@ architecture, and the desired level of security and efficiency.
   Self Sovereign Identity (SSI)
 \end{itemize}
 
-\hypertarget{notes__02040-basic-ip.md}{}
-\hypertarget{notes__02040-basic-ip.md__basic-internet-protocol-solution}{%
+\hypertarget{basic-internet-protocol-solution}{%
 \section{Basic Internet Protocol
-solution}\label{notes__02040-basic-ip.md__basic-internet-protocol-solution}}
+solution}\label{basic-internet-protocol-solution}}
 
 \begin{itemize}
 \tightlist
@@ -546,10 +533,9 @@ solution}\label{notes__02040-basic-ip.md__basic-internet-protocol-solution}}
   parties
 \end{itemize}
 
-\hypertarget{notes__02050-vpns.md}{}
-\hypertarget{notes__02050-vpns.md__virtual-private-networks-vpns}{%
+\hypertarget{virtual-private-networks-vpns}{%
 \section{Virtual Private Networks
-(VPNs)}\label{notes__02050-vpns.md__virtual-private-networks-vpns}}
+(VPNs)}\label{virtual-private-networks-vpns}}
 
 \begin{itemize}
 \item
@@ -601,9 +587,8 @@ encryption.'' -- n2n whitepaper
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02051-wireguard.md}{}
-\hypertarget{notes__02051-wireguard.md__wireguard}{%
-\section{Wireguard}\label{notes__02051-wireguard.md__wireguard}}
+\hypertarget{wireguard}{%
+\section{Wireguard}\label{wireguard}}
 
 \begin{itemize}
 \tightlist
@@ -614,8 +599,7 @@ encryption.'' -- n2n whitepaper
 \item
   Whitepaper - \url{https://www.wireguard.com/papers/wireguard.pdf}
 \item
-  Built with the \protect\hyperlink{notes__02022-noise.md}{Noise
-  Protocol Framework}d
+  Built with the \href{notes/02022-noise.md}{Noise Protocol Framework}d
 \item
   Added to Linux Kernel 5.6 in May 2020
 \item
@@ -731,17 +715,15 @@ encryption.'' -- n2n whitepaper
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02052-tailscale.md}{}
-\hypertarget{notes__02052-tailscale.md__tailscale}{%
-\section{Tailscale}\label{notes__02052-tailscale.md__tailscale}}
+\hypertarget{tailscale}{%
+\section{Tailscale}\label{tailscale}}
 
 \begin{itemize}
 \tightlist
 \item
   Mesh VPN
 \item
-  Built on top of
-  \protect\hyperlink{notes__02051-wireguard.md}{Wireguard}
+  Built on top of \href{notes/02051-wireguard.md}{Wireguard}
 \item
   Coordination service
 
@@ -751,7 +733,7 @@ encryption.'' -- n2n whitepaper
     Closed source
   \item
     Facilitates
-    \href{notes/0202-nat\#Session\%20Traversal\%20Utilities\%20for\%20NAT\%20(STUN)}{STUN}/\protect\hyperlink{notes__02021-internet-protocol.md__test}{TURN}
+    \href{notes/0202-nat\#Session\%20Traversal\%20Utilities\%20for\%20NAT\%20(STUN)}{STUN}/\href{notes/02021-internet-protocol.md\#test}{TURN}
     for peer discovery and NAT traversal
   \item
     Distributes wireguard public keys
@@ -804,9 +786,8 @@ encryption.'' -- n2n whitepaper
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02053-headscale.md}{}
-\hypertarget{notes__02053-headscale.md__headscale}{%
-\section{Headscale}\label{notes__02053-headscale.md__headscale}}
+\hypertarget{headscale}{%
+\section{Headscale}\label{headscale}}
 
 \begin{itemize}
 \tightlist
@@ -824,9 +805,8 @@ encryption.'' -- n2n whitepaper
   sessions.
 \end{itemize}
 
-\hypertarget{notes__02054-nebula.md}{}
-\hypertarget{notes__02054-nebula.md__nebula}{%
-\section{Nebula}\label{notes__02054-nebula.md__nebula}}
+\hypertarget{nebula}{%
+\section{Nebula}\label{nebula}}
 
 \begin{itemize}
 \tightlist
@@ -860,9 +840,8 @@ encryption.'' -- n2n whitepaper
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02055-zero-tier.md}{}
-\hypertarget{notes__02055-zero-tier.md__zerotier}{%
-\section{ZeroTier}\label{notes__02055-zero-tier.md__zerotier}}
+\hypertarget{zerotier}{%
+\section{ZeroTier}\label{zerotier}}
 
 \begin{itemize}
 \tightlist
@@ -875,9 +854,8 @@ encryption.'' -- n2n whitepaper
 \item
 \end{itemize}
 
-\hypertarget{notes__02056-n2n.md}{}
-\hypertarget{notes__02056-n2n.md__n2n}{%
-\section{N2N}\label{notes__02056-n2n.md__n2n}}
+\hypertarget{n2n}{%
+\section{N2N}\label{n2n}}
 
 \begin{itemize}
 \tightlist
@@ -922,9 +900,8 @@ encryption.'' -- n2n whitepaper
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02058-tinc.md}{}
-\hypertarget{notes__02058-tinc.md__tinc}{%
-\section{Tinc}\label{notes__02058-tinc.md__tinc}}
+\hypertarget{tinc}{%
+\section{Tinc}\label{tinc}}
 
 \begin{itemize}
 \tightlist
@@ -950,9 +927,8 @@ encryption.'' -- n2n whitepaper
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02059-netbird.md}{}
-\hypertarget{notes__02059-netbird.md__netbird}{%
-\section{Netbird}\label{notes__02059-netbird.md__netbird}}
+\hypertarget{netbird}{%
+\section{Netbird}\label{netbird}}
 
 \begin{itemize}
 \tightlist
@@ -978,9 +954,8 @@ encryption.'' -- n2n whitepaper
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02090-didcomm.md}{}
-\hypertarget{notes__02090-didcomm.md__didcomm-v2}{%
-\section{DIDComm v2}\label{notes__02090-didcomm.md__didcomm-v2}}
+\hypertarget{didcomm-v2}{%
+\section{DIDComm v2}\label{didcomm-v2}}
 
 \begin{itemize}
 \tightlist
@@ -1010,9 +985,8 @@ encryption.'' -- n2n whitepaper
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02100-ngrok.md}{}
-\hypertarget{notes__02100-ngrok.md__ngrok}{%
-\section{ngrok}\label{notes__02100-ngrok.md__ngrok}}
+\hypertarget{ngrok}{%
+\section{ngrok}\label{ngrok}}
 
 \begin{itemize}
 \tightlist
@@ -1025,14 +999,11 @@ encryption.'' -- n2n whitepaper
 \item
 \end{itemize}
 
-\hypertarget{notes__02110-ethereum.md}{}
-\hypertarget{notes__02110-ethereum.md__ethereums-p2p-protocol}{%
-\section{Ethereum's P2P
-Protocol}\label{notes__02110-ethereum.md__ethereums-p2p-protocol}}
+\hypertarget{ethereums-p2p-protocol}{%
+\section{Ethereum's P2P Protocol}\label{ethereums-p2p-protocol}}
 
-\hypertarget{notes__02120-ipfs.md}{}
-\hypertarget{notes__02120-ipfs.md__ipfs}{%
-\section{IPFS}\label{notes__02120-ipfs.md__ipfs}}
+\hypertarget{ipfs}{%
+\section{IPFS}\label{ipfs}}
 
 \begin{itemize}
 \tightlist
@@ -1043,9 +1014,8 @@ Protocol}\label{notes__02110-ethereum.md__ethereums-p2p-protocol}}
 \item
 \end{itemize}
 
-\hypertarget{notes__02130-tor.md}{}
-\hypertarget{notes__02130-tor.md__tor}{%
-\section{TOR}\label{notes__02130-tor.md__tor}}
+\hypertarget{tor}{%
+\section{TOR}\label{tor}}
 
 \begin{itemize}
 \tightlist
@@ -1059,9 +1029,8 @@ Protocol}\label{notes__02110-ethereum.md__ethereums-p2p-protocol}}
   addresses of the parties
 \end{itemize}
 
-\hypertarget{notes__02140-freenet.md}{}
-\hypertarget{notes__02140-freenet.md__freenet}{%
-\section{Freenet}\label{notes__02140-freenet.md__freenet}}
+\hypertarget{freenet}{%
+\section{Freenet}\label{freenet}}
 
 \begin{itemize}
 \tightlist
@@ -1096,9 +1065,8 @@ Protocol}\label{notes__02110-ethereum.md__ethereums-p2p-protocol}}
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02150-teleport.md}{}
-\hypertarget{notes__02150-teleport.md__teleport}{%
-\section{Teleport}\label{notes__02150-teleport.md__teleport}}
+\hypertarget{teleport}{%
+\section{Teleport}\label{teleport}}
 
 \begin{itemize}
 \tightlist
@@ -1107,9 +1075,8 @@ Protocol}\label{notes__02110-ethereum.md__ethereums-p2p-protocol}}
 \item
 \end{itemize}
 
-\hypertarget{notes__02160-bittorrent.md}{}
-\hypertarget{notes__02160-bittorrent.md__bittorrent}{%
-\section{BitTorrent}\label{notes__02160-bittorrent.md__bittorrent}}
+\hypertarget{bittorrent}{%
+\section{BitTorrent}\label{bittorrent}}
 
 \begin{itemize}
 \tightlist
@@ -1117,9 +1084,8 @@ Protocol}\label{notes__02110-ethereum.md__ethereums-p2p-protocol}}
   No concept of identity based communication or peer discovery
 \end{itemize}
 
-\hypertarget{notes__02170-webrtc.md}{}
-\hypertarget{notes__02170-webrtc.md__webrtc}{%
-\section{WebRTC}\label{notes__02170-webrtc.md__webrtc}}
+\hypertarget{webrtc}{%
+\section{WebRTC}\label{webrtc}}
 
 \begin{itemize}
 \tightlist
@@ -1138,8 +1104,7 @@ Protocol}\label{notes__02110-ethereum.md__ethereums-p2p-protocol}}
   Spec -
   \href{https://www.w3.org/TR/webrtc/\#persistent-information-exposed-by-webrtc}{https://www.w3.org/TR/webrtc/}
 \item
-  Uses \protect\hyperlink{notes__02021-internet-protocol.md}{nat}
-  STUN/TURN/ICE
+  Uses \href{notes/02021-internet-protocol.md}{nat} STUN/TURN/ICE
 \item
   Data is encrypted
 \item
@@ -1230,9 +1195,8 @@ Protocol}\label{notes__02110-ethereum.md__ethereums-p2p-protocol}}
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__02180-openziti.md}{}
-\hypertarget{notes__02180-openziti.md__openziti}{%
-\section{OpenZiti}\label{notes__02180-openziti.md__openziti}}
+\hypertarget{openziti}{%
+\section{OpenZiti}\label{openziti}}
 
 \begin{itemize}
 \tightlist
@@ -1251,13 +1215,11 @@ Protocol}\label{notes__02110-ethereum.md__ethereums-p2p-protocol}}
   overlay network by intercepting their traffic
 \end{itemize}
 
-\hypertarget{notes__03000-implementations.md}{}
-\hypertarget{notes__03000-implementations.md__implementation-notes}{%
-\chapter{Implementation
-notes}\label{notes__03000-implementations.md__implementation-notes}}
+\hypertarget{implementation-notes}{%
+\chapter{Implementation notes}\label{implementation-notes}}
 
-\hypertarget{notes__03000-implementations.md__headscale}{%
-\section{Headscale}\label{notes__03000-implementations.md__headscale}}
+\hypertarget{headscale}{%
+\section{Headscale}\label{headscale}}
 
 \begin{itemize}
 \tightlist
@@ -1281,10 +1243,9 @@ notes}\label{notes__03000-implementations.md__implementation-notes}}
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__03500-brainstorm.md}{}
-\hypertarget{notes__03500-brainstorm.md__brainstorm-for-custom-solutions}{%
+\hypertarget{brainstorm-for-custom-solutions}{%
 \chapter{Brainstorm for custom
-solutions}\label{notes__03500-brainstorm.md__brainstorm-for-custom-solutions}}
+solutions}\label{brainstorm-for-custom-solutions}}
 
 \begin{itemize}
 \tightlist
@@ -1466,9 +1427,8 @@ With tailscale we'd need to
   A temporary Wireguard mesh VPN is created between all parties
 \end{itemize}
 
-\hypertarget{notes__04000-writing.md}{}
-\hypertarget{notes__04000-writing.md__writing}{%
-\chapter{Writing}\label{notes__04000-writing.md__writing}}
+\hypertarget{writing}{%
+\chapter{Writing}\label{writing}}
 
 \begin{itemize}
 \item
@@ -1482,13 +1442,12 @@ With tailscale we'd need to
   will introduce, we will explore, we will detail
 \end{itemize}
 
-\hypertarget{notes__05000-prep.md}{}
-\hypertarget{notes__05000-prep.md__preparation-phase-report-outline}{%
+\hypertarget{preparation-phase-report-outline}{%
 \chapter{Preparation phase report
-outline}\label{notes__05000-prep.md__preparation-phase-report-outline}}
+outline}\label{preparation-phase-report-outline}}
 
-\hypertarget{notes__05000-prep.md__introduction}{%
-\section{Introduction}\label{notes__05000-prep.md__introduction}}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 \begin{itemize}
 \item
@@ -1536,9 +1495,8 @@ outline}\label{notes__05000-prep.md__preparation-phase-report-outline}}
   Scope
 \end{itemize}
 
-\hypertarget{notes__05000-prep.md__technical-survey}{%
-\section{Technical
-survey}\label{notes__05000-prep.md__technical-survey}}
+\hypertarget{technical-survey}{%
+\section{Technical survey}\label{technical-survey}}
 
 \begin{itemize}
 \tightlist
@@ -1550,9 +1508,8 @@ survey}\label{notes__05000-prep.md__technical-survey}}
   Summary
 \end{itemize}
 
-\hypertarget{notes__05000-prep.md__implementation-details}{%
-\section{Implementation
-details}\label{notes__05000-prep.md__implementation-details}}
+\hypertarget{implementation-details}{%
+\section{Implementation details}\label{implementation-details}}
 
 \begin{itemize}
 \tightlist
@@ -1568,15 +1525,14 @@ details}\label{notes__05000-prep.md__implementation-details}}
   Runtime execution
 \end{itemize}
 
-\hypertarget{notes__05000-prep.md__conclusions}{%
-\section{Conclusions}\label{notes__05000-prep.md__conclusions}}
+\hypertarget{conclusions}{%
+\section{Conclusions}\label{conclusions}}
 
-\hypertarget{notes__06000-thesis.md}{}
-\hypertarget{notes__06000-thesis.md__thesis-outline}{%
-\chapter{Thesis outline}\label{notes__06000-thesis.md__thesis-outline}}
+\hypertarget{thesis-outline}{%
+\chapter{Thesis outline}\label{thesis-outline}}
 
-\hypertarget{notes__06000-thesis.md__introduction}{%
-\section{Introduction}\label{notes__06000-thesis.md__introduction}}
+\hypertarget{introduction}{%
+\section{Introduction}\label{introduction}}
 
 \begin{itemize}
 \tightlist
@@ -1596,9 +1552,9 @@ details}\label{notes__05000-prep.md__implementation-details}}
   Scope
 \end{itemize}
 
-\hypertarget{notes__06000-thesis.md__related-work-literature-review}{%
+\hypertarget{related-work-literature-review}{%
 \section{Related work / Literature
-review}\label{notes__06000-thesis.md__related-work-literature-review}}
+review}\label{related-work-literature-review}}
 
 \begin{itemize}
 \tightlist
@@ -1607,9 +1563,8 @@ review}\label{notes__06000-thesis.md__related-work-literature-review}}
   some capacity?
 \end{itemize}
 
-\hypertarget{notes__06000-thesis.md__methodology-approach}{%
-\section{Methodology /
-Approach}\label{notes__06000-thesis.md__methodology-approach}}
+\hypertarget{methodology-approach}{%
+\section{Methodology / Approach}\label{methodology-approach}}
 
 \begin{itemize}
 \tightlist
@@ -1648,9 +1603,9 @@ Approach}\label{notes__06000-thesis.md__methodology-approach}}
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__06000-thesis.md__solutionimplementation-evaluations}{%
+\hypertarget{solutionimplementation-evaluations}{%
 \section{Solution/Implementation
-Evaluations}\label{notes__06000-thesis.md__solutionimplementation-evaluations}}
+Evaluations}\label{solutionimplementation-evaluations}}
 
 \begin{itemize}
 \tightlist
@@ -1672,8 +1627,8 @@ Evaluations}\label{notes__06000-thesis.md__solutionimplementation-evaluations}}
   \end{itemize}
 \end{itemize}
 
-\hypertarget{notes__06000-thesis.md__conclusions}{%
-\section{Conclusions}\label{notes__06000-thesis.md__conclusions}}
+\hypertarget{conclusions}{%
+\section{Conclusions}\label{conclusions}}
 
 \begin{itemize}
 \tightlist
@@ -1683,9 +1638,8 @@ Evaluations}\label{notes__06000-thesis.md__solutionimplementation-evaluations}}
   Which solution is preferred under which circumstances?
 \end{itemize}
 
-\hypertarget{notes__07000-general.md}{}
-\hypertarget{notes__07000-general.md__notes}{%
-\chapter{Notes}\label{notes__07000-general.md__notes}}
+\hypertarget{notes}{%
+\chapter{Notes}\label{notes}}
 
 \begin{itemize}
 \tightlist
@@ -1693,9 +1647,85 @@ Evaluations}\label{notes__06000-thesis.md__solutionimplementation-evaluations}}
   Where should I mention that we focus on Peer to Peer protocols?
 \end{itemize}
 
-\hypertarget{notes__09999-latex.md}{}
-\hypertarget{notes__09999-latex.md__latex}{%
-\chapter{Latex}\label{notes__09999-latex.md__latex}}
+\hypertarget{feedback}{%
+\chapter{Feedback}\label{feedback}}
+
+\begin{itemize}
+\tightlist
+\item
+  Glossary
+
+  \begin{itemize}
+  \tightlist
+  \item
+    fit on one page
+
+    \begin{itemize}
+    \tightlist
+    \item
+      maybe do it in 2 columns
+    \end{itemize}
+  \item
+    remove the empty lines between some entries
+
+    \begin{itemize}
+    \tightlist
+    \item
+      looks like the entries are grouped by starting letter with extra
+      space between the groups
+    \end{itemize}
+  \item
+    remove the period at the end of each entry?
+  \item
+  \end{itemize}
+\item
+  Multiparty vs Multi-party?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ``Assorted algorithms and protocols for secure computation'' - uses
+    both forms
+  \item
+    Wikipedia - multi-party
+  \item
+    MPyC - multiparty
+  \item
+    https://www.wordsense.eu/multi-party/
+  \end{itemize}
+\item
+  The Internet/the internet - looks like most sources I found use ``the
+  Internet'' and ``the Web''
+\item
+  Usage of the term ``Encapsulates'' - seems to be very standard in all
+  resources I found
+\item
+\item
+  Where should I mention that we focus on Peer to Peer protocols?
+\end{itemize}
+
+\hypertarget{questions}{%
+\chapter{Questions}\label{questions}}
+
+\begin{itemize}
+\tightlist
+\item
+  When should I use long vs short sentences?
+
+  \begin{itemize}
+  \tightlist
+  \item
+    At the start of a section when introducing something new, should I
+    use shorter sentences?
+  \item
+    When describing something in more detail, should I use longer
+    sentences?
+  \item
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{latex}{%
+\chapter{Latex}\label{latex}}
 
 \begin{itemize}
 \tightlist
@@ -1708,7 +1738,7 @@ Evaluations}\label{notes__06000-thesis.md__solutionimplementation-evaluations}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2222}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2222}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2917}}@{}}
-\toprule\noalign{}
+\toprule()
 \begin{minipage}[b]{\linewidth}\raggedright
 Fruit
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -1716,10 +1746,8 @@ Price
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Advantages
 \end{minipage} \\
-\midrule\noalign{}
+\midrule()
 \endhead
-\bottomrule\noalign{}
-\endlastfoot
 Bananas & \$1.34 & \begin{minipage}[t]{\linewidth}\raggedright
 \begin{itemize}
 \tightlist
@@ -1738,23 +1766,23 @@ Oranges & \$2.10 & \begin{minipage}[t]{\linewidth}\raggedright
   tasty
 \end{itemize}
 \end{minipage} \\
+\bottomrule()
 \end{longtable}
 
 \begin{longtable}[]{@{}rllc@{}}
 \caption{Demonstration of simple table syntax.}\tabularnewline
-\toprule\noalign{}
+\toprule()
 Right & Left & Default & Center \\
-\midrule\noalign{}
+\midrule()
 \endfirsthead
-\toprule\noalign{}
+\toprule()
 Right & Left & Default & Center \\
-\midrule\noalign{}
+\midrule()
 \endhead
-\bottomrule\noalign{}
-\endlastfoot
 12 & 12 & 12 & 12 \\
 123 & 123 & 123 & 123 \\
 1 & 1 & 1 & 1 \\
+\bottomrule()
 \end{longtable}
 
 \begin{quote}
