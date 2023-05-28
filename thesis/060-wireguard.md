@@ -1,11 +1,11 @@
-# WireGuard based solution
+## WireGuard based solution
 
 This solution creates an overlay network by manually configuring WireGuard on each machine.
 
-## Implementation details
+### Implementation details
 
-## Performance analysis
+### Performance analysis
 
-## Security analysis
+### Security analysis
 
-## Usability analysis
+### Usability analysis

@@ -1,4 +1,5 @@
-# Testing methodology
+# Proof of Concepts and Evaluation
+## Testing methodology
 
 In the following chapters, we will design and implement several solutions for ad hoc MPC sessions based on a subset of the previously discussed related works:
 
@@ -12,7 +13,7 @@ In the following chapters, we will design and implement several solutions for ad
 
 Additionally, we will analyze and compare them in terms of performance, security and usability
 
-## Measuring performance
+### Measuring performance
 
 During the preparation phase of the project, we developed the \gls{e3} framework which simplifies and automates the process of deploying machines in different geographical regions, connecting them via an overlay network and executing multiparty computations between them, where each machine represents a different party.
 
@@ -44,7 +45,7 @@ Furthermore, the demos will be executed in several networking scenarios:
 3. 1-10 parties evenly distributed across two distant regions
 4. 1-10 parties distributed across multiple distant regions
 
-## Security
+### Security
 
 We will analyze aspects such as
 
@@ -53,7 +54,7 @@ We will analyze aspects such as
 - traffic encryption
 - identity strength
 
-## Usability
+### Usability
 
 For each solution, we will describe the steps that the parties need to perform to execute a joint multiparty computation. Those steps will be analyzed in terms of:
 

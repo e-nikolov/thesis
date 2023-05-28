@@ -6,6 +6,12 @@
 - Spec - [https://www.w3.org/TR/webrtc/](https://www.w3.org/TR/webrtc/#persistent-information-exposed-by-webrtc)
 - Uses [nat](02021-internet-protocol.md) STUN/TURN/ICE
 - Data is encrypted
+- Privacy and Security Considerations
+  - https://www.w3.org/TR/webrtc/#privacy-and-security-considerations
+  - Revealing IP addresses
+    - https://www.w3.org/TR/webrtc/#revealing-ip-addresses
+    - For direct communication, the peer's IP addresses are shared
+    - Possible to only use TURN servers
 - Identity
     - Session Description Protocol (SDP)
     - peer certificates are generated and announced over SDP

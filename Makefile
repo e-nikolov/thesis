@@ -12,7 +12,8 @@ PANDOC=$(pandock) \
 		--highlight-style shared/my.theme \
 		--top-level-division chapter \
 		--number-sections \
-		--file-scope
+		--file-scope \
+		--top-level-division=part
 		
 #		\
 # .PRECIOUS: prep/latex/%.tex %.tex %/latex %/latex/

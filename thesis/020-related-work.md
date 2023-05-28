@@ -1,4 +1,5 @@
-# Background information
+
+# The State of Multiparty Communications over the Internet
 
 \todo{include a section on MPC?}
 
@@ -13,7 +14,9 @@ This chapter provides background information on the challenges of Internet commu
 
 \todo{Is there a more fitting section name than "The Internet"}
 
-The Internet is a global network that consists of numerous interconnected computer networks spanning billions of host devices owned by diverse parties from around the world. Key components of the Internet include the Internet Protocol Suite (known as TCP/IP) and the physical infrastructure that connects the individual networks. Sections of the infrastructure are deployed and managed by different tiers of \glspl{isp} who also maintain links between each other. The Internet utilizes packet switching - a technique that divides data transmissions into smaller packets that are handled individually by the network infrastructure. The individual packets can be retransmitted in case of errors and may be routed via different paths to their destination before being reassembled there to restore the original data. Packet switching allows for more efficient use of the underlying hardware and better reliability.
+The Internet is a global network that consists of numerous interconnected computer networks spanning billions of host devices owned by diverse parties from around the world. Key components of the Internet include the Internet Protocol Suite (known as TCP/IP) and the physical infrastructure that connects the individual networks. Sections of the infrastructure are deployed and managed by different tiers of \glspl{isp} who also maintain links between each other. To ensure efficient utilization of the hardware, the Internet relies on packet-switching techniques that divide the data traffic into smaller individually processed packets.
+
+<!-- that are handled individually by the network infrastructure. The individual packets can be retransmitted in case of errors and may be routed via different paths to their destination before being reassembled there to restore the original data. Packet switching allows for more efficient use of the underlying hardware and better reliability. -->
 
 
 <!-- The Internet Protocol Suite utilizes packet-switching, meaning that application layer communications are broken into smaller discrete packets that are handled individually by the network infrastructure. A protocol typically has a \gls{pdu} that describes the information that  c has a header  i  A packet contains multiple nested a header and a payload, where the header identifies the protocol that  that  which protocol which protocols are involvedhierarchically organized information from the protocols.   identifies  information that identifies its from the various communication protocols with each protocol having its own \gls{pdu}. 
@@ -22,7 +25,7 @@ The various protocols have their own \glspl{pdu} that have a header that ide  --
 
 Communication protocols are usually organized into abstraction layers based on the scope of their functionality. Several reference models define different layering schemes. The OSI model recognizes 7 layers, while TCP/IP itself combines some of the layers and recognizes 4. Figure \ref{osi-map-tcp} shows how the two models relate to each other and describes the responsibilities of the various layers. Throughout this thesis, we will refer to the 7 layer numbers of the OSI model as they are more widely used in the literature.
 
-Services that are implemented as Application layer (L7) protocols on top of TCP/IP include the \gls{www}, file transfer (FTP), email (SMTP), instant messaging, remote access (SSH) and others. The Web is a collection of interconnected documents that use Web technologies such as HTML and JavaScript. It is typically accessed via a user-agent software such as a ***Web Browser***.
+Services that are implemented as Application layer (L7) protocols on top of TCP/IP include the \gls{www}, file transfer (FTP), email (SMTP), instant messaging, remote access (SSH[@sshRFC]) and others. The Web is a collection of interconnected documents that use Web technologies such as HTML and JavaScript. It is typically accessed via a user-agent software such as a ***Web Browser***.
 
 <!-- 
 The \gls{www} or simply the Web is a collection of interconnected documents, e.g. HTML Web Pages, available on the Internet and is typically accessed via a user-agent software such as a ***Web Browser***. The term "the Web" is sometimes used interchangeably with the Internet, but the Internet supports other services as well, e.g. file transfer (FTP), email (SMTP), instant messaging, remote access (SSH) and others. -->
@@ -46,54 +49,46 @@ The following sub-sections will briefly cover the main protocols of the Internet
 
 The **\acrfull{ip}** [@ipv4RFC] is a Network layer (L3) protocol of the Internet Protocol Suite that is responsible for transferring datagrams between devices across the boundaries of their \glspl{lan} by possibly routing them via multiple intermediate devices (e.g. routers). A datagram is a self-contained unit of data, typically associated with connectionless protocols that provide no guarantees for delivery or ordering (e.g. IP, UDP). \todo{packet is the physical envelope of the IP datagram}. IP datagrams have a header that contains fields such as the **IP addresses** of its source and destination, and a \todo{show a diagram of the internet with multiple local networks} payload that encapsulates the data from the Transport Layer (L4) protocols. A ***router*** is a device that is part of multiple networks and relays datagrams between them based on a routing table that maps IP address ranges to networks.
 
-**\acrfull{udp}** [@udpRFC] and **\acrfull{tcp}** [@tcpRFC] are Transport layer (L4) protocols that \todo{IP multiplexing via ports, TCP segments and segmentation, UDP no segmentation } employ 16-bit port numbers to enable multiple applications on the same host to establish their own communication channels while sharing an IP address. Both protocols UDP offers faster communication, but only provides best-effort delivery, while TCP is a reliable transport protocol with stronger delivery guarantees at the expense of higher network latency. TCP maintains stateful connections that handle error detection and correction, packet ordering, flow control, acknowledgments and retransmissions in case packets are lost during transmission.
+***\acrfull{udp}*** is a very thin Transport layer (L4) protocol that only provides port multiplexing and checksumming on top of IP. 
+ <!-- **\acrfull{udp}** [@udpRFC] and **\acrfull{tcp}** [@tcpRFC] are Transport layer (L4) protocols. -->
+- Port multiplexing - uses 16-bit numbers to allow multiple processes behind the same IP address to establish their own communication channels
+- Checksumming - used to detect errors in the datagram header and payload
+
+As with IP, UDP packets are referred to as datagrams because they are not delivered reliably and if such features are required, they must be implemented by the consumer of the protocol.
+
+***\acrfull{tcp}*** is another Transport layer (L4) protocol. Like UDP, it provides port multiplexing and checksumming, but it offers stronger delivery guarantees. Some of the features it offers are listed below:
+
+- Connection management - TCP establishes reliable connections between the communicating hosts and can gracefully terminate them when required
+- Segmentation - TCP splits variable-length data streams into segments that fit inside IP datagrams and transmits them individually
+- ordering - segments have sequence numbers to ensure that they are reassembled in the correct order at the receiving host
+- Error detection and correction - TCP retransmits a segment if its checksum fails
+
+Both TCP and UDP are useful in different scenarios. UDP is faster and is used for applications that can tolerate packet loss, e.g. video streaming, VoIP, or in cases where it is preferable for an application to implement its own reliable delivery. TCP has a higher overhead than UDP but its reliable delivery is a good default for most applications on the Internet.
+
+\todo{
+- QUIC - UDP-based protocol that provides reliable delivery, multiplexing, flow control, congestion control, and security
+
+
+}
+<!-- 
+\todo{IP multiplexing via ports, TCP segments and segmentation, UDP no segmentation } employ 16-bit port numbers to enable multiple processes on the same host to establish their own communication channels while sharing an IP address. UDP offers faster communication, but only provides best-effort delivery, while TCP is a reliable transport protocol with stronger delivery guarantees at the expense of higher network latency. TCP maintains stateful connections that handle error detection and correction, packet ordering, flow control, acknowledgments and retransmissions in case packets are lost during transmission. -->
 
 ***\gls{http}*** is an Application layer (L7) protocol that enables interactions on the Web between web servers and clients (e.g. browsers). Traditionally, HTTP offers stateless request/response , but can also . Similar to other L7 protocols, it uses ***\glspl{url}*** for locating resources using the format `scheme://host:port/path?query=value#fragment`, e.g. http://www.example.com:80/path/to/file.html. It is built on top of TCP and provides several features such as:
 
 - Request Methods - used by the client to specify the action to perform on the resource behind the given URL, e.g. GET, POST, PUT, DELETE, etc.
 - Headers - used to provide additional information about a request or response, e.g. Content-Type, Authorization, Cache-Control
 - Status codes - used to indicate the result of a request, e.g. if it was successful (200), or if the resource is missing (404)
-- Cookies - used to include stateful information about the user kept at the client-side
+- Cookies - used to include stateful information about the user kept on the client-side
 - Caching - used to specify that the result of a request can be cached for a certain time to avoid repeating the request's action.
 
 The ***\gls{dns}*** operates at the Application Layer (L7) and allows the conversion of human-readable domains to IP addresses, e.g. `google.com` to `142.250.179.142`.
 
-### Host Addressing Challenges
-
-The version of the Internet Protocol, that was originally deployed globally (IPv4), uses 32-bit numbers as IP addresses, allowing for around 4 billion unique addresses. Due to the popularity of the Internet, there are many more devices than available IPv4 addresses, which has caused challenges. IPv6 is a newer version of the protocol that uses a larger 128-bit address space which is sufficient for assigning 100 addresses for each atom on Earth. However, its adoption has been slow, as according to Google[@IPv6Google] as of 2023 around 41% of their users access their services over IPv6. Additionally, despite that IPv6 allows for all devices to be addressable on the Internet, for security reasons, most of them would use firewalls to block incoming remote traffic that is not associated with outgoing connections.
-
-A widespread solution to the addressing problem is **\gls{nat}**. It allows many devices without globally unique IP addresses to initiate connections to publicly addressable devices on the Internet via a limited number of gateways that must have globally unique IP addresses. A NAT gateway replaces the local source IP address of each outgoing IP datagram with its own public IP address before passing it on to the next link on the way to the destination while maintaining a mapping between the source and destination IPs in a translation table. The destination host can then address its responses back to the NAT gateway's public IP address, which in turn replaces its own IP from the incoming datagrams with the IP of the local device and forwards them to it. If the IP datagrams encapsulate TCP/UDP packets, the gateway additionally rewrites the source and destination ports, which means that NAT techniques can be placed somewhere between Layers 3 and 4 of the OSI model.
-
-The effect of NAT on connectivity is similar to an IPv6 firewall as they both allow devices on a local network to initiate bidirectional communication to remote devices with public IP addresses, but connections cannot be natively initiated by the remote devices. As Figure \ref{nat-intro} shows, it follows that when two devices are behind separate NATs, neither can contact the other first. **Client/Server** communication is less affected by this limitation because Servers are usually deployed to a public IP address that can be contacted by Clients with local IP addresses. **Peer-to-Peer** communication, however, is more challenging because the peers are often devices in separate residential networks behind different NATs. Several **NAT traversal** techniques try to solve this with different performance tradeoffs and success that varies depending on the NAT [@natBehaviorRFC] and its behavior when mapping ports and IP addresses. \todo{describe some of the nat behaviors, e.g. if the source IP address/port vary per destination are changed depending on the destination/port mapping algorithms, if it maps ports, IPs, whether the mapped IPs are different per destination and others.} 
-
-![Two parties behind separate NATs\label{nat-intro}](../figures/nat-intro.png){ height=25% }
-
-One approach based on the Client/Server model is to use a publicly addressable **relay** server that is contacted by the NATed devices and then forwards the Peer-to-Peer traffic to the intended recipient. Compared to direct communication, relaying results in a higher network latency due to the longer path that each packet must travel. Maintaining a relay server requires some technical expertise and may be costly depending on the expected throughput. Despite the drawbacks, relaying works under most networking scenarios and is therefore often used as a fallback in case all other approaches fail to find a direct path. Protocols such as **\acrfull{turn}** [@turnRFC] and **\acrfull{derp}** [@derpDocs] can be used to securely implement relaying.
-
-The NAT gateway in many residential networks is a Router device under the customer's control that has a statically or dynamically assigned public IP address. Most routers can be manually configured through their admin page to forward all traffic that arrives at a given port to a specific device on the local network. Remote applications can then initiate a connection to the local device if they know the IP address of the router and the forwarded port. The manual configuration, however, can be inconvenient and many users may be unaware of that setting because it is not necessary for the more straightforward Client/Server communications. Some routers also support programmatic configuration of port forwarding via a Layer 7 protocol like **\gls{upnp}** or its successors **\gls{nat-pmp}** and **\gls{pcp}**. However, these protocols are not always supported and are often disabled by the local network administrators due to security concerns related to bugs in their implementation, vulnerable IOT devices on the local network or malicious programs being able to expose local devices to the internet.
-
-An efficient NAT traversal approach that works with some types of NATs is to use **\gls{stun}** [@stunRFC] in combination with UDP hole punching (Figure \ref{nat-traversal}). STUN is a protocol operating at Layer 7 that allows a client application to detect the presence of NAT gateways on the network path to a public STUN server, and identify their types and the public IP address that they map to externally. An application sends UDP datagrams to the STUN server and it responds with the source IP address and port specified inside the datagrams. The application can compare its own endpoint with the source endpoint observed by the STUN server and if the values differ, it can be inferred that they were rewritten by a NAT. Additional STUN servers are contacted to determine if the NAT maps IPs and ports in a predictable fashion. UDP hole punching is a related technique that, depending on the NAT types, can allow direct communication between two applications behind separate NATs. The applications must discover each other's externally mapped endpoints, perhaps via the STUN server. \todo{If, else?} If the NATs use the same external port regardless of the remote destination, the two applications can simultaneously send UDP packets to each other's external endpoints. Their respective NATs will see the outgoing connection to the other peer - the "punched hole" - when the incoming traffic arrives from it and forward it correctly. NATs that map different ports per remote destination sometimes allocate port numbers predictably, which can be used by the peers to try to guess the port that will be opened by the opposing side's NAT.
-
-\todo{Talk about traversal friendly NATs and unfriendly NATs}
-\todo{add a bullet list with the steps in the STUN process and relate them to the step numbers in the figure}
-
-![NAT traversal via STUN\label{nat-traversal}](../figures/nat-traversal.png){ height=25% }
-
-In mobile networks like 4G and 5G, the \gls{isp} often utilizes a **\gls{cgnat}** as part of their infrastructure, while all devices under the user's control, including the router, only have local IP addresses. STUN techniques would fail to discover a direct path between two parties behind separate CGNATs or other unpredictable NAT algorithms. The only remaining possibility is to relay the traffic via a publicly reachable third-party host using a protocol similar to TURN. \todo{only ~65000 ports per IP address means that CGNATs that provide more than 65000 connections from client devices require more than one public IP address}
-
-\todo{hairpinning - Hairpinning, also known as NAT loopback or NAT reflection, is a technique used by NAT devices to allow hosts on a private network to access a public server using its public IP address. Without hairpinning, the NAT device would not recognize the connection as a loopback connection and would route it to the public network, causing the connection to fail. With hairpinning, the NAT device recognizes that the connection is a loopback connection and redirects the traffic back to the same NAT device, which then forwards the traffic to the correct host on the private network. This can be useful in scenarios where a private network is hosting a public-facing server that is also accessed by internal users on the same network using its public IP address.}
+### Secure Communication Protocols
 
 
-***\gls{ice}*** is a protocol that describes a standard way for peers to gather candidate addresses for direct communication via STUN and TURN and then exchange them via a signaling server. The protocol continuously checks which candidates provide the best connection and adjusts them.
+**\acrfull{tls}** [@tlsRFC] and its precursor \gls{ssl} provide secure communications to Application Layer (L7) protocols. TLS must be implemented on top of a reliable transport protocol like TCP; \gls{dtls} is a related protocol that works with connectionless protocols like UDP. TLS does not strictly fit in any single OSI layer but it is usually placed somewhere between the Transport Layer (L4) and the Presentation Layer (L6). It is rather complex because it needs to support many possible use cases while remaining backward compatible.  \todo{tls certificates} \todo{protects against man in the middle} \todo{an intruder can't see the encrypted traffic, but can see the IP addresses of the servers that are being contacted} The **Noise Protocol Framework** [@noiseDocs] \todo{elaborate} is a more \todo{noise is transport agnostic} \todo{noise has limited cipher suites} recent effort that applies the ideas of TLS in a simplified way by serving as a blueprint for designing use-case specific protocols for establishing secure communication channels based on \gls{ecdh} handshake patterns. It powers the end-to-end encryption in messaging applications such as WhatsApp and Signal, and \gls{vpn} software such as WireGuard and Nebula.
 
-WebRTC is a framework that implements the ICE functionality in Web browsers and provides it to Web applications via a browser API. Web applications are normally limited to HTTP connections and cannot use the raw TCP connections that are needed for STUN and TURN.
-
-### Communication Security
-
-
-**\acrfull{tls}** and its precursor \gls{ssl} provide secure communications to Application Layer (L7) protocols.  to  on top of a reliable transport protocol like TCP; \gls{dtls} is a related protocol that works with connectionless protocols like UDP. TLS does not strictly fit in any single OSI layer but it is usually placed somewhere between the Transport Layer (L4) and the Presentation Layer (L6). It is rather complex because it needs to support many possible use cases while remaining backward compatible.  \todo{tls certificates} \todo{protects against man in the middle} \todo{an intruder can't see the encrypted traffic, but can see the IP addresses of the servers that are being contacted} The **Noise Protocol Framework** [@noiseDocs] \todo{elaborate} is a more \todo{noise is transport agnostic} \todo{noise has limited cipher suites} recent effort that applies the ideas of TLS in a simplified way by serving as a blueprint for designing use-case specific protocols for establishing secure communication channels based on \gls{ecdh} handshake patterns. It powers the end-to-end encryption in messaging applications such as WhatsApp and Signal, and \gls{vpn} software such as WireGuard and Nebula.
-
-***HTTPS*** is an extension to \gls{http} that uses TLS for encryption.
+***HTTPS*** [@httpsRFC] is a variant of \gls{http} that provides encryption by working on top of TLS-secured TCP connections.
 
 \todo{talk about https}
 
@@ -114,11 +109,57 @@ WebRTC is a framework that implements the ICE functionality in Web browsers and 
   - Initially was built into IPv6, separate from IPv4
 
 
+### Multiparty Communication Challenges and Mitigations
+
+The version of the Internet Protocol, that was originally deployed globally (IPv4), uses 32-bit numbers as IP addresses, allowing for around 4 billion unique addresses. Due to the popularity of the Internet, there are many more devices than available IPv4 addresses, which has caused challenges. IPv6 is a newer version of the protocol that uses a larger 128-bit address space which is sufficient for assigning 100 addresses for each atom on Earth. However, its adoption has been slow, as according to Google[@IPv6Google] as of 2023 around 41% of their users access their services over IPv6. Additionally, despite that IPv6 allows for all devices to be addressable on the Internet, for security reasons, most of them would use firewalls to block incoming remote traffic that is not associated with outgoing connections.
+
+A widespread solution to the addressing problem is **\gls{nat}**. It allows many devices without globally unique IP addresses to initiate connections to publicly addressable devices on the Internet via a limited number of gateways that must have globally unique IP addresses. A NAT gateway replaces the local source IP address of each outgoing IP datagram with its own public IP address before passing it on to the next link on the way to the destination while maintaining a mapping between the source and destination IPs in a translation table. The destination host can then address its responses back to the NAT gateway's public IP address, which in turn replaces its own IP from the incoming datagrams with the IP of the local device and forwards them to it. If the IP datagrams encapsulate TCP/UDP packets, the gateway additionally rewrites the source and destination ports, which means that NAT techniques can be placed somewhere between Layers 3 and 4 of the OSI model.
+
+The effect of NAT on connectivity is similar to an IPv6 firewall as they both allow devices on a local network to initiate bidirectional communication to remote devices with public IP addresses, but connections cannot be natively initiated by the remote devices. As Figure \ref{nat-intro} shows, it follows that when two devices are behind separate NATs, neither can contact the other first. **Client/Server** communication is less affected by this limitation because Servers are usually deployed to a public IP address that can be contacted by Clients with local IP addresses. **Peer-to-Peer** communication, however, is more challenging because the peers are often devices in separate residential networks behind different NATs. Several **NAT traversal** techniques try to solve this with different performance tradeoffs and success that varies depending on the NAT [@natBehaviorRFC] and its behavior when mapping ports and IP addresses. \todo{describe some of the nat behaviors, e.g. if the source IP address/port vary per destination are changed depending on the destination/port mapping algorithms, if it maps ports, IPs, whether the mapped IPs are different per destination and others.} 
+
+![Two parties behind separate NATs\label{nat-intro}](../figures/nat-intro.png){ height=25% }
+
+One approach based on the Client/Server model is to use a publicly addressable **relay** server that is contacted by the NATed devices and then forwards the Peer-to-Peer traffic to the intended recipient. Compared to direct communication, relaying results in a higher network latency due to the longer path that each packet must travel. Maintaining a relay server requires some technical expertise and may be costly depending on the expected throughput. Despite the drawbacks, relaying works under most networking scenarios and is therefore often used as a fallback in case all other approaches fail to find a direct path. Protocols such as **\acrfull{turn}** [@turnRFC] and **\acrfull{derp}** [@derpDocs] can be used to securely implement relaying.
+
+The NAT gateway in many residential networks is a Router device under the customer's control that has a statically or dynamically assigned public IP address. Most routers can be manually configured through their admin page to forward all traffic that arrives at a given port to a specific device on the local network. Remote applications can then initiate a connection to the local device if they know the IP address of the router and the forwarded port. The manual configuration, however, can be inconvenient and many users may be unaware of that setting because it is not necessary for the more straightforward Client/Server communications. Some routers also support programmatic configuration of port forwarding via a Layer 7 protocol like **\gls{upnp}** or its successors **\gls{nat-pmp}** and **\gls{pcp}**. However, these protocols are not always supported and are often disabled by the local network administrators due to security concerns related to bugs in their implementation, vulnerable IOT devices on the local network or malicious programs being able to expose local devices to the internet.
+
+\todo{connection reversal}
+
+An efficient NAT traversal approach that works with some types of NATs is to use **\gls{stun}** [@stunRFC] in combination with UDP hole punching (Figure \ref{nat-traversal}). STUN is a protocol operating at Layer 7 that allows a client application to detect the presence of NAT gateways on the network path to a public STUN server, and identify their types and the public IP address that they map to externally. An application sends UDP datagrams to the STUN server and it responds with the source IP address and port specified inside the datagrams. The application can compare its own endpoint with the source endpoint observed by the STUN server and if the values differ, it can be inferred that they were rewritten by a NAT. Additional STUN servers are contacted to determine if the NAT maps IPs and ports in a predictable fashion. UDP hole punching is a related technique that, depending on the NAT types, can allow direct communication between two applications behind separate NATs. The applications must discover each other's externally mapped endpoints, perhaps via the STUN server. \todo{If, else?} If the NATs use the same external port regardless of the remote destination, the two applications can simultaneously send UDP packets to each other's external endpoints. Their respective NATs will see the outgoing connection to the other peer - the "punched hole" - when the incoming traffic arrives from it and forward it correctly. NATs that map different ports per remote destination sometimes allocate port numbers predictably, which can be used by the peers to try to guess the port that will be opened by the opposing side's NAT.
+
+\todo{Talk about traversal friendly NATs and unfriendly NATs}
+\todo{add a bullet list with the steps in the STUN process and relate them to the step numbers in the figure}
+
+![NAT traversal via STUN\label{nat-traversal}](../figures/nat-traversal.png){ height=25% }
+
+In mobile networks like 4G and 5G, the \gls{isp} often utilizes a **\gls{cgnat}** as part of their infrastructure, while all devices under the user's control, including the router, only have local IP addresses. STUN techniques would fail to discover a direct path between two parties behind separate CGNATs or other unpredictable NAT algorithms. The only remaining possibility is to relay the traffic via a publicly reachable third-party host using a protocol similar to TURN. \todo{only ~65000 ports per IP address means that CGNATs that provide more than 65000 connections from client devices require more than one public IP address}
+
+\todo{hairpinning - Hairpinning, also known as NAT loopback or NAT reflection, is a technique used by NAT devices to allow hosts on a private network to access a public server using its public IP address. Without hairpinning, the NAT device would not recognize the connection as a loopback connection and would route it to the public network, causing the connection to fail. With hairpinning, the NAT device recognizes that the connection is a loopback connection and redirects the traffic back to the same NAT device, which then forwards the traffic to the correct host on the private network. This can be useful in scenarios where a private network is hosting a public-facing server that is also accessed by internal users on the same network using its public IP address.}
+
+
+***\gls{ice}*** is a protocol that describes a standard way for peers to gather candidate addresses for direct communication via STUN and TURN and then exchange them via a signaling server. The protocol continuously checks which candidates provide the best connection and adjusts them.
+
+***\gls{webrtc}*** is a framework that allows peer-to-peer communications between Web applications in Web browsers. Web applications are normally limited to HTTP connections and cannot use raw UDP or TCP connections. WebRTC implements the ICE functionality in Web browsers and provides an API to Web applications. 
+
+
+\todo{
+- ICE
+- encryption
+- Reveals IP addresses
+
+}
+
 
 ## Overlay Networks {#sec:overlays}
 
+An ***overlay network*** is a higher-order solution that provides additional networking functionality on top of an existing underlay network like the Internet. From the point of view of its consumers, an overlay network may appear at a lower OSI layer, despite being implemented using protocols from higher layers. For example \glspl{vpn} can provide virtual interfaces to the Operating System at the Link layer (L2) or Network layer (L3) while being implemented on top of a Transport layer (L4) protocol like \gls{udp} or a Presentation layer (L6) protocol like \gls{tls}. Virtual IP addresses can be assigned to the hosts and their applications that are already designed to work via TCP/IP can directly use the virtual network interfaces via the regular TCP/IP mechanisms provided by the operating system. 
+
+Other overlay networks are both implemented and used at the Application layer (L2). To communicate via such an overlay network, applications often have to implement specific functionality in their software by utilizing a framework or a library.
+
+
+
 - the low-level solutions from the previous section are complex to set up. 
-- overlay networks package some of those solutions for a specfic use case
+- overlay networks package some of those solutions for a specific use case
 Most overlay networks use a combination of the NAT traversal techniques mentioned previously. They can be placed in Layers 2, 3 or 7. Layer 2 overlays act as a virtual network switch, while Layer 3 overlays act as a virtual network router. Layer 7 overlays are implemented in user-space as libraries or applications that run on top of the network stack of the host operating system. Layer 2 and 3 overlays can either be implemented as kernel modules or as user-space applications that use a **TUN/TAP** \todo{explain the names} driver to interface with the kernel.
 
 Figure \ref{osi-map-overlays} shows an approximate OSI model mapping of several protocols and network overlay solutions from the point of view of the systems that use them and the arrows show dependency relations between them.
@@ -202,11 +243,10 @@ Tailscale employs a distributed relay network of \gls{derp} servers, while Nebul
 
 - WebRTC
   - Uses STUN/TURN
-  - d
 
 - OpenZiti
   - uses relays
-
+- libP2P
 - ngrok
 - TOR
 - BitTorrent

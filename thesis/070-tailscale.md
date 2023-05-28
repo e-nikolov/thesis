@@ -1,25 +1,25 @@
-# Tailscale based solution
+## Tailscale based solution
 
 Tailscale is a VPN solution that configures a mesh of direct Wireguard tunnels between the peers.  
 
-## Implementation details
+### Implementation details
 
 
-## Performance analysis
+### Performance analysis
 
-## Security analysis
+### Security analysis
 
-### Trust model
+#### Trust model
 
 There is a centralized service that deals with the key distribution, which needs to be trusted to provide the correct public keys for the correct parties
 
-### Identity
+#### Identity
 
 Identity is based on third party identity providers such as Microsoft and GitHub
 
 - Magic DNS
 - 
-## Usability analysis
+### Usability analysis
 
 With tailscale each party needs to
 
