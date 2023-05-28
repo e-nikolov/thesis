@@ -1,34 +1,33 @@
 <!-- % \lstlistoflistings -->
 <!-- % \listoftables -->
-<h1 data-number="1" id="introduction"><span
-class="header-section-number">1</span> Introduction</h1>
-<h1 data-number="2" id="background-information"><span
-class="header-section-number">2</span> Background information</h1>
+<h2 data-number="0.1" id="introduction"><span
+class="header-section-number">0.1</span> Introduction</h2>
+<h1 data-number="1"
+id="the-state-of-multiparty-communications-over-the-internet"><span
+class="header-section-number">1</span> The State of Multiparty
+Communications over the Internet</h1>
 <!-- This chapter aims to provide a brief overview of prior work related to multiparty connectivity over the Internet and their suitability for joint MPyC computations.  on the fundamentals of Internet communications, highlighting the challenges faced in communications between multiple independent parties. Additionally,  a systematic overview of the available solutions. -->
 <p>This chapter provides background information on the challenges of
 Internet communications between multiple independent parties. It also
 presents a systematic overview of the available solutions, using the
-reference model as a conceptual framework. Section 2.1 briefly explores
+reference model as a conceptual framework. Section 1.1 briefly explores
 the fundamentals of the Internet, its protocols, the limitations for
 peer-to-peer protocols, and some of the approaches to overcome them.
-Section 2.2 discusses higher-level overlay networks that build on top of
-the lower-level protocols from section 2.1.</p>
+Section 1.2 discusses higher-level overlay networks that build on top of
+the lower-level protocols from section 1.1.</p>
 <!-- The presented solutions will be mapped to the layers of the \gls{osi} model. While many protocols implement aspects of several layers and do not strictly fit inside the OSI model, it is still a useful tool for comparing them. -->
-<h2 data-number="2.1" id="sec:internet"><span
-class="header-section-number">2.1</span> Internet Fundamentals</h2>
+<h2 data-number="1.1" id="sec:internet"><span
+class="header-section-number">1.1</span> Internet Fundamentals</h2>
 <p>The Internet is a global network that consists of numerous
 interconnected computer networks spanning billions of host devices owned
 by diverse parties from around the world. Key components of the Internet
 include the Internet Protocol Suite (known as TCP/IP) and the physical
 infrastructure that connects the individual networks. Sections of the
 infrastructure are deployed and managed by different tiers of who also
-maintain links between each other. The Internet utilizes packet
-switching - a technique that divides data transmissions into smaller
-packets that are handled individually by the network infrastructure. The
-individual packets can be retransmitted in case of errors and may be
-routed via different paths to their destination before being reassembled
-there to restore the original data. Packet switching allows for more
-efficient use of the underlying hardware and better reliability.</p>
+maintain links between each other. To ensure efficient utilization of
+the hardware, the Internet relies on packet-switching techniques that
+divide the data traffic into smaller individually processed packets.</p>
+<!-- that are handled individually by the network infrastructure. The individual packets can be retransmitted in case of errors and may be routed via different paths to their destination before being reassembled there to restore the original data. Packet switching allows for more efficient use of the underlying hardware and better reliability. -->
 <!-- The Internet Protocol Suite utilizes packet-switching, meaning that application layer communications are broken into smaller discrete packets that are handled individually by the network infrastructure. A protocol typically has a \gls{pdu} that describes the information that  c has a header  i  A packet contains multiple nested a header and a payload, where the header identifies the protocol that  that  which protocol which protocols are involvedhierarchically organized information from the protocols.   identifies  information that identifies its from the various communication protocols with each protocol having its own \gls{pdu}. 
 The various protocols have their own \glspl{pdu} that have a header that ide  -->
 <p>Communication protocols are usually organized into abstraction layers
@@ -41,10 +40,11 @@ refer to the 7 layer numbers of the OSI model as they are more widely
 used in the literature.</p>
 <p>Services that are implemented as Application layer (L7) protocols on
 top of TCP/IP include the , file transfer (FTP), email (SMTP), instant
-messaging, remote access (SSH) and others. The Web is a collection of
-interconnected documents that use Web technologies such as HTML and
-JavaScript. It is typically accessed via a user-agent software such as a
-<strong><em>Web Browser</em></strong>.</p>
+messaging, remote access (SSH<span class="citation"
+data-cites="sshRFC">(Lonvick and Ylonen 2006)</span>) and others. The
+Web is a collection of interconnected documents that use Web
+technologies such as HTML and JavaScript. It is typically accessed via a
+user-agent software such as a <strong><em>Web Browser</em></strong>.</p>
 <!-- 
 The \gls{www} or simply the Web is a collection of interconnected documents, e.g. HTML Web Pages, available on the Internet and is typically accessed via a user-agent software such as a ***Web Browser***. The term "the Web" is sometimes used interchangeably with the Internet, but the Internet supports other services as well, e.g. file transfer (FTP), email (SMTP), instant messaging, remote access (SSH) and others. -->
 <!-- Conceptual frameworks like the \gls{osi} model are useful for understanding the objectives and functions of communication protocols. Figure \ref{osi-map-tcp} describes the responsibilities of the 7 layers of the OSI model and how they relate to the TCP/IP model used by the Internet Protocol Suite. The newer TCP/IP model only recognizes 4 layers as it merges the OSI Session (L5) and Presentation (L6) layers into the Application layer (L7), as well as the Physical layer (L1) into the Data link layer (L2). While the TCP/IP model is a more accurate representation of the Internet, the 7-layer numbers of the OSI model are still widely used in the literature.  -->
@@ -60,8 +60,8 @@ Protocol Suite</figcaption>
 the Internet Protocol Suite, the issues with multiparty communications
 and some of the low-level mitigation techniques.</p>
 <!-- IP -->
-<h3 data-number="2.1.1" id="communication-protocols"><span
-class="header-section-number">2.1.1</span> Communication Protocols</h3>
+<h3 data-number="1.1.1" id="communication-protocols"><span
+class="header-section-number">1.1.1</span> Communication Protocols</h3>
 <p>The <strong></strong> <span class="citation"
 data-cites="ipv4RFC">(<span>“Internet <span>Protocol</span>”</span>
 1981)</span> is a Network layer (L3) protocol of the Internet Protocol
@@ -76,19 +76,40 @@ encapsulates the data from the Transport Layer (L4) protocols. A
 <strong><em>router</em></strong> is a device that is part of multiple
 networks and relays datagrams between them based on a routing table that
 maps IP address ranges to networks.</p>
-<p><strong></strong> <span class="citation"
-data-cites="udpRFC">(<span>“User <span>Datagram Protocol</span>”</span>
-1980)</span> and <strong></strong> <span class="citation"
-data-cites="tcpRFC">(Eddy 2022)</span> are Transport layer (L4)
-protocols that employ 16-bit port numbers to enable multiple
-applications on the same host to establish their own communication
-channels while sharing an IP address. Both protocols UDP offers faster
-communication, but only provides best-effort delivery, while TCP is a
-reliable transport protocol with stronger delivery guarantees at the
-expense of higher network latency. TCP maintains stateful connections
-that handle error detection and correction, packet ordering, flow
-control, acknowledgments and retransmissions in case packets are lost
-during transmission.</p>
+<p><strong><em></em></strong> is a very thin Transport layer (L4)
+protocol that only provides port multiplexing and checksumming on top of
+IP.
+<!-- **\acrfull{udp}** [@udpRFC] and **\acrfull{tcp}** [@tcpRFC] are Transport layer (L4) protocols. -->
+- Port multiplexing - uses 16-bit numbers to allow multiple processes
+behind the same IP address to establish their own communication channels
+- Checksumming - used to detect errors in the datagram header and
+payload</p>
+<p>As with IP, UDP packets are referred to as datagrams because they are
+not delivered reliably and if such features are required, they must be
+implemented by the consumer of the protocol.</p>
+<p><strong><em></em></strong> is another Transport layer (L4) protocol.
+Like UDP, it provides port multiplexing and checksumming, but it offers
+stronger delivery guarantees. Some of the features it offers are listed
+below:</p>
+<ul>
+<li>Connection management - TCP establishes reliable connections between
+the communicating hosts and can gracefully terminate them when
+required</li>
+<li>Segmentation - TCP splits variable-length data streams into segments
+that fit inside IP datagrams and transmits them individually</li>
+<li>ordering - segments have sequence numbers to ensure that they are
+reassembled in the correct order at the receiving host</li>
+<li>Error detection and correction - TCP retransmits a segment if its
+checksum fails</li>
+</ul>
+<p>Both TCP and UDP are useful in different scenarios. UDP is faster and
+is used for applications that can tolerate packet loss, e.g. video
+streaming, VoIP, or in cases where it is preferable for an application
+to implement its own reliable delivery. TCP has a higher overhead than
+UDP but its reliable delivery is a good default for most applications on
+the Internet.</p>
+<!-- 
+\todo{IP multiplexing via ports, TCP segments and segmentation, UDP no segmentation } employ 16-bit port numbers to enable multiple processes on the same host to establish their own communication channels while sharing an IP address. UDP offers faster communication, but only provides best-effort delivery, while TCP is a reliable transport protocol with stronger delivery guarantees at the expense of higher network latency. TCP maintains stateful connections that handle error detection and correction, packet ordering, flow control, acknowledgments and retransmissions in case packets are lost during transmission. -->
 <p><strong><em></em></strong> is an Application layer (L7) protocol that
 enables interactions on the Web between web servers and clients
 (e.g. browsers). Traditionally, HTTP offers stateless request/response ,
@@ -106,16 +127,56 @@ response, e.g. Content-Type, Authorization, Cache-Control</li>
 <li>Status codes - used to indicate the result of a request, e.g. if it
 was successful (200), or if the resource is missing (404)</li>
 <li>Cookies - used to include stateful information about the user kept
-at the client-side</li>
+on the client-side</li>
 <li>Caching - used to specify that the result of a request can be cached
 for a certain time to avoid repeating the request’s action.</li>
 </ul>
 <p>The <strong><em></em></strong> operates at the Application Layer (L7)
 and allows the conversion of human-readable domains to IP addresses,
 e.g. <code>google.com</code> to <code>142.250.179.142</code>.</p>
-<h3 data-number="2.1.2" id="host-addressing-challenges"><span
-class="header-section-number">2.1.2</span> Host Addressing
-Challenges</h3>
+<h3 data-number="1.1.2" id="secure-communication-protocols"><span
+class="header-section-number">1.1.2</span> Secure Communication
+Protocols</h3>
+<p><strong></strong> <span class="citation"
+data-cites="tlsRFC">(Rescorla 2018)</span> and its precursor provide
+secure communications to Application Layer (L7) protocols. TLS must be
+implemented on top of a reliable transport protocol like TCP; is a
+related protocol that works with connectionless protocols like UDP. TLS
+does not strictly fit in any single OSI layer but it is usually placed
+somewhere between the Transport Layer (L4) and the Presentation Layer
+(L6). It is rather complex because it needs to support many possible use
+cases while remaining backward compatible. The <strong>Noise Protocol
+Framework</strong> <span class="citation" data-cites="noiseDocs">(Perrin
+2018)</span> is a more recent effort that applies the ideas of TLS in a
+simplified way by serving as a blueprint for designing use-case specific
+protocols for establishing secure communication channels based on
+handshake patterns. It powers the end-to-end encryption in messaging
+applications such as WhatsApp and Signal, and software such as WireGuard
+and Nebula.</p>
+<p><strong><em>HTTPS</em></strong> <span class="citation"
+data-cites="httpsRFC">(Rescorla 2000)</span> is a variant of that
+provides encryption by working on top of TLS-secured TCP
+connections.</p>
+<p><strong></strong> is a protocol suite for encrypting the IP datagrams
+between two hosts. It was originally developed as part of IPv6 but can
+also be used with IPv4. IPSec is similar in purpose to TLS but operates
+at the Network Layer (L3).</p>
+<ul>
+<li><strong></strong>
+<ul>
+<li>Layer 3 protocol suite part of the Internet Protocol Suite</li>
+<li>used inside VPN software</li>
+<li>has implementations in both user and kernel space as well as
+hardware implementations</li>
+<li>rewrites and encrypts the IP headers and payloads</li>
+<li>virtual routing table</li>
+<li>Initially was built into IPv6, separate from IPv4</li>
+</ul></li>
+</ul>
+<h3 data-number="1.1.3"
+id="multiparty-communication-challenges-and-mitigations"><span
+class="header-section-number">1.1.3</span> Multiparty Communication
+Challenges and Mitigations</h3>
 <p>The version of the Internet Protocol, that was originally deployed
 globally (IPv4), uses 32-bit numbers as IP addresses, allowing for
 around 4 billion unique addresses. Due to the popularity of the
@@ -157,9 +218,8 @@ however, is more challenging because the peers are often devices in
 separate residential networks behind different NATs. Several <strong>NAT
 traversal</strong> techniques try to solve this with different
 performance tradeoffs and success that varies depending on the NAT <span
-class="citation"
-data-cites="natBehaviorRFC">(<strong>natBehaviorRFC?</strong>)</span>
-and its behavior when mapping ports and IP addresses. </p>
+class="citation" data-cites="natBehaviorRFC">(Jennings and Audet
+2007)</span> and its behavior when mapping ports and IP addresses. </p>
 <figure>
 <img src="thesis/../figures/nat-intro.png" style="height:25.0%"
 alt="Two parties behind separate NATs" />
@@ -198,7 +258,7 @@ implementation, vulnerable IOT devices on the local network or malicious
 programs being able to expose local devices to the internet.</p>
 <p>An efficient NAT traversal approach that works with some types of
 NATs is to use <strong></strong> <span class="citation"
-data-cites="stunRFC">(<strong>stunRFC?</strong>)</span> in combination
+data-cites="stunRFC">(Petit-Huguenin et al. 2020)</span> in combination
 with UDP hole punching (Figure ). STUN is a protocol operating at Layer
 7 that allows a client application to detect the presence of NAT
 gateways on the network path to a public STUN server, and identify their
@@ -239,50 +299,33 @@ way for peers to gather candidate addresses for direct communication via
 STUN and TURN and then exchange them via a signaling server. The
 protocol continuously checks which candidates provide the best
 connection and adjusts them.</p>
-<p>WebRTC is a framework that implements the ICE functionality in Web
-browsers and provides it to Web applications via a browser API. Web
-applications are normally limited to HTTP connections and cannot use the
-raw TCP connections that are needed for STUN and TURN.</p>
-<h3 data-number="2.1.3" id="communication-security"><span
-class="header-section-number">2.1.3</span> Communication Security</h3>
-<p><strong></strong> and its precursor provide secure communications to
-Application Layer (L7) protocols. to on top of a reliable transport
-protocol like TCP; is a related protocol that works with connectionless
-protocols like UDP. TLS does not strictly fit in any single OSI layer
-but it is usually placed somewhere between the Transport Layer (L4) and
-the Presentation Layer (L6). It is rather complex because it needs to
-support many possible use cases while remaining backward compatible. The
-<strong>Noise Protocol Framework</strong> <span class="citation"
-data-cites="noiseDocs">(Perrin 2018)</span> is a more recent effort that
-applies the ideas of TLS in a simplified way by serving as a blueprint
-for designing use-case specific protocols for establishing secure
-communication channels based on handshake patterns. It powers the
-end-to-end encryption in messaging applications such as WhatsApp and
-Signal, and software such as WireGuard and Nebula.</p>
-<p><strong><em>HTTPS</em></strong> is an extension to that uses TLS for
-encryption.</p>
-<p><strong></strong> is a protocol suite for encrypting the IP datagrams
-between two hosts. It was originally developed as part of IPv6 but can
-also be used with IPv4. IPSec is similar in purpose to TLS but operates
-at the Network Layer (L3).</p>
-<ul>
-<li><strong></strong>
-<ul>
-<li>Layer 3 protocol suite part of the Internet Protocol Suite</li>
-<li>used inside VPN software</li>
-<li>has implementations in both user and kernel space as well as
-hardware implementations</li>
-<li>rewrites and encrypts the IP headers and payloads</li>
-<li>virtual routing table</li>
-<li>Initially was built into IPv6, separate from IPv4</li>
-</ul></li>
-</ul>
-<h2 data-number="2.2" id="sec:overlays"><span
-class="header-section-number">2.2</span> Overlay Networks</h2>
+<p><strong><em></em></strong> is a framework that allows peer-to-peer
+communications between Web applications in Web browsers. Web
+applications are normally limited to HTTP connections and cannot use raw
+UDP or TCP connections. WebRTC implements the ICE functionality in Web
+browsers and provides an API to Web applications.</p>
+<h2 data-number="1.2" id="sec:overlays"><span
+class="header-section-number">1.2</span> Overlay Networks</h2>
+<p>An <strong><em>overlay network</em></strong> is a higher-order
+solution that provides additional networking functionality on top of an
+existing underlay network like the Internet. From the point of view of
+its consumers, an overlay network may appear at a lower OSI layer,
+despite being implemented using protocols from higher layers. For
+example can provide virtual interfaces to the Operating System at the
+Link layer (L2) or Network layer (L3) while being implemented on top of
+a Transport layer (L4) protocol like or a Presentation layer (L6)
+protocol like . Virtual IP addresses can be assigned to the hosts and
+their applications that are already designed to work via TCP/IP can
+directly use the virtual network interfaces via the regular TCP/IP
+mechanisms provided by the operating system.</p>
+<p>Other overlay networks are both implemented and used at the
+Application layer (L2). To communicate via such an overlay network,
+applications often have to implement specific functionality in their
+software by utilizing a framework or a library.</p>
 <ul>
 <li>the low-level solutions from the previous section are complex to set
 up.</li>
-<li>overlay networks package some of those solutions for a specfic use
+<li>overlay networks package some of those solutions for a specific use
 case Most overlay networks use a combination of the NAT traversal
 techniques mentioned previously. They can be placed in Layers 2, 3 or 7.
 Layer 2 overlays act as a virtual network switch, while Layer 3 overlays
@@ -301,8 +344,8 @@ style="height:90.0%" />
 <figcaption aria-hidden="true">OSI model mapping of various protocols
 </figcaption>
 </figure>
-<h3 data-number="2.2.1" id="tuntap-driver"><span
-class="header-section-number">2.2.1</span> TUN/TAP driver</h3>
+<h3 data-number="1.2.1" id="tuntap-driver"><span
+class="header-section-number">1.2.1</span> TUN/TAP driver</h3>
 <ul>
 <li>Layer 2 vs Layer 3 Networks
 <ul>
@@ -323,8 +366,8 @@ IP address range</li>
 </ul></li>
 </ul></li>
 </ul>
-<h3 data-number="2.2.2" id="traditional-vpns"><span
-class="header-section-number">2.2.2</span> Traditional VPNs</h3>
+<h3 data-number="1.2.2" id="traditional-vpns"><span
+class="header-section-number">1.2.2</span> Traditional VPNs</h3>
 <ul>
 <li>The term “VPN” is somewhat overloaded as it can refer to different
 related concepts.</li>
@@ -341,8 +384,8 @@ use a centralized service that all (encrypted) client communications
 must pass through. This introduces a single point of failure and a
 potential bottleneck that might negatively impact the performance of the
 multiparty computations due to their nature.</p>
-<h3 data-number="2.2.3" id="wireguard"><span
-class="header-section-number">2.2.3</span> WireGuard</h3>
+<h3 data-number="1.2.3" id="wireguard"><span
+class="header-section-number">1.2.3</span> WireGuard</h3>
 <p>WireGuard <span class="citation"
 data-cites="donenfeldWireGuardNextGeneration2017">(Donenfeld
 2017)</span> is a more recent protocol with a design informed by lessons
@@ -392,8 +435,8 @@ reachable endpoint for the other one. In the above example once
 <code>peer1</code> initiates communication with <code>peer2</code>,
 <code>peer2</code> will learn the current endpoint of <code>peer1</code>
 and will be able to communicate back with it.</p>
-<h3 data-number="2.2.4" id="mesh-vpns"><span
-class="header-section-number">2.2.4</span> Mesh VPNs</h3>
+<h3 data-number="1.2.4" id="mesh-vpns"><span
+class="header-section-number">1.2.4</span> Mesh VPNs</h3>
 <ul>
 <li>Tinc</li>
 <li>N2N</li>
@@ -435,20 +478,20 @@ publicly accessible coordination servers need to be deployed to
 facilitate the host discovery. Tailscale employs a distributed relay
 network of servers, while Nebula can be configured to route via one of
 the other peers in the VPN.</p>
-<h3 data-number="2.2.5" id="layer-7-overlays"><span
-class="header-section-number">2.2.5</span> Layer 7 overlays</h3>
-<h4 data-number="2.2.5.1" id="webrtc-is"><span
-class="header-section-number">2.2.5.1</span> WebRTC is</h4>
+<h3 data-number="1.2.5" id="layer-7-overlays"><span
+class="header-section-number">1.2.5</span> Layer 7 overlays</h3>
+<h4 data-number="1.2.5.1" id="webrtc-is"><span
+class="header-section-number">1.2.5.1</span> WebRTC is</h4>
 <ul>
 <li>WebRTC
 <ul>
 <li>Uses STUN/TURN</li>
-<li>d</li>
 </ul></li>
 <li>OpenZiti
 <ul>
 <li>uses relays</li>
 </ul></li>
+<li>libP2P</li>
 <li>ngrok</li>
 <li>TOR</li>
 <li>BitTorrent</li>
@@ -457,8 +500,11 @@ class="header-section-number">2.2.5.1</span> WebRTC is</h4>
 <li>Teleport</li>
 <li>Freenet</li>
 </ul>
-<h1 data-number="3" id="testing-methodology"><span
-class="header-section-number">3</span> Testing methodology</h1>
+<h1 data-number="2" id="proof-of-concepts-and-evaluation"><span
+class="header-section-number">2</span> Proof of Concepts and
+Evaluation</h1>
+<h2 data-number="2.1" id="testing-methodology"><span
+class="header-section-number">2.1</span> Testing methodology</h2>
 <p>In the following chapters, we will design and implement several
 solutions for ad hoc MPC sessions based on a subset of the previously
 discussed related works:</p>
@@ -474,8 +520,8 @@ visiting a web page</li>
 </ul>
 <p>Additionally, we will analyze and compare them in terms of
 performance, security and usability</p>
-<h2 data-number="3.1" id="measuring-performance"><span
-class="header-section-number">3.1</span> Measuring performance</h2>
+<h3 data-number="2.1.1" id="measuring-performance"><span
+class="header-section-number">2.1.1</span> Measuring performance</h3>
 <p>During the preparation phase of the project, we developed the
 framework which simplifies and automates the process of deploying
 machines in different geographical regions, connecting them via an
@@ -519,8 +565,8 @@ scenarios:</p>
 <li>1-10 parties evenly distributed across two distant regions</li>
 <li>1-10 parties distributed across multiple distant regions</li>
 </ol>
-<h2 data-number="3.2" id="security"><span
-class="header-section-number">3.2</span> Security</h2>
+<h3 data-number="2.1.2" id="security"><span
+class="header-section-number">2.1.2</span> Security</h3>
 <p>We will analyze aspects such as</p>
 <ul>
 <li>key distribution</li>
@@ -529,8 +575,8 @@ the consequences if they are corrupted or breached</li>
 <li>traffic encryption</li>
 <li>identity strength</li>
 </ul>
-<h2 data-number="3.3" id="usability"><span
-class="header-section-number">3.3</span> Usability</h2>
+<h3 data-number="2.1.3" id="usability"><span
+class="header-section-number">2.1.3</span> Usability</h3>
 <p>For each solution, we will describe the steps that the parties need
 to perform to execute a joint multiparty computation. Those steps will
 be analyzed in terms of:</p>
@@ -550,57 +596,57 @@ MPC session once it is complete and clean up any left-over artifacts or
 resources so that the machine of each party is in its original
 state</li>
 </ul>
-<h1 data-number="4" id="internet-protocol-based-solution"><span
-class="header-section-number">4</span> Internet Protocol based
-solution</h1>
+<h2 data-number="2.2" id="internet-protocol-based-solution"><span
+class="header-section-number">2.2</span> Internet Protocol based
+solution</h2>
 <p>This solution focuses on directly using the internet protocol without
 involving an overlay network. Our goal is to analyze the implications of
 using only the functionalities that MPyC directly supports to serve as
 the reference for our later experiments.</p>
-<h2 data-number="4.1" id="implementation-details"><span
-class="header-section-number">4.1</span> Implementation details</h2>
+<h3 data-number="2.2.1" id="implementation-details"><span
+class="header-section-number">2.2.1</span> Implementation details</h3>
 <p>We will manually set up the multiparty computations via the public IP
 addresses of the machines and DNS.</p>
-<h2 data-number="4.2" id="performance-analysis"><span
-class="header-section-number">4.2</span> Performance analysis</h2>
-<h2 data-number="4.3" id="security-analysis"><span
-class="header-section-number">4.3</span> Security analysis</h2>
-<h2 data-number="4.4" id="usability-analysis"><span
-class="header-section-number">4.4</span> Usability analysis</h2>
-<h1 data-number="5" id="wireguard-based-solution"><span
-class="header-section-number">5</span> WireGuard based solution</h1>
+<h3 data-number="2.2.2" id="performance-analysis"><span
+class="header-section-number">2.2.2</span> Performance analysis</h3>
+<h3 data-number="2.2.3" id="security-analysis"><span
+class="header-section-number">2.2.3</span> Security analysis</h3>
+<h3 data-number="2.2.4" id="usability-analysis"><span
+class="header-section-number">2.2.4</span> Usability analysis</h3>
+<h2 data-number="2.3" id="wireguard-based-solution"><span
+class="header-section-number">2.3</span> WireGuard based solution</h2>
 <p>This solution creates an overlay network by manually configuring
 WireGuard on each machine.</p>
-<h2 data-number="5.1" id="implementation-details"><span
-class="header-section-number">5.1</span> Implementation details</h2>
-<h2 data-number="5.2" id="performance-analysis"><span
-class="header-section-number">5.2</span> Performance analysis</h2>
-<h2 data-number="5.3" id="security-analysis"><span
-class="header-section-number">5.3</span> Security analysis</h2>
-<h2 data-number="5.4" id="usability-analysis"><span
-class="header-section-number">5.4</span> Usability analysis</h2>
-<h1 data-number="6" id="tailscale-based-solution"><span
-class="header-section-number">6</span> Tailscale based solution</h1>
+<h3 data-number="2.3.1" id="implementation-details"><span
+class="header-section-number">2.3.1</span> Implementation details</h3>
+<h3 data-number="2.3.2" id="performance-analysis"><span
+class="header-section-number">2.3.2</span> Performance analysis</h3>
+<h3 data-number="2.3.3" id="security-analysis"><span
+class="header-section-number">2.3.3</span> Security analysis</h3>
+<h3 data-number="2.3.4" id="usability-analysis"><span
+class="header-section-number">2.3.4</span> Usability analysis</h3>
+<h2 data-number="2.4" id="tailscale-based-solution"><span
+class="header-section-number">2.4</span> Tailscale based solution</h2>
 <p>Tailscale is a VPN solution that configures a mesh of direct
 Wireguard tunnels between the peers.</p>
-<h2 data-number="6.1" id="implementation-details"><span
-class="header-section-number">6.1</span> Implementation details</h2>
-<h2 data-number="6.2" id="performance-analysis"><span
-class="header-section-number">6.2</span> Performance analysis</h2>
-<h2 data-number="6.3" id="security-analysis"><span
-class="header-section-number">6.3</span> Security analysis</h2>
-<h3 data-number="6.3.1" id="trust-model"><span
-class="header-section-number">6.3.1</span> Trust model</h3>
+<h3 data-number="2.4.1" id="implementation-details"><span
+class="header-section-number">2.4.1</span> Implementation details</h3>
+<h3 data-number="2.4.2" id="performance-analysis"><span
+class="header-section-number">2.4.2</span> Performance analysis</h3>
+<h3 data-number="2.4.3" id="security-analysis"><span
+class="header-section-number">2.4.3</span> Security analysis</h3>
+<h4 data-number="2.4.3.1" id="trust-model"><span
+class="header-section-number">2.4.3.1</span> Trust model</h4>
 <p>There is a centralized service that deals with the key distribution,
 which needs to be trusted to provide the correct public keys for the
 correct parties</p>
-<h3 data-number="6.3.2" id="identity"><span
-class="header-section-number">6.3.2</span> Identity</h3>
+<h4 data-number="2.4.3.2" id="identity"><span
+class="header-section-number">2.4.3.2</span> Identity</h4>
 <p>Identity is based on third party identity providers such as Microsoft
 and GitHub</p>
 <ul>
 <li>Magic DNS</li>
-<li><h2 id="usability-analysis">Usability analysis</h2></li>
+<li><h3 id="usability-analysis">Usability analysis</h3></li>
 </ul>
 <p>With tailscale each party needs to</p>
 <ul>
@@ -619,24 +665,24 @@ hostname/virtual IP</li>
 </ul></li>
 <li>Run the demo</li>
 </ul>
-<h1 data-number="7" id="headscale-based-solution"><span
-class="header-section-number">7</span> Headscale based solution</h1>
+<h2 data-number="2.5" id="headscale-based-solution"><span
+class="header-section-number">2.5</span> Headscale based solution</h2>
 <p>This solution is similar to the Tailscale one, but it uses Headscale
 - a self-hosted open-source alternative to the closed-source Tailscale
 coordination service.</p>
-<h2 data-number="7.1" id="implementation-details"><span
-class="header-section-number">7.1</span> Implementation details</h2>
-<h2 data-number="7.2" id="performance-analysis"><span
-class="header-section-number">7.2</span> Performance analysis</h2>
-<h2 data-number="7.3" id="security-analysis"><span
-class="header-section-number">7.3</span> Security analysis</h2>
-<h3 data-number="7.3.1" id="trust-model"><span
-class="header-section-number">7.3.1</span> Trust model</h3>
+<h3 data-number="2.5.1" id="implementation-details"><span
+class="header-section-number">2.5.1</span> Implementation details</h3>
+<h3 data-number="2.5.2" id="performance-analysis"><span
+class="header-section-number">2.5.2</span> Performance analysis</h3>
+<h3 data-number="2.5.3" id="security-analysis"><span
+class="header-section-number">2.5.3</span> Security analysis</h3>
+<h4 data-number="2.5.3.1" id="trust-model"><span
+class="header-section-number">2.5.3.1</span> Trust model</h4>
 <p>There still is a centralized service like in the Tailscale solution,
 but here it is self-deployed.</p>
-<h3 data-number="7.3.2" id="identity"><span
-class="header-section-number">7.3.2</span> Identity</h3>
-<h2 class="unnumbered" id="usability-analysis">Usability analysis</h2>
+<h4 data-number="2.5.3.2" id="identity"><span
+class="header-section-number">2.5.3.2</span> Identity</h4>
+<h3 class="unnumbered" id="usability-analysis">Usability analysis</h3>
 <div id="refs" class="references csl-bib-body hanging-indent"
 role="doc-bibliography">
 <div id="ref-nebulaDocs" class="csl-entry" role="doc-biblioentry">
@@ -653,12 +699,6 @@ Symposium</span></em>. <span>San Diego, CA</span>: <span>Internet
 Society</span>. <a
 href="https://doi.org/10.14722/ndss.2017.23160">https://doi.org/10.14722/ndss.2017.23160</a>.
 </div>
-<div id="ref-tcpRFC" class="csl-entry" role="doc-biblioentry">
-Eddy, Wesley. 2022. <span>“Transmission <span>Control Protocol</span>
-(<span>TCP</span>).”</span> Request for Comments RFC 9293.
-<span>Internet Engineering Task Force</span>. <a
-href="https://doi.org/10.17487/RFC9293">https://doi.org/10.17487/RFC9293</a>.
-</div>
 <div id="ref-fontJuanfontHeadscale2022" class="csl-entry"
 role="doc-biblioentry">
 Font, Juan. (2020) 2022. <em>Juanfont/Headscale</em>. <a
@@ -674,6 +714,20 @@ href="https://doi.org/10.17487/RFC0791">https://doi.org/10.17487/RFC0791</a>.
 May 21, 2023. <a
 href="https://www.google.com/intl/en/ipv6/statistics.html">https://www.google.com/intl/en/ipv6/statistics.html</a>.
 </div>
+<div id="ref-natBehaviorRFC" class="csl-entry" role="doc-biblioentry">
+Jennings, Cullen Fluffy, and Francois Audet. 2007. <span>“Network
+<span>Address Translation</span> (<span>NAT</span>) <span>Behavioral
+Requirements</span> for <span>Unicast UDP</span>.”</span> Request for
+Comments RFC 4787. <span>Internet Engineering Task Force</span>. <a
+href="https://doi.org/10.17487/RFC4787">https://doi.org/10.17487/RFC4787</a>.
+</div>
+<div id="ref-sshRFC" class="csl-entry" role="doc-biblioentry">
+Lonvick, Chris M., and Tatu Ylonen. 2006. <span>“The <span>Secure
+Shell</span> (<span>SSH</span>) <span>Protocol
+Architecture</span>.”</span> Request for Comments RFC 4251.
+<span>Internet Engineering Task Force</span>. <a
+href="https://doi.org/10.17487/RFC4251">https://doi.org/10.17487/RFC4251</a>.
+</div>
 <div id="ref-openVPNDocs" class="csl-entry" role="doc-biblioentry">
 OpenVPN. 2022. <span>“Community <span>Resources</span>.”</span>
 <span>OpenVPN</span>. 2022. <a
@@ -682,6 +736,14 @@ href="https://openvpn.net/community-resources/">https://openvpn.net/community-re
 <div id="ref-noiseDocs" class="csl-entry" role="doc-biblioentry">
 Perrin, Trevor. 2018. <span>“The <span>Noise Protocol
 Framework</span>,”</span> July.
+</div>
+<div id="ref-stunRFC" class="csl-entry" role="doc-biblioentry">
+Petit-Huguenin, Marc, Gonzalo Salgueiro, Jonathan Rosenberg, Dan Wing,
+Rohan Mahy, and Philip Matthews. 2020. <span>“Session <span>Traversal
+Utilities</span> for <span>NAT</span> (<span>STUN</span>).”</span>
+Request for Comments RFC 8489. <span>Internet Engineering Task
+Force</span>. <a
+href="https://doi.org/10.17487/RFC8489">https://doi.org/10.17487/RFC8489</a>.
 </div>
 <div id="ref-turnRFC" class="csl-entry" role="doc-biblioentry">
 Reddy.K, Tirumaleswar, Alan Johnston, Philip Matthews, and Jonathan
@@ -692,6 +754,17 @@ Rosenberg. 2020. <span>“Traversal <span>Using Relays</span> Around
 <span>Internet Engineering Task Force</span>. <a
 href="https://doi.org/10.17487/RFC8656">https://doi.org/10.17487/RFC8656</a>.
 </div>
+<div id="ref-httpsRFC" class="csl-entry" role="doc-biblioentry">
+Rescorla, Eric. 2000. <span>“<span>HTTP Over TLS</span>.”</span> Request
+for Comments RFC 2818. <span>Internet Engineering Task Force</span>. <a
+href="https://doi.org/10.17487/RFC2818">https://doi.org/10.17487/RFC2818</a>.
+</div>
+<div id="ref-tlsRFC" class="csl-entry" role="doc-biblioentry">
+———. 2018. <span>“The <span>Transport Layer Security</span>
+(<span>TLS</span>) <span>Protocol Version</span> 1.3.”</span> Request
+for Comments RFC 8446. <span>Internet Engineering Task Force</span>. <a
+href="https://doi.org/10.17487/RFC8446">https://doi.org/10.17487/RFC8446</a>.
+</div>
 <div id="ref-tincDocs" class="csl-entry" role="doc-biblioentry">
 Sliepen, Guus. 2022. <span>“Tinc <span>Docs</span>.”</span> November 30,
 2022. <a
@@ -701,10 +774,5 @@ href="https://www.tinc-vpn.org/docs/">https://www.tinc-vpn.org/docs/</a>.
 Tailscale. n.d. <span>“Tailscale.”</span> <span>Tailscale</span>.
 Accessed November 30, 2022. <a
 href="https://tailscale.com/kb/">https://tailscale.com/kb/</a>.
-</div>
-<div id="ref-udpRFC" class="csl-entry" role="doc-biblioentry">
-<span>“User <span>Datagram Protocol</span>.”</span> 1980. Request for
-Comments RFC 768. <span>Internet Engineering Task Force</span>. <a
-href="https://doi.org/10.17487/RFC0768">https://doi.org/10.17487/RFC0768</a>.
 </div>
 </div>
