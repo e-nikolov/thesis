@@ -1,4 +1,4 @@
-# Questions
+## Questions
 
 - When should I use long vs short sentences?
   - At the start of a section when introducing something new, should I use shorter sentences?

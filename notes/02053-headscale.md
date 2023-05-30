@@ -1,4 +1,4 @@
-## Headscale
+### Headscale
 
 - Mostly the same as Tailscale, but with an open source coordination service that must be self-hosted
 - Describe the differences in the deployment and how it affects usability

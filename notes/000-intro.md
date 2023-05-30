@@ -2,7 +2,7 @@
 \def\fps@figure{h}
 \makeatother
 
-# Intro
+## Intro
 
 - Emphasize on the difference between the Solutions Test Framework (E3) and the actual Solutions
 

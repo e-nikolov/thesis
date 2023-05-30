@@ -1,4 +1,4 @@
-## Wireguard
+### Wireguard
 
 * Low level VPN Protocol
 * Used by Tailscale

@@ -1,4 +1,4 @@
-## Basic Internet Protocol solution
+### Basic Internet Protocol solution
 
 - Solution with 0 overhead to be used as a reference for the performance of the other solutions
 - No encryption

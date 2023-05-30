@@ -1,4 +1,4 @@
-## Netbird
+### Netbird
 
 - WireGuard VPN 
 - NAT Traversal 

@@ -1,4 +1,4 @@
-## Tailscale
+### Tailscale
 
 - Mesh VPN
 - Built on top of [Wireguard](02051-wireguard.md)

@@ -1,4 +1,4 @@
-## Freenet
+### Freenet
 
 - [Whitepaper](https://homepage.divms.uiowa.edu/~ghosh/freenet.pdf)
 - Friend2Friend network
@@ -12,3 +12,4 @@
 	- waste
 	- peerkeep
 	- camlistore
+

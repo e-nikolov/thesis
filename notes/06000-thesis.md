@@ -1,6 +1,6 @@
-# Thesis outline
+## Thesis outline
 
-## Introduction
+### Introduction
 
 - Background information
 - Problem description
@@ -8,11 +8,11 @@
 - Research questions
 - Scope
 
-## Related work / Literature review
+### Related work / Literature review
 
 - Are there any existing solutions that can be applied to the problem in some capacity?
 
-## Methodology / Approach
+### Methodology / Approach
 
 - How are the solutions going to be evaluated?
 - Performance
@@ -25,7 +25,7 @@
 - Usability
 	- How is the usability of a solution going to be evaluated? 
 
-## Solution/Implementation Evaluations
+### Solution/Implementation Evaluations
 
 - For each solution
 	- What is the solution?
@@ -34,7 +34,7 @@
 	- How can it be used by the parties?
 	- What is the performance of the solution?
 
-## Conclusions
+### Conclusions
 
 - How do the proposed solutions compare to each other?
 - Which solution is preferred under which circumstances?

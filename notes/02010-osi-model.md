@@ -1,4 +1,4 @@
-# OSI Model
+## OSI Model
 
 * Create a figure that maps the various related components to OSI model layers
 * It can be a "more or less accurate" artistic impression since the components can cover multiple layers and the layers are somewhat fluid

@@ -49,7 +49,7 @@ test:
 
 
 
-%.pdf: %.tex figures/*.drawio.pdf
+%.pdf: %.tex figures/*.drawio.pdf shared/* styles/*.sty
 	$(MAKE) $@~
 
 $(wildcard *.tex): %.tex: %/latex/full.tex

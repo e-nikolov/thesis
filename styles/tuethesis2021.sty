@@ -41,13 +41,39 @@
 %citecolor=darkblue }
 
 % \usepackage[pagebackref=true,
-\usepackage[colorlinks=true,
-  linkcolor=gray,
+% \usepackage[
+%   colorlinks=true,
+%   linkcolor=darkblue,
+%   bookmarks=true,
+%   filecolor=darkgreen,
+%   urlcolor=darkred,
+%   citecolor=darkblue
+% ]{hyperref} % Make links clickable and generate bookmarks (so you can easily click through in acroread)
+
+% \usepackage[
+%   colorlinks=true,
+%   linkcolor=darkblue,
+%   bookmarks=true,
+%   filecolor=magenta,
+%   urlcolor=cyan,
+%   citecolor=darkblue,
+%   bookmarksopen=true,
+% ]{hyperref} % Make links clickable and generate bookmarks (so you can easily click through in acroread)
+\usepackage[colorinlistoftodos]{todonotes}
+
+\usepackage[
+  colorlinks=true,
   bookmarks=true,
-  filecolor=gray,
-  urlcolor=blue,
-  citecolor=blue
+  bookmarksopen=true,
+  linkcolor=MidnightBlue,
+  citecolor=MidnightBlue,
+  filecolor=BrickRed,
+  menucolor=BrickRed,
+  runcolor=BrickRed,
+  urlcolor=MidnightBlue,
 ]{hyperref} % Make links clickable and generate bookmarks (so you can easily click through in acroread)
+
+
 \usepackage{lineno}                   % Include line numbers
 \usepackage{longtable}                % Make tables that can cover multiple pages
 \usepackage[section]{placeins}        % Prevent floats from passing beyond \FloatBarrier; keep floats within their sections
@@ -63,6 +89,7 @@
   {
     pdfauthor={\me},
     pdftitle={\doctitle},
+    pdfpagemode=FullScreen,
   }
   %use this include for PDF and distribution versions
   %\include{tuetitlepage2021}
@@ -110,23 +137,23 @@
 
 % Introduce command \todo. This will print the argument in the margin
 \setlength{\marginparwidth}{2.3cm}
-\newcommand\todo[1]{
-  \-\marginpar[\raggedleft\footnotesize #1]
-  {
-    \raggedright\footnotesize #1
-  }
-}
+% \newcommand\todo[1]{
+%   \-\marginpar[\raggedleft\footnotesize #1]
+%   {
+%     \raggedright\footnotesize #1
+%   }
+% }
 
 % Introduce command \ltodo. This will print the argument in the margin. It is
 % should be used for todos regarding the layout of the report
-\newcommand\ltodo[1]{
-  %  \-\marginpar[\raggedleft\footnotesize #1]
-  \-\marginpar[\raggedleft\footnotesize ]
-  {
-    %    \raggedright\footnotesize #1
-    \raggedright\footnotesize
-  }
-}
+% \newcommand\ltodo[1]{
+%   %  \-\marginpar[\raggedleft\footnotesize #1]
+%   \-\marginpar[\raggedleft\footnotesize ]
+%   {
+%     %    \raggedright\footnotesize #1
+%     \raggedright\footnotesize
+%   }
+% }
 
 % Introduce command \docdate
 %\newcommand{\docdate}{\today}

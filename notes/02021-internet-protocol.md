@@ -1,4 +1,4 @@
-### Internet Protocol
+#### Internet Protocol
 
 *   IP addresses
     -   in The Netherlands Ziggo and KPN provide IPv6, but T-Mobile does not. Overall ~40% client-side adoption.
@@ -9,13 +9,13 @@
 
 *   TLS
 
-#### Network Address Translation (NAT) Traversal
+##### Network Address Translation (NAT) Traversal
 
 <https://bford.info/pub/net/p2pnat/>
 
 <https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/>
 
-#### Session Traversal Utilities for NAT (STUN)
+##### Session Traversal Utilities for NAT (STUN)
 
 *   Uses a STUN server for discovery and UDP hole-punching
 
@@ -33,7 +33,7 @@
 
     *   <https://github.com/ccding/go-stun> - used in Headscale
 
-#### Traversal Using Relays around NAT (TURN)
+##### Traversal Using Relays around NAT (TURN)
 
 *   Peers use a relay server as a mediator to route traffic
 
@@ -43,7 +43,7 @@
 
     *   <https://github.com/pion/stun>
 
-#### Universal Plug and Play (UPnP)
+##### Universal Plug and Play (UPnP)
 
 - Not always supported
 - Often disabled due to security and performance concerns
@@ -55,11 +55,11 @@
     - Too many ports being configured for forwarding might slow down the network
     - 
 
-#### Interactive Connectivity Establishment (ICE)
+##### Interactive Connectivity Establishment (ICE)
 
 *   Umbrella term covering STUN/TURN and other related techniques
 
-#### Designated Encrypted Relay for Packets (DERP)
+##### Designated Encrypted Relay for Packets (DERP)
 
 *   TURN-like protocol by Tailscale
 

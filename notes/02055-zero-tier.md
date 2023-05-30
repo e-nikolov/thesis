@@ -1,4 +1,4 @@
-## ZeroTier
+### ZeroTier
 
 - Closed source Mesh VPN
 - Similar to Tailscale
