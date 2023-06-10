@@ -176,18 +176,23 @@ somewhere between the Presentation layer (L6) and the Transport layer
 protocol while having to manage the TLS connections.</p>
 <p>TLS relies on digital certificates and to establish trust between the
 communicating parties and to prevent man-in-the-middle attacks. A
-certificate includes information such as: - Subject - an identifiable
-name for the certificate’s owner. Depending on the use case it can be a
-domain name, an IP address, an email address or others. - Subject’s
-public key - an asymmetric public key that is used by other parties to
-verify that they are communicating with the subject who is expected to
-be in control of the corresponding private key. The public key can also
-be used to encrypt messages that only the subject can decrypt. - Issuer
-- an entity that is responsible for validating the identity of the
-subject. It is usually a that is trusted by the consumer of the
+certificate includes information such as:</p>
+<ul>
+<li>Subject - an identifiable name for the certificate’s owner.
+Depending on the use case it can be a domain name, an IP address, an
+email address or others.</li>
+<li>Subject’s public key - an asymmetric public key that is used by
+other parties to verify that they are communicating with the subject who
+is expected to be in control of the corresponding private key. The
+public key can also be used to encrypt messages that only the subject
+can decrypt.</li>
+<li>Issuer - an entity that is responsible for validating the identity
+of the subject. It is usually a that is trusted by the consumer of the
 certificate, but in the case of a self-signed certificate, it can be the
-subject itself - Issuer’s signature - a signature of the certificate’s
-contents using the issuer’s private key</p>
+subject itself</li>
+<li>Issuer’s signature - a signature of the certificate’s contents using
+the issuer’s private key</li>
+</ul>
 <p>Trusted CAs that serve as the root of trust are usually included in
 the operating system or a Web browser. This allows applications to
 verify the certificates of the servers they communicate with. Web
@@ -324,12 +329,11 @@ which has caused challenges. IPv6 is a newer version of the protocol
 that uses a larger 128-bit address space which is sufficient for
 assigning 100 addresses for each atom on Earth. However, its adoption
 has been slow, as according to Google<span class="citation"
-data-cites="IPv6Google">(<strong>IPv6Google?</strong>)</span> as of 2023
-around 41% of their users access their services over IPv6. Additionally,
-despite that IPv6 allows for all devices to be addressable on the
-Internet, for security reasons, most of them would use firewalls to
-block incoming remote traffic that is not associated with outgoing
-connections.</p>
+data-cites="IPv6Google">(Google 2023)</span> as of 2023 around 41% of
+their users access their services over IPv6. Additionally, despite that
+IPv6 allows for all devices to be addressable on the Internet, for
+security reasons, most of them would use firewalls to block incoming
+remote traffic that is not associated with outgoing connections.</p>
 <p>A widespread solution to the addressing problem is . It allows many
 devices without globally unique IP addresses to initiate connections to
 publicly addressable devices on the Internet via a limited number of
@@ -814,6 +818,11 @@ Exchange</span> (<span>IKE</span>) <span>Document
 Roadmap</span>.”</span> Request for Comments RFC 6071. <span>Internet
 Engineering Task Force</span>. <a
 href="https://doi.org/10.17487/RFC6071">https://doi.org/10.17487/RFC6071</a>.
+</div>
+<div id="ref-IPv6Google" class="csl-entry" role="doc-biblioentry">
+Google. 2023. <span>“<span>IPv6</span> – <span>Google</span>.”</span>
+May 21, 2023. <a
+href="https://www.google.com/intl/en/ipv6/statistics.html">https://www.google.com/intl/en/ipv6/statistics.html</a>.
 </div>
 <div id="ref-ipv4RFC" class="csl-entry" role="doc-biblioentry">
 <span>“Internet <span>Protocol</span>.”</span> 1981. Request for

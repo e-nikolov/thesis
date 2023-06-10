@@ -60,6 +60,7 @@ The \glsxtrfull{ip} [@ipv4RFC] is a Network layer (L3) protocol of the Internet 
 
 #### Transport Layer (L4) Communication
 
+
 \glsxtrfull{udp} is a very thin Transport layer (L4) protocol that only provides port multiplexing and checksumming on top of IP. 
  <!-- \glsxtrfull{udp} [@udpRFC] and \glsxtrfull{tcp} [@tcpRFC] are Transport layer (L4) protocols. -->
 - Port multiplexing - uses 16-bit numbers to allow multiple processes behind the same IP address to establish their own communication channels
@@ -106,6 +107,7 @@ The \gls{dns} operates at the Application Layer (L7) and allows the conversion o
 \glsxtrfull{tls} [@tlsRFC] and its precursor \gls{ssl} are protocols that provide secure communications to Application layer (L7) protocols on top of a reliable Transport layer (L4) protocol like \gls{tcp}. \gls{dtls} is a related protocol that works with connectionless transport protocols like UDP. TLS is usually placed somewhere between the Presentation layer (L6) and the Transport layer (L4) because Application layer (L7) protocols use it as a transport protocol while having to manage the TLS connections. 
 
 TLS relies on digital certificates and \gls{pki} to establish trust between the communicating parties and to prevent man-in-the-middle attacks. A certificate includes information such as:
+
 - Subject - an identifiable name for the certificate's owner. Depending on the use case it can be a domain name, an IP address, an email address or others.
 - Subject's public key - an asymmetric public key that is used by other parties to verify that they are communicating with the subject who is expected to be in control of the corresponding private key. The public key can also be used to encrypt messages that only the subject can decrypt.
 - Issuer - an entity that is responsible for validating the identity of the subject. It is usually a \gls{ca} that is trusted by the consumer of the certificate, but in the case of a self-signed certificate, it can be the subject itself
@@ -248,11 +250,12 @@ In mobile networks like 4G and 5G, the \gls{isp} often utilizes a \gls{cgnat} as
 \gls{webrtc} is a framework that allows peer-to-peer communications between Web applications in Web browsers. Web applications are normally limited to HTTP connections and cannot use raw UDP or TCP connections. WebRTC implements the ICE functionality in Web browsers and provides an API to Web applications. 
 
 
-\todo{
+\todo[caption={webrtc}]{
 - ICE
-- encryption
-- Reveals IP addresses
 
+- encryption
+
+- Reveals IP addresses
 }
 
 
@@ -264,14 +267,14 @@ Other overlay networks are both implemented and used at the Application layer (L
 
 Figure \ref{osi-map-overlays} shows an approximate OSI model mapping of several protocols and network overlay solutions from the point of view of the systems that use them and the arrows show dependency relations between them.
 
-![OSI model mapping of various protocols \label{osi-map-overlays}](../figures/osi-map-overlays.drawio.pdf){height=90% }
+![OSI model mapping of various protocols \label{osi-map-overlays}](../figures/osi-map-overlays.drawio.pdf){ height=90% }
 
 
 
 
 ### Network layer (L3) and Data Link (L2) Overlay Networks
 
-#### Traditional VPNs
+#### Traditional VPNs 
 
 Layer 2 virtual networks provide a virtual network switch that allows remote machines to be on the same virtual LAN and share the same IP address range. Layer 3 virtual networks provide a virtual network router that allows remote machines to be on separate LANs. Depending on the specific implementation, the overlay network can either be implemented directly in the Operating System's kernel, or on top of a driver like \glsxtrshort{tun} or \glsxtrshort{tap}.
 

@@ -1,6 +1,10 @@
 \begin{frame}
 \tableofcontents
 
+\todototoc
+
+\listoftodos
+
 \printnoidxglossary[type=\acronymtype,title=Glossary]
 
 \listoffigures
@@ -198,18 +202,29 @@ protocol while having to manage the TLS connections.
 
 TLS relies on digital certificates and \gls{pki} to establish trust
 between the communicating parties and to prevent man-in-the-middle
-attacks. A certificate includes information such as: - Subject - an
-identifiable name for the certificate's owner. Depending on the use case
-it can be a domain name, an IP address, an email address or others. -
-Subject's public key - an asymmetric public key that is used by other
-parties to verify that they are communicating with the subject who is
-expected to be in control of the corresponding private key. The public
-key can also be used to encrypt messages that only the subject can
-decrypt. - Issuer - an entity that is responsible for validating the
-identity of the subject. It is usually a \gls{ca} that is trusted by the
-consumer of the certificate, but in the case of a self-signed
-certificate, it can be the subject itself - Issuer's signature - a
-signature of the certificate's contents using the issuer's private key
+attacks. A certificate includes information such as:
+
+\begin{itemize}
+\tightlist
+\item
+  Subject - an identifiable name for the certificate's owner. Depending
+  on the use case it can be a domain name, an IP address, an email
+  address or others.
+\item
+  Subject's public key - an asymmetric public key that is used by other
+  parties to verify that they are communicating with the subject who is
+  expected to be in control of the corresponding private key. The public
+  key can also be used to encrypt messages that only the subject can
+  decrypt.
+\item
+  Issuer - an entity that is responsible for validating the identity of
+  the subject. It is usually a \gls{ca} that is trusted by the consumer
+  of the certificate, but in the case of a self-signed certificate, it
+  can be the subject itself
+\item
+  Issuer's signature - a signature of the certificate's contents using
+  the issuer's private key
+\end{itemize}
 
 Trusted CAs that serve as the root of trust are usually included in the
 operating system or a Web browser. This allows applications to verify
@@ -531,11 +546,12 @@ limited to HTTP connections and cannot use raw UDP or TCP connections.
 WebRTC implements the ICE functionality in Web browsers and provides an
 API to Web applications.
 
-\todo{
+\todo[caption={webrtc}]{
 - ICE
-- encryption
-- Reveals IP addresses
 
+- encryption
+
+- Reveals IP addresses
 }
 \end{block}
 \end{block}

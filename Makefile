@@ -65,10 +65,11 @@ $(wildcard *.tex): %.tex: %/latex/full.tex
 		-pdf \
 		-time \
 		--output-directory="build" \
-		-quiet \
+		--quiet \
 		$*.tex
 
 # \
+		--verbose \
 		-use-make \
 		-use-make \
 		-shell-escape \

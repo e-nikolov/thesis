@@ -60,6 +60,10 @@
 %   bookmarksopen=true,
 % ]{hyperref} % Make links clickable and generate bookmarks (so you can easily click through in acroread)
 \usepackage[colorinlistoftodos]{todonotes}
+\usepackage{cprotect}
+
+% \NewCommandCopy\oldtodo\todo
+% \outer\def\todo[#1]{\icprotect{\oldtodo[#1]}}
 
 \usepackage[
   colorlinks=true,

@@ -26,20 +26,28 @@
     % hyperfirst=false,
 ]{glossaries-extra}
 
-% \setabbreviationstyle{long-short}
-\setabbreviationstyle[acronym]{long-postshort-user}
+% \setabbreviationstyle[acronym]{long-short}
+\setabbreviationstyle[acronym]{long-short-user}
 % \glsxtrinithyperoutside
 % \firstacronymfont
 % bfseries
-\glssetcategoryattribute{acronym}{nohyper}{true}
+% \glssetcategoryattribute{acronym}{nohyper}{true}
+
 
 \renewcommand*{\glsxtruserparen}[2]{%
     \glsxtrfullsep{#2}% space between long part and parenthetical material
     (\glshyperlink[\textbf{#1}]{#2})%
 }
 
+
 \makenoidxglossaries
 % \makeglossaries
+
+
+% \glssetcategoryattribute{acronym}{hyperoutside}{false}
+
+% \renewcommand*{\acronymfont}[1]{test1 \textbf{#1}}
+% \renewcommand*{\glslongfont}[1]{test2 #1}
 
 \newacronym{sss}{SSS}{Shamir's Secret Sharing}
 \newacronym{mpc}{MPC}{Secure Multiparty Computation}
@@ -97,57 +105,3 @@
 \newacronym{psk}{PSK}{Pre-Shared Key}
 \newacronym{tun}{TUN}{Network Tunnel}
 \newacronym{tap}{TAP}{Network Tap}
-
-% \newabbreviation{sss}{SSS}{Shamir's Secret Sharing}
-% \newabbreviation{mpc}{MPC}{Secure Multiparty Computation}
-% \newabbreviation{ip}{IP}{Internet Protocol}
-% \newabbreviation{iac}{IaC}{Infrastructure as Code}
-% \newabbreviation{gui}{GUI}{Graphical User Interface}
-% \newabbreviation{cli}{CLI}{Command Line Interface}
-% \newabbreviation{p2p}{P2P}{Peer to Peer}
-% \newabbreviation{nat}{NAT}{Network Address Translation}
-% \newabbreviation{cgnat}{CGNAT}{Carrier-Grade NAT}
-% \newabbreviation{api}{API}{Application Programming Interface}
-% \newabbreviation{isp}{ISP}{Internet Service Provider}
-% \newabbreviation{vm}{VM}{Virtual Machine}
-% \newabbreviation{vpn}{VPN}{Virtual Private Network}
-% \newabbreviation{lan}{LAN}{Local Area Network}
-% \newabbreviation{did}{DID}{Decentralized Identifier}
-% \newabbreviation{ssi}{SSI}{Self-Sovereign Identity}
-% \newabbreviation{ddos}{DDOS}{Distributed Denial of Service}
-% \newabbreviation{tcp}{TCP}{Transmission Control Protocol}
-% \newabbreviation{udp}{UDP}{User Datagram Protocol}
-% \newabbreviation{tls}{TLS}{Transport Layer Security}
-% \newabbreviation{dtls}{DTLS}{Datagram Transport Layer Security}
-% \newabbreviation{stun}{STUN}{Session Traversal Utilities for NAT}
-% \newabbreviation{turn}{TURN}{Traversal Using Relays around NAT}
-% \newabbreviation{dns}{DNS}{Domain Name System}
-% \newabbreviation{it}{IT}{Information Technology}
-% \newabbreviation{derp}{DERP}{Designated Encrypted Relay for Packets}
-% \newabbreviation{acl}{ACL}{Access Control List}
-% \newabbreviation{e3}{$E^3$}{Extensible Evaluation Environment}
-% \newabbreviation{ssh}{SSH}{Secure Shell Protocol}
-% \newabbreviation{ca}{CA}{Certificate Authority}
-% \newabbreviation{tor}{TOR}{The Onion Router}
-% \newabbreviation{ipfs}{IPFS}{InterPlanetary File System}
-% \newabbreviation{osi}{OSI}{Open Systems Interconnection}
-% \newabbreviation{upnp}{UPnP}{Universal Plug and Play}
-% \newabbreviation{nat-pmp}{NAT-PMP}{NAT Port Mapping Protocol}
-% \newabbreviation{pcp}{PCP}{Port Control Protocol}
-% \newabbreviation{cidr}{CIDR}{Classless Inter-Domain Routing}
-% \newabbreviation{ecdh}{ECDH}{Eliptic Curve Diffie-Hellman}
-% \newabbreviation{ipsec}{IPSec}{Internet Protocol Security}
-% \newabbreviation{www}{WWW}{World Wide Web}
-% \newabbreviation{url}{URL}{Universal Resource Locator}
-% \newabbreviation{uri}{URI}{Universal Resource Identifier}
-% \newabbreviation{http}{HTTP}{HyperText Transfer Protocol}
-% \newabbreviation{https}{HTTPS}{HyperText Transfer Protocol Secure}
-% \newabbreviation{ssl}{SSL}{Secure Sockets Layer}
-% \newabbreviation{pdu}{PDU}{Protocol Data Unit}
-% \newabbreviation{ice}{ICE}{Interactive Connectivity Establishment}
-% \newabbreviation{webrtc}{WebRTC}{Web Real-Time Communication}
-% \newabbreviation{ftp}{FTP}{File Transfer Protocol}
-% \newabbreviation{smtp}{SMTP}{Simple Mail Transfer Protocol}
-
-\renewcommand*{\acronymfont}[1]{\textbf{#1}}
-
