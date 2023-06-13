@@ -65,13 +65,12 @@ model as they are more widely used in the literature.
 Each communication protocol has its own \gls{pdu} that
 
 Services that are implemented as Application layer (L7) protocols on top
-of TCP/IP include the \gls{www}, file transfer
-(\glsxtrshort[hyper=true]{ftp}), email (\glsxtrshort[hyper=true]{smtp}),
-instant messaging, remote access (\glsxtrshort[hyper=true]{ssh}
+of TCP/IP include the \gls{www}, file transfer (\as{ftp}), email
+(\as{smtp}), instant messaging, remote access (\as{ssh}
 \autocite{sshRFC}) and others. The Web is a collection of interconnected
-documents that use Web technologies such as
-\glsxtrshort[hyper=true]{html} and JavaScript. It is typically accessed
-via a user-agent software such as a \textbf{Web Browser}.
+documents that use Web technologies such as \as{html} and JavaScript. It
+is typically accessed via a user-agent software such as a \textbf{Web
+Browser}.
 
 The following sub-sections will briefly cover the main protocols of the
 Internet Protocol Suite, the issues for multiparty communications and
@@ -83,11 +82,11 @@ some of the low-level mitigation techniques.
 \protect\hypertarget{communication-protocols}{}
 \begin{block}{Network Layer (L3) Communication}
 \protect\hypertarget{network-layer-l3-communication}{}
-The \glsxtrfull{ip} \autocite{ipv4RFC} is a Network layer (L3) protocol
-of the Internet Protocol Suite that is responsible for transferring
-datagrams between devices across the boundaries of their \glspl{lan} by
-possibly routing them via multiple intermediate devices (e.g.~routers).
-A datagram is a self-contained unit of data, typically associated with
+The \as{ip} \autocite{ipv4RFC} is a Network layer (L3) protocol of the
+Internet Protocol Suite that is responsible for transferring datagrams
+between devices across the boundaries of their \glspl{lan} by possibly
+routing them via multiple intermediate devices (e.g.~routers). A
+datagram is a self-contained unit of data, typically associated with
 connectionless protocols that provide no guarantees for delivery or
 ordering (e.g.~IP, UDP).
 \todo{packet is the physical envelope of the IP datagram} IP datagrams
@@ -102,11 +101,11 @@ maps IP address ranges to networks.
 
 \begin{block}{Transport Layer (L4) Communication}
 \protect\hypertarget{transport-layer-l4-communication}{}
-\glsxtrfull{udp} is a very thin Transport layer (L4) protocol that only
-provides port multiplexing and checksumming on top of IP. - Port
-multiplexing - uses 16-bit numbers to allow multiple processes behind
-the same IP address to establish their own communication channels -
-Checksumming - used to detect errors in the datagram header and payload
+\af{udp} is a very thin Transport layer (L4) protocol that only provides
+port multiplexing and checksumming on top of IP. - Port multiplexing -
+uses 16-bit numbers to allow multiple processes behind the same IP
+address to establish their own communication channels - Checksumming -
+used to detect errors in the datagram header and payload
 
 As with IP, UDP packets are referred to as datagrams because they are
 not delivered reliably and if such features are required, they must be
@@ -145,9 +144,8 @@ on top of UDP and offers similar features to TCP, but with lower latency
 in some scenarios. It provides an additional level of multiplexing
 within a process, which allows multiple streams of data to be sent over
 the same connection asynchronously. To better optimize the establishment
-of secure connections, QUIC is tightly coupled with \glsxtrshort{tls}
-version 1.3. One of the main uses of QUIC is inside \glsxtrshort{http}
-version 3.
+of secure connections, QUIC is tightly coupled with \as{tls} version
+1.3. One of the main uses of QUIC is inside \as{http} version 3.
 \end{block}
 
 \begin{block}{Application Layer (L7) Communication}
@@ -155,11 +153,17 @@ version 3.
 \gls{http} is an Application layer (L7) protocol that enables stateless
 request/response interactions on the Web between web servers and clients
 (e.g.~browsers). Similar to other L7 protocols, it uses \glspl{url} for
-locating resources using the format
-\texttt{scheme://host:port/path?query=value\#fragment},
-e.g.~\texttt{http://www.example.com:80/path/to/file.html}. HTTP up to
-version 2 uses TCP as a transport protocol and since version 3 uses
-\glsxtrshort{quic}. HTTP provides several features such as:
+locating resources.
+
+\begin{description}
+\item[URL format:]
+\texttt{scheme://host:port/path?query=value\#fragment}
+\item[URL example:]
+\texttt{http://www.example.com:80/path/to/file.html}.
+\end{description}
+
+HTTP up to version 2 uses TCP as a transport protocol and since version
+3 uses \as{quic}. HTTP provides several features such as:
 
 \begin{itemize}
 \tightlist
@@ -191,14 +195,14 @@ e.g.~\texttt{google.com} to \texttt{142.250.179.142}.
 \protect\hypertarget{secure-communication-protocols}{}
 \begin{block}{Transport Layer (L4) to Application Layer (L7) Security}
 \protect\hypertarget{transport-layer-l4-to-application-layer-l7-security}{}
-\glsxtrfull{tls} \autocite{tlsRFC} and its precursor \gls{ssl} are
-protocols that provide secure communications to Application layer (L7)
-protocols on top of a reliable Transport layer (L4) protocol like
-\gls{tcp}. \gls{dtls} is a related protocol that works with
-connectionless transport protocols like UDP. TLS is usually placed
-somewhere between the Presentation layer (L6) and the Transport layer
-(L4) because Application layer (L7) protocols use it as a transport
-protocol while having to manage the TLS connections.
+\af{tls} \autocite{tlsRFC} and its precursor \gls{ssl} are protocols
+that provide secure communications to Application layer (L7) protocols
+on top of a reliable Transport layer (L4) protocol like \gls{tcp}.
+\gls{dtls} is a related protocol that works with connectionless
+transport protocols like \as{udp}. TLS is usually placed somewhere
+between the Presentation layer (L6) and the Transport layer (L4) because
+Application layer (L7) protocols use it as a transport protocol while
+having to manage the TLS connections.
 
 TLS relies on digital certificates and \gls{pki} to establish trust
 between the communicating parties and to prevent man-in-the-middle
@@ -230,64 +234,75 @@ Trusted CAs that serve as the root of trust are usually included in the
 operating system or a Web browser. This allows applications to verify
 the certificates of the servers they communicate with. Web browsers use
 \gls{https} \autocite{httpsRFC} - a variant of \gls{http} that uses TLS
-to secure the underlying \glsxtrshort{tcp} or \glsxtrshort{quic}
-connections of Web applications. The one-way approach where only the
-server has to authenticate itself to the clients is usually sufficient
-for most web interactions. TLS can also be used for mutual
-authentication, where both of the communicating parties have to present
-a valid certificate to each other, but this requires additional
-infrastructure to manage the client-side certificates. This mode of
-operations is sometimes used in Zero Trust networking, in microservice
-architectures and TLS-based \glsxtrshort{vpn} applications.
+to secure the underlying \as{tcp} or \as{quic} connections of Web
+applications. The one-way approach where only the server has to
+authenticate itself to the clients is usually sufficient for most web
+interactions. TLS can also be used for mutual authentication, where both
+of the communicating parties have to present a valid certificate to each
+other, but this requires additional infrastructure to manage the
+client-side certificates. This mode of operations is sometimes used in
+Zero Trust networking, in microservice architectures and TLS-based
+\as{vpn} applications.
 
 TLS is rather complex because it needs to support many possible use
 cases while remaining backward compatible. It allows the negotiation of
 security parameters like cipher suits.
 
 TLS operates at the Transport layer (L4) and above so it encrypts the
-application traffic, but not the IP datagrams. While an
-\glsxtrshort{isp} or an intruder with access to the network cannot
-decrypt the traffic to see what is being communicated, it could see
-which IP addresses are communicating with each other.
+application traffic, but not the IP datagrams. While an \as{isp} or an
+intruder with access to the network cannot decrypt the traffic to see
+what is being communicated, it could see which IP addresses are
+communicating with each other.
+
+\af{ssh} is an Application layer (L7) protocol that allows a client to
+securely log in and execute commands on a remote server. It does not
+rely on TLS but uses similar cryptographic primitives. Both the client
+and the server must authenticate to each other using public-key
+cryptography or a password. The cryptographic material must be
+distributed via a side channel either manually or via automation tools.
 \end{block}
 
-\begin{block}{Network Layer (L3) and Data Link Layer (L2) Security
-Protocols}
-\protect\hypertarget{network-layer-l3-and-data-link-layer-l2-security-protocols}{}
+\begin{block}{Network Layer (L3) Security Protocols}
+\protect\hypertarget{network-layer-l3-security-protocols}{}
+Network layer (L3) security protocols provide host-to-host security in
+Internet Protocol communications. Their implementations are usually
+configured in the operating systems of the hosts and are invisible to
+the higher-layer protocols that depend on the Internet Protocol.
+
 \begin{block}{IPSec}
 \protect\hypertarget{ipsec}{}
-\glsxtrfull{ipsec} is a protocol suite that provides secure
-communications at the Network layer (L3). Unlike \glsxtrshort{tls},
-mutual authentication is always required in IPSec. This can be achieved
-either via digital certificates, \glspl{psk} or others. IPSec has two
+\af{ipsec} is a Network layer (L3) protocol suite that provides
+host-to-host secure communications between \as{ip} hosts. It has two
 modes of operation:
 
 \begin{itemize}
 \tightlist
 \item
-  transport mode - encrypts the payloads of the IP datagrams, but not
-  the headers. This mode is can secure the direct traffic between two
-  hosts. Similar to \glsxtrshort{tls}, routers between the hosts can
-  still see the IP addresses of the hosts and the ports they are
-  communicating on
+  Transport mode - encrypts the payload of an IP datagram, but not the
+  header. This mode secures the traffic between two network hosts, but
+  similarly to \as{tls}, the routers between the hosts can still see the
+  IP addresses of the hosts and the ports they are communicating on
 \item
-  tunneling mode - encrypts the entire IP datagram and encapsulates it
-  in a new IP datagram with an unencrypted header. This mode is often
-  used to securely connect a \glsxtrshort{vpn} client to a server that
-  can decrypt the encapsulated IP datagrams and forward them to their
-  destination. This way the VPN client can hide the IP addresses of the
-  final destinations of the traffic from hosts between itself and the
-  VPN server. Depending on the use-case, the VPN server could either
-  facilitate the client's secure access to other resources on the
-  virtual network, or provide anonymity to the VPN client by hiding its
-  IP address from the hosts its communicating with on the public
-  Internet.
+  Tunneling mode - encrypts the entire IP datagram and encapsulates it
+  in a new IP datagram with an unencrypted header. This mode is used for
+  secure comm allows a host to decrypt the encapsulated both the traffic
+  connection between a client and a server that can decrypt the
+  encapsulated IP datagram and forward it to its destination.is often
+  used to securely connect a client to a server that can decrypt the
+  encapsulated IP datagrams and forward them to their destination. The
+  client
 \end{itemize}
+
+\todo{\as{vpn}  This way the VPN client can hide the IP addresses of the final destinations of the traffic from hosts between itself and the VPN server. Depending on the use case, the VPN server could either facilitate the client's secure access to other resources on the virtual network, or provide anonymity to the VPN client by hiding its IP address from the hosts its communicating with on the public Internet.}
+
+IPSec always requires mutual authentication, unlike \as{tls}, where it
+is optional. Authentication can be achieved either via digital
+certificates, \glspl{psk} or others.
 
 \todo{The Internet Protocol Security (IPSec) protocol suite is designed specifically to provide secure communication between two hosts at the network layer (L3) of the OSI model. IPSec can be used to secure traffic between two hosts, between a host and a network, or between two networks. It provides a range of services, including data confidentiality, data integrity, and authentication, and is often used in Virtual Private Network (VPN) connections to create secure tunnels between remote networks. IPSec operates in either Transport or Tunnel mode, and can use either the Authentication Header (AH) or Encapsulating Security Payload (ESP) protocols to provide its security services.}
 
 \todo{
-- \glsxtrfull{ipsec}
+- \af{ipsec}
   - Layer 3 protocol suite part of the Internet Protocol Suite
   - used inside VPN software
   - has implementations in both user and kernel space as well as hardware implementations
@@ -312,8 +327,8 @@ modes of operation:
 \protect\hypertarget{wireguard}{}
 WireGuard \autocite{donenfeldWireGuardNextGeneration2017} is a more
 recent protocol with a design informed by lessons learned from IPSec and
-OpenVPN and a key management approach inspired by \glsxtrshort{ssh}. It
-is a lower-level protocol that focuses on configuration simplicity while
+OpenVPN and a key management approach inspired by \as{ssh}. It is a
+lower-level protocol that focuses on configuration simplicity while
 network topology, peer discovery and key distribution are left as a
 responsibility of higher-level systems that use it as a building block.
 Wireguard is implemented as a Layer 3 overlay over UDP tunnels.
@@ -446,9 +461,8 @@ a relay server requires some technical expertise and may be costly
 depending on the expected throughput. Despite the drawbacks, relaying
 works under most networking scenarios and is therefore often used as a
 fallback in case all other approaches fail to find a direct path.
-Protocols such as \glsxtrfull{turn} \autocite{turnRFC} and
-\glsxtrfull{derp} \autocite{derpDocs} can be used to securely implement
-relaying.
+Protocols such as \af{turn} \autocite{turnRFC} and \af{derp}
+\autocite{derpDocs} can be used to securely implement relaying.
 
 The NAT gateway in many residential networks is a Router device under
 the customer's control that has a statically or dynamically assigned
@@ -470,17 +484,17 @@ expose local devices to the internet.
 \todo{connection reversal}
 
 An efficient NAT traversal approach that works with some types of NATs
-is to use \gls{stun} \autocite{stunRFC} in combination with UDP hole
-punching (Figure \ref{nat-traversal}). STUN is a protocol operating at
-Layer 7 that allows a client application to detect the presence of NAT
-gateways on the network path to a public STUN server, and identify their
-types and the public IP address that they map to externally. The process
-usually involves the following steps:
+is to use \gls{stun} \autocite{stunRFC} in combination with \as{udp}
+hole punching (Figure \ref{nat-traversal}). STUN is a protocol operating
+at Layer 7 that allows a client application to detect the presence of
+NAT gateways on the network path to a public STUN server, and identify
+their types and the public IP address that they map to externally. The
+process usually involves the following steps:
 
 \begin{enumerate}
 \tightlist
 \item
-  An application sends UDP datagrams to the STUN server
+  An application sends \as{udp} datagrams to the STUN server
 \item
   The STUN server responds with the source IP address and port specified
   inside the datagrams
@@ -598,7 +612,7 @@ address range. Layer 3 virtual networks provide a virtual network router
 that allows remote machines to be on separate LANs. Depending on the
 specific implementation, the overlay network can either be implemented
 directly in the Operating System's kernel, or on top of a driver like
-\glsxtrshort{tun} or \glsxtrshort{tap}.
+\as{tun} or \as{tap}.
 
 \begin{itemize}
 \tightlist
@@ -608,7 +622,7 @@ directly in the Operating System's kernel, or on top of a driver like
   \begin{itemize}
   \tightlist
   \item
-    Layer 2 overlays bridge networks
+    Layer 2 overlay networks bridge other networks
 
     \begin{itemize}
     \tightlist
