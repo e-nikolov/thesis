@@ -357,7 +357,7 @@ Tailscale employs a distributed relay network of \gls{derp} servers, while Nebul
 
 #### OpenZiti
 
-OpenZiti is a commercial product that provides a \gls{sdk} for creating \gls{p2p} overlay networks. It is developed by NetFoundry, a company that provides a \gls{saas} platform for creating and managing \gls{p2p} overlay networks. The \gls{sdk} is open-source and can be used to create custom overlay networks. The \gls{sdk} is written in Go and provides a high-level \gls{api} for creating and managing the overlay network. It uses a centralized service for peer discovery and identity management. The data traffic is routed via a \gls{p2p} network of relays. The relays are hosted by NetFoundry and are not open-source. The \gls{sdk} is available for Go, Java, Python, C# and C++.
+OpenZiti is a commercial product that provides an SDK for creating \gls{p2p} overlay networks. It is developed by NetFoundry, a company that provides a Software as a Service platform for creating and managing \gls{p2p} overlay networks. The SDK is open-source and can be used to create custom overlay networks. The SDK is written in Go and provides a high-level \gls{api} for creating and managing the overlay network. It uses a centralized service for peer discovery and identity management. The data traffic is routed via a \gls{p2p} network of relays. The relays are hosted by NetFoundry and are not open-source. The SDK is available for Go, Java, Python, C# and C++.
 
 \todo{edit}
 

@@ -19,20 +19,14 @@ Internet}\label{the-state-of-multiparty-communications-over-the-internet}}
 
 \todo{include a section on MPC?}
 
-This chapter provides background information on the challenges of
-Internet communications between multiple independent parties. It also
-presents a systematic overview of the available solutions, using the
-\gls{osi} reference model as a conceptual framework. Section
-\ref{sec:internet} briefly explores the fundamentals of the Internet,
-its protocols, the limitations for peer-to-peer protocols, and some of
-the approaches to overcome them. Section \ref{sec:overlays} discusses
-higher-level overlay networks that build on top of the lower-level
-protocols from section \ref{sec:internet}.
-
 \hypertarget{sec:internet}{%
 \chapter{Internet Communications}\label{sec:internet}}
 
 \todo{Is there a more fitting section name than "The Internet"}
+
+This chapter provides important background information on secure
+Internet communications, the challenges to multiparty communications and
+the approaches to overcome them.
 
 The Internet is a global network that consists of numerous
 interconnected computer networks spanning billions of host devices owned
@@ -43,7 +37,7 @@ infrastructure are deployed and managed by different tiers of
 \glspl{isp} who also maintain links between each other. To ensure
 efficient utilization of the hardware, the Internet relies on
 packet-switching techniques that divide the data traffic into smaller
-individually processed packets.
+individually processed \textbf{packets}.
 
 \begin{figure}
 \centering
@@ -53,15 +47,21 @@ Suite\label{osi-map-tcp}}
 \end{figure}
 
 Communication protocols are usually organized into abstraction layers
-based on the scope of their functionality. Several reference models
-define different layering schemes, for example, the OSI model recognizes
-7 layers, while TCP/IP itself combines some of the layers and recognizes
-4. Figure \ref{osi-map-tcp} shows how the two models relate to each
-other and describes the responsibilities of the various layers.
-Throughout this thesis, we will refer to the 7 layer numbers of the OSI
-model as they are more widely used in the literature.
+based on the scope of their functionality with higher-layer protocols
+relying on the services provided by the lower-layer protocols. Several
+reference models define different layering schemes, for example, the OSI
+model recognizes 7 layers, while TCP/IP itself combines some of the
+layers and recognizes 4. Figure \ref{osi-map-tcp} shows how the two
+models relate to each other and describes the responsibilities of the
+various layers. Throughout this thesis, we will refer to the 7 layer
+numbers of the OSI model as they are more widely used in the literature.
 
-Each communication protocol has its own \gls{pdu} that
+The packets that are transmitted over the network contain information
+from multiple protocols organized in \glspl{pdu} with the lower-layer
+PDUs \textbf{encapsulating} the higher-layer PDUs as a (usually opaque)
+\textbf{payload}. Additionally, the PDU of a protocol contains control
+information for the protocol itself in the form of a \textbf{header} or
+\textbf{footer}.
 
 Services that are implemented as Application layer (L7) protocols on top
 of TCP/IP include the \gls{www}, file transfer (\as{ftp}), email
@@ -197,6 +197,12 @@ e.g.~\texttt{google.com} to \texttt{142.250.179.142}.
 \section{Secure Communication
 Protocols}\label{secure-communication-protocols}}
 
+The communication protocols from the previous section do not encrypt the
+payloads of their packets, which allows intruders and routers between
+the communicating hosts to see the data. This section provides an
+overview of protocols that provide security to those communication
+protocols.
+
 \hypertarget{transport-layer-l4-to-application-layer-l7-security}{%
 \subsection{Transport Layer (L4) to Application Layer (L7)
 Security}\label{transport-layer-l4-to-application-layer-l7-security}}
@@ -250,6 +256,11 @@ client-side certificates. This mode of operations is sometimes used in
 Zero Trust networking, in microservice architectures and TLS-based
 \as{vpn} applications.
 
+Due to asymmetric cryptography being computationally expensive, TLS uses
+a hybrid approach. The communicating parties use the asymmetric key/s
+and Diffie--Hellman key exchange to agree on a set of symmetric session
+keys for authentication and encryption/decryption of their data.
+
 TLS is rather complex because it needs to support many possible use
 cases while remaining backward compatible. It allows the negotiation of
 security parameters like cipher suits.
@@ -267,9 +278,9 @@ and the server must authenticate to each other using public-key
 cryptography or a password. The cryptographic material must be
 distributed via a side channel either manually or via automation tools.
 
-\hypertarget{network-layer-l3-security-protocols}{%
-\subsection{Network Layer (L3) Security
-Protocols}\label{network-layer-l3-security-protocols}}
+\hypertarget{network-layer-l3-security}{%
+\subsection{Network Layer (L3)
+Security}\label{network-layer-l3-security}}
 
 Network layer (L3) security protocols provide host-to-host security in
 Internet Protocol communications. Their implementations are usually
@@ -403,9 +414,9 @@ will be able to communicate back with it.
 
 \todo{ \gls{cidr} is a common notation for describing IP address ranges, e.g. `192.168.0.1/16`, where the number after the slash describes the bit-length of the fixed prefix for a subnet.}
 
-\hypertarget{multiparty-communication---barriers-and-traversal}{%
-\section{Multiparty Communication - Barriers and
-Traversal}\label{multiparty-communication---barriers-and-traversal}}
+\hypertarget{challenges-and-solutions-for-multiparty-communications}{%
+\section{Challenges and Solutions for Multiparty
+Communications}\label{challenges-and-solutions-for-multiparty-communications}}
 
 The version of the Internet Protocol, that was originally deployed
 globally (IPv4), uses 32-bit numbers as IP addresses, allowing for
@@ -498,41 +509,42 @@ NAT gateways on the network path to a public STUN server, and identify
 their types and the public IP address that they map to externally. The
 process usually involves the following steps:
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+\begin{itemize}
 \tightlist
 \item
-  An application sends \as{udp} datagrams to the STUN server
+  An application sends \as{udp} datagrams to the STUN server (1, 3 in
+  fig.~\ref{nat-traversal})
 \item
   The STUN server responds with the source IP address and port specified
-  inside the datagrams
+  inside the datagrams (2, 4 in fig.~\ref{nat-traversal})
 \item
   The application compares its own endpoint with the source endpoint
   observed by the STUN server and if the values differ, it can be
   inferred that they were rewritten by a NAT. Additional STUN servers
   are contacted to determine if the NAT maps IPs and ports in a
   predictable fashion.
-\end{enumerate}
+\end{itemize}
 
 UDP hole punching is a related technique that, depending on the NAT
 types, can allow direct communication between two applications behind
 separate NATs. The applications must discover each other's externally
 mapped endpoints, perhaps via the STUN server. \todo{If, else?} If the
-NATs use the same external port regardless of the remote destination,
-the two applications can:
+NATs use the same external port regardless of the remote destination:
 
-\begin{enumerate}
-\def\labelenumi{\arabic{enumi}.}
+\begin{itemize}
 \tightlist
 \item
-  simultaneously send UDP packets to each other's external endpoints.
+  The two applications simultaneously send UDP packets to each other's
+  external endpoints (5 in fig.~\ref{nat-traversal})
 \item
-  their respective NATs will see the outgoing connection to the other
-  peer and create a port mapping for the reverse connection - a
-  ``punched hole''
+  Their respective NATs will process the outgoing packets to the other
+  peer and create a port mapping for the reverse traffic - a ``punched
+  hole''
 \item
-  when the incoming traffic arrives from it and forward it correctly.
-\end{enumerate}
+  When the incoming traffic from a peer arrives at the other peer's NAT,
+  it will be forwarded correctly due to the port mapping that was
+  created earlier
+\end{itemize}
 
 NATs that map different ports per remote destination sometimes allocate
 port numbers predictably, which can be used by the peers to try to guess
@@ -764,9 +776,30 @@ Overlays}\label{application-layer-l7-network-overlays}}
 \hypertarget{openziti}{%
 \subsection{OpenZiti}\label{openziti}}
 
+OpenZiti is a commercial product that provides an SDK for creating
+\gls{p2p} overlay networks. It is developed by NetFoundry, a company
+that provides a Software as a Service platform for creating and managing
+\gls{p2p} overlay networks. The SDK is open-source and can be used to
+create custom overlay networks. The SDK is written in Go and provides a
+high-level \gls{api} for creating and managing the overlay network. It
+uses a centralized service for peer discovery and identity management.
+The data traffic is routed via a \gls{p2p} network of relays. The relays
+are hosted by NetFoundry and are not open-source. The SDK is available
+for Go, Java, Python, C\# and C++.
+
+\todo{edit}
+
 \begin{itemize}
+\tightlist
 \item
   uses relays
+\end{itemize}
+
+\hypertarget{libp2p}{%
+\subsection{LibP2P}\label{libp2p}}
+
+\begin{itemize}
+\tightlist
 \item
   libP2P
 \item
