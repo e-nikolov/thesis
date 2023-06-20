@@ -65,7 +65,7 @@ ownership of a public key, or separate communication with the digital authority.
     - Twitter
     - Reddit
   - Decentralized
-    - Mastodon
-    - Bluesky
+    - Mastodon - Mastodon is an open-source, decentralized social networking platform that provides an alternative to traditional social media giants like Twitter. It operates on a federated model, which means that instead of being a single, centralized platform, it is a network of independently operated servers, known as "instances". Each instance hosts its own community with its own rules, but users on any instance can interact with users on other instances thanks to a common protocol, creating a connected, distributed social network.
+    - Bluesky - An ex-twitter initiative to move away from centralized social media platforms, where a single organization controls the network. Instead, Bluesky aims to develop a standard protocol for social media that would enable the development of a variety of interoperable, decentralized platforms.
     - Nostr
 - Identity Privacy
