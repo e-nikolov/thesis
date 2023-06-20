@@ -80,8 +80,8 @@ some of the low-level mitigation techniques.
 
 \begin{block}{Communication Protocols}
 \protect\hypertarget{communication-protocols}{}
-\begin{block}{Network Layer (L3) Communication}
-\protect\hypertarget{network-layer-l3-communication}{}
+\begin{block}{Network Layer (L3)}
+\protect\hypertarget{network-layer-l3}{}
 The \as{ip} \autocite{ipv4RFC} is a Network layer (L3) protocol of the
 Internet Protocol Suite that is responsible for transferring datagrams
 between devices across the boundaries of their \glspl{lan} by possibly
@@ -99,8 +99,8 @@ networks and relays datagrams between them based on a routing table that
 maps IP address ranges to networks.
 \end{block}
 
-\begin{block}{Transport Layer (L4) Communication}
-\protect\hypertarget{transport-layer-l4-communication}{}
+\begin{block}{Transport Layer (L4)}
+\protect\hypertarget{transport-layer-l4}{}
 \af{udp} is a very thin Transport layer (L4) protocol that only provides
 port multiplexing and checksumming on top of IP. - Port multiplexing -
 uses 16-bit numbers to allow multiple processes behind the same IP
@@ -148,8 +148,8 @@ of secure connections, QUIC is tightly coupled with \as{tls} version
 1.3. One of the main uses of QUIC is inside \as{http} version 3.
 \end{block}
 
-\begin{block}{Application Layer (L7) Communication}
-\protect\hypertarget{application-layer-l7-communication}{}
+\begin{block}{Application Layer (L7)}
+\protect\hypertarget{application-layer-l7}{}
 \gls{http} is an Application layer (L7) protocol that enables stateless
 request/response interactions on the Web between web servers and clients
 (e.g.~browsers). Similar to other L7 protocols, it uses \glspl{url} for
@@ -199,8 +199,8 @@ the communicating hosts to see the data. This section provides an
 overview of protocols that provide security to those communication
 protocols.
 
-\begin{block}{Transport Layer (L4) to Application Layer (L7) Security}
-\protect\hypertarget{transport-layer-l4-to-application-layer-l7-security}{}
+\begin{block}{Transport Layer (L4) to Application Layer (L7)}
+\protect\hypertarget{transport-layer-l4-to-application-layer-l7}{}
 \af{tls} \autocite{tlsRFC} and its precursor \gls{ssl} are protocols
 that provide secure communications to Application layer (L7) protocols
 on top of a reliable Transport layer (L4) protocol like \gls{tcp}.
@@ -273,8 +273,8 @@ cryptography or a password. The cryptographic material must be
 distributed via a side channel either manually or via automation tools.
 \end{block}
 
-\begin{block}{Network Layer (L3) Security}
-\protect\hypertarget{network-layer-l3-security}{}
+\begin{block}{Network Layer (L3)}
+\protect\hypertarget{network-layer-l3-1}{}
 Network layer (L3) security protocols provide host-to-host security in
 Internet Protocol communications. Their implementations are usually
 configured in the operating systems of the hosts and are invisible to
@@ -616,10 +616,10 @@ between them.
 \label{osi-map-overlays}}
 \end{figure}
 
-\begin{block}{Network layer (L3) and Data Link (L2) Overlay Networks}
-\protect\hypertarget{network-layer-l3-and-data-link-l2-overlay-networks}{}
-\begin{block}{Traditional VPNs}
-\protect\hypertarget{traditional-vpns}{}
+\begin{block}{Data Link Layer (L2) and Network Layer (L3)}
+\protect\hypertarget{data-link-layer-l2-and-network-layer-l3}{}
+\begin{block}{Client/Server VPNs}
+\protect\hypertarget{clientserver-vpns}{}
 Layer 2 virtual networks provide a virtual network switch that allows
 remote machines to be on the same virtual LAN and share the same IP
 address range. Layer 3 virtual networks provide a virtual network router
@@ -762,8 +762,8 @@ configured to route via one of the other peers in the VPN.
 \end{block}
 \end{block}
 
-\begin{block}{Application Layer (L7) Network Overlays}
-\protect\hypertarget{application-layer-l7-network-overlays}{}
+\begin{block}{Application Layer (L7)}
+\protect\hypertarget{application-layer-l7}{}
 \begin{block}{OpenZiti}
 \protect\hypertarget{openziti}{}
 OpenZiti is a commercial product that provides an SDK for creating
@@ -809,6 +809,166 @@ for Go, Java, Python, C\# and C++.
 \end{itemize}
 \end{block}
 \end{block}
+\end{block}
+
+\begin{block}{Digital Identities for Multiparty Computations}
+\protect\hypertarget{digital-identities-for-multiparty-computations}{}
+Digital identity mechanisms provide standardized ways for referring to
+entities in the context of digital interactions. We have already seen
+some examples of digital identities in the previous chapter:
+
+\begin{itemize}
+\tightlist
+\item
+  \as{mac} addresses - host identities at the Data link layer (L2)
+\item
+  \as{ip} addresses - host identities at the Network layer (L3)
+\item
+  Digital Certificates - identities that can be cryptographically
+  verified
+\end{itemize}
+
+Key concepts related to digital identity mechanisms include:
+
+\begin{itemize}
+\tightlist
+\item
+  Issuance - the process of assigning a digital identity to an entity.
+  Often this involves a trusted third party like a government or a
+  digital identity provider like Google or GitHub. Another option is
+  \as{ssi} where a user manages their own identity.
+\item
+  Authentication - the process of verifying the identity of an entity
+\item
+  Credentials - use case-specific attributes associated with an identity
+\item
+  Authorization - the process of verifying if an identity's owner is
+  allowed to perform an action on a resource
+\end{itemize}
+
+Other notable examples include:
+
+\begin{itemize}
+\tightlist
+\item
+  Email addresses - identities for entities participating in email
+  communications
+\item
+  User names - user identities in various digital platforms that can be
+  verified via a password
+\item
+  ID cards - government-issued identity documents are increasingly able
+  to support digital interactions
+\item
+  Biometrics - used to prove an identity via sensor data
+\end{itemize}
+
+\begin{itemize}
+\tightlist
+\item
+  IP addresses
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Cryptographically Generated Addresses - rfc3972
+  \item
+    Privacy Extensions - rfc4941
+  \item
+    DNS
+  \end{itemize}
+\item
+  MAC addresses
+\item
+  Government
+
+  \begin{itemize}
+  \tightlist
+  \item
+    ID Cards / Passports
+
+    \begin{itemize}
+    \tightlist
+    \item
+      NFC
+    \end{itemize}
+  \item
+    Estonia's Digital Government
+  \item
+    DigiD in NL
+  \item
+  \end{itemize}
+\item
+  Certificates
+\item
+  TLS
+\item
+  IPSec
+\item
+  WireGuard
+\item
+  OpenID Connect
+\item
+  Crypto currency addresses
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Hierarchical Deterministic Keys
+  \item
+    ENS
+  \end{itemize}
+\item
+  Self-Sovereign Identity
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Decentralized Identifiers
+  \item
+    Verifiable Credentials
+  \item
+    Identity Overlay Network (ION) from Microsoft
+
+    \begin{itemize}
+    \tightlist
+    \item
+      DPKI
+    \end{itemize}
+  \end{itemize}
+\item
+  Social Networks
+
+  \begin{itemize}
+  \tightlist
+  \item
+    Centralized
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Facebook
+    \item
+      Twitter
+    \item
+      Reddit
+    \end{itemize}
+  \item
+    Decentralized
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Mastodon
+    \item
+      Bluesky
+    \item
+      Nostr
+    \end{itemize}
+  \end{itemize}
+\item
+  Identity Privacy
+\end{itemize}
 \end{block}
 \end{frame}
 
