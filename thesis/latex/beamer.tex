@@ -984,7 +984,7 @@ Other notable examples include:
 \end{block}
 \end{frame}
 
-\begin{frame}{Proof of Concepts and Evaluation}
+\begin{frame}[fragile]{Proof of Concepts and Evaluation}
 \protect\hypertarget{proof-of-concepts-and-evaluation}{}
 \begin{block}{Testing methodology}
 \protect\hypertarget{testing-methodology}{}
@@ -1259,6 +1259,101 @@ With tailscale each party needs to
 This solution is similar to the Tailscale one, but it uses Headscale - a
 self-hosted open-source alternative to the closed-source Tailscale
 coordination service.
+
+\begin{block}{Implementation details}
+\protect\hypertarget{implementation-details}{}
+\end{block}
+
+\begin{block}{Performance analysis}
+\protect\hypertarget{performance-analysis}{}
+\end{block}
+
+\begin{block}{Security analysis}
+\protect\hypertarget{security-analysis}{}
+\begin{block}{Trust model}
+\protect\hypertarget{trust-model}{}
+There still is a centralized service like in the Tailscale solution, but
+here it is self-deployed.
+\end{block}
+
+\begin{block}{Identity}
+\protect\hypertarget{identity}{}
+\end{block}
+\end{block}
+
+\begin{block}{Usability analysis}
+\protect\hypertarget{usability-analysis}{}
+\end{block}
+\end{block}
+
+\begin{block}{Web Based Solution}
+\protect\hypertarget{web-based-solution}{}
+Web based solution for running MPC in browsers on the client side via
+WebAssembly and WebRTC for peer-to-peer connectivity.
+
+The lifecycle of a message between the workers of 2 peers, ``Peer A''
+and ``Peer B'' looks like this:
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=0.9\textheight]{thesis/../figures/mpyc-web.png}
+\caption{MPyC Web \label{osi-map-overlays}}
+\end{figure}
+
+\begin{enumerate}
+\item
+  Python Worker on Peer A
+
+  \begin{itemize}
+  \tightlist
+  \item
+    creates a message that contains a secret share computed via the
+    mpyc, which serializes it to binary via struct.pack(). The resulting
+    message is non-ascii, but when escaped can look like this:
+  \end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{b\textquotesingle{}}\CharTok{\textbackslash{}x06\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}xc9\textbackslash{}x93\textbackslash{}\textbackslash{}\textbackslash{}xc0\textbackslash{}xff\textbackslash{}xff\textbackslash{}xff\textbackslash{}xff\textbackslash{}x04\textbackslash{}x00\textbackslash{}x80\textbackslash{}x99\textbackslash{}x1b\textbackslash{}x01}\StringTok{\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    worker calls a main thread function (sendRuntimeMessage) via a
+    coincident proxy and passes the serialized value, as well as the
+    destination Peer's ID (Peer B). The worker does not need to await
+    the result of this call, but it does because of xworker.sync.
+  \end{itemize}
+\item
+  Coincident handles the message by:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    (Worker) JSON.stringify() -\textgreater{} Atomics.wait()
+  \item
+    (Main) JSON.parse() -\textgreater{} Run the Main Thread function
+    -\textgreater{} Atomics.notify()
+  \end{itemize}
+\item
+  Main thread on Peer A fires an event to notify PeerJS that it needs to
+  transport the message and immediately returns in order to not block
+  the Worker
+\item
+  PeerJS serializes the message with some added fields via MessagePack
+  and transmits it to Peer B
+\item
+  Main thread on Peer B receives the message and forwards it to the
+  appropriate worker callback via coincident
+\item
+  Coincident does the JSON.stringify() -\textgreater{} Atomics.wait()
+  stuff (?) from main to worker on Peer B
+\item
+  Worker on Peer B handles the message by passing it to an asyncio
+  coroutine that is waiting for it or stores it for later use
+\end{enumerate}
 
 \begin{block}{Implementation details}
 \protect\hypertarget{implementation-details}{}

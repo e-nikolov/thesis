@@ -4,17 +4,14 @@ This solution is similar to the Tailscale one, but it uses Headscale - a self-ho
 
 ### Implementation details
 
-
 ### Performance analysis
 
 ### Security analysis
 
 #### Trust model
 
-There still is a centralized service like in the Tailscale solution, but here it is self-deployed. 
+There still is a centralized service like in the Tailscale solution, but here it is self-deployed.
 
 #### Identity
 
- 
 ### Usability analysis
-

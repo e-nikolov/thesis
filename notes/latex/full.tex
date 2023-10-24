@@ -1263,6 +1263,200 @@ encryption.'' -- n2n whitepaper
   \end{itemize}
 \end{itemize}
 
+\hypertarget{web-browser-python}{%
+\section{Web Browser Python}\label{web-browser-python}}
+
+\hypertarget{overview}{%
+\subsection{Overview}\label{overview}}
+
+\begin{itemize}
+\tightlist
+\item
+  https://github.com/flexxui/flexx/wiki/PyScript-vs-X
+\item
+  https://pythondev.readthedocs.io/wasm.html
+\item
+  https://stromberg.dnsalias.org/\textasciitilde strombrg/pybrowser/python-browser.html
+\item
+  https://realpython.com/brython-python-in-browser/\#exploring-alternatives-to-brython
+\end{itemize}
+
+\hypertarget{transpilers}{%
+\subsection{Transpilers}\label{transpilers}}
+
+\begin{figure}
+\centering
+\includegraphics{notes/../figures/pyodide-pyscript.png}
+\caption{Alt text}
+\end{figure}
+
+Compile Python to JS or WebAssembly (WASM)
+
+\begin{itemize}
+\item
+  WASM
+
+  \begin{itemize}
+  \tightlist
+  \item
+    www.webassembly.guide/
+  \end{itemize}
+\item
+  PyScript
+
+  \begin{itemize}
+  \tightlist
+  \item
+    https://pyscript.net
+  \item
+    https://github.com/pyscript/pyscript
+  \item
+    https://docs.pyscript.net/latest/reference/faq.html
+  \item
+    https://docs.pyscript.net/latest/guides/asyncio.html
+  \item
+    PyScript is built using Pyodide, the WebAssembly port of CPython,
+    which is compiled using Emscripten.
+  \item
+    Depends on a python runtime
+
+    \begin{itemize}
+    \tightlist
+    \item
+      Pyodide (Default)
+
+      \begin{itemize}
+      \tightlist
+      \item
+        needs to load a 10 mb runtime
+      \end{itemize}
+    \item
+      MicroPython
+
+      \begin{itemize}
+      \tightlist
+      \item
+        https://pyscript.net/tech-preview/micropython/about.html
+      \item
+        https://github.com/micropython/micropython
+      \item
+        More limited, but faster startup
+      \end{itemize}
+    \end{itemize}
+  \item
+    Adds
+
+    \begin{itemize}
+    \item
+      config.toml - configure extra packages to be loaded with pyodide
+    \item
+    \item
+      XWorker
+    \item
+      other HTML plugins
+    \end{itemize}
+  \end{itemize}
+\item
+  Pyodide
+
+  \begin{itemize}
+  \tightlist
+  \item
+    https://github.com/pyodide/pyodide
+  \item
+    CPython distribution for WASM
+  \end{itemize}
+\item
+  https://github.com/bytecodealliance/wasmtime-py
+\item
+  Python 3.11.0 for WASM https://github.com/dbaeumer/python-3.11.0
+\item
+  Transcrypt
+
+  \begin{itemize}
+  \tightlist
+  \item
+    https://www.transcrypt.org
+  \item
+    https://github.com/TranscryptOrg/Transcrypt
+  \item
+    https://github.com/bunkahle/Transcrypt-Examples/tree/master/hello
+  \item
+    Transpile Python to JS ahead of time, include the JS version in the
+    Web Page
+  \end{itemize}
+\item
+  PyJS - http://pyjs.org
+\item
+  Batavia - Unmaintained, moved to PyScript
+
+  \begin{itemize}
+  \tightlist
+  \item
+    https://github.com/beeware/batavia
+  \item
+    https://batavia.readthedocs.io/en/latest/background/faq.html
+  \item
+    VM in JS for running CPython bytecode
+  \end{itemize}
+\item
+  RapydScript
+
+  \begin{itemize}
+  \tightlist
+  \item
+    https://github.com/atsepkov/RapydScript
+  \end{itemize}
+\end{itemize}
+
+\hypertarget{interpreters}{%
+\subsection{Interpreters}\label{interpreters}}
+
+Interpreters for python in JS
+
+\begin{itemize}
+\tightlist
+\item
+  Brython
+
+  \begin{itemize}
+  \tightlist
+  \item
+    https://www.brython.info/speed\_results.html
+  \item
+    Python 3
+  \item
+    https://brython.info/static\_doc/en/intro.html
+  \item
+    https://brython.info/static\_doc/en/faq.html
+  \end{itemize}
+\item
+  Skulpt
+
+  \begin{itemize}
+  \tightlist
+  \item
+    https://github.com/skulpt/skulpt/tree/master
+  \item
+    https://skulpt.org
+  \item
+    https://skulpt.org/docs/index.html
+  \item
+    Python 2
+  \end{itemize}
+\item
+  Emscripten??
+
+  \begin{itemize}
+  \tightlist
+  \item
+    https://emscripten.org/docs/introducing\_emscripten/about\_emscripten.html
+  \item
+    Emscripten is a complete compiler toolchain to WebAssembly, using
+    LLVM
+  \end{itemize}
+\end{itemize}
+
 \hypertarget{brainstorm-for-custom-solutions}{%
 \chapter{Brainstorm for custom
 solutions}\label{brainstorm-for-custom-solutions}}
