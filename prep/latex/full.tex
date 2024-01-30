@@ -1,5 +1,5 @@
 \hypertarget{abstract}{%
-\chapter*{Abstract}\label{abstract}}
+\part*{Abstract}\label{abstract}}
 
 \href{prep/010-introduction.md\#background}{TEST3}
 
@@ -30,7 +30,7 @@ project.
 \mainmatter
 
 \hypertarget{introduction}{%
-\chapter{Introduction}\label{introduction}}
+\part{Introduction}\label{introduction}}
 
 This report will present the results of the preparation phase of the
 master thesis project titled ``Secure Sessions for Ad Hoc Multiparty
@@ -40,7 +40,7 @@ plan with well defined goals for the implementation phase of the
 project.
 
 \hypertarget{background}{%
-\section{Background}\label{background}}
+\chapter{Background}\label{background}}
 
 \gls{mpc} is a set of techniques and protocols for computing a function
 over the secret inputs of multiple parties without revealing their
@@ -90,7 +90,7 @@ deployed either in the cloud or on premise in an automated way using
 \gls{iac} tools.
 
 \hypertarget{problem-description}{%
-\section{Problem description}\label{problem-description}}
+\chapter{Problem description}\label{problem-description}}
 
 MPyC supports \gls{tcp} connections from the \gls{ip} suite between the
 \gls{mpc} participants but it does not currently provide a service
@@ -115,7 +115,7 @@ scenarios due to the inherently \gls{p2p} nature of the involved
 communications.
 
 \hypertarget{research-questions}{%
-\section{Research questions}\label{research-questions}}
+\chapter{Research questions}\label{research-questions}}
 
 Based on the problem description above, we formulate the following
 central research question:
@@ -199,7 +199,7 @@ to consider. The performance overhead of the security mechanisms should
 be evaluated.
 
 \hypertarget{preparation-phase-scope}{%
-\section{Preparation phase scope}\label{preparation-phase-scope}}
+\chapter{Preparation phase scope}\label{preparation-phase-scope}}
 
 During the implementation phase, we will answer the posed research
 questions of the project after evaluating various connectivity
@@ -300,7 +300,7 @@ terms of several important characteristics:
 \end{itemize}
 
 \hypertarget{technical-survey}{%
-\chapter{Technical Survey}\label{technical-survey}}
+\part{Technical Survey}\label{technical-survey}}
 
 In this chapter we will perform a high level survey of the available
 tools and approaches that could be used for \gls{e3} and select ones
@@ -312,7 +312,7 @@ to choose building blocks that are compatible with as many scenarios as
 possible while also keeping the complexity low.
 
 \hypertarget{deployment}{%
-\section{Deployment}\label{deployment}}
+\chapter{Deployment}\label{deployment}}
 
 Our primary users are enterprises and power users. Enterprises can
 employ a variety of \gls{iac} tools in their infrastructure management
@@ -420,7 +420,7 @@ We decided to use DigitalOcean as a cloud provider because they are
 supported by Terraform and offered free credits for educational use.
 
 \hypertarget{connectivity}{%
-\section{Connectivity}\label{connectivity}}
+\chapter{Connectivity}\label{connectivity}}
 
 There are a number of approaches for communication between our host
 machines. During the preparation phase of the project we will perform a
@@ -431,7 +431,7 @@ implement more approaches and analyze how they compare to each other in
 practice.
 
 \hypertarget{virtual-private-networks-vpns}{%
-\subsection{Virtual Private Networks
+\section{Virtual Private Networks
 (VPNs)}\label{virtual-private-networks-vpns}}
 
 \glspl{vpn} are commonly used for securely connecting machines from
@@ -528,7 +528,7 @@ We will now briefly mention some additional approaches we looked into
 that may be a good starting point for the next phase of the project.
 
 \hypertarget{decentralized-identifiers-dids-and-didcomm}{%
-\subsection{Decentralized Identifiers (DIDs) and
+\section{Decentralized Identifiers (DIDs) and
 DIDComm}\label{decentralized-identifiers-dids-and-didcomm}}
 
 \gls{ssi} is a way of managing a digital identity that emphasises an
@@ -553,7 +553,7 @@ DIDComm to be usable for MPyC we would likely have to implement a
 TLS-like protocol on top of it that supports sessions.
 
 \hypertarget{the-onion-router-tor}{%
-\subsection{The Onion Router (TOR)}\label{the-onion-router-tor}}
+\section{The Onion Router (TOR)}\label{the-onion-router-tor}}
 
 Two machines need to know each other's IP addresses in order to be able
 to interact via the internet. An IP address can reveal details about a
@@ -577,7 +577,7 @@ is essential. It is interesting to measure the performance impact on
 MPyC computations when routed via a TOR-like relay network.
 
 \hypertarget{summary}{%
-\section{Summary}\label{summary}}
+\chapter{Summary}\label{summary}}
 
 In this chapter we compared a number of potential building blocks for
 \gls{e3} and made some choices informed by our requirements.
@@ -588,7 +588,7 @@ to its ease of use. In the next phase of the project, we plan to explore
 solutions based on Nebula, DIDComm, TOR and combinations of the above.
 
 \hypertarget{implementation-details}{%
-\chapter{Implementation details}\label{implementation-details}}
+\part{Implementation details}\label{implementation-details}}
 
 In this chapter we will cover the implementation of \gls{e3}, which can
 be found on \href{https://github.com/e-nikolov/mpyc}{Github}. It is a
@@ -597,7 +597,7 @@ capabilities. We will now discuss the more critical parts of the
 implementation.
 
 \hypertarget{reproducible-development-of-mpyc}{%
-\section{Reproducible development of
+\chapter{Reproducible development of
 MPyC}\label{reproducible-development-of-mpyc}}
 
 As previously discussed, the \glspl{vm} of \gls{e3} run the NixOS
@@ -760,7 +760,7 @@ ready to make changes to MPyC or locally run the demos, e.g.~via
 \texttt{python\ ./demos/secretsanta.py}.
 
 \hypertarget{building-a-nixos-image-for-digitalocean}{%
-\section{Building a NixOS image for
+\chapter{Building a NixOS image for
 DigitalOcean}\label{building-a-nixos-image-for-digitalocean}}
 
 As previously discussed we will deploy \gls{e3} on DigitalOcean droplets
@@ -846,7 +846,7 @@ Running \texttt{nix\ build\ .\#packages.digitalOceanImage} creates a
 DigitalOcean.
 
 \hypertarget{building-a-nixos-image-for-raspberrypi}{%
-\section{Building a NixOS image for
+\chapter{Building a NixOS image for
 RaspberryPi}\label{building-a-nixos-image-for-raspberrypi}}
 
 We can build a NixOS image for a RaspberryPi4 with a similar nix
@@ -891,7 +891,7 @@ all that is required is to add
 \texttt{/etc/nixos/nix.conf} file.
 
 \hypertarget{provisioning-via-terraform}{%
-\section{Provisioning via Terraform}\label{provisioning-via-terraform}}
+\chapter{Provisioning via Terraform}\label{provisioning-via-terraform}}
 
 We will provision DigitalOcean droplets with Terraform from the VM image
 created earlier. We need to provide it with a DigitalOcean authorization
@@ -899,7 +899,7 @@ key in the \texttt{DIGITALOCEAN\_TOKEN} environment variable so it can
 use their API on our behalf.
 
 \hypertarget{importing-the-image}{%
-\subsubsection{Importing the image}\label{importing-the-image}}
+\subsection{Importing the image}\label{importing-the-image}}
 
 The snippet below handles the upload of our NixOS image.
 
@@ -953,7 +953,7 @@ After that, the \texttt{digitalocean\_custom\_image} will import the
 image from the URL generated by the bucket.
 
 \hypertarget{generating-hostnames}{%
-\subsubsection{Generating hostnames}\label{generating-hostnames}}
+\subsection{Generating hostnames}\label{generating-hostnames}}
 
 The snippet below starts with a specification of how many machines per
 region we want to have and transforms it into a list of descriptive ids
@@ -996,7 +996,7 @@ communicating with each other.
 \end{Shaded}
 
 \hypertarget{provisioning-the-hosts}{%
-\subsubsection{Provisioning the hosts}\label{provisioning-the-hosts}}
+\subsection{Provisioning the hosts}\label{provisioning-the-hosts}}
 
 The snippet below provisions the droplets in the specified regions and
 then using Tailscale's terraform provider creates auth keys for the
@@ -1052,7 +1052,7 @@ provisioner will remove the nodes from the network.
 \end{Shaded}
 
 \hypertarget{interfacing-with-other-tools}{%
-\subsubsection{Interfacing with other
+\subsection{Interfacing with other
 tools}\label{interfacing-with-other-tools}}
 
 This snippet outputs the hostnames of the provisioned droplets so they
@@ -1074,7 +1074,7 @@ a json file so it can deploy further software changes to them.
 \end{Shaded}
 
 \hypertarget{colmena-deployment}{%
-\section{Colmena deployment}\label{colmena-deployment}}
+\chapter{Colmena deployment}\label{colmena-deployment}}
 
 Whenever we need to update the NixOS configuration of our VMs, we could
 rebuild the image and re-provision them, but this would be slow. Instead
@@ -1120,7 +1120,7 @@ to rebuild the image so that new machines get provisioned with all of
 our changes baked in.
 
 \hypertarget{runtime-execution}{%
-\section{Runtime execution}\label{runtime-execution}}
+\chapter{Runtime execution}\label{runtime-execution}}
 
 We have identified the tools we will use to deploy \gls{e3} and how the
 host machines will communicate. What remains is to determine how to run
@@ -1214,7 +1214,7 @@ Party ID based on the index at which its hostname appears in the
 \texttt{hosts.pssh} file.
 
 \hypertarget{secrets}{%
-\section{Secrets}\label{secrets}}
+\chapter{Secrets}\label{secrets}}
 
 The implementation expects that secrets are supplied as environment
 variables with the specific mechanism being left up to the user. We are
@@ -1223,7 +1223,7 @@ currently keeping the secret values in the 1Password manager and use its
 \texttt{op\ run\ -\/-\ make\ deploy}.
 
 \hypertarget{conclusions}{%
-\chapter{Conclusions}\label{conclusions}}
+\part{Conclusions}\label{conclusions}}
 
 In this report we presented the results of the preparation phase for the
 master thesis assignment ``Secure Sessions for Ad Hoc Multiparty
@@ -1244,7 +1244,7 @@ used to declaratively manage the software installed on them via
 MPyC demos in parallel on the deployed hosts.
 
 \hypertarget{implementation-phase-planning}{%
-\subsubsection{Implementation phase
+\subsection{Implementation phase
 planning}\label{implementation-phase-planning}}
 
 During the next phase of the thesis assignment, we plan to implement

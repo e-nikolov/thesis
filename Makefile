@@ -13,7 +13,8 @@ PANDOC=$(pandock) \
 		--top-level-division chapter \
 		--number-sections \
 		--file-scope \
-		--top-level-division=part
+		--top-level-division=part \
+		--strip-comments
 		
 #		\
 # .PRECIOUS: prep/latex/%.tex %.tex %/latex %/latex/
@@ -24,6 +25,14 @@ all!: thesis.pdf! notes.pdf! prep.pdf! presentation.pdf!
 figures/%.drawio.pdf: figures/%.drawio
 	drawio figures/$*.drawio --output figures/$*.drawio.pdf --export --crop
 
+watch2:
+	while true; do \
+		$(MAKE) $(WATCHMAKE); \
+		inotifywait -qre close_write .; \
+	done
+	
+watch:
+	while true; do $(MAKE) -q || $(MAKE); sleep 1; done
 test:
 	@echo test
 
@@ -111,6 +120,14 @@ presentation.html: presentation/*.md FORCE
 %/latex/full.tex: %/**.md
 # 	map all .md files from the parent directory to .tex files in the latex directory
 	$(MAKE) $(?:"$*/%.md"="$*/latex/%.tex") $*/latex/beamer.tex
+
+	$(PANDOC) \
+		-o $@ \
+		$*/*.md
+
+%/typst/full.typ: %/**.md
+# 	map all .md files from the parent directory to .tex files in the latex directory
+#	$(MAKE) $(?:"$*/%.md"="$*/typst/%.tex")
 
 	$(PANDOC) \
 		-o $@ \

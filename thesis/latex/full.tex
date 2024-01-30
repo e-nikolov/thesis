@@ -1,3 +1,4 @@
+\phantomsection\label{thesis__001-preamble.md}
 \tableofcontents
 
 \todototoc
@@ -10,17 +11,17 @@
 
 \mainmatter
 
-\hypertarget{introduction}{%
-\chapter{Introduction}\label{introduction}}
+\phantomsection\label{thesis__010-intro.md}
+\chapter{Introduction}\label{thesis__010-intro.md__introduction}
 
-\hypertarget{the-state-of-multiparty-communications-over-the-internet}{%
+\phantomsection\label{thesis__020-internet.md}
 \part{The State of Multiparty Communications over the
-Internet}\label{the-state-of-multiparty-communications-over-the-internet}}
+Internet}\label{thesis__020-internet.md__the-state-of-multiparty-communications-over-the-internet}
 
 \todo{include a section on MPC?}
 
-\hypertarget{sec:internet}{%
-\chapter{Internet Communications}\label{sec:internet}}
+\chapter{Internet
+Communications}\label{thesis__020-internet.md__sec:internet}
 
 \todo{Is there a more fitting section name than "The Internet"}
 
@@ -77,11 +78,11 @@ some of the low-level mitigation techniques.
 
 \todo{add a paragraph that describes what the rest of the section will contain}
 
-\hypertarget{communication-protocols}{%
-\section{Communication Protocols}\label{communication-protocols}}
+\section{Communication
+Protocols}\label{thesis__020-internet.md__communication-protocols}
 
-\hypertarget{network-layer-l3}{%
-\subsection{Network Layer (L3)}\label{network-layer-l3}}
+\subsection{Network Layer
+(L3)}\label{thesis__020-internet.md__network-layer-l3}
 
 The \as{ip} \autocite{ipv4RFC} is a Network layer (L3) protocol of the
 Internet Protocol Suite that is responsible for transferring datagrams
@@ -99,8 +100,8 @@ protocols. A \textbf{router} is a device that is part of multiple
 networks and relays datagrams between them based on a routing table that
 maps IP address ranges to networks.
 
-\hypertarget{transport-layer-l4}{%
-\subsection{Transport Layer (L4)}\label{transport-layer-l4}}
+\subsection{Transport Layer
+(L4)}\label{thesis__020-internet.md__transport-layer-l4}
 
 \af{udp} is a very thin Transport layer (L4) protocol that only provides
 port multiplexing and checksumming on top of IP. - Port multiplexing -
@@ -148,8 +149,8 @@ the same connection asynchronously. To better optimize the establishment
 of secure connections, QUIC is tightly coupled with \as{tls} version
 1.3. One of the main uses of QUIC is inside \as{http} version 3.
 
-\hypertarget{application-layer-l7}{%
-\subsection{Application Layer (L7)}\label{application-layer-l7}}
+\subsection{Application Layer
+(L7)}\label{thesis__020-internet.md__application-layer-l7}
 
 \gls{http} is an Application layer (L7) protocol that enables stateless
 request/response interactions on the Web between web servers and clients
@@ -190,9 +191,8 @@ The \gls{dns} operates at the Application Layer (L7) and allows the
 conversion of human-readable domains to IP addresses,
 e.g.~\texttt{google.com} to \texttt{142.250.179.142}.
 
-\hypertarget{secure-communication-protocols}{%
 \section{Secure Communication
-Protocols}\label{secure-communication-protocols}}
+Protocols}\label{thesis__020-internet.md__secure-communication-protocols}
 
 The communication protocols from the previous section do not encrypt the
 payloads of their packets, which allows intruders and routers between
@@ -200,9 +200,8 @@ the communicating hosts to see the data. This section provides an
 overview of protocols that provide security to those communication
 protocols.
 
-\hypertarget{transport-layer-l4-to-application-layer-l7}{%
 \subsection{Transport Layer (L4) to Application Layer
-(L7)}\label{transport-layer-l4-to-application-layer-l7}}
+(L7)}\label{thesis__020-internet.md__transport-layer-l4-to-application-layer-l7}
 
 \af{tls} \autocite{tlsRFC} and its precursor \gls{ssl} are protocols
 that provide secure communications to Application layer (L7) protocols
@@ -275,16 +274,15 @@ and the server must authenticate to each other using public-key
 cryptography or a password. The cryptographic material must be
 distributed via a side channel either manually or via automation tools.
 
-\hypertarget{network-layer-l3-1}{%
-\subsection{Network Layer (L3)}\label{network-layer-l3-1}}
+\subsection{Network Layer
+(L3)}\label{thesis__020-internet.md__network-layer-l3-1}
 
 Network layer (L3) security protocols provide host-to-host security in
 Internet Protocol communications. Their implementations are usually
 configured in the operating systems of the hosts and are invisible to
 the higher-layer protocols that depend on the Internet Protocol.
 
-\hypertarget{ipsec}{%
-\subsubsection{IPSec}\label{ipsec}}
+\subsubsection{IPSec}\label{thesis__020-internet.md__ipsec}
 
 \af{ipsec} is a Network layer (L3) protocol suite that provides
 host-to-host secure communications between \as{ip} hosts. It has two
@@ -326,8 +324,8 @@ certificates, \glspl{psk} or others.
   - Initially was built into IPv6, separate from IPv4
 }
 
-\hypertarget{openvpn-protocol}{%
-\subsubsection{OpenVPN Protocol}\label{openvpn-protocol}}
+\subsubsection{OpenVPN
+Protocol}\label{thesis__020-internet.md__openvpn-protocol}
 
 \begin{itemize}
 \tightlist
@@ -337,8 +335,7 @@ certificates, \glspl{psk} or others.
 \item
 \end{itemize}
 
-\hypertarget{wireguard}{%
-\subsubsection{WireGuard}\label{wireguard}}
+\subsubsection{WireGuard}\label{thesis__020-internet.md__wireguard}
 
 WireGuard \autocite{donenfeldWireGuardNextGeneration2017} is a more
 recent protocol with a design informed by lessons learned from IPSec and
@@ -410,9 +407,8 @@ will be able to communicate back with it.
 
 \todo{ \gls{cidr} is a common notation for describing IP address ranges, e.g. `192.168.0.1/16`, where the number after the slash describes the bit-length of the fixed prefix for a subnet.}
 
-\hypertarget{challenges-and-solutions-for-multiparty-communications}{%
 \section{Challenges and Solutions for Multiparty
-Communications}\label{challenges-and-solutions-for-multiparty-communications}}
+Communications}\label{thesis__020-internet.md__challenges-and-solutions-for-multiparty-communications}
 
 The version of the Internet Protocol, that was originally deployed
 globally (IPv4), uses 32-bit numbers as IP addresses, allowing for
@@ -585,8 +581,8 @@ API to Web applications.
 - Reveals IP addresses
 }
 
-\hypertarget{sec:overlays}{%
-\chapter{Overlay Networks}\label{sec:overlays}}
+\phantomsection\label{thesis__022-overlays.md}
+\chapter{Overlay Networks}\label{thesis__022-overlays.md__sec:overlays}
 
 An \textbf{overlay network} is a higher-order solution that provides
 additional networking functionality on top of an existing underlay
@@ -618,12 +614,11 @@ between them.
 \label{osi-map-overlays}}
 \end{figure}
 
-\hypertarget{data-link-layer-l2-and-network-layer-l3}{%
 \section{Data Link Layer (L2) and Network Layer
-(L3)}\label{data-link-layer-l2-and-network-layer-l3}}
+(L3)}\label{thesis__022-overlays.md__data-link-layer-l2-and-network-layer-l3}
 
-\hypertarget{clientserver-vpns}{%
-\subsection{Client/Server VPNs}\label{clientserver-vpns}}
+\subsection{Client/Server
+VPNs}\label{thesis__022-overlays.md__clientserver-vpns}
 
 Layer 2 virtual networks provide a virtual network switch that allows
 remote machines to be on the same virtual LAN and share the same IP
@@ -708,15 +703,14 @@ directly in the Operating System's kernel, or on top of a driver like
   \end{itemize}
 \end{itemize}
 
-\hypertarget{openvpn-clientserver}{%
-\subsubsection{OpenVPN Client/Server}\label{openvpn-clientserver}}
+\subsubsection{OpenVPN
+Client/Server}\label{thesis__022-overlays.md__openvpn-clientserver}
 
 We already discussed the VPN protocol behind OpenVPN. Here we will go
 into the client and server software and how they are implemented and
 discuss the typical network topologies.
 
-\hypertarget{mesh-vpns}{%
-\subsection{Mesh VPNs}\label{mesh-vpns}}
+\subsection{Mesh VPNs}\label{thesis__022-overlays.md__mesh-vpns}
 
 \begin{itemize}
 \tightlist
@@ -765,11 +759,10 @@ deployed to facilitate the host discovery. Tailscale employs a
 distributed relay network of \gls{derp} servers, while Nebula can be
 configured to route via one of the other peers in the VPN.
 
-\hypertarget{application-layer-l7}{%
-\section{Application Layer (L7)}\label{application-layer-l7}}
+\section{Application Layer
+(L7)}\label{thesis__022-overlays.md__application-layer-l7}
 
-\hypertarget{openziti}{%
-\subsection{OpenZiti}\label{openziti}}
+\subsection{OpenZiti}\label{thesis__022-overlays.md__openziti}
 
 OpenZiti is a commercial product that provides an SDK for creating
 \gls{p2p} overlay networks. It is developed by NetFoundry, a company
@@ -790,8 +783,7 @@ for Go, Java, Python, C\# and C++.
   uses relays
 \end{itemize}
 
-\hypertarget{libp2p}{%
-\subsection{LibP2P}\label{libp2p}}
+\subsection{LibP2P}\label{thesis__022-overlays.md__libp2p}
 
 \begin{itemize}
 \tightlist
@@ -813,9 +805,9 @@ for Go, Java, Python, C\# and C++.
   Freenet
 \end{itemize}
 
-\hypertarget{digital-identities-for-multiparty-computations}{%
+\phantomsection\label{thesis__025-identity.md}
 \chapter{Digital Identities for Multiparty
-Computations}\label{digital-identities-for-multiparty-computations}}
+Computations}\label{thesis__025-identity.md__digital-identities-for-multiparty-computations}
 
 Digital identity mechanisms provide standardized ways for referring to
 entities in the context of digital interactions. We have already seen
@@ -986,12 +978,12 @@ Other notable examples include:
   Identity Privacy
 \end{itemize}
 
-\hypertarget{proof-of-concepts-and-evaluation}{%
+\phantomsection\label{thesis__030-methods.md}
 \part{Proof of Concepts and
-Evaluation}\label{proof-of-concepts-and-evaluation}}
+Evaluation}\label{thesis__030-methods.md__proof-of-concepts-and-evaluation}
 
-\hypertarget{testing-methodology}{%
-\chapter{Testing methodology}\label{testing-methodology}}
+\chapter{Testing
+methodology}\label{thesis__030-methods.md__testing-methodology}
 
 In the following chapters, we will design and implement several
 solutions for ad hoc MPC sessions based on a subset of the previously
@@ -1019,8 +1011,8 @@ discussed related works:
 Additionally, we will analyze and compare them in terms of performance,
 security and usability
 
-\hypertarget{measuring-performance}{%
-\section{Measuring performance}\label{measuring-performance}}
+\section{Measuring
+performance}\label{thesis__030-methods.md__measuring-performance}
 
 During the preparation phase of the project, we developed the \gls{e3}
 framework which simplifies and automates the process of deploying
@@ -1094,8 +1086,7 @@ Furthermore, the demos will be executed in several networking scenarios:
   1-10 parties distributed across multiple distant regions
 \end{enumerate}
 
-\hypertarget{security}{%
-\section{Security}\label{security}}
+\section{Security}\label{thesis__030-methods.md__security}
 
 We will analyze aspects such as
 
@@ -1112,8 +1103,7 @@ We will analyze aspects such as
   identity strength
 \end{itemize}
 
-\hypertarget{usability}{%
-\section{Usability}\label{usability}}
+\section{Usability}\label{thesis__030-methods.md__usability}
 
 For each solution, we will describe the steps that the parties need to
 perform to execute a joint multiparty computation. Those steps will be
@@ -1144,72 +1134,72 @@ analyzed in terms of:
   resources so that the machine of each party is in its original state
 \end{itemize}
 
-\hypertarget{internet-protocol-based-solution}{%
+\phantomsection\label{thesis__050-internet-protocol.md}
 \chapter{Internet Protocol based
-solution}\label{internet-protocol-based-solution}}
+solution}\label{thesis__050-internet-protocol.md__internet-protocol-based-solution}
 
 This solution focuses on directly using the internet protocol without
 involving an overlay network. Our goal is to analyze the implications of
 using only the functionalities that MPyC directly supports to serve as
 the reference for our later experiments.
 
-\hypertarget{implementation-details}{%
-\section{Implementation details}\label{implementation-details}}
+\section{Implementation
+details}\label{thesis__050-internet-protocol.md__implementation-details}
 
 We will manually set up the multiparty computations via the public IP
 addresses of the machines and DNS.
 
-\hypertarget{performance-analysis}{%
-\section{Performance analysis}\label{performance-analysis}}
+\section{Performance
+analysis}\label{thesis__050-internet-protocol.md__performance-analysis}
 
-\hypertarget{security-analysis}{%
-\section{Security analysis}\label{security-analysis}}
+\section{Security
+analysis}\label{thesis__050-internet-protocol.md__security-analysis}
 
-\hypertarget{usability-analysis}{%
-\section{Usability analysis}\label{usability-analysis}}
+\section{Usability
+analysis}\label{thesis__050-internet-protocol.md__usability-analysis}
 
-\hypertarget{wireguard-based-solution}{%
-\chapter{WireGuard based solution}\label{wireguard-based-solution}}
+\phantomsection\label{thesis__060-wireguard.md}
+\chapter{WireGuard based
+solution}\label{thesis__060-wireguard.md__wireguard-based-solution}
 
 This solution creates an overlay network by manually configuring
 WireGuard on each machine.
 
-\hypertarget{implementation-details}{%
-\section{Implementation details}\label{implementation-details}}
+\section{Implementation
+details}\label{thesis__060-wireguard.md__implementation-details}
 
-\hypertarget{performance-analysis}{%
-\section{Performance analysis}\label{performance-analysis}}
+\section{Performance
+analysis}\label{thesis__060-wireguard.md__performance-analysis}
 
-\hypertarget{security-analysis}{%
-\section{Security analysis}\label{security-analysis}}
+\section{Security
+analysis}\label{thesis__060-wireguard.md__security-analysis}
 
-\hypertarget{usability-analysis}{%
-\section{Usability analysis}\label{usability-analysis}}
+\section{Usability
+analysis}\label{thesis__060-wireguard.md__usability-analysis}
 
-\hypertarget{tailscale-based-solution}{%
-\chapter{Tailscale based solution}\label{tailscale-based-solution}}
+\phantomsection\label{thesis__070-tailscale.md}
+\chapter{Tailscale based
+solution}\label{thesis__070-tailscale.md__tailscale-based-solution}
 
 Tailscale is a VPN solution that configures a mesh of direct Wireguard
 tunnels between the peers.
 
-\hypertarget{implementation-details}{%
-\section{Implementation details}\label{implementation-details}}
+\section{Implementation
+details}\label{thesis__070-tailscale.md__implementation-details}
 
-\hypertarget{performance-analysis}{%
-\section{Performance analysis}\label{performance-analysis}}
+\section{Performance
+analysis}\label{thesis__070-tailscale.md__performance-analysis}
 
-\hypertarget{security-analysis}{%
-\section{Security analysis}\label{security-analysis}}
+\section{Security
+analysis}\label{thesis__070-tailscale.md__security-analysis}
 
-\hypertarget{trust-model}{%
-\subsection{Trust model}\label{trust-model}}
+\subsection{Trust model}\label{thesis__070-tailscale.md__trust-model}
 
 There is a centralized service that deals with the key distribution,
 which needs to be trusted to provide the correct public keys for the
 correct parties
 
-\hypertarget{identity}{%
-\subsection{Identity}\label{identity}}
+\subsection{Identity}\label{thesis__070-tailscale.md__identity}
 
 Identity is based on third party identity providers such as Microsoft
 and GitHub
@@ -1218,8 +1208,8 @@ and GitHub
 \item
   Magic DNS
 \item ~
-  \hypertarget{usability-analysis}{%
-  \section{Usability analysis}\label{usability-analysis}}
+  \section{Usability
+  analysis}\label{thesis__070-tailscale.md__usability-analysis}
 \end{itemize}
 
 With tailscale each party needs to
@@ -1252,36 +1242,132 @@ With tailscale each party needs to
   Run the demo
 \end{itemize}
 
-\hypertarget{headscale-based-solution}{%
-\chapter{Headscale based solution}\label{headscale-based-solution}}
+\phantomsection\label{thesis__080-headscale.md}
+\chapter{Headscale based
+solution}\label{thesis__080-headscale.md__headscale-based-solution}
 
 This solution is similar to the Tailscale one, but it uses Headscale - a
 self-hosted open-source alternative to the closed-source Tailscale
 coordination service.
 
-\hypertarget{implementation-details}{%
-\section{Implementation details}\label{implementation-details}}
+\section{Implementation
+details}\label{thesis__080-headscale.md__implementation-details}
 
-\hypertarget{performance-analysis}{%
-\section{Performance analysis}\label{performance-analysis}}
+\section{Performance
+analysis}\label{thesis__080-headscale.md__performance-analysis}
 
-\hypertarget{security-analysis}{%
-\section{Security analysis}\label{security-analysis}}
+\section{Security
+analysis}\label{thesis__080-headscale.md__security-analysis}
 
-\hypertarget{trust-model}{%
-\subsection{Trust model}\label{trust-model}}
+\subsection{Trust model}\label{thesis__080-headscale.md__trust-model}
 
 There still is a centralized service like in the Tailscale solution, but
 here it is self-deployed.
 
-\hypertarget{identity}{%
-\subsection{Identity}\label{identity}}
+\subsection{Identity}\label{thesis__080-headscale.md__identity}
 
-\hypertarget{usability-analysis}{%
-\section{Usability analysis}\label{usability-analysis}}
+\section{Usability
+analysis}\label{thesis__080-headscale.md__usability-analysis}
 
-\hypertarget{web-based-solution}{%
-\chapter{Web Based Solution}\label{web-based-solution}}
+\phantomsection\label{thesis__090-mpyc-web.md}
+\chapter{MPyC Web}\label{thesis__090-mpyc-web.md__mpyc-web}
+
+This chapter presents the design of MPyC Web - an MPC connectivity
+solution based on web technologies (L7) that can run in web browsers.
+
+Design goals:
+
+\begin{itemize}
+\tightlist
+\item
+  Uses the MPyC Python framework
+\item
+  Runs in browsers (client-side) on both PCs and smartphones
+\item
+  Peer-to-peer with a fallback to relaying
+\item
+  Secure
+\item
+  Simple to use
+\end{itemize}
+
+\section{Runtime}\label{thesis__090-mpyc-web.md__runtime}
+
+While web browsers natively support only JavaScript, there are
+approaches for enabling other languages as well. In the case of Python,
+the main options are\autocite{pyodideIntroMozilla}
+\autocite{anvilPythonBrowser}:
+
+\begin{enumerate}
+\def\labelenumi{\arabic{enumi}.}
+\tightlist
+\item
+  Transpilation - Python code is transpiled to JavaScript:
+  Transcrypt\autocite{transcryptRepo}
+\item
+  Python interpreter implementation in JavaScript:
+  Skulpt\autocite{skulptDocs}, Brython\autocite{brythonDocs}
+\item
+  Python interpreter compiled to WebAssembly\autocite{wasmDocs}:
+  Pyodide\autocite{pyodideDocs}, MicroPython\autocite{microPythonDocs},
+  RustPython\autocite{rustPythonDocs}
+\end{enumerate}
+
+The main differences between those approaches are in terms of:
+
+\begin{itemize}
+\tightlist
+\item
+  moment of compilation
+\item
+  runtime load time
+\item
+  performance
+\item
+  Python ecosystem support
+\end{itemize}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0632}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0920}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0632}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0230}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0632}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.6954}}@{}}
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+approach
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+compilation
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+load
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+performance
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+ecosystem
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\bottomrule\noalign{}
+\endlastfoot
+Transcrypt & transpiler & ahead & 0 s & slow & (-) \\
+Skulpt & JS interpreter & JIT & \textasciitilde0 s & slow & (-) \\
+Brython & JS interpreter & JIT & \textasciitilde0 s & slow & (-) \\
+Pyodide & WASM interpreter & JIT & \textasciitilde5 s & fast & (+)
+asyncio (+) numpy (+) gmpy2 (+) scipy (+) python wheels (-) sockets \\
+MicroPython & WASM interpreter & JIT & \textasciitilde1 s & fast &
+(-) \\
+RustPython & WASM interpreter & JIT & \textasciitilde5 s & fast & (-) \\
+\end{longtable}
+
+MPyC depends on several Python packages that are implemented in C, such
+as numpy, gmpy2, scipy and relies heavily on asyncio and sockets from
+the standard library. Out of the discussed runtime options, Pyodide
+offers the widest support for packages from the standard library and
+third-party packages. None of the options support the sockets package
+due to browser limitations, but an alternative implementation can be
+built on top of the WebRTC API.
 
 Web based solution for running MPC in browsers on the client side via
 WebAssembly and WebRTC for peer-to-peer connectivity.
@@ -1351,23 +1437,21 @@ and ``Peer B'' looks like this:
   coroutine that is waiting for it or stores it for later use
 \end{enumerate}
 
-\hypertarget{implementation-details}{%
-\section{Implementation details}\label{implementation-details}}
+\section{Implementation
+details}\label{thesis__090-mpyc-web.md__implementation-details}
 
-\hypertarget{performance-analysis}{%
-\section{Performance analysis}\label{performance-analysis}}
+\section{Performance
+analysis}\label{thesis__090-mpyc-web.md__performance-analysis}
 
-\hypertarget{security-analysis}{%
-\section{Security analysis}\label{security-analysis}}
+\section{Security
+analysis}\label{thesis__090-mpyc-web.md__security-analysis}
 
-\hypertarget{trust-model}{%
-\subsection{Trust model}\label{trust-model}}
+\subsection{Trust model}\label{thesis__090-mpyc-web.md__trust-model}
 
 There still is a centralized service like in the Tailscale solution, but
 here it is self-deployed.
 
-\hypertarget{identity}{%
-\subsection{Identity}\label{identity}}
+\subsection{Identity}\label{thesis__090-mpyc-web.md__identity}
 
-\hypertarget{usability-analysis}{%
-\section{Usability analysis}\label{usability-analysis}}
+\section{Usability
+analysis}\label{thesis__090-mpyc-web.md__usability-analysis}

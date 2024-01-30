@@ -3,17 +3,21 @@
 * Create a figure that maps the various related components to OSI model layers
 * It can be a "more or less accurate" artistic impression since the components can cover multiple layers and the layers are somewhat fluid
 
-![test](../figures/osi-model-2.png){height=30% width=50%} ![test2](../figures/osi-model-1.png "test2"){height=30% width=40% }
+![test|500](../figures/osi-model-2.png){height=30% width=50%} ![test2](../figures/osi-model-1.png "test2"){height=30% width=40% }
 
 The Open Systems Interconnection (OSI) model distinguishes 7 layers in computer networks:
 
-![OSI model mapping](../figures/osi-map.excalidraw.png){height=90% }
+![OSI model mapping|500](../figures/osi-map.excalidraw.png){height=90% }
 
 \newpage
 
-![OSI model mapping 2](../figures/osi-map.yed.png){height=90% }
+![OSI model mapping 2|500](../figures/osi-map.yed.png){height=90% }
 
 \newpage
+
+| | |
+| --- | --- |
+|  |  |
 
 | OSI Layer              | Description                                                                                                                    | Protocols                                                        | Network overlays                                                            |
 | ---------------------- | ------------------------------------------------------------------------------------------------------------------------------ | ---------------------------------------------------------------- | --------------------------------------------------------------------------- |
