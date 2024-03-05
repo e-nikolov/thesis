@@ -1,40 +1,33 @@
 \begin{frame}
+\phantomsection\label{notes__000-intro.md}
 \makeatletter
 \def\fps@figure{h}
 \makeatother
-\end{frame}
 
 \begin{frame}{Intro}
-\protect\hypertarget{intro}{}
+\phantomsection\label{notes__000-intro.md__intro}
 \begin{itemize}
 \item
-  Emphasize on the difference between the Solutions Test Framework (E3)
-  and the actual Solutions
+  Emphasize on the difference between the Solutions Test Framework (E3) and the actual Solutions
 \item
-  The Test Framework is an engineering problem of its own which deals
-  with the scaffolding necessary to demonstrate the candidate solutions
-  in realistic scenarios
+  The Test Framework is an engineering problem of its own which deals with the scaffolding necessary to demonstrate the candidate solutions in realistic scenarios
 \end{itemize}
 \end{frame}
+\end{frame}
 
+\phantomsection\label{notes__02000-related-work.md}
 \begin{frame}{Related work}
-\protect\hypertarget{related-work}{}
+\phantomsection\label{notes__02000-related-work.md__related-work}
 \begin{itemize}
 \item
-  There is a huge amount of primitives and partial solutions that are
-  relevant to our problem, which makes it difficult to review them all,
-  so we will try to design a classification system for them and focus on
-  one or two solutions per class while only briefly mentioning their
-  alternatives
+  There is a huge amount of primitives and partial solutions that are relevant to our problem, which makes it difficult to review them all, so we will try to design a classification system for them and focus on one or two solutions per class while only briefly mentioning their alternatives
 \item
   Make a distinction between
 
   \begin{itemize}
   \tightlist
   \item
-    primitives - lower level concepts, techniques or frameworks that
-    cannot be used as a solution directly, but are used inside higher
-    level solutions
+    primitives - lower level concepts, techniques or frameworks that cannot be used as a solution directly, but are used inside higher level solutions
 
     \begin{itemize}
     \tightlist
@@ -73,19 +66,7 @@
     \begin{itemize}
     \tightlist
     \item
-      Virtual Network Interface Controller - solutions that emulate a
-      physical network controller in the OS using TUN/TAP driver. Most
-      networked applications are already designed to work with the
-      Internet Protocol Stack (Suite - definitions; Stack -
-      implementations) in the host operating system and they do not need
-      to do anything extra to work with a virtual NIC. Those solutions
-      are usually more general purpose as they allow any other
-      application on the host machine to use the overlay network.
-      Installing an application that also uses this type of a solution
-      may be unintuitive because it will essentially install 2 separate
-      programs - the actual application and another one that manages the
-      virtual network, while the virtual network will not be limited to
-      our application but will also be usable by the others.
+      Virtual Network Interface Controller - solutions that emulate a physical network controller in the OS using TUN/TAP driver. Most networked applications are already designed to work with the Internet Protocol Stack (Suite - definitions; Stack - implementations) in the host operating system and they do not need to do anything extra to work with a virtual NIC. Those solutions are usually more general purpose as they allow any other application on the host machine to use the overlay network. Installing an application that also uses this type of a solution may be unintuitive because it will essentially install 2 separate programs - the actual application and another one that manages the virtual network, while the virtual network will not be limited to our application but will also be usable by the others.
 
       \begin{itemize}
       \tightlist
@@ -98,12 +79,7 @@
       \item
       \end{itemize}
     \item
-      Application layer - require the applications to be implemented in
-      a way that supports the protocols of the solution by using
-      additional libraries or SDKs to facilitate the communications.
-      Those solutions result in more purpose built applications as it is
-      not possible for an application to use the overlay network if it
-      wasn't specifically designed to be able to.
+      Application layer - require the applications to be implemented in a way that supports the protocols of the solution by using additional libraries or SDKs to facilitate the communications. Those solutions result in more purpose built applications as it is not possible for an application to use the overlay network if it wasn't specifically designed to be able to.
 
       \begin{itemize}
       \tightlist
@@ -118,23 +94,20 @@
 \end{itemize}
 \end{frame}
 
-\begin{frame}[fragile]{OSI Model}
-\protect\hypertarget{osi-model}{}
+\phantomsection\label{notes__02010-osi-model.md}
+\begin{frame}{OSI Model}
+\phantomsection\label{notes__02010-osi-model.md__osi-model}
 \begin{itemize}
 \tightlist
 \item
-  Create a figure that maps the various related components to OSI model
-  layers
+  Create a figure that maps the various related components to OSI model layers
 \item
-  It can be a ``more or less accurate'' artistic impression since the
-  components can cover multiple layers and the layers are somewhat fluid
+  It can be a ``more or less accurate'' artistic impression since the components can cover multiple layers and the layers are somewhat fluid
 \end{itemize}
 
-\includegraphics[width=0.5\textwidth,height=0.3\textheight]{notes/../figures/osi-model-2.png}
-\includegraphics[width=0.4\textwidth,height=0.3\textheight]{notes/../figures/osi-model-1.png}
+\includegraphics[width=0.5\textwidth,height=0.3\textheight]{notes/../figures/osi-model-2.png} \includegraphics[width=0.4\textwidth,height=0.3\textheight]{notes/../figures/osi-model-1.png}
 
-The Open Systems Interconnection (OSI) model distinguishes 7 layers in
-computer networks:
+The Open Systems Interconnection (OSI) model distinguishes 7 layers in computer networks:
 
 \begin{figure}
 \centering
@@ -153,10 +126,10 @@ computer networks:
 \newpage
 
 \begin{longtable}[]{@{}ll@{}}
-\toprule()
+\toprule\noalign{}
 \endhead
 & \\
-\bottomrule()
+\bottomrule\noalign{}
 \end{longtable}
 
 \begin{longtable}[]{@{}
@@ -164,7 +137,7 @@ computer networks:
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.4390}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2230}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.2613}}@{}}
-\toprule()
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 OSI Layer
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -174,29 +147,16 @@ Protocols
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Network overlays
 \end{minipage} \\
-\midrule()
+\midrule\noalign{}
 \endhead
-7. Application & High level protocols that user-facing services use &
-HTTP, HTTPS, DNS, FTP, SMTP, UPnP, NAT-PMP, PCP, SSH, STUN, TURN &
-WebRTC, OpenZiti, Teleport, ngrok, TOR, BitTorrent, IPFS, Ethereum,
-Freenet \\
-\hline 6. Presentation & Translation of data between a networking
-service and an application, e.g.~encoding, compression, encryption &
-MIME, TLS, Noise & \\
-\hline 5. Session & Session setup, management, teardown, authentication,
-authorization & SOCKS, X.225 & \\
-\hline 4. Transport & Sending data of variable length over a network
-while maintaining quality-of-service, e.g.~ports, connections, packet
-splitting & UDP, TCP, NAT port mapping & \\
-\hline 3. Network & Sending data packets between two nodes, routed via a
-path of other nodes, e.g.~addressing, routing & IP, ICMP, NAT & TUN
-driver, IPSec, OpenVPN, Tinc, Wireguard, Tailscale, Nebula, ZeroTier \\
-\hline 2. Data link & Sending data frames between two nodes, directly
-connected via a physical layer, e.g.~on a LAN & MAC, L2TP & TAP driver,
-N2N, OpenVPN, Tinc \\
-\hline 1. Physical & Sending raw bits over a physical medium & RS232,
-Ethernet, WiFi, USB, Bluetooth & \\
-\bottomrule()
+7. Application & High level protocols that user-facing services use & HTTP, HTTPS, DNS, FTP, SMTP, UPnP, NAT-PMP, PCP, SSH, STUN, TURN & WebRTC, OpenZiti, Teleport, ngrok, TOR, BitTorrent, IPFS, Ethereum, Freenet \\
+\hline 6. Presentation & Translation of data between a networking service and an application, e.g.~encoding, compression, encryption & MIME, TLS, Noise & \\
+\hline 5. Session & Session setup, management, teardown, authentication, authorization & SOCKS, X.225 & \\
+\hline 4. Transport & Sending data of variable length over a network while maintaining quality-of-service, e.g.~ports, connections, packet splitting & UDP, TCP, NAT port mapping & \\
+\hline 3. Network & Sending data packets between two nodes, routed via a path of other nodes, e.g.~addressing, routing & IP, ICMP, NAT & TUN driver, IPSec, OpenVPN, Tinc, Wireguard, Tailscale, Nebula, ZeroTier \\
+\hline 2. Data link & Sending data frames between two nodes, directly connected via a physical layer, e.g.~on a LAN & MAC, L2TP & TAP driver, N2N, OpenVPN, Tinc \\
+\hline 1. Physical & Sending raw bits over a physical medium & RS232, Ethernet, WiFi, USB, Bluetooth & \\
+\bottomrule\noalign{}
 \end{longtable}
 
 \newpage
@@ -208,7 +168,7 @@ Ethernet, WiFi, USB, Bluetooth & \\
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.0960}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.1280}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 10\tabcolsep) * \real{0.3600}}@{}}
-\toprule()
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Network overlay
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -222,16 +182,14 @@ NAT Traversal
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Implementation
 \end{minipage} \\
-\midrule()
+\midrule\noalign{}
 \endhead
 IPSec & Yes & Layer 3 & No & & TUN driver \\
 \hline OpenVPN & Yes & Layer 2, 3 & No & & TUN or TAP driver \\
 \hline Tinc & Yes & Layer 2, 3 & Yes & STUN, TURN & TUN or TAP driver \\
 \hline N2N & Yes & Layer 2 & Yes & TURN & TAP driver \\
-\hline Wireguard & Yes & Layer 3 & No & & Linux kernel module or TUN
-driver; Uses Noise \\
-\hline Tailscale & Yes (client); No (server) & Layer 3 & Yes & STUN,
-DERP, UPnP & Uses Wireguard \\
+\hline Wireguard & Yes & Layer 3 & No & & Linux kernel module or TUN driver; Uses Noise \\
+\hline Tailscale & Yes (client); No (server) & Layer 3 & Yes & STUN, DERP, UPnP & Uses Wireguard \\
 \hline Nebula & Yes & Layer 3 & Yes & STUN, TURN & Uses Noise \\
 \hline ZeroTier & No & Layer 3 & Yes & STUN, TURN & \\
 \hline WebRTC & Yes & Layer 7 & Yes & STUN, TURN & \\
@@ -243,7 +201,7 @@ DERP, UPnP & Uses Wireguard \\
 \hline IPFS & Yes & Layer 7 & Yes & ? & \\
 \hline Ethereum & Yes & Layer 7 & Yes & ? & \\
 \hline Freenet & Yes & Layer 7 & Yes & ? & \\
-\bottomrule()
+\bottomrule\noalign{}
 \end{longtable}
 
 \begin{itemize}
@@ -253,15 +211,19 @@ DERP, UPnP & Uses Wireguard \\
   \begin{itemize}
   \tightlist
   \item
-    \href{https://jvns.ca/blog/2021/05/11/what-s-the-osi-model-/}{The
-    OSI model doesn\textquotesingle t map well to TCP/IP}
+    \href{https://jvns.ca/blog/2021/05/11/what-s-the-osi-model-/}{The OSI model doesn\textquotesingle t map well to TCP/IP}
   \end{itemize}
 \end{itemize}
+\end{frame}
 
+\phantomsection\label{notes__02020-primitives.md}
 \begin{block}{Primitives}
-\protect\hypertarget{primitives}{}
+\phantomsection\label{notes__02020-primitives.md__primitives}
+\end{block}
+
+\phantomsection\label{notes__02021-internet-protocol.md}
 \begin{block}{Internet Protocol}
-\protect\hypertarget{internet-protocol}{}
+\phantomsection\label{notes__02021-internet-protocol.md__internet-protocol}
 \begin{itemize}
 \item
   IP addresses
@@ -269,8 +231,7 @@ DERP, UPnP & Uses Wireguard \\
   \begin{itemize}
   \tightlist
   \item
-    in The Netherlands Ziggo and KPN provide IPv6, but T-Mobile does
-    not. Overall \textasciitilde40\% client-side adoption.
+    in The Netherlands Ziggo and KPN provide IPv6, but T-Mobile does not. Overall \textasciitilde40\% client-side adoption.
   \end{itemize}
 \item
   Routing
@@ -281,14 +242,14 @@ DERP, UPnP & Uses Wireguard \\
 \end{itemize}
 
 \begin{block}{Network Address Translation (NAT) Traversal}
-\protect\hypertarget{network-address-translation-nat-traversal}{}
+\phantomsection\label{notes__02021-internet-protocol.md__network-address-translation-nat-traversal}
 \url{https://bford.info/pub/net/p2pnat/}
 
 \url{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}
 \end{block}
 
 \begin{block}{Session Traversal Utilities for NAT (STUN)}
-\protect\hypertarget{session-traversal-utilities-for-nat-stun}{}
+\phantomsection\label{notes__02021-internet-protocol.md__session-traversal-utilities-for-nat-stun}
 \begin{itemize}
 \item
   Uses a STUN server for discovery and UDP hole-punching
@@ -313,7 +274,7 @@ DERP, UPnP & Uses Wireguard \\
 \end{block}
 
 \begin{block}{Traversal Using Relays around NAT (TURN)}
-\protect\hypertarget{traversal-using-relays-around-nat-turn}{}
+\phantomsection\label{notes__02021-internet-protocol.md__traversal-using-relays-around-nat-turn}
 \begin{itemize}
 \item
   Peers use a relay server as a mediator to route traffic
@@ -330,7 +291,7 @@ DERP, UPnP & Uses Wireguard \\
 \end{block}
 
 \begin{block}{Universal Plug and Play (UPnP)}
-\protect\hypertarget{universal-plug-and-play-upnp}{}
+\phantomsection\label{notes__02021-internet-protocol.md__universal-plug-and-play-upnp}
 \begin{itemize}
 \tightlist
 \item
@@ -341,8 +302,7 @@ DERP, UPnP & Uses Wireguard \\
   \begin{itemize}
   \tightlist
   \item
-    Bugs in the UPnP implementation allowing remote attackers from
-    outside the local network to configure port forwarding
+    Bugs in the UPnP implementation allowing remote attackers from outside the local network to configure port forwarding
   \item
     IOT devices
 
@@ -355,8 +315,7 @@ DERP, UPnP & Uses Wireguard \\
     \item
       sometimes use default admin user/password
     \item
-      Too many ports being configured for forwarding might slow down the
-      network
+      Too many ports being configured for forwarding might slow down the network
     \item
     \end{itemize}
   \end{itemize}
@@ -364,7 +323,7 @@ DERP, UPnP & Uses Wireguard \\
 \end{block}
 
 \begin{block}{Interactive Connectivity Establishment (ICE)}
-\protect\hypertarget{interactive-connectivity-establishment-ice}{}
+\phantomsection\label{notes__02021-internet-protocol.md__interactive-connectivity-establishment-ice}
 \begin{itemize}
 \tightlist
 \item
@@ -373,7 +332,7 @@ DERP, UPnP & Uses Wireguard \\
 \end{block}
 
 \begin{block}{Designated Encrypted Relay for Packets (DERP)}
-\protect\hypertarget{designated-encrypted-relay-for-packets-derp}{}
+\phantomsection\label{notes__02021-internet-protocol.md__designated-encrypted-relay-for-packets-derp}
 \begin{itemize}
 \item
   TURN-like protocol by Tailscale
@@ -398,8 +357,9 @@ DERP, UPnP & Uses Wireguard \\
 \end{block}
 \end{block}
 
+\phantomsection\label{notes__02022-noise.md}
 \begin{block}{Noise Protocol Framework}
-\protect\hypertarget{noise-protocol-framework}{}
+\phantomsection\label{notes__02022-noise.md__noise-protocol-framework}
 \begin{itemize}
 \tightlist
 \item
@@ -431,19 +391,14 @@ DERP, UPnP & Uses Wireguard \\
     \item
       High-level protocols - TLS, Noise.
     \item
-      (sometimes) crypto spoken over the encrypted protocols, often for
-      E2E crypto e.g.~GPG over SMTPS, or CloudFlare blinded CAPTCHA
-      tokens over HTTPS
+      (sometimes) crypto spoken over the encrypted protocols, often for E2E crypto e.g.~GPG over SMTPS, or CloudFlare blinded CAPTCHA tokens over HTTPS
     \end{itemize}
   \item
-    \href{https://noiseexplorer.com/}{Design and Explore Noise Handshake
-    Patterns}
+    \href{https://noiseexplorer.com/}{Design and Explore Noise Handshake Patterns}
   \item
-    \href{https://duo.com/labs/tech-notes/noise-protocol-framework-intro}{An
-    Introduction to the Noise Protocol Framework}
+    \href{https://duo.com/labs/tech-notes/noise-protocol-framework-intro}{An Introduction to the Noise Protocol Framework}
   \item
-    \href{https://www.youtube.com/watch?v=ceGTgqypwnQ}{The Noise
-    Protocol Framework (Video)}
+    \href{https://www.youtube.com/watch?v=ceGTgqypwnQ}{The Noise Protocol Framework (Video)}
   \end{itemize}
 \end{itemize}
 
@@ -451,89 +406,61 @@ DERP, UPnP & Uses Wireguard \\
 \item[ChatGPT]
 :
 
-TLS (Transport Layer Security) and the Noise Protocol Framework are both
-cryptographic protocols that are used to secure communications over the
-internet. However, there are some key differences between the two
-protocols.
+TLS (Transport Layer Security) and the Noise Protocol Framework are both cryptographic protocols that are used to secure communications over the internet. However, there are some key differences between the two protocols.
 
-Here are some of the main differences between TLS and the Noise Protocol
-Framework:
+Here are some of the main differences between TLS and the Noise Protocol Framework:
 
 \begin{enumerate}
 \tightlist
 \item
-  Design Philosophy: TLS is designed to be a general-purpose protocol
-  that can be used to secure a wide range of internet communications,
-  including web browsing, email, and file transfers. The Noise Protocol
-  Framework, on the other hand, is designed to be a lightweight, modular
-  protocol that can be easily adapted to different use cases and network
-  architectures.
+  Design Philosophy: TLS is designed to be a general-purpose protocol that can be used to secure a wide range of internet communications, including web browsing, email, and file transfers. The Noise Protocol Framework, on the other hand, is designed to be a lightweight, modular protocol that can be easily adapted to different use cases and network architectures.
 \item
-  Cipher Suites: TLS supports a wide range of cipher suites, which are
-  combinations of encryption algorithms and key exchange methods. The
-  Noise Protocol Framework, on the other hand, supports only a few
-  cipher suites that are designed to be secure and efficient.
+  Cipher Suites: TLS supports a wide range of cipher suites, which are combinations of encryption algorithms and key exchange methods. The Noise Protocol Framework, on the other hand, supports only a few cipher suites that are designed to be secure and efficient.
 \item
-  Handshake: The TLS handshake is a complex process that involves
-  multiple rounds of communication between the client and server. The
-  Noise Protocol Framework, on the other hand, has a simpler handshake
-  process that involves only a few messages.
+  Handshake: The TLS handshake is a complex process that involves multiple rounds of communication between the client and server. The Noise Protocol Framework, on the other hand, has a simpler handshake process that involves only a few messages.
 \item
-  Forward Secrecy: Both TLS and the Noise Protocol Framework support
-  forward secrecy, which means that even if an attacker gains access to
-  the secret keys used to encrypt communications, they cannot decrypt
-  past communications. However, the way that forward secrecy is
-  implemented in the two protocols is different.
+  Forward Secrecy: Both TLS and the Noise Protocol Framework support forward secrecy, which means that even if an attacker gains access to the secret keys used to encrypt communications, they cannot decrypt past communications. However, the way that forward secrecy is implemented in the two protocols is different.
 \item
-  Adoption: TLS is widely adopted and supported by most internet
-  applications and services. The Noise Protocol Framework is a newer
-  protocol that is not yet as widely adopted, although it is gaining
-  popularity in certain applications and communities.
+  Adoption: TLS is widely adopted and supported by most internet applications and services. The Noise Protocol Framework is a newer protocol that is not yet as widely adopted, although it is gaining popularity in certain applications and communities.
 \end{enumerate}
 
-Overall, both TLS and the Noise Protocol Framework are effective ways to
-secure internet communications. The choice between the two protocols
-depends on factors such as the specific use case, the network
-architecture, and the desired level of security and efficiency.
+Overall, both TLS and the Noise Protocol Framework are effective ways to secure internet communications. The choice between the two protocols depends on factors such as the specific use case, the network architecture, and the desired level of security and efficiency.
 \end{description}
 \end{block}
 
+\phantomsection\label{notes__02025-identity.md}
 \begin{block}{Identity}
-\protect\hypertarget{identity}{}
+\phantomsection\label{notes__02025-identity.md__identity}
 \begin{itemize}
 \tightlist
 \item
-  Identity based on a third party Identity Provider (Google, Microsoft,
-  Government, \ldots)
+  Identity based on a third party Identity Provider (Google, Microsoft, Government, \ldots)
 \item
   Self Sovereign Identity (SSI)
 \end{itemize}
 \end{block}
-\end{block}
 
+\phantomsection\label{notes__02040-basic-ip.md}
 \begin{block}{Basic Internet Protocol solution}
-\protect\hypertarget{basic-internet-protocol-solution}{}
+\phantomsection\label{notes__02040-basic-ip.md__basic-internet-protocol-solution}
 \begin{itemize}
 \tightlist
 \item
-  Solution with 0 overhead to be used as a reference for the performance
-  of the other solutions
+  Solution with 0 overhead to be used as a reference for the performance of the other solutions
 \item
   No encryption
 \item
   Requires public IP addresses or DNS
 \item
-  Easy for us to create a demo for measuring the performance because we
-  control all of the machines that represent the different parties
+  Easy for us to create a demo for measuring the performance because we control all of the machines that represent the different parties
 \item
-  In a real life scenario with separate parties that are not under a
-  shared control, it will be difficult to use this solution because it
-  requires a lot of manual configuration and coordination between the
-  parties
+  In a real life scenario with separate parties that are not under a shared control, it will be difficult to use this solution because it requires a lot of manual configuration and coordination between the parties
 \end{itemize}
+\end{block}
 
+\phantomsection\label{notes__02050-vpns.md}
 \begin{block}{Virtual Private Networks (VPNs)}
-\protect\hypertarget{virtual-private-networks-vpns}{}
+\phantomsection\label{notes__02050-vpns.md__virtual-private-networks-vpns}
 \begin{itemize}
 \item
   asd
@@ -541,11 +468,10 @@ architecture, and the desired level of security and efficiency.
   {[} {]}
 \end{itemize}
 
-``A virtual private network {[}4{]} is a secure logical network that is
-tunnelled though another network. VPNs are often used for implementing
-secure point-to-point communications through the public Internet.
-Therefore they usually feature user authentication and content
-encryption.'' -- n2n whitepaper
+``A virtual private network {[}4{]} is a secure logical network that is tunnelled though
+another network. VPNs are often used for implementing secure point-to-point
+communications through the public Internet. Therefore they usually feature user
+authentication and content encryption.'' -- n2n whitepaper
 
 \begin{itemize}
 \item
@@ -578,16 +504,15 @@ encryption.'' -- n2n whitepaper
   \begin{itemize}
   \tightlist
   \item
-    \href{https://www.rfc-editor.org/rfc/rfc2764.html}{A Framework for
-    IP Based Virtual Private Networks (RFC 2764)}
+    \href{https://www.rfc-editor.org/rfc/rfc2764.html}{A Framework for IP Based Virtual Private Networks (RFC 2764)}
   \item
   \end{itemize}
 \end{itemize}
 \end{block}
-\end{block}
 
+\phantomsection\label{notes__02051-wireguard.md}
 \begin{block}{Wireguard}
-\protect\hypertarget{wireguard}{}
+\phantomsection\label{notes__02051-wireguard.md__wireguard}
 \begin{itemize}
 \tightlist
 \item
@@ -597,7 +522,7 @@ encryption.'' -- n2n whitepaper
 \item
   Whitepaper - \url{https://www.wireguard.com/papers/wireguard.pdf}
 \item
-  Built with the \href{notes/02022-noise.md}{Noise Protocol Framework}d
+  Built with the \hyperlink{notes__02022-noise.md}{Noise Protocol Framework}d
 \item
   Added to Linux Kernel 5.6 in May 2020
 \item
@@ -613,8 +538,7 @@ encryption.'' -- n2n whitepaper
     \begin{itemize}
     \tightlist
     \item
-      faster - packets are not copied between kernel memory and
-      userspace memory
+      faster - packets are not copied between kernel memory and userspace memory
     \end{itemize}
   \item
     Userspace virtual \href{notes/02021-internet-protocol}{TUN} device
@@ -622,8 +546,7 @@ encryption.'' -- n2n whitepaper
     \begin{itemize}
     \tightlist
     \item
-      easier to update because it does not require specific kernel
-      modules
+      easier to update because it does not require specific kernel modules
     \item
       available on windows
     \end{itemize}
@@ -634,8 +557,7 @@ encryption.'' -- n2n whitepaper
   \begin{itemize}
   \tightlist
   \item
-    Each peer has a public/private key pair for authentication and
-    traffic encryption
+    Each peer has a public/private key pair for authentication and traffic encryption
   \item
     Each peer has a config file:
   \end{itemize}
@@ -661,9 +583,7 @@ encryption.'' -- n2n whitepaper
 \begin{itemize}
 \tightlist
 \item
-  Creates a virtual network interface in the operating system that looks
-  like an additional network card and can be used for TCP/IP
-  communications
+  Creates a virtual network interface in the operating system that looks like an additional network card and can be used for TCP/IP communications
 \item
   Handles the encryption of traffic
 
@@ -673,19 +593,16 @@ encryption.'' -- n2n whitepaper
     deals with handshakes and generating symmetric session keys
   \end{itemize}
 \item
-  Cryptokey routing - associates public/private key pairs with IP
-  addresses
+  Cryptokey routing - associates public/private key pairs with IP addresses
 \item
   Out of scope:
 
   \begin{itemize}
   \tightlist
   \item
-    key distribution - managed manually or via other software that
-    builds on top of wireguard
+    key distribution - managed manually or via other software that builds on top of wireguard
   \item
-    peer discovery - for each pair of peers, one needs to have an
-    endpoint that can be reached by the other peer
+    peer discovery - for each pair of peers, one needs to have an endpoint that can be reached by the other peer
   \end{itemize}
 \item
   Resources
@@ -693,14 +610,11 @@ encryption.'' -- n2n whitepaper
   \begin{itemize}
   \tightlist
   \item
-    \href{https://blogs.keysight.com/blogs/tech/nwvs.entry.html/2022/09/22/wireguard_the_next-genvpnprotocol-OcEz.html}{WireGuard:
-    The Next-Gen VPN Protocol}
+    \href{https://blogs.keysight.com/blogs/tech/nwvs.entry.html/2022/09/22/wireguard_the_next-genvpnprotocol-OcEz.html}{WireGuard: The Next-Gen VPN Protocol}
   \item
-    \href{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}{WireGuard
-    Endpoint Discovery and NAT Traversal using DNS-SD}
+    \href{https://www.jordanwhited.com/posts/wireguard-endpoint-discovery-nat-traversal/}{WireGuard Endpoint Discovery and NAT Traversal using DNS-SD}
   \item
-    \href{https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e7096c131e5161fa3b8e52a650d7719d2857adfd}{Kernel
-    Commit}
+    \href{https://git.kernel.org/pub/scm/linux/kernel/git/torvalds/linux.git/commit/?id=e7096c131e5161fa3b8e52a650d7719d2857adfd}{Kernel Commit}
   \item
     \href{https://wiki.archlinux.org/title/WireGuard}{Arch Linux Wiki}
   \item
@@ -714,14 +628,15 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02052-tailscale.md}
 \begin{block}{Tailscale}
-\protect\hypertarget{tailscale}{}
+\phantomsection\label{notes__02052-tailscale.md__tailscale}
 \begin{itemize}
 \tightlist
 \item
   Mesh VPN
 \item
-  Built on top of \href{notes/02051-wireguard.md}{Wireguard}
+  Built on top of \hyperlink{notes__02051-wireguard.md}{Wireguard}
 \item
   Coordination service
 
@@ -730,9 +645,7 @@ encryption.'' -- n2n whitepaper
   \item
     Closed source
   \item
-    Facilitates
-    \href{notes/0202-nat\#Session\%20Traversal\%20Utilities\%20for\%20NAT\%20(STUN)}{STUN}/\href{notes/02021-internet-protocol.md\#test}{TURN}
-    for peer discovery and NAT traversal
+    Facilitates \href{notes/0202-nat\#Session\%20Traversal\%20Utilities\%20for\%20NAT\%20(STUN)}{STUN}/\hyperlink{notes__02021-internet-protocol.md__test}{TURN} for peer discovery and NAT traversal
   \item
     Distributes wireguard public keys
   \item
@@ -761,11 +674,9 @@ encryption.'' -- n2n whitepaper
     \begin{itemize}
     \tightlist
     \item
-      Parties have their own tailscale accounts and manage their own
-      tailnet
+      Parties have their own tailscale accounts and manage their own tailnet
     \item
-      Each party shares adds the machine they will use for MPC to their
-      tailnet
+      Each party shares adds the machine they will use for MPC to their tailnet
     \item
       They share that machine with the tailnets of the other parties
     \end{itemize}
@@ -775,37 +686,31 @@ encryption.'' -- n2n whitepaper
     \begin{itemize}
     \tightlist
     \item
-      The host party creates authorization keys for the machines of the
-      other parties
+      The host party creates authorization keys for the machines of the other parties
     \item
-      Each party runs the tailscale client with their authorization key
-      which lets them join the host party's tailnet
+      Each party runs the tailscale client with their authorization key which lets them join the host party's tailnet
     \end{itemize}
   \end{itemize}
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02053-headscale.md}
 \begin{block}{Headscale}
-\protect\hypertarget{headscale}{}
+\phantomsection\label{notes__02053-headscale.md__headscale}
 \begin{itemize}
 \tightlist
 \item
-  Mostly the same as Tailscale, but with an open source coordination
-  service that must be self-hosted
+  Mostly the same as Tailscale, but with an open source coordination service that must be self-hosted
 \item
-  Describe the differences in the deployment and how it affects
-  usability
+  Describe the differences in the deployment and how it affects usability
 \item
-  We implemented a headscale based solution in order to be able to gain
-  some insights into how they deal with peer discovery via STUN/TURN and
-  configure Wireguard, and whether we can modify it or use parts of it
-  in our own custom solution that is a better fit for ad hoc mpc
-  sessions.
+  We implemented a headscale based solution in order to be able to gain some insights into how they deal with peer discovery via STUN/TURN and configure Wireguard, and whether we can modify it or use parts of it in our own custom solution that is a better fit for ad hoc mpc sessions.
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02054-nebula.md}
 \begin{block}{Nebula}
-\protect\hypertarget{nebula}{}
+\phantomsection\label{notes__02054-nebula.md__nebula}
 \begin{itemize}
 \tightlist
 \item
@@ -817,11 +722,9 @@ encryption.'' -- n2n whitepaper
 \item
   NAT traversal via Lighthouses
 \item
-  Built using the \href{notes/02022-noise}{Noise Protocol Framework}
-  (used in Wireguard)
+  Built using the \href{notes/02022-noise}{Noise Protocol Framework} (used in Wireguard)
 \item
-  Uses a Certificate Authority that needs to sign each Peer's
-  certificate
+  Uses a Certificate Authority that needs to sign each Peer's certificate
 
   \begin{itemize}
   \tightlist
@@ -839,8 +742,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02055-zero-tier.md}
 \begin{block}{ZeroTier}
-\protect\hypertarget{zerotier}{}
+\phantomsection\label{notes__02055-zero-tier.md__zerotier}
 \begin{itemize}
 \tightlist
 \item
@@ -853,8 +757,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02056-n2n.md}
 \begin{block}{N2N}
-\protect\hypertarget{n2n}{}
+\phantomsection\label{notes__02056-n2n.md__n2n}
 \begin{itemize}
 \tightlist
 \item
@@ -862,8 +767,7 @@ encryption.'' -- n2n whitepaper
 \item
   Initial release - 27.03.2008
 \item
-  Layer 2 \href{notes/02021-internet-protocol}{TAP} in userspace over
-  Layer 3
+  Layer 2 \href{notes/02021-internet-protocol}{TAP} in userspace over Layer 3
 
   \begin{itemize}
   \tightlist
@@ -899,8 +803,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02058-tinc.md}
 \begin{block}{Tinc}
-\protect\hypertarget{tinc}{}
+\phantomsection\label{notes__02058-tinc.md__tinc}
 \begin{itemize}
 \tightlist
 \item
@@ -926,8 +831,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02059-netbird.md}
 \begin{block}{Netbird}
-\protect\hypertarget{netbird}{}
+\phantomsection\label{notes__02059-netbird.md__netbird}
 \begin{itemize}
 \tightlist
 \item
@@ -953,8 +859,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02090-didcomm.md}
 \begin{block}{DIDComm v2}
-\protect\hypertarget{didcomm-v2}{}
+\phantomsection\label{notes__02090-didcomm.md__didcomm-v2}
 \begin{itemize}
 \tightlist
 \item
@@ -977,15 +884,14 @@ encryption.'' -- n2n whitepaper
   \begin{itemize}
   \tightlist
   \item
-    \href{https://newsletter.impervious.ai/decentralized-identifiers-implications-for-your-data-payments-and-communications-2/}{Decentralized
-    Identifiers: Implications for Your Data, Payments and
-    Communications}
+    \href{https://newsletter.impervious.ai/decentralized-identifiers-implications-for-your-data-payments-and-communications-2/}{Decentralized Identifiers: Implications for Your Data, Payments and Communications}
   \end{itemize}
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02100-ngrok.md}
 \begin{block}{ngrok}
-\protect\hypertarget{ngrok}{}
+\phantomsection\label{notes__02100-ngrok.md__ngrok}
 \begin{itemize}
 \tightlist
 \item
@@ -998,12 +904,14 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02110-ethereum.md}
 \begin{block}{Ethereum's P2P Protocol}
-\protect\hypertarget{ethereums-p2p-protocol}{}
+\phantomsection\label{notes__02110-ethereum.md__ethereums-p2p-protocol}
 \end{block}
 
+\phantomsection\label{notes__02120-ipfs.md}
 \begin{block}{IPFS}
-\protect\hypertarget{ipfs}{}
+\phantomsection\label{notes__02120-ipfs.md__ipfs}
 \begin{itemize}
 \tightlist
 \item
@@ -1014,23 +922,21 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02130-tor.md}
 \begin{block}{TOR}
-\protect\hypertarget{tor}{}
+\phantomsection\label{notes__02130-tor.md__tor}
 \begin{itemize}
 \tightlist
 \item
-  The Onion Router has the concept of Onion Services, which receive an
-  address under the .onion pseudo top level domain and correspond to a
-  public key
-  (e.g.~vww6ybal4bd7szmgncyruucpgfkqahzddi37ktceo3ah7ngmcopnpyyd.onion)
+  The Onion Router has the concept of Onion Services, which receive an address under the .onion pseudo top level domain and correspond to a public key (e.g.~vww6ybal4bd7szmgncyruucpgfkqahzddi37ktceo3ah7ngmcopnpyyd.onion)
 \item
-  Can be used as a privacy layer in other solutions to hide the real IP
-  addresses of the parties
+  Can be used as a privacy layer in other solutions to hide the real IP addresses of the parties
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02140-freenet.md}
 \begin{block}{Freenet}
-\protect\hypertarget{freenet}{}
+\phantomsection\label{notes__02140-freenet.md__freenet}
 \begin{itemize}
 \tightlist
 \item
@@ -1040,8 +946,7 @@ encryption.'' -- n2n whitepaper
 \item
   Peer to Peer Dark Web network
 \item
-  Network that directly connects the machines of people who know each
-  other
+  Network that directly connects the machines of people who know each other
 \item
   Services and files accessible only by other people on the network
 \item
@@ -1065,8 +970,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02150-teleport.md}
 \begin{block}{Teleport}
-\protect\hypertarget{teleport}{}
+\phantomsection\label{notes__02150-teleport.md__teleport}
 \begin{itemize}
 \tightlist
 \item
@@ -1075,8 +981,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02160-bittorrent.md}
 \begin{block}{BitTorrent}
-\protect\hypertarget{bittorrent}{}
+\phantomsection\label{notes__02160-bittorrent.md__bittorrent}
 \begin{itemize}
 \tightlist
 \item
@@ -1084,8 +991,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02170-webrtc.md}
 \begin{block}{WebRTC}
-\protect\hypertarget{webrtc}{}
+\phantomsection\label{notes__02170-webrtc.md__webrtc}
 \begin{itemize}
 \tightlist
 \item
@@ -1096,14 +1004,12 @@ encryption.'' -- n2n whitepaper
   \item
     can also work without a browser
   \item
-    Mainly used for multimedia communications - Peer-to-peer
-    Audio/Video/VoIP
+    Mainly used for multimedia communications - Peer-to-peer Audio/Video/VoIP
   \end{itemize}
 \item
-  Spec -
-  \href{https://www.w3.org/TR/webrtc/\#persistent-information-exposed-by-webrtc}{https://www.w3.org/TR/webrtc/}
+  Spec - \href{https://www.w3.org/TR/webrtc/\#persistent-information-exposed-by-webrtc}{https://www.w3.org/TR/webrtc/}
 \item
-  Uses \href{notes/02021-internet-protocol.md}{nat} STUN/TURN/ICE
+  Uses \hyperlink{notes__02021-internet-protocol.md}{nat} STUN/TURN/ICE
 \item
   Data is encrypted
 \item
@@ -1144,17 +1050,14 @@ encryption.'' -- n2n whitepaper
   \begin{itemize}
   \tightlist
   \item
-    I think it can't serve as a TCP/IP network overlay that other
-    applications can use
+    I think it can't serve as a TCP/IP network overlay that other applications can use
   \end{itemize}
 \item
   Does not require additional plugins or native apps
 \item
-  Perhaps it can be used with PyScript or WebAssembly to run MPyC
-  programs in the browser?
+  Perhaps it can be used with PyScript or WebAssembly to run MPyC programs in the browser?
 \item
-  We could design a solution based on WebRTC in a browser by compiling
-  the MPyC demos to web assembly or using PyScript.
+  We could design a solution based on WebRTC in a browser by compiling the MPyC demos to web assembly or using PyScript.
 
   \begin{itemize}
   \tightlist
@@ -1164,8 +1067,7 @@ encryption.'' -- n2n whitepaper
     https://pyscript.net/
   \end{itemize}
 \item
-  There seem to be many publicly available services that can be used as
-  ICE servers for WebRTC
+  There seem to be many publicly available services that can be used as ICE servers for WebRTC
 
   \begin{itemize}
   \tightlist
@@ -1215,8 +1117,9 @@ encryption.'' -- n2n whitepaper
 \end{itemize}
 \end{block}
 
+\phantomsection\label{notes__02180-openziti.md}
 \begin{block}{OpenZiti}
-\protect\hypertarget{openziti}{}
+\phantomsection\label{notes__02180-openziti.md__openziti}
 \begin{itemize}
 \tightlist
 \item
@@ -1230,22 +1133,19 @@ encryption.'' -- n2n whitepaper
 \item
   Allows embedding into apps via an SDK
 \item
-  Tunneler is a proxy that allows non-ziti aware applications to use the
-  overlay network by intercepting their traffic
+  Tunneler is a proxy that allows non-ziti aware applications to use the overlay network by intercepting their traffic
 \end{itemize}
 \end{block}
-\end{frame}
 
+\phantomsection\label{notes__03000-implementations.md}
 \begin{frame}[fragile]{Implementation notes}
-\protect\hypertarget{implementation-notes}{}
+\phantomsection\label{notes__03000-implementations.md__implementation-notes}
 \begin{block}{Headscale}
-\protect\hypertarget{headscale}{}
+\phantomsection\label{notes__03000-implementations.md__headscale}
 \begin{itemize}
 \tightlist
 \item
-  Docker seems to have a 50-100\% performance penalty (possibly due to
-  docker's internal NAT) which makes the performance results of the
-  headscale setup worse than they should be
+  Docker seems to have a 50-100\% performance penalty (possibly due to docker's internal NAT) which makes the performance results of the headscale setup worse than they should be
 \item
   Modify the deployment setup to
 
@@ -1256,17 +1156,143 @@ encryption.'' -- n2n whitepaper
   \item
     use the \texttt{*.demo.mpyc.tech} hostnames
   \item
-    the nodes should switch between the tailscale and headscale network
-    depending on the demo script
+    the nodes should switch between the tailscale and headscale network depending on the demo script
   \item
   \end{itemize}
 \end{itemize}
 \end{block}
+\end{frame}
 
+\phantomsection\label{notes__03010-python-web.md}
+\begin{frame}{Native}
+\phantomsection\label{notes__03010-python-web.md__native}
+random\_shuffle(): 27.03 ops/sec\\
+random\_int(): 21.16 ops/sec\\
+random\_list(): 18.13 ops/sec
+copy\_list(): 4,280.18 ops/sec\\
+sort\_list(): 77.51 ops/sec\\
+sort\_copied\_list(): 77.78 ops/sec\\
+fib(): 151.54 ops/sec
+primes(): 196.43 ops/sec\\
+hash\_string(): 250.15 ops/sec\\
+assign(): 774.94 ops/sec\\
+reassign(): 787.11 ops/sec
+add(): 668.25 ops/sec\\
+mult(): 359.62 ops/sec
+bigints(): 68.63 ops/sec
+\end{frame}
+
+\begin{frame}{Transcrypt}
+\phantomsection\label{notes__03010-python-web.md__transcrypt}
+random\_shuffle(): 71.17 ops/sec\\
+random\_int(): 64.52 ops/sec\\
+random\_list(): 52.63 ops/sec\\
+copy\_list(): 6134.97 ops/sec\\
+sort\_list(): 523.56 ops/sec\\
+sort\_copied\_list(): 465.12 ops/sec\\
+fib(): 336.7 ops/sec\\
+primes(): 970.87 ops/sec\\
+assign(): 1152.07 ops/sec\\
+reassign(): 1128.67 ops/sec\\
+add(): 1234.57 ops/sec\\
+mult(): 1269.04 ops/sec\\
+bigints(): 1179.25 ops/sec
+\end{frame}
+
+\begin{frame}{Brython}
+\phantomsection\label{notes__03010-python-web.md__brython}
+random\_shuffle(): 0.96 ops/sec
+random\_int(): 0.74 ops/sec
+random\_list(): 0.74 ops/sec
+copy\_list(): 5,076.14 ops/sec
+sort\_list(): 66.89 ops/sec
+sort\_copied\_list(): 58.14 ops/sec
+fib(): 9.13 ops/sec
+primes(): 44.84 ops/sec
+hash\_string(): 40.32 ops/sec
+assign(): 291.55 ops/sec
+reassign(): 282.49 ops/sec
+add(): 187.27 ops/sec
+mult(): 166.11 ops/sec
+bigints(): 44.64 ops/sec
+\end{frame}
+
+\begin{frame}{Skulpt}
+\phantomsection\label{notes__03010-python-web.md__skulpt}
+random\_shuffle(): 54.45 ops/sec\\
+random\_int(): 16.13 ops/sec
+random\_list(): 15.89 ops/sec\\
+copy\_list(): 6,232.47 ops/sec\\
+sort\_list(): 5.2 ops/sec
+sort\_copied\_list(): 5.24 ops/sec
+fib(): 8.02 ops/sec
+primes(): 17.9 ops/sec
+hash\_string(): 29.09 ops/sec
+assign(): 39.64 ops/sec
+reassign(): 39.81 ops/sec
+add(): 27.23 ops/sec
+mult(): 27.06 ops/sec
+bigints(): 1.0 ops/sec
+\end{frame}
+
+\begin{frame}{Pyodide}
+\phantomsection\label{notes__03010-python-web.md__pyodide}
+random\_shuffle(): 8.47 ops/sec
+random\_int(): 5.32 ops/sec
+random\_list(): 5.18 ops/sec
+copy\_list(): 3,649.64 ops/sec
+sort\_list(): 44.25 ops/sec
+sort\_copied\_list(): 42.37 ops/sec
+fib(): 52.63 ops/sec
+primes(): 71.17 ops/sec
+hash\_string(): 57.31 ops/sec
+assign(): 400.0 ops/sec
+reassign(): 406.5 ops/sec
+add(): 282.49 ops/sec
+mult(): 111.36 ops/sec
+bigints(): 26.18 ops/sec
+\end{frame}
+
+\begin{frame}{MicroPython}
+\phantomsection\label{notes__03010-python-web.md__micropython}
+random\_int(): 15.92 ops/sec
+random\_list(): 12.85 ops/sec\\
+copy\_list(): 387.6 ops/sec
+sort\_list(): 15.06 ops/sec
+sort\_copied\_list(): 41.32 ops/sec\\
+fib(): 21.83 ops/sec
+primes(): 10.27 ops/sec\\
+hash\_string(): 17.48 ops/sec
+assign(): 68.73 ops/sec\\
+reassign(): 69.69 ops/sec\\
+add(): 35.97 ops/sec\\
+mult(): 35.21 ops/sec
+bigints(): 6.15 ops/sec
+\end{frame}
+
+\begin{frame}{RustPython}
+\phantomsection\label{notes__03010-python-web.md__rustpython}
+random\_shuffle(): 1.1 ops/sec
+random\_int(): 0.82 ops/sec
+random\_list(): 0.79 ops/sec
+copy\_list(): 524.93 ops/sec
+sort\_list(): 0.13 ops/sec
+sort\_copied\_list(): 0.1 ops/sec
+fib(): 5.32 ops/sec
+primes(): 6.08 ops/sec
+hash\_string(): 21.1 ops/sec
+assign(): 59.88 ops/sec
+reassign(): 57.97 ops/sec
+add(): 57.47 ops/sec
+mult(): 59.35 ops/sec
+bigints(): 8.13 ops/sec
+\end{frame}
+
+\phantomsection\label{notes__03100-python.md}
 \begin{block}{Web Browser Python}
-\protect\hypertarget{web-browser-python}{}
+\phantomsection\label{notes__03100-python.md__web-browser-python}
 \begin{block}{Overview}
-\protect\hypertarget{overview}{}
+\phantomsection\label{notes__03100-python.md__overview}
 \begin{itemize}
 \tightlist
 \item
@@ -1281,7 +1307,7 @@ encryption.'' -- n2n whitepaper
 \end{block}
 
 \begin{block}{Transpilers}
-\protect\hypertarget{transpilers}{}
+\phantomsection\label{notes__03100-python.md__transpilers}
 \begin{figure}
 \centering
 \includegraphics{notes/../figures/pyodide-pyscript.png}
@@ -1313,8 +1339,7 @@ Compile Python to JS or WebAssembly (WASM)
   \item
     https://docs.pyscript.net/latest/guides/asyncio.html
   \item
-    PyScript is built using Pyodide, the WebAssembly port of CPython,
-    which is compiled using Emscripten.
+    PyScript is built using Pyodide, the WebAssembly port of CPython, which is compiled using Emscripten.
   \item
     Depends on a python runtime
 
@@ -1380,8 +1405,7 @@ Compile Python to JS or WebAssembly (WASM)
   \item
     https://github.com/bunkahle/Transcrypt-Examples/tree/master/hello
   \item
-    Transpile Python to JS ahead of time, include the JS version in the
-    Web Page
+    Transpile Python to JS ahead of time, include the JS version in the Web Page
   \end{itemize}
 \item
   PyJS - http://pyjs.org
@@ -1409,7 +1433,7 @@ Compile Python to JS or WebAssembly (WASM)
 \end{block}
 
 \begin{block}{Interpreters}
-\protect\hypertarget{interpreters}{}
+\phantomsection\label{notes__03100-python.md__interpreters}
 Interpreters for python in JS
 
 \begin{itemize}
@@ -1450,16 +1474,15 @@ Interpreters for python in JS
   \item
     https://emscripten.org/docs/introducing\_emscripten/about\_emscripten.html
   \item
-    Emscripten is a complete compiler toolchain to WebAssembly, using
-    LLVM
+    Emscripten is a complete compiler toolchain to WebAssembly, using LLVM
   \end{itemize}
 \end{itemize}
 \end{block}
 \end{block}
-\end{frame}
 
+\phantomsection\label{notes__03500-brainstorm.md}
 \begin{frame}{Brainstorm for custom solutions}
-\protect\hypertarget{brainstorm-for-custom-solutions}{}
+\phantomsection\label{notes__03500-brainstorm.md__brainstorm-for-custom-solutions}
 \begin{itemize}
 \tightlist
 \item
@@ -1492,14 +1515,11 @@ With tailscale we'd need to
   \item
     registers a Tailscale account
   \item
-    Downloads and installs tailscale on the machine they want to run the
-    MPC on
+    Downloads and installs tailscale on the machine they want to run the MPC on
   \item
-    Runs tailscale on their machine and logs into their account in order
-    to link it to their own Tailnet
+    Runs tailscale on their machine and logs into their account in order to link it to their own Tailnet
   \item
-    Shares their Tailscale machine with the Tailnets of each of the
-    other parties
+    Shares their Tailscale machine with the Tailnets of each of the other parties
   \item
     Downloads the demo they want to run
   \item
@@ -1508,21 +1528,19 @@ With tailscale we'd need to
     \begin{itemize}
     \tightlist
     \item
-      add -P \$HOST:\$PORT for each party using their Tailscale
-      hostname/virtual IP
+      add -P \$HOST:\$PORT for each party using their Tailscale hostname/virtual IP
     \end{itemize}
   \item
     Run the demo
   \end{itemize}
 \end{itemize}
-\end{frame}
 
-\begin{frame}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \begin{itemize}
 \tightlist
 \item
-  we don't need to use the same route for the communication Party A →
-  Party B and Party B → Party A
+  we don't need to use the same route for the communication Party A → Party B and Party B → Party A
 \item
   we can have something like an asynchronous STUN
 \item
@@ -1541,33 +1559,27 @@ With tailscale we'd need to
   \begin{itemize}
   \tightlist
   \item
-    other parties can either use it as a STUN server to find out how to
-    access the hole in party A's NAT punched by the mediator
+    other parties can either use it as a STUN server to find out how to access the hole in party A's NAT punched by the mediator
   \item
-    or use it as a relayer so that Party B can send encrypted packets to
-    party A via the mediator
+    or use it as a relayer so that Party B can send encrypted packets to party A via the mediator
   \end{itemize}
 \item
-  Instead of a QR code, the information could be stored on a public
-  ledger and could be resolved via DIDs
+  Instead of a QR code, the information could be stored on a public ledger and could be resolved via DIDs
 \end{itemize}
-\end{frame}
 
-\begin{frame}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \begin{itemize}
 \tightlist
 \item
-  There is a generic MPC wrapper program that deals with supporting
-  tasks like generating identities and pulling MPC demos
+  There is a generic MPC wrapper program that deals with supporting tasks like generating identities and pulling MPC demos
 \item
-  One party creates a ``lobby'' for an MPC session in their program and
-  get a session id/public URL/QR code that can be shared with the other
-  parties
+  One party creates a ``lobby'' for an MPC session in their program and get a session id/public URL/QR code that can be shared with the other parties
 \item
 \end{itemize}
-\end{frame}
 
-\begin{frame}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \begin{itemize}
 \tightlist
 \item
@@ -1585,20 +1597,17 @@ With tailscale we'd need to
 \item
   Somehow everyone needs to scan each other's qr codes
 \end{itemize}
-\end{frame}
 
-\begin{frame}
-\end{frame}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\begin{frame}
-\end{frame}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
 
-\begin{frame}
+\begin{center}\rule{0.5\linewidth}{0.5pt}\end{center}
+
 \begin{itemize}
 \tightlist
 \item
-  One party creates a ``lobby'' for an MPC session by visiting a public
-  website
+  One party creates a ``lobby'' for an MPC session by visiting a public website
 
   \begin{itemize}
   \tightlist
@@ -1606,8 +1615,7 @@ With tailscale we'd need to
     They provide their identity via OIDC/SSI wallet
   \end{itemize}
 \item
-  They get a public link/QR code that can be shared with the other
-  parties
+  They get a public link/QR code that can be shared with the other parties
 \item
   The parties visit the URL and also provide their identities
 \item
@@ -1616,26 +1624,18 @@ With tailscale we'd need to
   \begin{itemize}
   \tightlist
   \item
-    MPC program distribution could be done separately via cloning the
-    github repo?
+    MPC program distribution could be done separately via cloning the github repo?
   \item
     They could choose a DEMO and download it from the website?
   \item
-    There could also be a program running on the host machines that
-    deals with the source code distribution. Similar to downloading
-    custom maps for warcraft 3 or dota 2?
+    There could also be a program running on the host machines that deals with the source code distribution. Similar to downloading custom maps for warcraft 3 or dota 2?
   \item
-    They could specify the source code when creating the MPC session in
-    the website?
+    They could specify the source code when creating the MPC session in the website?
   \item
-    If the demo is not symmetrical where different parties have
-    different roles and need to execute different programs, the roles
-    could be assigned by the host or the people could choose their
-    preferred role themselves?
+    If the demo is not symmetrical where different parties have different roles and need to execute different programs, the roles could be assigned by the host or the people could choose their preferred role themselves?
   \end{itemize}
 \item
-  The parties download a configuration file that contains information on
-  how to connect to the other parties
+  The parties download a configuration file that contains information on how to connect to the other parties
 \item
   They run the demos with the downloaded config file
 \item
@@ -1643,8 +1643,9 @@ With tailscale we'd need to
 \end{itemize}
 \end{frame}
 
+\phantomsection\label{notes__04000-writing.md}
 \begin{frame}{Writing}
-\protect\hypertarget{writing}{}
+\phantomsection\label{notes__04000-writing.md__writing}
 \begin{itemize}
 \item
   Ask questions and answer them
@@ -1653,16 +1654,17 @@ With tailscale we'd need to
 \item
   Write anything first and then iterate on it later
 \item
-  Section introduces, explores, details rather than In this section We
-  will introduce, we will explore, we will detail
+  Section introduces, explores, details rather than In this section We will introduce, we will explore, we will detail
 \end{itemize}
 \end{frame}
 
+\phantomsection\label{notes__05000-prep.md}
 \begin{frame}{Preparation phase report outline}
-\protect\hypertarget{preparation-phase-report-outline}{}
+\phantomsection\label{notes__05000-prep.md__preparation-phase-report-outline}
 \begin{block}{Introduction}
-\protect\hypertarget{introduction}{}
+\phantomsection\label{notes__05000-prep.md__introduction}
 \begin{itemize}
+\tightlist
 \item
   \begin{itemize}
   \tightlist
@@ -1677,8 +1679,7 @@ With tailscale we'd need to
   \begin{itemize}
   \tightlist
   \item
-    What do I need to know to in order to be able to understand the
-    problem that this thesis is trying to solve and its importance?
+    What do I need to know to in order to be able to understand the problem that this thesis is trying to solve and its importance?
 
     \begin{itemize}
     \tightlist
@@ -1710,7 +1711,7 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Technical survey}
-\protect\hypertarget{technical-survey}{}
+\phantomsection\label{notes__05000-prep.md__technical-survey}
 \begin{itemize}
 \tightlist
 \item
@@ -1723,7 +1724,7 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Implementation details}
-\protect\hypertarget{implementation-details}{}
+\phantomsection\label{notes__05000-prep.md__implementation-details}
 \begin{itemize}
 \tightlist
 \item
@@ -1740,14 +1741,15 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Conclusions}
-\protect\hypertarget{conclusions}{}
+\phantomsection\label{notes__05000-prep.md__conclusions}
 \end{block}
 \end{frame}
 
+\phantomsection\label{notes__06000-thesis.md}
 \begin{frame}{Thesis outline}
-\protect\hypertarget{thesis-outline}{}
+\phantomsection\label{notes__06000-thesis.md__thesis-outline}
 \begin{block}{Introduction}
-\protect\hypertarget{introduction}{}
+\phantomsection\label{notes__06000-thesis.md__introduction}
 \begin{itemize}
 \tightlist
 \item
@@ -1768,17 +1770,16 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Related work / Literature review}
-\protect\hypertarget{related-work-literature-review}{}
+\phantomsection\label{notes__06000-thesis.md__related-work-literature-review}
 \begin{itemize}
 \tightlist
 \item
-  Are there any existing solutions that can be applied to the problem in
-  some capacity?
+  Are there any existing solutions that can be applied to the problem in some capacity?
 \end{itemize}
 \end{block}
 
 \begin{block}{Methodology / Approach}
-\protect\hypertarget{methodology-approach}{}
+\phantomsection\label{notes__06000-thesis.md__methodology-approach}
 \begin{itemize}
 \tightlist
 \item
@@ -1789,8 +1790,7 @@ With tailscale we'd need to
   \begin{itemize}
   \tightlist
   \item
-    Which performance characteristics are relevant to multiparty
-    computations?
+    Which performance characteristics are relevant to multiparty computations?
   \item
     How are the chosen solutions going to be implemented and deployed?
   \item
@@ -1818,7 +1818,7 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Solution/Implementation Evaluations}
-\protect\hypertarget{solutionimplementation-evaluations}{}
+\phantomsection\label{notes__06000-thesis.md__solutionimplementation-evaluations}
 \begin{itemize}
 \tightlist
 \item
@@ -1841,7 +1841,7 @@ With tailscale we'd need to
 \end{block}
 
 \begin{block}{Conclusions}
-\protect\hypertarget{conclusions}{}
+\phantomsection\label{notes__06000-thesis.md__conclusions}
 \begin{itemize}
 \tightlist
 \item
@@ -1850,19 +1850,21 @@ With tailscale we'd need to
   Which solution is preferred under which circumstances?
 \end{itemize}
 \end{block}
+\end{frame}
 
+\phantomsection\label{notes__07000-general.md}
 \begin{block}{Notes}
-\protect\hypertarget{notes}{}
+\phantomsection\label{notes__07000-general.md__notes}
 \begin{itemize}
 \tightlist
 \item
   Where should I mention that we focus on Peer to Peer protocols?
 \end{itemize}
 \end{block}
-\end{frame}
 
+\phantomsection\label{notes__08000-feedback.md}
 \begin{frame}{Feedback}
-\protect\hypertarget{feedback}{}
+\phantomsection\label{notes__08000-feedback.md__feedback}
 \begin{itemize}
 \tightlist
 \item
@@ -1884,8 +1886,7 @@ With tailscale we'd need to
     \begin{itemize}
     \tightlist
     \item
-      looks like the entries are grouped by starting letter with extra
-      space between the groups
+      looks like the entries are grouped by starting letter with extra space between the groups
     \end{itemize}
   \item
     remove the period at the end of each entry?
@@ -1897,8 +1898,7 @@ With tailscale we'd need to
   \begin{itemize}
   \tightlist
   \item
-    ``Assorted algorithms and protocols for secure computation'' - uses
-    both forms
+    ``Assorted algorithms and protocols for secure computation'' - uses both forms
   \item
     Wikipedia - multi-party
   \item
@@ -1907,19 +1907,18 @@ With tailscale we'd need to
     https://www.wordsense.eu/multi-party/
   \end{itemize}
 \item
-  The Internet/the internet - looks like most sources I found use ``the
-  Internet'' and ``the Web''
+  The Internet/the internet - looks like most sources I found use ``the Internet'' and ``the Web''
 \item
-  Usage of the term ``Encapsulates'' - seems to be very standard in all
-  resources I found
+  Usage of the term ``Encapsulates'' - seems to be very standard in all resources I found
 \item
 \item
   Where should I mention that we focus on Peer to Peer protocols?
 \end{itemize}
 \end{frame}
 
+\phantomsection\label{notes__09000-questions.md}
 \begin{frame}{Questions}
-\protect\hypertarget{questions}{}
+\phantomsection\label{notes__09000-questions.md__questions}
 \begin{itemize}
 \tightlist
 \item
@@ -1928,30 +1927,28 @@ With tailscale we'd need to
   \begin{itemize}
   \tightlist
   \item
-    At the start of a section when introducing something new, should I
-    use shorter sentences?
+    At the start of a section when introducing something new, should I use shorter sentences?
   \item
-    When describing something in more detail, should I use longer
-    sentences?
+    When describing something in more detail, should I use longer sentences?
   \item
   \end{itemize}
 \end{itemize}
 \end{frame}
 
+\phantomsection\label{notes__09999-latex.md}
 \begin{frame}[fragile]{Latex}
-\protect\hypertarget{latex}{}
+\phantomsection\label{notes__09999-latex.md__latex}
 \begin{itemize}
 \tightlist
 \item
-  use \textbackslash input instead of \textbackslash include to avoid
-  issues with missing directories and .aux files
+  use \textbackslash input instead of \textbackslash include to avoid issues with missing directories and .aux files
 \end{itemize}
 
 \begin{longtable}[]{@{}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2222}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2222}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.2917}}@{}}
-\toprule()
+\toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 Fruit
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -1959,7 +1956,7 @@ Price
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 Advantages
 \end{minipage} \\
-\midrule()
+\midrule\noalign{}
 \endhead
 Bananas & \$1.34 & \begin{minipage}[t]{\linewidth}\raggedright
 \begin{itemize}
@@ -1979,30 +1976,77 @@ Oranges & \$2.10 & \begin{minipage}[t]{\linewidth}\raggedright
   tasty
 \end{itemize}
 \end{minipage} \\
-\bottomrule()
+\bottomrule\noalign{}
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1944}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.1528}}@{}}
+\toprule\noalign{}
+\multicolumn{2}{@{}>{\raggedright\arraybackslash}p{(\columnwidth - 4\tabcolsep) * \real{0.3056} + 2\tabcolsep}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+Property
+\end{minipage}} & \begin{minipage}[b]{\linewidth}\raggedright
+Earth
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\multirow{3}{=}{Temperature
+1961-1990} & min & -89.2 °C \\
+& mean & 14 °C \\
+& max & 56.7 °C \\
+\bottomrule\noalign{}
+\end{longtable}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3056}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1111}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.1111}}@{}}
+\toprule\noalign{}
+\multirow{2}{=}{\begin{minipage}[b]{\linewidth}\raggedright
+Location
+\end{minipage}} & \multicolumn{3}{>{\raggedright\arraybackslash}p{(\columnwidth - 6\tabcolsep) * \real{0.3333} + 4\tabcolsep}@{}}{%
+\begin{minipage}[b]{\linewidth}\raggedright
+Temperature 1961-1990
+in degree Celsius
+\end{minipage}} \\
+& \begin{minipage}[b]{\linewidth}\raggedright
+min
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+mean
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+max
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+Antarctica & -89.2 & N/A & 19.8 \\
+Earth & -89.2 & 14 & 56.7 \\
+\bottomrule\noalign{}
 \end{longtable}
 
 \begin{longtable}[]{@{}rllcl@{}}
 \caption{Demonstration of simple table syntax.}\tabularnewline
-\toprule()
+\toprule\noalign{}
 Right & Left & Default & Center & \\
-\midrule()
+\midrule\noalign{}
 \endfirsthead
-\toprule()
+\toprule\noalign{}
 Right & Left & Default & Center & \\
-\midrule()
+\midrule\noalign{}
 \endhead
 12 & 12 & 12 & 12 & \\
 123 & 123 & 123 & 123 & \\
 1 & 1 & 1 & 1 & \\
-\bottomrule()
+\bottomrule\noalign{}
 \end{longtable}
 
 \begin{longtable}[]{@{}ll@{}}
-\toprule()
+\toprule\noalign{}
 \endhead
 & \\
-\bottomrule()
+\bottomrule\noalign{}
 \end{longtable}
 
 \begin{quote}

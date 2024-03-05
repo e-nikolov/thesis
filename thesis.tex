@@ -21,6 +21,7 @@
 \newcommand{\builddate}{\today} 
 
 \usepackage{mdframed} % surround environments with tags
+\usepackage{arydshln} % surround environments with tags
 \usepackage[outputdir=build]{minted} % code snippet colors
 \usemintedstyle{xcode}
 % \usemintedstyle{paraiso-light}
@@ -30,7 +31,12 @@
 \usepackage[english]{babel} % english rules
 
 \usepackage{myglossary} % internal package wrapping glosseries
-
+\newcommand\MT{\rule{0pt}{3ex}}         % = `top' strut
+\newcommand\MB{\rule[-2ex]{0pt}{0pt}}   % = `bottom' strut
+\newcommand\HL{\hdashline\MT\MB}
+\newcommand\HLM{\hdashline\MT}
+\newcommand\HF{\hline\MT\MB}
+\newcommand\HFM{\hline\MT}
 \begin{document}
 
 \definecolor{LightGray}{gray}{0.9}

@@ -38,6 +38,7 @@
               inputs.pandoc-crossref.packages.${system}.default
               pkgs.haskellPackages.pandoc
               # pkgs.haskellPackages.pandoc-crossref
+              pkgs.just
               pkgs.pandoc
               pkgs.inkscape
               pkgs.python310Packages.pygments

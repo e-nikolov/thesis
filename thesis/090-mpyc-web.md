@@ -4,41 +4,94 @@ This chapter presents the design of MPyC Web - an MPC connectivity solution base
 
 Design goals:
 
-- Uses the MPyC Python framework
 - Runs in browsers (client-side) on both PCs and smartphones
+- Uses the MPyC Python framework with as few modifications as possible
 - Peer-to-peer with a fallback to relaying
 - Secure
 - Simple to use
 
-### Runtime
+### Python Runtime Selection
 
 <!-- While Python is not natively supported in browsers that traditionally allow only -->
 
 <!-- , including Python, with different tradeoffs -->
+#### Selection Criteria
 
-While web browsers natively support only JavaScript, there are approaches for enabling other languages as well. In the case of Python, the main options are[@pyodideIntroMozilla] [@anvilPythonBrowser]:
+While web browsers natively support only \gls{js}, there are approaches with different tradeoffs that can enable other languages, including Python. In this section we will investigate several web-based Python runtimes and choose the most appropriate one for MPyC Web.
 
-1. Transpilation - Python code is transpiled to JavaScript: Transcrypt[@transcryptRepo]
-2. Python interpreter implementation in JavaScript: Skulpt[@skulptDocs], Brython[@brythonDocs]
-3. Python interpreter compiled to WebAssembly[@wasmDocs]: Pyodide[@pyodideDocs], MicroPython[@microPythonDocs], RustPython[@rustPythonDocs]
+MPyC depends on several Python packages that are implemented in C, such as numpy, gmpy2, scipy and relies heavily on asyncio and TCP sockets from Python's standard library. The runtime we choose should support as many of those dependencies as possible to avoid having to find alternatives or reimplement them.
 
-The main differences between those approaches are in terms of:
+Another important aspect is the runtime performance due to the heavy operations involved in \as{mpc}s. We will benchmark each runtime by measuring the time it takes to execute a simple Python script that adds numbers in a loop.
 
-- moment of compilation
-- runtime load time
-- performance
-- Python ecosystem support
+Fast startup time, low build and deployment complexity are less crucial but nice to have properties of the runtime, as they offer a better experience for both users and developers.
 
-|             | approach         | compilation | load | performance | ecosystem                                                                                                                 |
-| ----------- | ---------------- | ----------- | ---- | ----------- | ------------------------------------------------------------------------------------------------------------------------- |
-| Transcrypt  | transpiler       | ahead       | 0 s  | slow        | (-)                                                                                                                       |
-| Skulpt      | JS interpreter   | JIT         | ~0 s | slow        | (-)                                                                                                                       |
-| Brython     | JS interpreter   | JIT         | ~0 s | slow        | (-)                                                                                                                       |
-| Pyodide     | WASM interpreter | JIT         | ~5 s | fast        | (+) asyncio <br><br>(+) numpy  <br><br>(+) gmpy2 <br><br>(+) scipy  <br><br>(+) python wheels  <br><br>(-) sockets |
-| MicroPython | WASM interpreter | JIT         | ~1 s | fast        | (-)                                                                                                                       |
-| RustPython  | WASM interpreter | JIT         | ~5 s | fast        | (-)                                                                                                                       |
+To summarize, our criteria for runtime selection are:
 
-MPyC depends on several Python packages that are implemented in C, such as numpy, gmpy2, scipy and relies heavily on asyncio and sockets from the standard library. Out of the discussed runtime options, Pyodide offers the widest support for packages from the standard library and third-party packages. None of the options support the sockets package due to browser limitations, but an alternative implementation can be built on top of the WebRTC API.
+- Python ecosystem/package availability
+- Runtime performance
+- Startup, build and deployment time
+
+#### Available Approaches
+
+The approaches for using Python in web browsers can be split into three categories[@pyodideIntroMozilla] [@anvilPythonBrowser]:
+
+1. Transpiler-based: the Python code is transpiled to JavaScript \gls{aot} and the resulting code is executed by the browser at runtime
+2. JavaScript interpreter-based: the Python code is interpreted \gls{jit} in the browser by a software package implemented in JavaScript
+3. \gls{wasm}[@wasmDocs] interpreter-based: similar to the previous category, but the interpreter can be implemented in any language that can be compiled to WASM - a secure and efficient binary instruction format for a virtual machine that can run in browsers. WASM can be targeted by compiled languages like C/C++/Rust/Go to create web applications with near-native performance.
+
+
+
+WASM is 
+
+#### Preliminary Benchmarks
+
+
+#### 
+
+- <!-- Transcrypt[@transcryptRepo -->]
+- <!--  Skulpt[@skulptDocs], Brython[@brythonDocs]    --> 
+- <!-- Pyodide[@pyodideDocs], MicroPython[@microPythonDocs], RustPython[@rustPythonDocs]   --> 
+- 
+
+|                 | **Benchmark** |              | **Results** |              | **(ops/sec)** |              |               |            |
+| ------------------ | ---------- | ------------ | ----------- | ------------ | ------------- | ------------ | ------------- | ---------- |
+| \MB Project     | **assign**    | **multiply** | **bigint**  | **randlist** | **cpylist**   | **sortlist** | **fibonacci** | **primes** |
+| \HF Native      | 775           | 360          | 69          | 21           | 4,280         | 78           | 152           | 196        |
+| \HL Transcrypt  | 1,152         | 1,270        | 1,179       | 65           | 6,135         | 524          | 337           | 971        |
+| \HL Skulpt      | 40            | 27           | 1           | 16           | 6,232         | 5.2          | 8             | 18         |
+| \HL Brython     | 292           | 166          | 45          | 0.7          | 5,076         | 67           | 9             | 45         |
+| \HLM Pyodide    | 400           | 111          | 26          | 5            | 4,425         | 45           | 53            | 73         |
+| \HL MicroPython | 69            | 35           | 6           | 16           | 388           | 41           | 22            | 10         |
+| \HL RustPython  | 60            | 59           | 8           | 0.8          | 525           | 0.1          | 5             | 6          |
+
+Table: Benchmark results of the Python runtimes measured in operations per second for inputs of size 100 000
+
+ 
+
+
+ Out of the discussed runtime options, Pyodide offers the widest support for packages from the standard library and third-party packages. None of the options support the sockets package due to browser limitations, but an alternative implementation can be built on top of the WebRTC API.
+
+Out of those projects, Py
+
+\newpage
+
+
+| **Project**     | **Approach**                         | **Startup** | **Benchmark** | **Ecosystem**         |
+| --------------- | ------------------------------------ | ----------- | ------------- | --------------------- |
+| \MB Transcrypt  | transpiler (\as{aot})                | 0s          | slow          | $$(-)$$ n/a           |
+| \HL Skulpt      | \as{js}-based interpreter (\as{jit}) | 0s          | slow          | $$(-)$$ n/a           |
+| \HL Brython     | JS-based interpreter (JIT)           | 0s          | 1,370 op/s    | $$(-)$$ no numpy      |
+| \HLM Pyodide    | \as{wasm}-based interpreter (JIT)    | 5s          | 298 op/s      | $$(+)$$ asyncio       |
+|                 |                                      |             |               | $$(+)$$ numpy         |
+|                 |                                      |             |               | $$(+)$$ gmpy2         |
+|                 |                                      |             |               | $$(+)$$ scipy         |
+|                 |                                      |             |               | $$(+)$$ python wheels |
+|                 |                                      |             |               | $$(+)$$ filesystem    |
+| \MB             |                                      |             |               | $$(-)$$ no sockets    |
+| \HL MicroPython | WASM-based interpreter (JIT)         | 1s          | fast          | $$(-)$$ n/a           |
+| \HL RustPython  | WASM-based interpreter (JIT)         | 5s          | fast          | $$(-)$$ n/a           |
+
+Table: Summary of Python runtimes for browsers
 
 <!--
 
@@ -51,7 +104,7 @@ The moment of compilation is not as important in our case but for context transp
 <!--
 Traditionally, web browsers support JavaScript, but the introduction of WebAssembly in 2017 made it possible to use other languages as well. Python
 -->
-
+### Design of MPyC Web
 Web based solution for running MPC in browsers on the client side via WebAssembly and WebRTC for peer-to-peer connectivity.
 
 The lifecycle of a message between the workers of 2 peers, "Peer A" and "Peer B" looks like this:
