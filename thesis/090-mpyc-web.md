@@ -31,42 +31,171 @@ To summarize, our criteria for runtime selection are:
 - Runtime performance
 - Startup, build and deployment time
 
-#### Available Approaches
+#### Available Solutions
 
-The approaches for using Python in web browsers can be split into three categories[@pyodideIntroMozilla] [@anvilPythonBrowser]:
+There are a number of available solutions for using Python in web browsers, falling under three main categories[@pyodideIntroMozilla] [@anvilPythonBrowser]:
 
-1. Transpiler-based: the Python code is transpiled to JavaScript \gls{aot} and the resulting code is executed by the browser at runtime
-2. JavaScript interpreter-based: the Python code is interpreted \gls{jit} in the browser by a software package implemented in JavaScript
-3. \gls{wasm}[@wasmDocs] interpreter-based: similar to the previous category, but the interpreter can be implemented in any language that can be compiled to WASM - a secure and efficient binary instruction format for a virtual machine that can run in browsers. WASM can be targeted by compiled languages like C/C++/Rust/Go to create web applications with near-native performance.
-
-
-
-WASM is 
-
-#### Preliminary Benchmarks
+1. Transcrypt[@transcryptRepo] - \gls{aot} JavaScript transpiler - the Python code is transpiled to JavaScript and the resulting code is executed by the browser at runtime. is an example project 
+2. Skulpt[@skulptDocs], Brython[@brythonDocs] - \gls{jit} JavaScript interpreters - the Python code is converted to JavaScript in the browser at runtime
+3. Pyodide[@pyodideDocs], MicroPython[@microPythonDocs], RustPython[@rustPythonDocs] - \gls{wasm}[@wasmDocs] interpreters - a Python interpreter is implemented in a compiled language like C/C++/Rust/Go that can target WASM - a secure and efficient binary instruction format for a virtual machine that can run in browsers with close to native performance.
 
 
-#### 
 
-- <!-- Transcrypt[@transcryptRepo -->]
-- <!--  Skulpt[@skulptDocs], Brython[@brythonDocs]    --> 
-- <!-- Pyodide[@pyodideDocs], MicroPython[@microPythonDocs], RustPython[@rustPythonDocs]   --> 
+
+#### Preliminary Runtime Benchmarks
+
+ 
+- 
+- <!--   --> 
+- <!--    --> 
 - 
 
 |                 | **Benchmark** |              | **Results** |              | **(ops/sec)** |              |               |            |
-| ------------------ | ---------- | ------------ | ----------- | ------------ | ------------- | ------------ | ------------- | ---------- |
+| --------------- | ------------- | ------------ | ----------- | ------------ | ------------- | ------------ | ------------- | ---------- |
 | \MB Project     | **assign**    | **multiply** | **bigint**  | **randlist** | **cpylist**   | **sortlist** | **fibonacci** | **primes** |
-| \HF Native      | 775           | 360          | 69          | 21           | 4,280         | 78           | 152           | 196        |
-| \HL Transcrypt  | 1,152         | 1,270        | 1,179       | 65           | 6,135         | 524          | 337           | 971        |
+| \HF JavaScript  | 19,327        | 19,413       | 19,351      | 713          | 4,227         | 35           | 3,271         | 1,029      |
+| \HF CPython     | 775           | 380          | 69          | 21           | 4,280         | 81           | 168           | 200        |
+| \HL Transcrypt  | 1,289         | 1,285        | 1,282       | 176          | 6,135         | 35           | 337           | 1124       |
 | \HL Skulpt      | 40            | 27           | 1           | 16           | 6,232         | 5.2          | 8             | 18         |
 | \HL Brython     | 292           | 166          | 45          | 0.7          | 5,076         | 67           | 9             | 45         |
 | \HLM Pyodide    | 400           | 111          | 26          | 5            | 4,425         | 45           | 53            | 73         |
-| \HL MicroPython | 69            | 35           | 6           | 16           | 388           | 41           | 22            | 10         |
-| \HL RustPython  | 60            | 59           | 8           | 0.8          | 525           | 0.1          | 5             | 6          |
+| \HL MicroPython | 69            | 36           | 6           | 16           | 403           | 41           | 22            | 10         |
+| \HL RustPython  | 60            | 59           | 8           | 0.8          | 525           | 0.1          | 6             | 6          |
 
 Table: Benchmark results of the Python runtimes measured in operations per second for inputs of size 100 000
 
- 
+```Python
+import itertools
+import random
+import sys
+import time
+
+bench_input_size = 100000
+bench_min_duration = 0.2
+bench_best_of = 3
+
+def is_brython():
+    return "Brython" in str(sys.version)
+def is_skulpt():
+    return "Skulpt" in str(sys.version)
+def is_micropython():
+    return "MicroPython" in str(sys.version)
+def is_rustpython():
+    return "rustc" in str(sys.version)
+if is_micropython():
+    import js
+    def print(s):
+        js.document.currentScript.target.innerHTML += s + "<br />"  
+if is_brython() or is_skulpt() or is_micropython():
+    range_fn = range
+else:
+    range_fn = lambda iters: itertools.repeat(None, iters)  # Pyodide  
+
+if hasattr(time, "ticks_ms"):
+    default_timer = time.ticks_ms
+    default_time_diff = lambda a, b: time.ticks_diff(a, b) / 1000.0
+elif hasattr(time, "time"):
+    default_timer = time.time
+    default_time_diff = lambda a, b: a - b
+def timeit(func, iterations=bench_input_size, timer=default_timer, time_diff=default_time_diff):
+    t1 = timer()
+    res = func()
+    for _ in range_fn(iterations - 1):
+        func()
+    timing = time_diff(timer(), t1)
+    return timing, res
+def autorange(func):
+    i = 1
+    while True:
+        for j in 1, 2, 5:
+            iterations = i * j
+            time_taken, res = timeit(func, iterations)
+            if time_taken >= bench_min_duration:
+                return (round(iterations / time_taken, 2), res)
+        i *= 10
+def bench(func):
+    def wrapper(*args, **kwargs):
+        maxOpS = 0
+        res = None
+        def handle():
+            return func(*args, **kwargs)
+        for _ in range(bench_best_of):
+            ops, res = autorange(handle)
+            maxOpS = max(maxOpS, ops)
+        print_bench(func.__name__, maxOpS, *args, **kwargs)
+        return res
+    return wrapper
+def print_bench(name, t, *args, **kwargs):
+    args_repr = [repr(arg) for arg in args]
+    kwargs_repr = [f"{key}={repr(value)}" for key, value in kwargs.items()]
+    args_fmt = ", ".join(args_repr + kwargs_repr)
+    print(f"{name}({args_fmt}): {t:,} ops/sec")
+@bench
+def assign(iters=bench_input_size):
+    for _ in range_fn(iters):
+        x = 1
+@bench
+def multiply(iters=bench_input_size):
+    a, b = 17, 41
+    for _ in range_fn(iters):
+        x = a * b
+@bench
+def bigints(iters=bench_input_size):
+    n = 60
+    for _ in range_fn(iters):
+        2**n
+@bench
+def randlist(size=bench_input_size):
+    return [random.randint(0, size) for _ in range(size)]
+l = None
+@bench
+def cpylist():
+    return l.copy()
+@bench
+def cpylist2():
+    return l[:]
+@bench
+def sortlist():
+    return l.copy().sort()
+@bench
+def fibonacci(n=bench_input_size):
+    if n < 2:
+        return n
+    a, b = 1, 2  
+    for _ in range_fn(n - 1):
+        a, b = b, (a + b) % 100000
+    return a 
+@bench
+def primes(n=bench_input_size):
+    if n == 2:
+        return [2]
+    if n < 2:
+        return []
+    s = list(range(3, n + 1, 2))
+    mroot = n**0.5
+    half = (n + 1) // 2 - 1
+    i = 0
+    m = 3
+    while m <= mroot:
+        if s[i]:
+            j = (m * m - 3) // 2
+            s[j] = 0
+            while j < half:
+                s[j] = 0
+                j += m
+        i = i + 1
+        m = 2 * i + 3
+    return [2] + [x for x in s if x]
+assign()
+multiply()
+bigints()
+l = randlist()
+cpylist()
+cpylist2()
+sortlist()
+fibonacci()
+primes()
+```
 
 
  Out of the discussed runtime options, Pyodide offers the widest support for packages from the standard library and third-party packages. None of the options support the sockets package due to browser limitations, but an alternative implementation can be built on top of the WebRTC API.

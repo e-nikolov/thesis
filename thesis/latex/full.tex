@@ -848,39 +848,34 @@ To summarize, our criteria for runtime selection are:
   Startup, build and deployment time
 \end{itemize}
 
-\subsection{Available Approaches}\label{thesis__090-mpyc-web.md__available-approaches}
+\subsection{Available Solutions}\label{thesis__090-mpyc-web.md__available-solutions}
 
-The approaches for using Python in web browsers can be split into three categories\autocite{pyodideIntroMozilla} \autocite{anvilPythonBrowser}:
+There are a number of available solutions for using Python in web browsers, falling under three main categories\autocite{pyodideIntroMozilla} \autocite{anvilPythonBrowser}:
 
 \begin{enumerate}
 \def\labelenumi{\arabic{enumi}.}
 \tightlist
 \item
-  Transpiler-based: the Python code is transpiled to JavaScript \gls{aot} and the resulting code is executed by the browser at runtime
+  Transcrypt\autocite{transcryptRepo} - \gls{aot} JavaScript transpiler - the Python code is transpiled to JavaScript and the resulting code is executed by the browser at runtime. is an example project
 \item
-  JavaScript interpreter-based: the Python code is interpreted \gls{jit} in the browser by a software package implemented in JavaScript
+  Skulpt\autocite{skulptDocs}, Brython\autocite{brythonDocs} - \gls{jit} JavaScript interpreters - the Python code is converted to JavaScript in the browser at runtime
 \item
-  \gls{wasm}\autocite{wasmDocs} interpreter-based: similar to the previous category, but the interpreter can be implemented in any language that can be compiled to WASM - a secure and efficient binary instruction format for a virtual machine that can run in browsers. WASM can be targeted by compiled languages like C/C++/Rust/Go to create web applications with near-native performance.
+  Pyodide\autocite{pyodideDocs}, MicroPython\autocite{microPythonDocs}, RustPython\autocite{rustPythonDocs} - \gls{wasm}\autocite{wasmDocs} interpreters - a Python interpreter is implemented in a compiled language like C/C++/Rust/Go that can target WASM - a secure and efficient binary instruction format for a virtual machine that can run in browsers with close to native performance.
 \end{enumerate}
 
-WASM is
-
-\subsection{Preliminary Benchmarks}\label{thesis__090-mpyc-web.md__preliminary-benchmarks}
-
-\subsection{}\label{thesis__090-mpyc-web.md__section}
+\subsection{Preliminary Runtime Benchmarks}\label{thesis__090-mpyc-web.md__preliminary-runtime-benchmarks}
 
 \begin{itemize}
 \tightlist
 \item
-  {]}
 \item
 \item
 \item
 \end{itemize}
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1622}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0901}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1351}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1171}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1081}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0991}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1081}}
@@ -924,14 +919,150 @@ WASM is
 \bottomrule\noalign{}
 \endlastfoot
 \MB Project & \textbf{assign} & \textbf{multiply} & \textbf{bigint} & \textbf{randlist} & \textbf{cpylist} & \textbf{sortlist} & \textbf{fibonacci} & \textbf{primes} \\
-\HF Native & 775 & 360 & 69 & 21 & 4,280 & 78 & 152 & 196 \\
-\HL Transcrypt & 1,152 & 1,270 & 1,179 & 65 & 6,135 & 524 & 337 & 971 \\
+\HF JavaScript & 19,327 & 19,413 & 19,351 & 713 & 4,227 & 35 & 3,271 & 1,029 \\
+\HF CPython & 775 & 380 & 69 & 21 & 4,280 & 81 & 168 & 200 \\
+\HL Transcrypt & 1,289 & 1,285 & 1,282 & 176 & 6,135 & 35 & 337 & 1124 \\
 \HL Skulpt & 40 & 27 & 1 & 16 & 6,232 & 5.2 & 8 & 18 \\
 \HL Brython & 292 & 166 & 45 & 0.7 & 5,076 & 67 & 9 & 45 \\
 \HLM Pyodide & 400 & 111 & 26 & 5 & 4,425 & 45 & 53 & 73 \\
-\HL MicroPython & 69 & 35 & 6 & 16 & 388 & 41 & 22 & 10 \\
-\HL RustPython & 60 & 59 & 8 & 0.8 & 525 & 0.1 & 5 & 6 \\
+\HL MicroPython & 69 & 36 & 6 & 16 & 403 & 41 & 22 & 10 \\
+\HL RustPython & 60 & 59 & 8 & 0.8 & 525 & 0.1 & 6 & 6 \\
 \end{longtable}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\ImportTok{import}\NormalTok{ itertools}
+\ImportTok{import}\NormalTok{ random}
+\ImportTok{import}\NormalTok{ sys}
+\ImportTok{import}\NormalTok{ time}
+
+\NormalTok{bench\_input\_size }\OperatorTok{=} \DecValTok{100000}
+\NormalTok{bench\_min\_duration }\OperatorTok{=} \FloatTok{0.2}
+\NormalTok{bench\_best\_of }\OperatorTok{=} \DecValTok{3}
+
+\KeywordTok{def}\NormalTok{ is\_brython():}
+    \ControlFlowTok{return} \StringTok{"Brython"} \KeywordTok{in} \BuiltInTok{str}\NormalTok{(sys.version)}
+\KeywordTok{def}\NormalTok{ is\_skulpt():}
+    \ControlFlowTok{return} \StringTok{"Skulpt"} \KeywordTok{in} \BuiltInTok{str}\NormalTok{(sys.version)}
+\KeywordTok{def}\NormalTok{ is\_micropython():}
+    \ControlFlowTok{return} \StringTok{"MicroPython"} \KeywordTok{in} \BuiltInTok{str}\NormalTok{(sys.version)}
+\KeywordTok{def}\NormalTok{ is\_rustpython():}
+    \ControlFlowTok{return} \StringTok{"rustc"} \KeywordTok{in} \BuiltInTok{str}\NormalTok{(sys.version)}
+\ControlFlowTok{if}\NormalTok{ is\_micropython():}
+    \ImportTok{import}\NormalTok{ js}
+    \KeywordTok{def} \BuiltInTok{print}\NormalTok{(s):}
+\NormalTok{        js.document.currentScript.target.innerHTML }\OperatorTok{+=}\NormalTok{ s }\OperatorTok{+} \StringTok{"\textless{}br /\textgreater{}"}  
+\ControlFlowTok{if}\NormalTok{ is\_brython() }\KeywordTok{or}\NormalTok{ is\_skulpt() }\KeywordTok{or}\NormalTok{ is\_micropython():}
+\NormalTok{    range\_fn }\OperatorTok{=} \BuiltInTok{range}
+\ControlFlowTok{else}\NormalTok{:}
+\NormalTok{    range\_fn }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ iters: itertools.repeat(}\VariableTok{None}\NormalTok{, iters)  }\CommentTok{\# Pyodide  }
+
+\ControlFlowTok{if} \BuiltInTok{hasattr}\NormalTok{(time, }\StringTok{"ticks\_ms"}\NormalTok{):}
+\NormalTok{    default\_timer }\OperatorTok{=}\NormalTok{ time.ticks\_ms}
+\NormalTok{    default\_time\_diff }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ a, b: time.ticks\_diff(a, b) }\OperatorTok{/} \FloatTok{1000.0}
+\ControlFlowTok{elif} \BuiltInTok{hasattr}\NormalTok{(time, }\StringTok{"time"}\NormalTok{):}
+\NormalTok{    default\_timer }\OperatorTok{=}\NormalTok{ time.time}
+\NormalTok{    default\_time\_diff }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ a, b: a }\OperatorTok{{-}}\NormalTok{ b}
+\KeywordTok{def}\NormalTok{ timeit(func, iterations}\OperatorTok{=}\NormalTok{bench\_input\_size, timer}\OperatorTok{=}\NormalTok{default\_timer, time\_diff}\OperatorTok{=}\NormalTok{default\_time\_diff):}
+\NormalTok{    t1 }\OperatorTok{=}\NormalTok{ timer()}
+\NormalTok{    res }\OperatorTok{=}\NormalTok{ func()}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ range\_fn(iterations }\OperatorTok{{-}} \DecValTok{1}\NormalTok{):}
+\NormalTok{        func()}
+\NormalTok{    timing }\OperatorTok{=}\NormalTok{ time\_diff(timer(), t1)}
+    \ControlFlowTok{return}\NormalTok{ timing, res}
+\KeywordTok{def}\NormalTok{ autorange(func):}
+\NormalTok{    i }\OperatorTok{=} \DecValTok{1}
+    \ControlFlowTok{while} \VariableTok{True}\NormalTok{:}
+        \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{:}
+\NormalTok{            iterations }\OperatorTok{=}\NormalTok{ i }\OperatorTok{*}\NormalTok{ j}
+\NormalTok{            time\_taken, res }\OperatorTok{=}\NormalTok{ timeit(func, iterations)}
+            \ControlFlowTok{if}\NormalTok{ time\_taken }\OperatorTok{\textgreater{}=}\NormalTok{ bench\_min\_duration:}
+                \ControlFlowTok{return}\NormalTok{ (}\BuiltInTok{round}\NormalTok{(iterations }\OperatorTok{/}\NormalTok{ time\_taken, }\DecValTok{2}\NormalTok{), res)}
+\NormalTok{        i }\OperatorTok{*=} \DecValTok{10}
+\KeywordTok{def}\NormalTok{ bench(func):}
+    \KeywordTok{def}\NormalTok{ wrapper(}\OperatorTok{*}\NormalTok{args, }\OperatorTok{**}\NormalTok{kwargs):}
+\NormalTok{        maxOpS }\OperatorTok{=} \DecValTok{0}
+\NormalTok{        res }\OperatorTok{=} \VariableTok{None}
+        \KeywordTok{def}\NormalTok{ handle():}
+            \ControlFlowTok{return}\NormalTok{ func(}\OperatorTok{*}\NormalTok{args, }\OperatorTok{**}\NormalTok{kwargs)}
+        \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(bench\_best\_of):}
+\NormalTok{            ops, res }\OperatorTok{=}\NormalTok{ autorange(handle)}
+\NormalTok{            maxOpS }\OperatorTok{=} \BuiltInTok{max}\NormalTok{(maxOpS, ops)}
+\NormalTok{        print\_bench(func.}\VariableTok{\_\_name\_\_}\NormalTok{, maxOpS, }\OperatorTok{*}\NormalTok{args, }\OperatorTok{**}\NormalTok{kwargs)}
+        \ControlFlowTok{return}\NormalTok{ res}
+    \ControlFlowTok{return}\NormalTok{ wrapper}
+\KeywordTok{def}\NormalTok{ print\_bench(name, t, }\OperatorTok{*}\NormalTok{args, }\OperatorTok{**}\NormalTok{kwargs):}
+\NormalTok{    args\_repr }\OperatorTok{=}\NormalTok{ [}\BuiltInTok{repr}\NormalTok{(arg) }\ControlFlowTok{for}\NormalTok{ arg }\KeywordTok{in}\NormalTok{ args]}
+\NormalTok{    kwargs\_repr }\OperatorTok{=}\NormalTok{ [}\SpecialStringTok{f"}\SpecialCharTok{\{}\NormalTok{key}\SpecialCharTok{\}}\SpecialStringTok{=}\SpecialCharTok{\{}\BuiltInTok{repr}\NormalTok{(value)}\SpecialCharTok{\}}\SpecialStringTok{"} \ControlFlowTok{for}\NormalTok{ key, value }\KeywordTok{in}\NormalTok{ kwargs.items()]}
+\NormalTok{    args\_fmt }\OperatorTok{=} \StringTok{", "}\NormalTok{.join(args\_repr }\OperatorTok{+}\NormalTok{ kwargs\_repr)}
+    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\SpecialCharTok{\{}\NormalTok{name}\SpecialCharTok{\}}\SpecialStringTok{(}\SpecialCharTok{\{}\NormalTok{args\_fmt}\SpecialCharTok{\}}\SpecialStringTok{): }\SpecialCharTok{\{}\NormalTok{t}\SpecialCharTok{:,\}}\SpecialStringTok{ ops/sec"}\NormalTok{)}
+\AttributeTok{@bench}
+\KeywordTok{def}\NormalTok{ assign(iters}\OperatorTok{=}\NormalTok{bench\_input\_size):}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ range\_fn(iters):}
+\NormalTok{        x }\OperatorTok{=} \DecValTok{1}
+\AttributeTok{@bench}
+\KeywordTok{def}\NormalTok{ multiply(iters}\OperatorTok{=}\NormalTok{bench\_input\_size):}
+\NormalTok{    a, b }\OperatorTok{=} \DecValTok{17}\NormalTok{, }\DecValTok{41}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ range\_fn(iters):}
+\NormalTok{        x }\OperatorTok{=}\NormalTok{ a }\OperatorTok{*}\NormalTok{ b}
+\AttributeTok{@bench}
+\KeywordTok{def}\NormalTok{ bigints(iters}\OperatorTok{=}\NormalTok{bench\_input\_size):}
+\NormalTok{    n }\OperatorTok{=} \DecValTok{60}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ range\_fn(iters):}
+        \DecValTok{2}\OperatorTok{**}\NormalTok{n}
+\AttributeTok{@bench}
+\KeywordTok{def}\NormalTok{ randlist(size}\OperatorTok{=}\NormalTok{bench\_input\_size):}
+    \ControlFlowTok{return}\NormalTok{ [random.randint(}\DecValTok{0}\NormalTok{, size) }\ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(size)]}
+\NormalTok{l }\OperatorTok{=} \VariableTok{None}
+\AttributeTok{@bench}
+\KeywordTok{def}\NormalTok{ cpylist():}
+    \ControlFlowTok{return}\NormalTok{ l.copy()}
+\AttributeTok{@bench}
+\KeywordTok{def}\NormalTok{ cpylist2():}
+    \ControlFlowTok{return}\NormalTok{ l[:]}
+\AttributeTok{@bench}
+\KeywordTok{def}\NormalTok{ sortlist():}
+    \ControlFlowTok{return}\NormalTok{ l.copy().sort()}
+\AttributeTok{@bench}
+\KeywordTok{def}\NormalTok{ fibonacci(n}\OperatorTok{=}\NormalTok{bench\_input\_size):}
+    \ControlFlowTok{if}\NormalTok{ n }\OperatorTok{\textless{}} \DecValTok{2}\NormalTok{:}
+        \ControlFlowTok{return}\NormalTok{ n}
+\NormalTok{    a, b }\OperatorTok{=} \DecValTok{1}\NormalTok{, }\DecValTok{2}  
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ range\_fn(n }\OperatorTok{{-}} \DecValTok{1}\NormalTok{):}
+\NormalTok{        a, b }\OperatorTok{=}\NormalTok{ b, (a }\OperatorTok{+}\NormalTok{ b) }\OperatorTok{\%} \DecValTok{100000}
+    \ControlFlowTok{return}\NormalTok{ a }
+\AttributeTok{@bench}
+\KeywordTok{def}\NormalTok{ primes(n}\OperatorTok{=}\NormalTok{bench\_input\_size):}
+    \ControlFlowTok{if}\NormalTok{ n }\OperatorTok{==} \DecValTok{2}\NormalTok{:}
+        \ControlFlowTok{return}\NormalTok{ [}\DecValTok{2}\NormalTok{]}
+    \ControlFlowTok{if}\NormalTok{ n }\OperatorTok{\textless{}} \DecValTok{2}\NormalTok{:}
+        \ControlFlowTok{return}\NormalTok{ []}
+\NormalTok{    s }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{, n }\OperatorTok{+} \DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
+\NormalTok{    mroot }\OperatorTok{=}\NormalTok{ n}\OperatorTok{**}\FloatTok{0.5}
+\NormalTok{    half }\OperatorTok{=}\NormalTok{ (n }\OperatorTok{+} \DecValTok{1}\NormalTok{) }\OperatorTok{//} \DecValTok{2} \OperatorTok{{-}} \DecValTok{1}
+\NormalTok{    i }\OperatorTok{=} \DecValTok{0}
+\NormalTok{    m }\OperatorTok{=} \DecValTok{3}
+    \ControlFlowTok{while}\NormalTok{ m }\OperatorTok{\textless{}=}\NormalTok{ mroot:}
+        \ControlFlowTok{if}\NormalTok{ s[i]:}
+\NormalTok{            j }\OperatorTok{=}\NormalTok{ (m }\OperatorTok{*}\NormalTok{ m }\OperatorTok{{-}} \DecValTok{3}\NormalTok{) }\OperatorTok{//} \DecValTok{2}
+\NormalTok{            s[j] }\OperatorTok{=} \DecValTok{0}
+            \ControlFlowTok{while}\NormalTok{ j }\OperatorTok{\textless{}}\NormalTok{ half:}
+\NormalTok{                s[j] }\OperatorTok{=} \DecValTok{0}
+\NormalTok{                j }\OperatorTok{+=}\NormalTok{ m}
+\NormalTok{        i }\OperatorTok{=}\NormalTok{ i }\OperatorTok{+} \DecValTok{1}
+\NormalTok{        m }\OperatorTok{=} \DecValTok{2} \OperatorTok{*}\NormalTok{ i }\OperatorTok{+} \DecValTok{3}
+    \ControlFlowTok{return}\NormalTok{ [}\DecValTok{2}\NormalTok{] }\OperatorTok{+}\NormalTok{ [x }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ s }\ControlFlowTok{if}\NormalTok{ x]}
+\NormalTok{assign()}
+\NormalTok{multiply()}
+\NormalTok{bigints()}
+\NormalTok{l }\OperatorTok{=}\NormalTok{ randlist()}
+\NormalTok{cpylist()}
+\NormalTok{cpylist2()}
+\NormalTok{sortlist()}
+\NormalTok{fibonacci()}
+\NormalTok{primes()}
+\end{Highlighting}
+\end{Shaded}
 
 Out of the discussed runtime options, Pyodide offers the widest support for packages from the standard library and third-party packages. None of the options support the sockets package due to browser limitations, but an alternative implementation can be built on top of the WebRTC API.
 
