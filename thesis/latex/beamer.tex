@@ -897,7 +897,7 @@ While web browsers natively support only \gls{js}, there are approaches with dif
 
 MPyC depends on several Python packages that are implemented in C, such as numpy, gmpy2, scipy and relies heavily on asyncio and TCP sockets from Python's standard library. The runtime we choose should support as many of those dependencies as possible to avoid having to find alternatives or reimplement them.
 
-Another important aspect is the runtime performance due to the heavy operations involved in \as{mpc}s. We will benchmark each runtime by measuring the time it takes to execute a simple Python script that adds numbers in a loop.
+Another important aspect is the runtime performance due to the heavy operations involved in \as{mpc}s.
 
 Fast startup time, low build and deployment complexity are less crucial but nice to have properties of the runtime, as they offer a better experience for both users and developers.
 
@@ -929,14 +929,107 @@ There are a number of available solutions for using Python in web browsers, fall
 \end{enumerate}
 \end{block}
 
+\begin{block}{Ecosystem Availability}
+\phantomsection\label{thesis__090-mpyc-web.md__ecosystem-availability}
+From the listed
+\end{block}
+
 \begin{block}{Preliminary Runtime Benchmarks}
 \phantomsection\label{thesis__090-mpyc-web.md__preliminary-runtime-benchmarks}
+We will measure the time it takes each Python runtime to execute a given set of benchmark functions to have a preliminary indication of how they might perform for MPyC. To put that data in context, we will also include the results for the native performance of Python's default implementation (CPython) as well as JavaScript running in a browser.
+
+The results will be presented in terms of operations per second, for an input size of 100 000, e.g.~if a script benchmarks integer additions, then a loop of 100 000 additions is considered 1 operation. Similarly if we are copying a list or generating a sequence of numbers, then a single operation will be a sequence of 100 000 numbers. This is done to keep the relative number of function calls much lower than the operation being tested, as function calls are generally more computationally expensive and can skew the results.
+
+Additionally our setup will make sure to run each benchmark for at least 0.2 seconds in order to reduce the volatility of the results. It will start with a single iteration of the 100 000-sized operation and then exponentially increase the iterations until the time limit is reached.
+
+The set of benchmark functions was chosen based on implementation simplicity and portability across the tested runtimes. We will only show a few code examples below for illustration purposes, but the full benchmark suite can be found on GitHub:
+
 \begin{itemize}
 \tightlist
 \item
+  \textbf{assign} - assigning a number to a variable
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ assign(iters}\OperatorTok{=}\DecValTok{100\_000}\NormalTok{):}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ itertools.repeat(}\VariableTok{None}\NormalTok{, iters):}
+\NormalTok{        x }\OperatorTok{=} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
 \item
+  \textbf{multiply} - multiplying two numbers
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ multiply(iters}\OperatorTok{=}\DecValTok{100\_000}\NormalTok{):}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ itertools.repeat(}\VariableTok{None}\NormalTok{, iters):}
+        \DecValTok{17} \OperatorTok{*} \DecValTok{41}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
 \item
+  \textbf{bigint} - large number arithmetics
 \item
+  \textbf{randlist} - generates a list of 100 000 random integers
+\item
+  \textbf{cpylist} - copies a pre-generated list of 100 000 integers
+\item
+  \textbf{sortlist} - sorts a list of 100 000 integers
+\item
+  \textbf{fibonacci} - generating the fibonacci sequence mod 100 000
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ fibonacci(n}\OperatorTok{=}\DecValTok{100\_000}\NormalTok{):}
+    \ControlFlowTok{if}\NormalTok{ n }\OperatorTok{\textless{}} \DecValTok{2}\NormalTok{:}
+        \ControlFlowTok{return}\NormalTok{ n}
+\NormalTok{    a, b }\OperatorTok{=} \DecValTok{1}\NormalTok{, }\DecValTok{2}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ itertools.repeat(}\VariableTok{None}\NormalTok{, iters):}
+\NormalTok{        a, b }\OperatorTok{=}\NormalTok{ b, (a }\OperatorTok{+}\NormalTok{ b) }\OperatorTok{\%} \DecValTok{100\_000}
+    \ControlFlowTok{return}\NormalTok{ a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{primes} - generates the prime numbers from 0 to 100 000
+\end{itemize}
+
+The following machine was used for conducting the tests:
+
+\begin{itemize}
+\tightlist
+\item
+  OS - Microsoft Windows
+\item
+  CPU - AMD Ryzen 7 2700X
+\item
+  RAM - 32 GB
+\item
+  Browser: Google Chrome v123.0.6312.28
+\end{itemize}
+
+Table \ref{runtime-benchmarks} shows the benchmark results. A few interesting observations:
+
+\begin{itemize}
+\tightlist
+\item
+  JavaScript in a browser is a lot faster than native Python in most of the tests
+\item
+  Transcrypt is faster than the other browser-based runtimes, probably because it is able to optimize the JavaScript code as it generates it ahead of time and it is also less focused on parity with CPython and more on interoperability with the JavaScript ecosystem
+\item
+  The results vary quite a bit, e.g.~Pyodide is faster than Brython at generating the fibonacci sequence, but slower at big int arithmetics and multiplications
+\item
+  Pyodide appears to be faster on average than the other WASM-based and JS-based interpreters
 \end{itemize}
 
 \begin{longtable}[]{@{}
@@ -949,7 +1042,7 @@ There are a number of available solutions for using Python in web browsers, fall
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1081}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1171}}
   >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0901}}@{}}
-\caption{Benchmark results of the Python runtimes measured in operations per second for inputs of size 100 000}\tabularnewline
+\caption{\label{runtime-benchmarks} Benchmark results of the Python runtimes measured in operations per second for inputs of size 100 000}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
@@ -986,149 +1079,21 @@ There are a number of available solutions for using Python in web browsers, fall
 \HF JavaScript & 19,327 & 19,413 & 19,351 & 713 & 4,227 & 35 & 3,271 & 1,029 \\
 \HF CPython & 775 & 380 & 69 & 21 & 4,280 & 81 & 168 & 200 \\
 \HL Transcrypt & 1,289 & 1,285 & 1,282 & 176 & 6,135 & 35 & 337 & 1124 \\
-\HL Skulpt & 40 & 27 & 1 & 16 & 6,232 & 5.2 & 8 & 18 \\
-\HL Brython & 292 & 166 & 45 & 0.7 & 5,076 & 67 & 9 & 45 \\
 \HLM Pyodide & 400 & 111 & 26 & 5 & 4,425 & 45 & 53 & 73 \\
+\HL Brython & 292 & 166 & 45 & 0.7 & 5,076 & 67 & 9 & 45 \\
 \HL MicroPython & 69 & 36 & 6 & 16 & 403 & 41 & 22 & 10 \\
+\HL Skulpt & 40 & 27 & 1 & 16 & 6,232 & 5.2 & 8 & 18 \\
 \HL RustPython & 60 & 59 & 8 & 0.8 & 525 & 0.1 & 6 & 6 \\
 \bottomrule\noalign{}
 \end{longtable}
+\end{block}
 
-\begin{Shaded}
-\begin{Highlighting}[]
-\ImportTok{import}\NormalTok{ itertools}
-\ImportTok{import}\NormalTok{ random}
-\ImportTok{import}\NormalTok{ sys}
-\ImportTok{import}\NormalTok{ time}
+\begin{block}{Startup}
+\phantomsection\label{thesis__090-mpyc-web.md__startup}
+\end{block}
 
-\NormalTok{bench\_input\_size }\OperatorTok{=} \DecValTok{100000}
-\NormalTok{bench\_min\_duration }\OperatorTok{=} \FloatTok{0.2}
-\NormalTok{bench\_best\_of }\OperatorTok{=} \DecValTok{3}
-
-\KeywordTok{def}\NormalTok{ is\_brython():}
-    \ControlFlowTok{return} \StringTok{"Brython"} \KeywordTok{in} \BuiltInTok{str}\NormalTok{(sys.version)}
-\KeywordTok{def}\NormalTok{ is\_skulpt():}
-    \ControlFlowTok{return} \StringTok{"Skulpt"} \KeywordTok{in} \BuiltInTok{str}\NormalTok{(sys.version)}
-\KeywordTok{def}\NormalTok{ is\_micropython():}
-    \ControlFlowTok{return} \StringTok{"MicroPython"} \KeywordTok{in} \BuiltInTok{str}\NormalTok{(sys.version)}
-\KeywordTok{def}\NormalTok{ is\_rustpython():}
-    \ControlFlowTok{return} \StringTok{"rustc"} \KeywordTok{in} \BuiltInTok{str}\NormalTok{(sys.version)}
-\ControlFlowTok{if}\NormalTok{ is\_micropython():}
-    \ImportTok{import}\NormalTok{ js}
-    \KeywordTok{def} \BuiltInTok{print}\NormalTok{(s):}
-\NormalTok{        js.document.currentScript.target.innerHTML }\OperatorTok{+=}\NormalTok{ s }\OperatorTok{+} \StringTok{"\textless{}br /\textgreater{}"}  
-\ControlFlowTok{if}\NormalTok{ is\_brython() }\KeywordTok{or}\NormalTok{ is\_skulpt() }\KeywordTok{or}\NormalTok{ is\_micropython():}
-\NormalTok{    range\_fn }\OperatorTok{=} \BuiltInTok{range}
-\ControlFlowTok{else}\NormalTok{:}
-\NormalTok{    range\_fn }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ iters: itertools.repeat(}\VariableTok{None}\NormalTok{, iters)  }\CommentTok{\# Pyodide  }
-
-\ControlFlowTok{if} \BuiltInTok{hasattr}\NormalTok{(time, }\StringTok{"ticks\_ms"}\NormalTok{):}
-\NormalTok{    default\_timer }\OperatorTok{=}\NormalTok{ time.ticks\_ms}
-\NormalTok{    default\_time\_diff }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ a, b: time.ticks\_diff(a, b) }\OperatorTok{/} \FloatTok{1000.0}
-\ControlFlowTok{elif} \BuiltInTok{hasattr}\NormalTok{(time, }\StringTok{"time"}\NormalTok{):}
-\NormalTok{    default\_timer }\OperatorTok{=}\NormalTok{ time.time}
-\NormalTok{    default\_time\_diff }\OperatorTok{=} \KeywordTok{lambda}\NormalTok{ a, b: a }\OperatorTok{{-}}\NormalTok{ b}
-\KeywordTok{def}\NormalTok{ timeit(func, iterations}\OperatorTok{=}\NormalTok{bench\_input\_size, timer}\OperatorTok{=}\NormalTok{default\_timer, time\_diff}\OperatorTok{=}\NormalTok{default\_time\_diff):}
-\NormalTok{    t1 }\OperatorTok{=}\NormalTok{ timer()}
-\NormalTok{    res }\OperatorTok{=}\NormalTok{ func()}
-    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ range\_fn(iterations }\OperatorTok{{-}} \DecValTok{1}\NormalTok{):}
-\NormalTok{        func()}
-\NormalTok{    timing }\OperatorTok{=}\NormalTok{ time\_diff(timer(), t1)}
-    \ControlFlowTok{return}\NormalTok{ timing, res}
-\KeywordTok{def}\NormalTok{ autorange(func):}
-\NormalTok{    i }\OperatorTok{=} \DecValTok{1}
-    \ControlFlowTok{while} \VariableTok{True}\NormalTok{:}
-        \ControlFlowTok{for}\NormalTok{ j }\KeywordTok{in} \DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{, }\DecValTok{5}\NormalTok{:}
-\NormalTok{            iterations }\OperatorTok{=}\NormalTok{ i }\OperatorTok{*}\NormalTok{ j}
-\NormalTok{            time\_taken, res }\OperatorTok{=}\NormalTok{ timeit(func, iterations)}
-            \ControlFlowTok{if}\NormalTok{ time\_taken }\OperatorTok{\textgreater{}=}\NormalTok{ bench\_min\_duration:}
-                \ControlFlowTok{return}\NormalTok{ (}\BuiltInTok{round}\NormalTok{(iterations }\OperatorTok{/}\NormalTok{ time\_taken, }\DecValTok{2}\NormalTok{), res)}
-\NormalTok{        i }\OperatorTok{*=} \DecValTok{10}
-\KeywordTok{def}\NormalTok{ bench(func):}
-    \KeywordTok{def}\NormalTok{ wrapper(}\OperatorTok{*}\NormalTok{args, }\OperatorTok{**}\NormalTok{kwargs):}
-\NormalTok{        maxOpS }\OperatorTok{=} \DecValTok{0}
-\NormalTok{        res }\OperatorTok{=} \VariableTok{None}
-        \KeywordTok{def}\NormalTok{ handle():}
-            \ControlFlowTok{return}\NormalTok{ func(}\OperatorTok{*}\NormalTok{args, }\OperatorTok{**}\NormalTok{kwargs)}
-        \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(bench\_best\_of):}
-\NormalTok{            ops, res }\OperatorTok{=}\NormalTok{ autorange(handle)}
-\NormalTok{            maxOpS }\OperatorTok{=} \BuiltInTok{max}\NormalTok{(maxOpS, ops)}
-\NormalTok{        print\_bench(func.}\VariableTok{\_\_name\_\_}\NormalTok{, maxOpS, }\OperatorTok{*}\NormalTok{args, }\OperatorTok{**}\NormalTok{kwargs)}
-        \ControlFlowTok{return}\NormalTok{ res}
-    \ControlFlowTok{return}\NormalTok{ wrapper}
-\KeywordTok{def}\NormalTok{ print\_bench(name, t, }\OperatorTok{*}\NormalTok{args, }\OperatorTok{**}\NormalTok{kwargs):}
-\NormalTok{    args\_repr }\OperatorTok{=}\NormalTok{ [}\BuiltInTok{repr}\NormalTok{(arg) }\ControlFlowTok{for}\NormalTok{ arg }\KeywordTok{in}\NormalTok{ args]}
-\NormalTok{    kwargs\_repr }\OperatorTok{=}\NormalTok{ [}\SpecialStringTok{f"}\SpecialCharTok{\{}\NormalTok{key}\SpecialCharTok{\}}\SpecialStringTok{=}\SpecialCharTok{\{}\BuiltInTok{repr}\NormalTok{(value)}\SpecialCharTok{\}}\SpecialStringTok{"} \ControlFlowTok{for}\NormalTok{ key, value }\KeywordTok{in}\NormalTok{ kwargs.items()]}
-\NormalTok{    args\_fmt }\OperatorTok{=} \StringTok{", "}\NormalTok{.join(args\_repr }\OperatorTok{+}\NormalTok{ kwargs\_repr)}
-    \BuiltInTok{print}\NormalTok{(}\SpecialStringTok{f"}\SpecialCharTok{\{}\NormalTok{name}\SpecialCharTok{\}}\SpecialStringTok{(}\SpecialCharTok{\{}\NormalTok{args\_fmt}\SpecialCharTok{\}}\SpecialStringTok{): }\SpecialCharTok{\{}\NormalTok{t}\SpecialCharTok{:,\}}\SpecialStringTok{ ops/sec"}\NormalTok{)}
-\AttributeTok{@bench}
-\KeywordTok{def}\NormalTok{ assign(iters}\OperatorTok{=}\NormalTok{bench\_input\_size):}
-    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ range\_fn(iters):}
-\NormalTok{        x }\OperatorTok{=} \DecValTok{1}
-\AttributeTok{@bench}
-\KeywordTok{def}\NormalTok{ multiply(iters}\OperatorTok{=}\NormalTok{bench\_input\_size):}
-\NormalTok{    a, b }\OperatorTok{=} \DecValTok{17}\NormalTok{, }\DecValTok{41}
-    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ range\_fn(iters):}
-\NormalTok{        x }\OperatorTok{=}\NormalTok{ a }\OperatorTok{*}\NormalTok{ b}
-\AttributeTok{@bench}
-\KeywordTok{def}\NormalTok{ bigints(iters}\OperatorTok{=}\NormalTok{bench\_input\_size):}
-\NormalTok{    n }\OperatorTok{=} \DecValTok{60}
-    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ range\_fn(iters):}
-        \DecValTok{2}\OperatorTok{**}\NormalTok{n}
-\AttributeTok{@bench}
-\KeywordTok{def}\NormalTok{ randlist(size}\OperatorTok{=}\NormalTok{bench\_input\_size):}
-    \ControlFlowTok{return}\NormalTok{ [random.randint(}\DecValTok{0}\NormalTok{, size) }\ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in} \BuiltInTok{range}\NormalTok{(size)]}
-\NormalTok{l }\OperatorTok{=} \VariableTok{None}
-\AttributeTok{@bench}
-\KeywordTok{def}\NormalTok{ cpylist():}
-    \ControlFlowTok{return}\NormalTok{ l.copy()}
-\AttributeTok{@bench}
-\KeywordTok{def}\NormalTok{ cpylist2():}
-    \ControlFlowTok{return}\NormalTok{ l[:]}
-\AttributeTok{@bench}
-\KeywordTok{def}\NormalTok{ sortlist():}
-    \ControlFlowTok{return}\NormalTok{ l.copy().sort()}
-\AttributeTok{@bench}
-\KeywordTok{def}\NormalTok{ fibonacci(n}\OperatorTok{=}\NormalTok{bench\_input\_size):}
-    \ControlFlowTok{if}\NormalTok{ n }\OperatorTok{\textless{}} \DecValTok{2}\NormalTok{:}
-        \ControlFlowTok{return}\NormalTok{ n}
-\NormalTok{    a, b }\OperatorTok{=} \DecValTok{1}\NormalTok{, }\DecValTok{2}  
-    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ range\_fn(n }\OperatorTok{{-}} \DecValTok{1}\NormalTok{):}
-\NormalTok{        a, b }\OperatorTok{=}\NormalTok{ b, (a }\OperatorTok{+}\NormalTok{ b) }\OperatorTok{\%} \DecValTok{100000}
-    \ControlFlowTok{return}\NormalTok{ a }
-\AttributeTok{@bench}
-\KeywordTok{def}\NormalTok{ primes(n}\OperatorTok{=}\NormalTok{bench\_input\_size):}
-    \ControlFlowTok{if}\NormalTok{ n }\OperatorTok{==} \DecValTok{2}\NormalTok{:}
-        \ControlFlowTok{return}\NormalTok{ [}\DecValTok{2}\NormalTok{]}
-    \ControlFlowTok{if}\NormalTok{ n }\OperatorTok{\textless{}} \DecValTok{2}\NormalTok{:}
-        \ControlFlowTok{return}\NormalTok{ []}
-\NormalTok{    s }\OperatorTok{=} \BuiltInTok{list}\NormalTok{(}\BuiltInTok{range}\NormalTok{(}\DecValTok{3}\NormalTok{, n }\OperatorTok{+} \DecValTok{1}\NormalTok{, }\DecValTok{2}\NormalTok{))}
-\NormalTok{    mroot }\OperatorTok{=}\NormalTok{ n}\OperatorTok{**}\FloatTok{0.5}
-\NormalTok{    half }\OperatorTok{=}\NormalTok{ (n }\OperatorTok{+} \DecValTok{1}\NormalTok{) }\OperatorTok{//} \DecValTok{2} \OperatorTok{{-}} \DecValTok{1}
-\NormalTok{    i }\OperatorTok{=} \DecValTok{0}
-\NormalTok{    m }\OperatorTok{=} \DecValTok{3}
-    \ControlFlowTok{while}\NormalTok{ m }\OperatorTok{\textless{}=}\NormalTok{ mroot:}
-        \ControlFlowTok{if}\NormalTok{ s[i]:}
-\NormalTok{            j }\OperatorTok{=}\NormalTok{ (m }\OperatorTok{*}\NormalTok{ m }\OperatorTok{{-}} \DecValTok{3}\NormalTok{) }\OperatorTok{//} \DecValTok{2}
-\NormalTok{            s[j] }\OperatorTok{=} \DecValTok{0}
-            \ControlFlowTok{while}\NormalTok{ j }\OperatorTok{\textless{}}\NormalTok{ half:}
-\NormalTok{                s[j] }\OperatorTok{=} \DecValTok{0}
-\NormalTok{                j }\OperatorTok{+=}\NormalTok{ m}
-\NormalTok{        i }\OperatorTok{=}\NormalTok{ i }\OperatorTok{+} \DecValTok{1}
-\NormalTok{        m }\OperatorTok{=} \DecValTok{2} \OperatorTok{*}\NormalTok{ i }\OperatorTok{+} \DecValTok{3}
-    \ControlFlowTok{return}\NormalTok{ [}\DecValTok{2}\NormalTok{] }\OperatorTok{+}\NormalTok{ [x }\ControlFlowTok{for}\NormalTok{ x }\KeywordTok{in}\NormalTok{ s }\ControlFlowTok{if}\NormalTok{ x]}
-\NormalTok{assign()}
-\NormalTok{multiply()}
-\NormalTok{bigints()}
-\NormalTok{l }\OperatorTok{=}\NormalTok{ randlist()}
-\NormalTok{cpylist()}
-\NormalTok{cpylist2()}
-\NormalTok{sortlist()}
-\NormalTok{fibonacci()}
-\NormalTok{primes()}
-\end{Highlighting}
-\end{Shaded}
-
+\begin{block}{Conclusions}
+\phantomsection\label{thesis__090-mpyc-web.md__conclusions}
 Out of the discussed runtime options, Pyodide offers the widest support for packages from the standard library and third-party packages. None of the options support the sockets package due to browser limitations, but an alternative implementation can be built on top of the WebRTC API.
 
 Out of those projects, Py
@@ -1136,11 +1101,11 @@ Out of those projects, Py
 \newpage
 
 \begin{longtable}[]{@{}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1562}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3750}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1146}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1354}}
-  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2188}}@{}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1531}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3673}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1122}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1531}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2143}}@{}}
 \caption{Summary of Python runtimes for browsers}\tabularnewline
 \toprule\noalign{}
 \begin{minipage}[b]{\linewidth}\raggedright
@@ -1150,7 +1115,7 @@ Out of those projects, Py
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Startup}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Benchmark}
+\textbf{Performance}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Ecosystem}
 \end{minipage} \\
@@ -1164,24 +1129,24 @@ Out of those projects, Py
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Startup}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
-\textbf{Benchmark}
+\textbf{Performance}
 \end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
 \textbf{Ecosystem}
 \end{minipage} \\
 \midrule\noalign{}
 \endhead
-\MB Transcrypt & transpiler (\as{aot}) & 0s & slow & \((-)\) n/a \\
+\MB Transcrypt & transpiler (\as{aot}) & 0s & fast & \((-)\) n/a \\
 \HL Skulpt & \as{js}-based interpreter (\as{jit}) & 0s & slow & \((-)\) n/a \\
-\HL Brython & JS-based interpreter (JIT) & 0s & 1,370 op/s & \((-)\) no numpy \\
-\HLM Pyodide & \as{wasm}-based interpreter (JIT) & 5s & 298 op/s & \((+)\) asyncio \\
+\HL Brython & JS-based interpreter (JIT) & 0s & medium & \((-)\) no numpy \\
+\HLM Pyodide & \as{wasm}-based interpreter (JIT) & 5s & medium+ & \((+)\) asyncio \\
 & & & & \((+)\) numpy \\
 & & & & \((+)\) gmpy2 \\
 & & & & \((+)\) scipy \\
 & & & & \((+)\) python wheels \\
 & & & & \((+)\) filesystem \\
 \MB & & & & \((-)\) no sockets \\
-\HL MicroPython & WASM-based interpreter (JIT) & 1s & fast & \((-)\) n/a \\
-\HL RustPython & WASM-based interpreter (JIT) & 5s & fast & \((-)\) n/a \\
+\HL MicroPython & WASM-based interpreter (JIT) & 1s & slow & \((-)\) n/a \\
+\HL RustPython & WASM-based interpreter (JIT) & 5s & slow & \((-)\) n/a \\
 \bottomrule\noalign{}
 \end{longtable}
 \end{block}
@@ -1265,5 +1230,369 @@ There still is a centralized service like in the Tailscale solution, but here it
 
 \begin{block}{Usability analysis}
 \phantomsection\label{thesis__090-mpyc-web.md__usability-analysis}
+\end{block}
+\end{block}
+
+\begin{block}{MPyC Web}
+\phantomsection\label{thesis__090-mpyc-web.md__mpyc-web-1}
+This chapter presents the design of MPyC Web - an MPC connectivity solution based on web technologies (L7) that can run in web browsers.
+
+Design goals:
+
+\begin{itemize}
+\tightlist
+\item
+  Runs in browsers (client-side) on both PCs and smartphones
+\item
+  Uses the MPyC Python framework with as few modifications as possible
+\item
+  Peer-to-peer with a fallback to relaying
+\item
+  Secure
+\item
+  Simple to use
+\end{itemize}
+
+\begin{block}{Python Runtime Selection}
+\phantomsection\label{thesis__090-mpyc-web.md__python-runtime-selection-1}
+\begin{block}{Selection Criteria}
+\phantomsection\label{thesis__090-mpyc-web.md__selection-criteria-1}
+While web browsers natively support only \gls{js}, there are approaches with different tradeoffs that can enable other languages, including Python. In this section we will investigate several web-based Python runtimes and choose the most appropriate one for MPyC Web.
+
+MPyC depends on several Python packages that are implemented in C, such as numpy, gmpy2, scipy and relies heavily on asyncio and TCP sockets from Python's standard library. The runtime we choose should support as many of those dependencies as possible to avoid having to find alternatives or reimplement them.
+
+Another important aspect is the runtime performance due to the heavy operations involved in \as{mpc}s.
+
+Fast startup time, low build and deployment complexity are less crucial but nice to have properties of the runtime, as they offer a better experience for both users and developers.
+
+To summarize, our criteria for runtime selection are:
+
+\begin{itemize}
+\tightlist
+\item
+  Python ecosystem/package availability
+\item
+  Runtime performance
+\item
+  Startup, build and deployment time
+\end{itemize}
+\end{block}
+
+\begin{block}{Available Solutions}
+\phantomsection\label{thesis__090-mpyc-web.md__available-solutions-1}
+There are a number of available solutions for using Python in web browsers, falling under three main categories\autocite{pyodideIntroMozilla} \autocite{anvilPythonBrowser}:
+
+\begin{enumerate}
+\tightlist
+\item
+  Transcrypt\autocite{transcryptRepo} - \gls{aot} JavaScript transpiler - the Python code is transpiled to JavaScript and the resulting code is executed by the browser at runtime. is an example project
+\item
+  Skulpt\autocite{skulptDocs}, Brython\autocite{brythonDocs} - \gls{jit} JavaScript interpreters - the Python code is converted to JavaScript in the browser at runtime
+\item
+  Pyodide\autocite{pyodideDocs}, MicroPython\autocite{microPythonDocs}, RustPython\autocite{rustPythonDocs} - \gls{wasm}\autocite{wasmDocs} interpreters - a Python interpreter is implemented in a compiled language like C/C++/Rust/Go that can target WASM - a secure and efficient binary instruction format for a virtual machine that can run in browsers with close to native performance.
+\end{enumerate}
+\end{block}
+
+\begin{block}{Ecosystem Availability}
+\phantomsection\label{thesis__090-mpyc-web.md__ecosystem-availability-1}
+From the listed
+\end{block}
+
+\begin{block}{Preliminary Runtime Benchmarks}
+\phantomsection\label{thesis__090-mpyc-web.md__preliminary-runtime-benchmarks-1}
+We will measure the time it takes each Python runtime to execute a given set of benchmark functions to have a preliminary indication of how they might perform for MPyC. To put that data in context, we will also include the results for the native performance of Python's default implementation (CPython) as well as JavaScript running in a browser.
+
+The results will be presented in terms of operations per second, for an input size of 100 000, e.g.~if a script benchmarks integer additions, then a loop of 100 000 additions is considered 1 operation. Similarly if we are copying a list or generating a sequence of numbers, then a single operation will be a sequence of 100 000 numbers. This is done to keep the relative number of function calls much lower than the operation being tested, as function calls are generally more computationally expensive and can skew the results.
+
+Additionally our setup will make sure to run each benchmark for at least 0.2 seconds in order to reduce the volatility of the results. It will start with a single iteration of the 100 000-sized operation and then exponentially increase the iterations until the time limit is reached.
+
+The set of benchmark functions was chosen based on implementation simplicity and portability across the tested runtimes. We will only show a few code examples below for illustration purposes, but the full benchmark suite can be found on GitHub:
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{assign} - assigning a number to a variable
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ assign(iters}\OperatorTok{=}\DecValTok{100\_000}\NormalTok{):}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ itertools.repeat(}\VariableTok{None}\NormalTok{, iters):}
+\NormalTok{        x }\OperatorTok{=} \DecValTok{1}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{multiply} - multiplying two numbers
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ multiply(iters}\OperatorTok{=}\DecValTok{100\_000}\NormalTok{):}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ itertools.repeat(}\VariableTok{None}\NormalTok{, iters):}
+        \DecValTok{17} \OperatorTok{*} \DecValTok{41}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{bigint} - large number arithmetics
+\item
+  \textbf{randlist} - generates a list of 100 000 random integers
+\item
+  \textbf{cpylist} - copies a pre-generated list of 100 000 integers
+\item
+  \textbf{sortlist} - sorts a list of 100 000 integers
+\item
+  \textbf{fibonacci} - generating the fibonacci sequence mod 100 000
+\end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\KeywordTok{def}\NormalTok{ fibonacci(n}\OperatorTok{=}\DecValTok{100\_000}\NormalTok{):}
+    \ControlFlowTok{if}\NormalTok{ n }\OperatorTok{\textless{}} \DecValTok{2}\NormalTok{:}
+        \ControlFlowTok{return}\NormalTok{ n}
+\NormalTok{    a, b }\OperatorTok{=} \DecValTok{1}\NormalTok{, }\DecValTok{2}
+    \ControlFlowTok{for}\NormalTok{ \_ }\KeywordTok{in}\NormalTok{ itertools.repeat(}\VariableTok{None}\NormalTok{, iters):}
+\NormalTok{        a, b }\OperatorTok{=}\NormalTok{ b, (a }\OperatorTok{+}\NormalTok{ b) }\OperatorTok{\%} \DecValTok{100\_000}
+    \ControlFlowTok{return}\NormalTok{ a}
+\end{Highlighting}
+\end{Shaded}
+
+\begin{itemize}
+\tightlist
+\item
+  \textbf{primes} - generates the prime numbers from 0 to 100 000
+\end{itemize}
+
+The following machine was used for conducting the tests:
+
+\begin{itemize}
+\tightlist
+\item
+  OS - Microsoft Windows
+\item
+  CPU - AMD Ryzen 7 2700X
+\item
+  RAM - 32 GB
+\item
+  Browser: Google Chrome v123.0.6312.28
+\end{itemize}
+
+Table \ref{runtime-benchmarks} shows the benchmark results. A few interesting observations:
+
+\begin{itemize}
+\tightlist
+\item
+  JavaScript in a browser is a lot faster than native Python in most of the tests
+\item
+  Transcrypt is faster than the other browser-based runtimes, probably because it is able to optimize the JavaScript code as it generates it ahead of time and it is also less focused on parity with CPython and more on interoperability with the JavaScript ecosystem
+\item
+  The results vary quite a bit, e.g.~Pyodide is faster than Brython at generating the fibonacci sequence, but slower at big int arithmetics and multiplications
+\item
+  Pyodide appears to be faster on average than the other WASM-based and JS-based interpreters
+\end{itemize}
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1351}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1171}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1081}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0991}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1081}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1171}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1081}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.1171}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 16\tabcolsep) * \real{0.0901}}@{}}
+\caption{\label{runtime-benchmarks} Benchmark results of the Python runtimes measured in operations per second for inputs of size 100 000}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Benchmark}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Results}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{(ops/sec)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Benchmark}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Results}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{(ops/sec)}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\MB Project & \textbf{assign} & \textbf{multiply} & \textbf{bigint} & \textbf{randlist} & \textbf{cpylist} & \textbf{sortlist} & \textbf{fibonacci} & \textbf{primes} \\
+\HF JavaScript & 19,327 & 19,413 & 19,351 & 713 & 4,227 & 35 & 3,271 & 1,029 \\
+\HF CPython & 775 & 380 & 69 & 21 & 4,280 & 81 & 168 & 200 \\
+\HL Transcrypt & 1,289 & 1,285 & 1,282 & 176 & 6,135 & 35 & 337 & 1124 \\
+\HLM Pyodide & 400 & 111 & 26 & 5 & 4,425 & 45 & 53 & 73 \\
+\HL Brython & 292 & 166 & 45 & 0.7 & 5,076 & 67 & 9 & 45 \\
+\HL MicroPython & 69 & 36 & 6 & 16 & 403 & 41 & 22 & 10 \\
+\HL Skulpt & 40 & 27 & 1 & 16 & 6,232 & 5.2 & 8 & 18 \\
+\HL RustPython & 60 & 59 & 8 & 0.8 & 525 & 0.1 & 6 & 6 \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{block}
+
+\begin{block}{Startup}
+\phantomsection\label{thesis__090-mpyc-web.md__startup-1}
+\end{block}
+
+\begin{block}{Conclusions}
+\phantomsection\label{thesis__090-mpyc-web.md__conclusions-1}
+Out of the discussed runtime options, Pyodide offers the widest support for packages from the standard library and third-party packages. None of the options support the sockets package due to browser limitations, but an alternative implementation can be built on top of the WebRTC API.
+
+Out of those projects, Py
+
+\newpage
+
+\begin{longtable}[]{@{}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1531}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.3673}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1122}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.1531}}
+  >{\raggedright\arraybackslash}p{(\columnwidth - 8\tabcolsep) * \real{0.2143}}@{}}
+\caption{Summary of Python runtimes for browsers}\tabularnewline
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Project}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Approach}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Startup}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Performance}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Ecosystem}
+\end{minipage} \\
+\midrule\noalign{}
+\endfirsthead
+\toprule\noalign{}
+\begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Project}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Approach}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Startup}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Performance}
+\end{minipage} & \begin{minipage}[b]{\linewidth}\raggedright
+\textbf{Ecosystem}
+\end{minipage} \\
+\midrule\noalign{}
+\endhead
+\MB Transcrypt & transpiler (\as{aot}) & 0s & fast & \((-)\) n/a \\
+\HL Skulpt & \as{js}-based interpreter (\as{jit}) & 0s & slow & \((-)\) n/a \\
+\HL Brython & JS-based interpreter (JIT) & 0s & medium & \((-)\) no numpy \\
+\HLM Pyodide & \as{wasm}-based interpreter (JIT) & 5s & medium+ & \((+)\) asyncio \\
+& & & & \((+)\) numpy \\
+& & & & \((+)\) gmpy2 \\
+& & & & \((+)\) scipy \\
+& & & & \((+)\) python wheels \\
+& & & & \((+)\) filesystem \\
+\MB & & & & \((-)\) no sockets \\
+\HL MicroPython & WASM-based interpreter (JIT) & 1s & slow & \((-)\) n/a \\
+\HL RustPython & WASM-based interpreter (JIT) & 5s & slow & \((-)\) n/a \\
+\bottomrule\noalign{}
+\end{longtable}
+\end{block}
+\end{block}
+
+\begin{block}{Design of MPyC Web}
+\phantomsection\label{thesis__090-mpyc-web.md__design-of-mpyc-web-1}
+Web based solution for running MPC in browsers on the client side via WebAssembly and WebRTC for peer-to-peer connectivity.
+
+The lifecycle of a message between the workers of 2 peers, ``Peer A'' and ``Peer B'' looks like this:
+
+\begin{figure}
+\centering
+\includegraphics[width=\textwidth,height=0.9\textheight]{thesis/../figures/mpyc-web.png}
+\caption{MPyC Web \label{osi-map-overlays}}
+\end{figure}
+
+\begin{enumerate}
+\item
+  Python Worker on Peer A
+
+  \begin{itemize}
+  \tightlist
+  \item
+    creates a message that contains a secret share computed via the mpyc, which serializes it to binary via struct.pack(). The resulting message is non-ascii, but when escaped can look like this:
+  \end{itemize}
+
+\begin{Shaded}
+\begin{Highlighting}[]
+\StringTok{b\textquotesingle{}}\CharTok{\textbackslash{}x06\textbackslash{}x00\textbackslash{}x00\textbackslash{}x00\textbackslash{}xc9\textbackslash{}x93\textbackslash{}\textbackslash{}\textbackslash{}xc0\textbackslash{}xff\textbackslash{}xff\textbackslash{}xff\textbackslash{}xff\textbackslash{}x04\textbackslash{}x00\textbackslash{}x80\textbackslash{}x99\textbackslash{}x1b\textbackslash{}x01}\StringTok{\textquotesingle{}}
+\end{Highlighting}
+\end{Shaded}
+
+  \begin{itemize}
+  \tightlist
+  \item
+    worker calls a main thread function (sendRuntimeMessage) via a coincident proxy and passes the serialized value, as well as the destination Peer's ID (Peer B). The worker does not need to await the result of this call, but it does because of xworker.sync.
+  \end{itemize}
+\item
+  Coincident handles the message by:
+
+  \begin{itemize}
+  \tightlist
+  \item
+    (Worker) JSON.stringify() -\textgreater{} Atomics.wait()
+  \item
+    (Main) JSON.parse() -\textgreater{} Run the Main Thread function -\textgreater{} Atomics.notify()
+  \end{itemize}
+\item
+  Main thread on Peer A fires an event to notify PeerJS that it needs to transport the message and immediately returns in order to not block the Worker
+\item
+  PeerJS serializes the message with some added fields via MessagePack and transmits it to Peer B
+\item
+  Main thread on Peer B receives the message and forwards it to the appropriate worker callback via coincident
+\item
+  Coincident does the JSON.stringify() -\textgreater{} Atomics.wait() stuff (?) from main to worker on Peer B
+\item
+  Worker on Peer B handles the message by passing it to an asyncio coroutine that is waiting for it or stores it for later use
+\end{enumerate}
+\end{block}
+
+\begin{block}{Implementation details}
+\phantomsection\label{thesis__090-mpyc-web.md__implementation-details-1}
+\end{block}
+
+\begin{block}{Performance analysis}
+\phantomsection\label{thesis__090-mpyc-web.md__performance-analysis-1}
+\end{block}
+
+\begin{block}{Security analysis}
+\phantomsection\label{thesis__090-mpyc-web.md__security-analysis-1}
+\begin{block}{Trust model}
+\phantomsection\label{thesis__090-mpyc-web.md__trust-model-1}
+There still is a centralized service like in the Tailscale solution, but here it is self-deployed.
+\end{block}
+
+\begin{block}{Identity}
+\phantomsection\label{thesis__090-mpyc-web.md__identity-1}
+\end{block}
+\end{block}
+
+\begin{block}{Usability analysis}
+\phantomsection\label{thesis__090-mpyc-web.md__usability-analysis-1}
 \end{block}
 \end{block}
